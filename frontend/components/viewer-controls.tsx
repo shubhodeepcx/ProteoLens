@@ -42,7 +42,7 @@ export function ViewerControls({
   // just as unlisted, and resets the same way.
   useEffect(() => {
     if (!coloringOptions.some(([value]) => value === coloring)) {
-      setColoring("chain");
+      /* mutated: no fallback */;
     }
   }, [coloringOptions, coloring, setColoring]);
 

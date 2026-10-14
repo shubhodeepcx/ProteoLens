@@ -311,7 +311,7 @@ async def test_submit_posts_a_form_body_ebi_understands() -> None:
     assert body["filter"] == "F"
     assert body["exp"] == "1e-3"
     # EBI rejects a submission with no contact address outright.
-    assert "email" in body and body["email"]
+    assert body.get("email")
 
 
 @respx.mock

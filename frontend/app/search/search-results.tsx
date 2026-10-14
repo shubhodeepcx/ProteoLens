@@ -32,7 +32,7 @@ export function SearchResults({
 
   if (status === "loading" && !data) {
     return (
-      <div className="flex items-center justify-center gap-2 py-12 text-xs text-zinc-500">
+      <div className="flex items-center justify-center gap-2 py-12 text-xs text-muted-foreground">
         <Loader2 className="size-4 animate-spin" aria-hidden />
         Searching public databases…
       </div>
@@ -52,7 +52,7 @@ export function SearchResults({
 
   return (
     <section aria-busy={status === "loading"}>
-      <h2 className="mb-2 text-[10px] font-semibold uppercase tracking-wide text-zinc-400">
+      <h2 className="mb-2 text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
         {data.results.length} result{data.results.length === 1 ? "" : "s"} for “{data.query}”
       </h2>
       <ul data-testid="result-list" className="flex flex-col gap-2">
@@ -68,11 +68,11 @@ function EmptyState({ title, body }: { title: string; body: string }) {
   return (
     <div
       data-testid="empty-state"
-      className="flex flex-col items-center gap-2 rounded-md border border-dashed border-zinc-800 px-6 py-12 text-center"
+      className="flex flex-col items-center gap-2 rounded-md border border-dashed border-border px-6 py-12 text-center"
     >
-      <Database className="size-6 text-zinc-600" aria-hidden />
-      <p className="text-sm font-medium text-zinc-300">{title}</p>
-      <p className="max-w-md text-xs leading-relaxed text-zinc-500">{body}</p>
+      <Database className="size-6 text-muted-foreground/70" aria-hidden />
+      <p className="text-sm font-medium text-foreground/80">{title}</p>
+      <p className="max-w-md text-xs leading-relaxed text-muted-foreground">{body}</p>
     </div>
   );
 }

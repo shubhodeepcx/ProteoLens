@@ -15,8 +15,8 @@ import type {
 } from "@/lib/types";
 
 const HEAD_CLASS =
-  "px-2 py-1.5 text-left text-[10px] font-semibold uppercase tracking-wide text-zinc-500";
-const CELL_CLASS = "px-2 py-1.5 text-xs tabular-nums text-zinc-200";
+  "px-2 py-1.5 text-left text-[10px] font-semibold uppercase tracking-wide text-muted-foreground";
+const CELL_CLASS = "px-2 py-1.5 text-xs tabular-nums text-foreground";
 
 /** One three-column table: label, A, B, delta. */
 function DiffTable({
@@ -27,13 +27,13 @@ function DiffTable({
   children: React.ReactNode;
 }) {
   return (
-    <div className="overflow-x-auto rounded-md border border-zinc-800 bg-zinc-900/30">
+    <div className="overflow-x-auto rounded-md border border-border bg-muted/50">
       <table className="w-full min-w-96 border-collapse">
-        <caption className="px-2 pt-2 pb-1 text-left text-[10px] font-semibold uppercase tracking-wide text-zinc-400">
+        <caption className="px-2 pt-2 pb-1 text-left text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
           {caption}
         </caption>
         <thead>
-          <tr className="border-b border-zinc-800">
+          <tr className="border-b border-border">
             <th scope="col" className={HEAD_CLASS}>
               Metric
             </th>
@@ -68,8 +68,8 @@ function Row({
   deltaValue: number;
 }) {
   return (
-    <tr className="border-b border-zinc-800/60 last:border-0">
-      <th scope="row" className={`${CELL_CLASS} font-normal text-zinc-400`}>
+    <tr className="border-b border-border last:border-0">
+      <th scope="row" className={`${CELL_CLASS} font-normal text-muted-foreground`}>
         {label}
       </th>
       <td className={`${CELL_CLASS} text-right`}>{a}</td>
@@ -176,7 +176,7 @@ export function SecondaryStructureTable({
         <p
           data-testid="ss-unavailable-warning"
           role="status"
-          className="flex items-start gap-1.5 text-[11px] leading-relaxed text-amber-400"
+          className="flex items-start gap-1.5 text-[11px] leading-relaxed text-amber-700"
         >
           <AlertTriangle className="mt-0.5 size-3 shrink-0" aria-hidden />
           <span>

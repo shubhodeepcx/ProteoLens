@@ -21,7 +21,7 @@ import { AnnotationSection, Chip, Field, Outbound } from "@/components/annotatio
 export function NamesSection({ a }: { a: ProteinAnnotations }) {
   return (
     <AnnotationSection title="Names & Origin">
-      <div className="rounded-md border border-zinc-800 bg-zinc-900/30 px-3 py-2">
+      <div className="rounded-md border border-border bg-muted/50 px-3 py-2">
         {a.protein_name && <Field label="Protein" value={a.protein_name} />}
         {a.gene_names.length > 0 && (
           <Field label="Gene" value={a.gene_names.join(", ")} />
@@ -52,7 +52,7 @@ export function NamesSection({ a }: { a: ProteinAnnotations }) {
         )}
       </div>
       {a.lineage.length > 0 && (
-        <p className="mt-2 text-[11px] leading-relaxed text-zinc-500">
+        <p className="mt-2 text-[11px] leading-relaxed text-muted-foreground">
           {a.lineage.join(" › ")}
         </p>
       )}
@@ -66,7 +66,7 @@ export function FunctionSection({ paragraphs }: { paragraphs: string[] }) {
     <AnnotationSection title="Function">
       <div className="space-y-2">
         {paragraphs.map((text, i) => (
-          <p key={i} className="text-xs leading-relaxed text-zinc-300">
+          <p key={i} className="text-xs leading-relaxed text-foreground/80">
             {text}
           </p>
         ))}
@@ -87,10 +87,10 @@ export function CatalyticActivitySection({
         {activities.map((activity, i) => (
           <li
             key={i}
-            className="rounded-md border border-zinc-800 bg-zinc-900/30 px-3 py-2"
+            className="rounded-md border border-border bg-muted/50 px-3 py-2"
           >
             {activity.reaction && (
-              <p className="font-mono text-[11px] leading-relaxed text-zinc-200">
+              <p className="font-mono text-[11px] leading-relaxed text-foreground">
                 {activity.reaction}
               </p>
             )}
@@ -122,16 +122,16 @@ function GoAspect({ label, terms }: { label: string; terms: GoTerm[] }) {
   if (terms.length === 0) return null;
   return (
     <div className="mt-2 first:mt-0">
-      <div className="mb-1 text-[10px] uppercase tracking-wide text-zinc-500">
+      <div className="mb-1 text-[10px] uppercase tracking-wide text-muted-foreground">
         {label}
       </div>
       <ul className="space-y-1">
         {terms.map((term) => (
-          <li key={term.id} className="text-[11px] leading-relaxed text-zinc-300">
+          <li key={term.id} className="text-[11px] leading-relaxed text-foreground/80">
             <Outbound href={goUrl(term.id)}>{term.id}</Outbound>{" "}
             <span>{term.term}</span>
             {term.evidence && (
-              <span className="ml-1 text-zinc-500">({term.evidence})</span>
+              <span className="ml-1 text-muted-foreground">({term.evidence})</span>
             )}
           </li>
         ))}
@@ -168,7 +168,7 @@ export function KeywordsSection({ keywords }: { keywords: KeywordEntry[] }) {
     <AnnotationSection title="Keywords" count={keywords.length}>
       {[...groups].map(([category, entries]) => (
         <div key={category} className="mt-2 first:mt-0">
-          <div className="mb-1 text-[10px] uppercase tracking-wide text-zinc-500">
+          <div className="mb-1 text-[10px] uppercase tracking-wide text-muted-foreground">
             {category}
           </div>
           <div className="flex flex-wrap gap-1">

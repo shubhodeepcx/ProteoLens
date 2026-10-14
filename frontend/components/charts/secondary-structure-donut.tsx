@@ -4,14 +4,14 @@ import { AlertTriangle } from "lucide-react";
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from "recharts";
 import type { SecondaryStructurePercentages } from "@/lib/types";
 
-const COLORS = { helix: "#f59e0b", sheet: "#06b6d4", coil: "#71717a" } as const;
+const COLORS = { helix: "#f59e0b", sheet: "#06b6d4", coil: "#94a3b8" } as const;
 
 /**
  * Ring colour for "the file never said". Deliberately not one of the three
  * data colours — an absence of annotation must not borrow the visual language
  * of a measurement.
  */
-const UNKNOWN_COLOR = "#3f3f46";
+const UNKNOWN_COLOR = "#cbd5e1";
 
 export const NOT_ANNOTATED_LABEL = "Not annotated";
 
@@ -63,7 +63,7 @@ export function SecondaryStructureDonut({
             innerRadius={42}
             outerRadius={66}
             strokeWidth={1}
-            stroke="#18181b"
+            stroke="#ffffff"
           >
             {slices.map((s) => (
               <Cell key={s.name} fill={s.fill} />
@@ -71,18 +71,18 @@ export function SecondaryStructureDonut({
           </Pie>
           <Tooltip
             contentStyle={{
-              background: "#18181b",
-              border: "1px solid #3f3f46",
+              background: "#ffffff",
+              border: "1px solid #e2e8f0",
               fontSize: 11,
             }}
-            itemStyle={{ color: "#fafafa" }}
+            itemStyle={{ color: "#0f172a" }}
             formatter={(value: number) =>
               available ? `${(value * 100).toFixed(1)}%` : "no assignment"
             }
           />
           <Legend
             iconSize={8}
-            wrapperStyle={{ fontSize: 11, color: "#a1a1aa" }}
+            wrapperStyle={{ fontSize: 11, color: "#64748b" }}
             formatter={(value, entry) => {
               if (!available) return value;
               const v = (entry.payload as { value: number })?.value ?? 0;
@@ -99,7 +99,7 @@ export function SecondaryStructureDonut({
         <p
           data-testid="ss-unavailable-warning"
           role="status"
-          className="flex items-start gap-1.5 px-1 text-[11px] leading-relaxed text-amber-400"
+          className="flex items-start gap-1.5 px-1 text-[11px] leading-relaxed text-amber-700"
         >
           <AlertTriangle className="mt-0.5 size-3 shrink-0" aria-hidden />
           <span>

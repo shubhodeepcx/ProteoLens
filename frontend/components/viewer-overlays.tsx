@@ -18,14 +18,14 @@ export function ViewerOverlays({ loading, error, label }: ViewerOverlaysProps) {
     return (
       <div
         role="alert"
-        className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-3 bg-zinc-950/90 text-center"
+        className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-3 bg-background/90 text-center"
       >
-        <AlertCircle className="size-8 text-red-400" aria-hidden />
-        <p className="max-w-md text-sm text-red-400">{error.message}</p>
+        <AlertCircle className="size-8 text-red-700" aria-hidden />
+        <p className="max-w-md text-sm text-red-700">{error.message}</p>
         {error.kind === "notfound" && (
           <Link
             href="/"
-            className="text-xs text-zinc-400 underline hover:text-zinc-100"
+            className="text-xs text-muted-foreground underline hover:text-foreground"
           >
             Upload a new protein
           </Link>
@@ -40,9 +40,9 @@ export function ViewerOverlays({ loading, error, label }: ViewerOverlaysProps) {
     <div
       role="status"
       aria-live="polite"
-      className="absolute inset-0 z-10 flex items-center justify-center bg-zinc-950/80"
+      className="absolute inset-0 z-10 flex items-center justify-center bg-background/80"
     >
-      <div className="flex flex-col items-center gap-2 text-zinc-400">
+      <div className="flex flex-col items-center gap-2 text-muted-foreground">
         <Loader2 className="size-6 animate-spin" aria-hidden />
         <span className="text-xs">Loading {label}&hellip;</span>
       </div>

@@ -3,7 +3,7 @@
 **Project:** AI-Powered Protein Structure Visualization Platform
 **Living document.** Read before claiming work. Update on claim, on PR open, on merge.
 
-**Last updated:** 2026-10-05 by Shubhodeep Chatterjee (Run-and-fix pass: Geist font restored, viewer rail tabs wrap, restart script repaired, vitest timeout raised. 578 backend / 447 frontend tests, tsc clean, webpack build clean.)
+**Last updated:** 2026-10-14 by Shubhodeep Chatterjee (Light theme + Inter/JetBrains Mono; dark greys moved onto theme tokens. 447 frontend tests, tsc clean, webpack build clean.)
 
 ---
 
@@ -95,6 +95,7 @@ _No blocked tasks._
 
 | Task | Phase | Date | PR / commit |
 |---|---|---|---|
+| **Light theme + Inter** -- workspace defaults to a light slate palette with a blue accent; Inter for text and JetBrains Mono for sequences/IDs replace Geist. Every hard-coded `zinc-*` class in `app/`, `components/` and `lib/` now uses a theme token (`foreground`, `muted-foreground`, `border`, `card`, `muted`, `primary`), status colours moved to their light-background shades, chart greys re-picked for a white card. The `.dark` palette is kept, so a dark toggle is a small follow-up | maintenance | 2026-10-14 | `feature/ui-light-theme` |
 | **Run-and-fix pass** -- `--font-sans` token pointed at itself so every page fell back to serif (now Geist); viewer right-rail tabs clipped Overview/Sequence (now wrap); `restart_servers.ps1` failed to parse and ignored `-Rebuild` (rewritten); launcher stray `True` output removed; vitest `testTimeout` 20s for full parallel runs on Windows | maintenance | 2026-10-05 | `e861cdf`, `777d730` |
 | **Compounds** -- `GET /api/proteins/{uid}/compounds` + a Compounds rail tab. DNA/RNA strands (sequence, GC, protein contacts), and hetero groups classified as ligand / cofactor / ion / carbohydrate / free amino acid / modified residue / additive, named from HETNAM or `_chem_comp`, each contact a selectable residue chip. **Bug fixed on the way:** nucleotide-only chains were parsed as protein chains of `X` (1TSR's two DNA strands showed up as protein and fed composition, MW and the SS denominator); they now live in `ProteinSummary.nucleic_acid_chains`. A DNA-only upload is rejected with a reason. Verified on live RCSB 1TSR / 4HHB / 1HSG and in Chromium. **Merged to `main`** (fast-forward) | compounds | 2026-10-05 | `9f02699`, `6fdd8ae` |
 | **A1 merged** -- PAE heatmap + low-confidence region warnings. Bands reproduce AlphaFold's published fractionPlddt* exactly | spec gap | 2026-08-24 | PR #21, `8077803` |
@@ -187,6 +188,7 @@ Append-only. Never edit past entries — supersede with a new entry referencing 
 
 | Date | Decision | Rationale | Reversible? |
 |---|---|---|---|
+| 2026-10-14 | The UI is light by default and components style through theme tokens, never raw `zinc-*` greys | The owner asked for a light, professional look. Raw greys hard-wired the dark theme into 50 files; tokens let `:root` and `.dark` each be one place to change | yes |
 | 2026-10-05 | A chain is taken out of `ProteinSummary.chains` only when **every** polymer residue is a nucleotide; such chains go to `nucleic_acid_chains` and the Compounds payload. Mixed chains (any amino acid, or poly-UNK) are untouched | `chains` feeds composition, MW, the SS denominator, A5 numbering and the frontend's ordinal mapping. "Every" rather than "most" means no protein ordinal can move: Mol\* still counts the DNA chain's residues under its own label, which no protein key ever references. Scope note: the slice spec puts non-protein analysis out of scope; the user asked for it explicitly on 2026-10-05 | yes |
 | 2026-10-05 | In-chain vs free hetero amino acids are distinguished by a **peptide bond** (N or C within 1.75 Å of a neighbour's C or N, residue must carry N/CA/C), not by backbone presence | A5's backbone rule cannot tell MSE-in-a-helix from a free glutamate substrate and hides the latter. The peptide bond is the actual definition of "in the chain". Restricting to residues with a full backbone keeps a covalently attached inhibitor from being read as protein | yes |
 | 2026-08-24 | A5 maps UniProt sequence positions onto structure residues by **globally aligning the UniProt sequence against each parsed chain** and reading the correspondence out of the alignment, expressed in the parser's residue ordinals | A UniProt position is not a residue number and the difference is invisible in 3D. UniProt P00698 numbers hen lysozyme's 18-residue signal peptide, so its curated active sites at 53 and 70 are Glu35 and Asp52 in every crystal structure; P04585 is a 1435-residue polyprotein whose protease active site at 513 is Asp25 of the mature enzyme. Reading the position as an index, or as an `auth_seq_id`, marks a plausible-looking wrong residue in both cases. Ordinals rather than `auth_seq_id` because that is the coordinate `parser.py` and `residue-index.ts` already share — the seam is untouched | yes, but the refusals must not be loosened |

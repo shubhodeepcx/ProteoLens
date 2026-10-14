@@ -56,9 +56,9 @@ export function HealthPill() {
       className={cn(
         "inline-flex items-center gap-2 rounded-full border px-2.5 py-1 text-xs font-medium",
         isLoading && "border-muted-foreground/30 text-muted-foreground",
-        isOk && "border-emerald-500/40 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400",
+        isOk && "border-emerald-500/40 bg-emerald-500/10 text-emerald-600 dark:text-emerald-700",
         state.status === "error" &&
-          "border-red-500/40 bg-red-500/10 text-red-600 dark:text-red-400",
+          "border-red-500/40 bg-red-500/10 text-red-600 dark:text-red-700",
       )}
     >
       <span

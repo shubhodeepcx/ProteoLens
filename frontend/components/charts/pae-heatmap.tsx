@@ -67,7 +67,7 @@ export function PaeHeatmap({ pae }: { pae: PaeMatrix }) {
       <p
         data-testid="pae-unavailable"
         role="status"
-        className="flex items-start gap-1.5 px-1 text-[11px] leading-relaxed text-amber-400"
+        className="flex items-start gap-1.5 px-1 text-[11px] leading-relaxed text-amber-700"
       >
         <AlertTriangle className="mt-0.5 size-3 shrink-0" aria-hidden />
         <span>
@@ -88,7 +88,7 @@ export function PaeHeatmap({ pae }: { pae: PaeMatrix }) {
           data-testid="pae-canvas"
           role="img"
           aria-label={`Predicted aligned error heatmap, ${pae.size} by ${pae.size} cells, ${pae.residue_count} residues. Median ${summary.median.toFixed(1)} angstroms, worst ${summary.worst.toFixed(1)} angstroms.`}
-          className="h-auto w-full max-w-[260px] rounded border border-zinc-800 [image-rendering:pixelated]"
+          className="h-auto w-full max-w-[260px] rounded border border-border [image-rendering:pixelated]"
         />
       </div>
 
@@ -96,36 +96,36 @@ export function PaeHeatmap({ pae }: { pae: PaeMatrix }) {
           direction of the scale is never left to be inferred from the hues. */}
       <div className="px-1">
         <div
-          className="h-2 w-full rounded-sm border border-zinc-800"
+          className="h-2 w-full rounded-sm border border-border"
           style={{ background: `linear-gradient(to right, ${gradient})` }}
           aria-hidden
         />
-        <div className="mt-0.5 flex justify-between text-[10px] tabular-nums text-zinc-500">
+        <div className="mt-0.5 flex justify-between text-[10px] tabular-nums text-muted-foreground">
           {ticks.map((tick) => (
             <span key={tick}>{tick.toFixed(0)}</span>
           ))}
         </div>
-        <div className="flex justify-between text-[10px] text-zinc-400">
+        <div className="flex justify-between text-[10px] text-muted-foreground">
           <span>0 Å: confidently placed</span>
           <span>{pae.max_error.toFixed(1)} Å: uncertain</span>
         </div>
       </div>
 
-      <p className="px-1 text-[11px] leading-relaxed text-zinc-400">
+      <p className="px-1 text-[11px] leading-relaxed text-muted-foreground">
         Expected error in one residue&apos;s position when the model is aligned on
-        another. <strong className="text-zinc-300">Lower is better</strong> (opposite
+        another. <strong className="text-foreground/80">Lower is better</strong> (opposite
         direction from pLDDT). Median{" "}
-        <span className="tabular-nums text-zinc-200">{`${summary.median.toFixed(1)} Å`}</span>
+        <span className="tabular-nums text-foreground">{`${summary.median.toFixed(1)} Å`}</span>
         , worst{" "}
-        <span className="tabular-nums text-zinc-200">{`${summary.worst.toFixed(1)} Å`}</span>
+        <span className="tabular-nums text-foreground">{`${summary.worst.toFixed(1)} Å`}</span>
         ;{" "}
-        <span className="tabular-nums text-zinc-200">{`${(summary.confidentFraction * 100).toFixed(0)}%`}</span>{" "}
+        <span className="tabular-nums text-foreground">{`${(summary.confidentFraction * 100).toFixed(0)}%`}</span>{" "}
         {`of residue pairs are within ${PAE_CONFIDENT_ANGSTROMS} Å.`}
       </p>
 
       <p
         data-testid="pae-resolution"
-        className="px-1 text-[10px] leading-relaxed text-zinc-500"
+        className="px-1 text-[10px] leading-relaxed text-muted-foreground"
       >
         {pae.resolution_label}
       </p>
@@ -134,7 +134,7 @@ export function PaeHeatmap({ pae }: { pae: PaeMatrix }) {
         <p
           data-testid="pae-canvas-unpainted"
           role="status"
-          className="px-1 text-[11px] text-amber-400"
+          className="px-1 text-[11px] text-amber-700"
         >
           The heatmap image could not be drawn in this browser. The figures above
           are computed from the same matrix and are unaffected.

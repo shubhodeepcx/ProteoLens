@@ -60,27 +60,27 @@ export function ResultCard({ result }: { result: SearchResult }) {
     <li
       data-testid={`result-card-${result.source}-${result.source_id}`}
       data-importing={isImporting ? "true" : "false"}
-      className="rounded-md border border-zinc-800 bg-zinc-900/30 p-3"
+      className="rounded-md border border-border bg-muted/50 p-3"
     >
       <div className="flex items-start gap-3">
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-2">
             <SourceBadge source={result.source} />
-            <code className="font-mono text-xs text-zinc-300">{result.source_id}</code>
+            <code className="font-mono text-xs text-foreground/80">{result.source_id}</code>
           </div>
-          <h3 className="mt-1.5 truncate text-sm font-medium text-zinc-100">
+          <h3 className="mt-1.5 truncate text-sm font-medium text-foreground">
             {result.title ?? "Untitled structure"}
           </h3>
-          <p className="mt-0.5 text-xs italic text-zinc-400">
+          <p className="mt-0.5 text-xs italic text-muted-foreground">
             {result.organism ?? "Organism unknown"}
           </p>
           {result.description && (
-            <p className="mt-1.5 line-clamp-2 text-xs leading-relaxed text-zinc-500">
+            <p className="mt-1.5 line-clamp-2 text-xs leading-relaxed text-muted-foreground">
               {result.description}
             </p>
           )}
           {facts.length > 0 && (
-            <p className="mt-1.5 text-[10px] uppercase tracking-wide text-zinc-600">
+            <p className="mt-1.5 text-[10px] uppercase tracking-wide text-muted-foreground/70">
               {facts.join(" · ")}
             </p>
           )}
@@ -92,7 +92,7 @@ export function ResultCard({ result }: { result: SearchResult }) {
           disabled={isImporting}
           aria-busy={isImporting}
           aria-label={`Import ${result.source_id}`}
-          className="inline-flex shrink-0 items-center gap-1.5 rounded-md border border-zinc-700 bg-zinc-800/70 px-2.5 py-1.5 text-xs font-medium text-zinc-100 transition-colors hover:border-zinc-600 hover:bg-zinc-700/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 disabled:cursor-not-allowed disabled:opacity-60"
+          className="inline-flex shrink-0 items-center gap-1.5 rounded-md border border-input bg-muted/70 px-2.5 py-1.5 text-xs font-medium text-foreground transition-colors hover:border-ring hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-60"
         >
           {isImporting ? (
             <Loader2 data-testid="import-spinner" className="size-3.5 animate-spin" aria-hidden />
@@ -106,7 +106,7 @@ export function ResultCard({ result }: { result: SearchResult }) {
       {error && (
         <div
           role="alert"
-          className="mt-2 flex items-start gap-2 rounded border border-red-900/70 bg-red-950/40 px-2.5 py-1.5 text-xs text-red-300"
+          className="mt-2 flex items-start gap-2 rounded border border-red-200 bg-red-50 px-2.5 py-1.5 text-xs text-red-700"
         >
           <AlertCircle className="mt-0.5 size-3.5 shrink-0" aria-hidden />
           <span>{error}</span>

@@ -61,7 +61,7 @@ async def test_parse_and_register_registers_and_returns_the_summary(
     result = await ingest.parse_and_register(stored_file, "ingest-test", source="uploaded")
 
     assert result is summary
-    assert registry.get("ingest-test") is summary
+    assert registry.get("ingest-test") == summary
     assert stored_file.exists(), "a successful parse must not delete the stored file"
 
 

@@ -50,6 +50,13 @@ _STATIC = Path(__file__).parent.parent / "static"
 # register into the same store this router reads from.
 
 
+@router.get("", response_model=list[ProteinSummary])
+def list_recent_proteins(limit: int = 20) -> list[ProteinSummary]:
+    """The most recently loaded proteins, newest first. Survives a restart."""
+    limit = max(1, min(limit, 100))
+    return [summary for _uid, summary in registry.recent(limit)]
+
+
 @router.get("/demo/file")
 def get_demo_file() -> FileResponse:
     pdb = _STATIC / "1CRN.pdb"

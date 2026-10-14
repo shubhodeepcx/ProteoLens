@@ -82,7 +82,7 @@ export default function ReportPage() {
 
       <article
         data-testid="report"
-        className="mx-auto max-w-[210mm] bg-white px-[16mm] py-[14mm] text-neutral-900 shadow-sm print:max-w-none print:p-0 print:shadow-none"
+        className="paper mx-auto max-w-[210mm] bg-white px-[16mm] py-[14mm] text-neutral-900 shadow-sm print:max-w-none print:p-0 print:shadow-none"
       >
         <header className="flex items-start gap-3 border-b-2 border-neutral-900 pb-3">
           <ProteoLensLogo className="mt-1 size-7" />

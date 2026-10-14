@@ -2,14 +2,14 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
-@custom-variant dark (&:is(.dark *));
+@custom-variant dark (&:is(.dark *, .retro *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-inter);
+  --font-sans: var(--app-font-sans);
   --font-mono: var(--font-jetbrains-mono);
-  --font-heading: var(--font-inter);
+  --font-heading: var(--app-font-heading);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -84,6 +84,18 @@
   --sidebar-accent-foreground: oklch(0.279 0.041 260.03);
   --sidebar-border: oklch(0.929 0.013 255.51);
   --sidebar-ring: oklch(0.623 0.214 259.82);
+
+  --app-font-sans: var(--font-inter);
+  --app-font-heading: var(--font-inter);
+  /* Recharts and the Mol* canvas read these, so charts follow the theme. */
+  --chart-grid: #e2e8f0;
+  --chart-axis: #64748b;
+  --chart-axis-soft: #94a3b8;
+  --chart-cursor: #e2e8f0;
+  --chart-tooltip-bg: #ffffff;
+  --chart-tooltip-border: #e2e8f0;
+  --chart-tooltip-text: #0f172a;
+  --viewer-bg: #fcfbf9;
 }
 
 .dark {
@@ -136,8 +148,334 @@
   }
 }
 
+/* ------------------------------------------------------------------ retro
+   The default theme: a dark "lab terminal" with neon magenta and cyan, a
+   synthwave horizon grid, HUD corner brackets on panels and faint CRT
+   scanlines. Tokens first, then the handful of global treatments that
+   utilities cannot express. */
+.retro {
+  color-scheme: dark;
+  --neon-pink: #ff3cac;
+  --neon-cyan: #2ee6ff;
+  --neon-violet: #a855f7;
+  --neon-amber: #ffb547;
+
+  --background: #07060f;
+  --foreground: #ece8ff;
+  --card: #0f0c1f;
+  --card-foreground: #ece8ff;
+  --popover: #130f27;
+  --popover-foreground: #ece8ff;
+  --primary: #2ee6ff;
+  --primary-foreground: #07060f;
+  --secondary: #1b1636;
+  --secondary-foreground: #e6e0ff;
+  --muted: #161230;
+  --muted-foreground: #a29bc9;
+  --accent: #2a1d4f;
+  --accent-foreground: #f6d6ff;
+  --destructive: #ff4d6d;
+  --border: rgb(168 85 247 / 0.24);
+  --input: rgb(168 85 247 / 0.34);
+  --ring: #ff3cac;
+  --chart-1: #2ee6ff;
+  --chart-2: #5af2b0;
+  --chart-3: #ffb547;
+  --chart-4: #ff3cac;
+  --chart-5: #a78bfa;
+  --radius: 0.3rem;
+  --sidebar: #0b0918;
+  --sidebar-foreground: #ece8ff;
+  --sidebar-primary: #2ee6ff;
+  --sidebar-primary-foreground: #07060f;
+  --sidebar-accent: #2a1d4f;
+  --sidebar-accent-foreground: #f6d6ff;
+  --sidebar-border: rgb(168 85 247 / 0.24);
+  --sidebar-ring: #ff3cac;
+
+  --app-font-sans: var(--font-space-grotesk);
+  --app-font-heading: var(--font-orbitron);
+  --chart-grid: rgb(168 85 247 / 0.18);
+  --chart-axis: #a29bc9;
+  --chart-axis-soft: #6f6898;
+  --chart-cursor: rgb(46 230 255 / 0.10);
+  --chart-tooltip-bg: #130f27;
+  --chart-tooltip-border: rgb(46 230 255 / 0.45);
+  --chart-tooltip-text: #ece8ff;
+  --viewer-bg: #0a0817;
+
+  /* Tailwind palette colours used for status text and tinted boxes were
+     picked for a white page; lift them so they read on the dark one. */
+  --color-white: #120f24;
+  --color-red-50: rgb(255 77 109 / 0.10);
+  --color-red-200: rgb(255 77 109 / 0.38);
+  --color-red-300: #ff9fb0;
+  --color-red-400: #ff8aa0;
+  --color-red-500: #ff4d6d;
+  --color-red-600: #ff6f88;
+  --color-red-700: #ff8aa0;
+  --color-amber-50: rgb(255 181 71 / 0.10);
+  --color-amber-200: rgb(255 181 71 / 0.38);
+  --color-amber-300: #ffd08a;
+  --color-amber-700: #ffc46b;
+  --color-amber-800: #ffd08a;
+  --color-sky-50: rgb(46 230 255 / 0.08);
+  --color-sky-700: #7aefff;
+  --color-cyan-700: #7aefff;
+  --color-emerald-50: rgb(90 242 176 / 0.08);
+  --color-emerald-300: #8af7c9;
+  --color-emerald-600: #5af2b0;
+  --color-emerald-700: #6ff5bc;
+  --color-emerald-800: #8af7c9;
+  --color-violet-200: rgb(167 139 250 / 0.38);
+  --color-violet-700: #c9b8ff;
+  --color-rose-600: #ff8fb1;
+  --color-rose-700: #ff9fbd;
+  --color-rose-800: #ffb3cb;
+  --color-orange-700: #ffa36b;
+  --color-neutral-100: #0b0918;
+  --color-neutral-200: rgb(168 85 247 / 0.24);
+  --color-neutral-300: rgb(168 85 247 / 0.32);
+  --color-neutral-500: #a29bc9;
+  --color-neutral-600: #b8b2da;
+  --color-neutral-800: #ece8ff;
+  --color-neutral-900: #ffffff;
+}
+
+.retro body {
+  background:
+    radial-gradient(1100px 520px at 50% -12%, rgb(168 85 247 / 0.22), transparent 62%),
+    radial-gradient(900px 480px at 105% 115%, rgb(255 60 172 / 0.12), transparent 60%),
+    radial-gradient(700px 420px at -5% 110%, rgb(46 230 255 / 0.08), transparent 60%),
+    var(--background);
+  background-attachment: fixed;
+}
+
+/* Synthwave horizon: a neon floor grid in perspective, fading toward the
+   horizon, behind all content. */
+.retro body::before {
+  content: "";
+  position: fixed;
+  left: -50%;
+  right: -50%;
+  bottom: 0;
+  height: 75vh;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgb(255 60 172 / 0.7) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(46 230 255 / 0.5) 1px, transparent 1px);
+  background-size: 64px 64px;
+  transform: perspective(600px) rotateX(55deg);
+  transform-origin: bottom center;
+  mask-image: linear-gradient(to top, black 0%, transparent 85%);
+  opacity: 0.5;
+}
+
+/* Page shells paint the theme background themselves; let the body's glow
+   and horizon grid show through them instead. Panels keep their fill. */
+.retro .min-h-screen.bg-background,
+.retro .h-screen.bg-background {
+  background-color: transparent;
+}
+
+/* CRT scanlines, faint enough to leave text and the 3D canvas crisp. */
+.retro body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgb(0 0 0 / 0.16) 0,
+    rgb(0 0 0 / 0.16) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  opacity: 0.35;
+}
+
+.retro ::selection {
+  background: rgb(255 60 172 / 0.45);
+  color: #fff;
+}
+
+.retro h1,
+.retro h2 {
+  font-family: var(--font-orbitron);
+  letter-spacing: 0.04em;
+}
+
+/* Small uppercase labels become HUD readouts. */
+.retro .uppercase {
+  font-family: var(--font-share-tech-mono);
+  letter-spacing: 0.14em;
+}
+
+.retro header {
+  background-color: rgb(9 7 20 / 0.82);
+  border-bottom-color: rgb(46 230 255 / 0.22);
+  box-shadow: 0 1px 0 rgb(255 60 172 / 0.18), 0 8px 24px -16px rgb(46 230 255 / 0.5);
+}
+
+.retro header .font-heading {
+  background: linear-gradient(90deg, var(--neon-cyan), var(--neon-violet) 50%, var(--neon-pink));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: none;
+}
+
+/* Panels: glass with HUD corner brackets, cyan top-left, magenta bottom-right. */
+.retro [data-slot="card"] {
+  position: relative;
+  background: linear-gradient(180deg, rgb(28 21 56 / 0.72), rgb(13 10 28 / 0.86));
+  border: 1px solid var(--border);
+  box-shadow: 0 0 0 1px rgb(46 230 255 / 0.04), 0 10px 30px -18px rgb(168 85 247 / 0.6);
+  backdrop-filter: blur(6px);
+}
+.retro [data-slot="card"]::before,
+.retro [data-slot="card"]::after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  pointer-events: none;
+}
+.retro [data-slot="card"]::before {
+  top: -1px;
+  left: -1px;
+  border-top: 2px solid var(--neon-cyan);
+  border-left: 2px solid var(--neon-cyan);
+}
+.retro [data-slot="card"]::after {
+  right: -1px;
+  bottom: -1px;
+  border-right: 2px solid var(--neon-pink);
+  border-bottom: 2px solid var(--neon-pink);
+}
+
+/* Primary buttons: a sunset gradient with a neon glow. */
+.retro [data-slot="button"].bg-primary {
+  background: linear-gradient(90deg, var(--neon-pink), var(--neon-violet) 55%, #3b82f6);
+  color: #fff;
+  border-color: rgb(255 255 255 / 0.12);
+  box-shadow: 0 0 14px -2px rgb(255 60 172 / 0.55);
+  letter-spacing: 0.03em;
+}
+.retro [data-slot="button"].bg-primary:hover {
+  box-shadow: 0 0 22px 0 rgb(255 60 172 / 0.7);
+  filter: brightness(1.08);
+}
+
+.retro [data-slot="tabs-trigger"][data-active] {
+  color: var(--neon-cyan);
+  border-color: rgb(46 230 255 / 0.45);
+  background: rgb(46 230 255 / 0.08);
+  text-shadow: 0 0 8px rgb(46 230 255 / 0.6);
+}
+
+.retro input:focus-visible,
+.retro textarea:focus-visible,
+.retro select:focus-visible {
+  box-shadow: 0 0 0 1px var(--neon-cyan), 0 0 12px -2px rgb(46 230 255 / 0.6);
+}
+
+.retro ::-webkit-scrollbar { width: 10px; height: 10px; }
+.retro ::-webkit-scrollbar-track { background: transparent; }
+.retro ::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--neon-violet), var(--neon-pink));
+  border-radius: 999px;
+  border: 3px solid var(--background);
+}
+
+.retro .theme-toggle {
+  font-family: var(--font-share-tech-mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-color: rgb(46 230 255 / 0.4);
+  box-shadow: 0 0 12px -4px rgb(46 230 255 / 0.7);
+}
+
+/* Mol*'s own viewport buttons ship a beige light skin; re-skin them. */
+.retro .msp-plugin .msp-btn,
+.retro .msp-plugin .msp-btn-icon,
+.retro .msp-plugin .msp-semi-transparent-background,
+.retro .msp-viewport-top-left-controls .msp-traj-controls,
+.retro .msp-viewport-top-left-controls .msp-state-snapshot-viewport-controls > button {
+  background-color: rgb(19 15 39 / 0.85) !important;
+  color: var(--neon-cyan) !important;
+}
+.retro .msp-plugin .msp-btn:hover,
+.retro .msp-plugin .msp-btn-icon:hover {
+  color: var(--neon-pink) !important;
+  background-color: rgb(42 29 79 / 0.95) !important;
+}
+.retro .msp-layout-standard {
+  border-color: rgb(46 230 255 / 0.18) !important;
+}
+.retro .msp-viewport-controls-buttons .msp-btn-link-toggle-off {
+  color: #7b72a8 !important;
+}
+.retro .msp-plugin .msp-semi-transparent-background {
+  opacity: 1 !important;
+}
+
+/* The report is paper in every theme: restore the light tokens inside it. */
+.retro .paper {
+  color-scheme: light;
+  --background: oklch(0.984 0.003 247.86);
+  --foreground: oklch(0.208 0.042 265.76);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.208 0.042 265.76);
+  --primary: oklch(0.488 0.217 264.38);
+  --primary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.968 0.007 247.9);
+  --muted-foreground: oklch(0.446 0.043 257.28);
+  --border: oklch(0.929 0.013 255.51);
+  --chart-grid: #e2e8f0;
+  --chart-axis: #64748b;
+  --chart-axis-soft: #94a3b8;
+  --chart-cursor: #e2e8f0;
+  --chart-tooltip-bg: #ffffff;
+  --chart-tooltip-border: #e2e8f0;
+  --chart-tooltip-text: #0f172a;
+  --chart-1: oklch(0.623 0.214 259.82);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --color-white: #fff;
+  --color-neutral-200: oklch(92.2% 0 0);
+  --color-neutral-300: oklch(87% 0 0);
+  --color-neutral-500: oklch(55.6% 0 0);
+  --color-neutral-600: oklch(43.9% 0 0);
+  --color-neutral-800: oklch(26.9% 0 0);
+  --color-neutral-900: oklch(20.5% 0 0);
+  color: var(--foreground);
+  font-family: var(--font-inter);
+}
+.retro .paper header {
+  background: none;
+  box-shadow: none;
+  border-bottom-color: oklch(20.5% 0 0);
+}
+.retro .paper [data-slot="card"]::before,
+.retro .paper [data-slot="card"]::after {
+  display: none;
+}
+.retro .paper h1,
+.retro .paper h2,
+.retro .paper .uppercase {
+  font-family: var(--font-inter);
+  letter-spacing: normal;
+}
+
 /* Report page (F9): print exactly the paper, nothing around it. */
 @media print {
+  .retro body::before,
+  .retro body::after {
+    display: none;
+  }
   @page {
     size: A4;
     margin: 14mm;

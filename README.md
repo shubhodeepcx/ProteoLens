@@ -1,4 +1,4 @@
-# ProteoLens — AI-Powered Protein Structure Visualization Platform
+# ProteoLens: AI-Powered Protein Structure Visualization Platform
 
 A web-based workspace for protein 3D visualization, structural analysis, annotation, and reporting. Combines a Mol*-based molecular viewer with bioinformatics pipelines, public-database integration (RCSB PDB, AlphaFold DB, UniProt), and AI-assisted annotation.
 

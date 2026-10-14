@@ -22,8 +22,8 @@ import {
 } from "@/lib/explain";
 
 /**
- * P16 — "Explain this structure". A side sheet that asks the backend's language model
- * proxy to explain the open structure (or the current selection) at the
+ * P16 — "Explain this structure". A side sheet that asks the backend to
+ * explain the open structure (or the current selection) at the
  * reader's level, and shows the measured facts the answer was grounded in.
  */
 export function ExplainSheet({ proteinId, disabled }: { proteinId: string; disabled?: boolean }) {

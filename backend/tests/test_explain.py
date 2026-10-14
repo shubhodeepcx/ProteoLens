@@ -23,15 +23,26 @@ def _reply(text: str = "Lysozyme is a small enzyme.", model: str = "test-model")
 @pytest.fixture
 def with_key(monkeypatch):
     monkeypatch.setenv("EXPLAIN_API_KEY", "sk-test")
-    monkeypatch.delenv("EXPLAIN_MODEL", raising=False)
+    monkeypatch.setenv("EXPLAIN_MODEL", "test-model")
 
 
-def test_without_a_key_the_endpoint_says_which_variable_to_set(monkeypatch):
+def test_without_settings_the_endpoint_says_which_variables_to_set(monkeypatch):
     monkeypatch.delenv("EXPLAIN_API_KEY", raising=False)
+    monkeypatch.delenv("EXPLAIN_MODEL", raising=False)
     uid = register_lysozyme()
     res = client.post(f"/api/proteins/{uid}/explain", json={})
     assert res.status_code == 503
-    assert "EXPLAIN_API_KEY" in res.json()["detail"]
+    detail = res.json()["detail"]
+    assert "EXPLAIN_API_KEY" in detail and "EXPLAIN_MODEL" in detail
+
+
+def test_a_key_without_a_model_is_still_unavailable(with_key, monkeypatch):
+    monkeypatch.delenv("EXPLAIN_MODEL")
+    uid = register_lysozyme()
+    res = client.post(f"/api/proteins/{uid}/explain", json={})
+    assert res.status_code == 503
+    detail = res.json()["detail"]
+    assert "EXPLAIN_MODEL" in detail and "EXPLAIN_API_KEY" not in detail
 
 
 @respx.mock
@@ -59,14 +70,14 @@ def test_explains_with_measured_facts_and_selected_residues(with_key):
     assert request.headers["x-api-key"] == "sk-test"
     assert request.headers["api-version"] == ex.API_VERSION
     sent = json.loads(request.content)
-    assert sent["model"] == ex.DEFAULT_MODEL
+    assert sent["model"] == "test-model"
     assert "secondary-school" in sent["system"]
     assert "Why is E35 important?" in sent["messages"][0]["content"]
     assert "E35 (chain A)" in sent["messages"][0]["content"]
 
 
 @respx.mock
-def test_model_override_and_default_overview_question(with_key, monkeypatch):
+def test_configured_model_and_default_overview_question(with_key, monkeypatch):
     monkeypatch.setenv("EXPLAIN_MODEL", "other-model")
     route = respx.post(ex.API_URL).mock(return_value=_reply(model="other-model"))
     uid = register_lysozyme()

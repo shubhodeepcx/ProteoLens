@@ -24,7 +24,7 @@ router = APIRouter(prefix="/proteins", tags=["proteins"])
 async def explain_protein(uid: str, body: ExplainRequest) -> ExplainResponse:
     """Explain the open structure, or answer a question about it, at the chosen level.
 
-    503 when no API key is configured, 502 when the model API fails; the
+    503 when the API key or model is not configured, 502 when the model API fails; the
     measured facts are computed locally either way.
     """
     try:
@@ -39,11 +39,8 @@ async def explain_protein(uid: str, body: ExplainRequest) -> ExplainResponse:
     except (FileNotFoundError, ValueError) as exc:
         raise HTTPException(status_code=404, detail="File not found") from exc
 
-    if not explain_service.api_key():
-        raise HTTPException(
-            status_code=503,
-            detail="The Explain assistant needs EXPLAIN_API_KEY set in the backend's environment.",
-        )
+    if explain_service.missing_settings():
+        raise HTTPException(status_code=503, detail=explain_service.unavailable_message())
 
     facts = await run_in_threadpool(_facts, uid, summary, file_path, body.selection)
     try:

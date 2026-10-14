@@ -1,4 +1,4 @@
-"""P16: a plain-language explanation of the open structure, written by a language model.
+"""P16: a plain-language explanation of the open structure, written by an AI model.
 
 The model is given a short list of facts ProteoLens has already measured about
 the structure (identity, chains, composition, secondary structure, the
@@ -6,8 +6,9 @@ selected residues) and asked to explain them at the reader's level. It is told
 to mark anything that comes from general knowledge rather than from those
 facts, so a student can tell what was measured from what was recalled.
 
-The API key is read from the backend's environment and never reaches the
-browser. Without one the endpoint answers 503 and says which variable to set.
+The API key and model id are read from the backend's environment and never
+reach the browser. Without them the endpoint answers 503 and says which
+variables to set.
 """
 
 from __future__ import annotations
@@ -24,7 +25,6 @@ from app.services.functional import ChainResidues
 
 API_URL = "https://api.example.com/v1/chat/completions"
 API_VERSION = "2023-06-01"
-DEFAULT_MODEL = "default-model"
 MAX_TOKENS = 1200
 TIMEOUT = httpx.Timeout(60.0, connect=10.0)
 
@@ -60,8 +60,25 @@ def api_key() -> str | None:
     return os.getenv("EXPLAIN_API_KEY") or None
 
 
-def model_name() -> str:
-    return os.getenv("EXPLAIN_MODEL") or DEFAULT_MODEL
+def model_name() -> str | None:
+    return os.getenv("EXPLAIN_MODEL") or None
+
+
+def missing_settings() -> list[str]:
+    """Environment variables the assistant still needs, in the order to set them."""
+    return [
+        name
+        for name, value in (("EXPLAIN_API_KEY", api_key()), ("EXPLAIN_MODEL", model_name()))
+        if not value
+    ]
+
+
+def unavailable_message() -> str:
+    return (
+        "The Explain assistant needs "
+        + " and ".join(missing_settings())
+        + " set in the backend's environment."
+    )
 
 
 def build_facts(
@@ -150,11 +167,9 @@ async def explain(
 ) -> tuple[str, str]:
     """Ask the model; return (answer, model). Raises ExplainUnavailable / ExplainFailed."""
     key = api_key()
-    if not key:
-        raise ExplainUnavailable(
-            "The Explain assistant needs EXPLAIN_API_KEY set in the backend's environment."
-        )
     model = model_name()
+    if not key or not model:
+        raise ExplainUnavailable(unavailable_message())
     payload = {
         "model": model,
         "max_tokens": MAX_TOKENS,

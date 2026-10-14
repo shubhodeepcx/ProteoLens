@@ -6,8 +6,7 @@ import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.api import blast, compare, electrostatics, import_, proteins, search
-from app.api import blast, compare, explain, import_, proteins, search
+from app.api import blast, compare, electrostatics, explain, import_, proteins, search
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)

@@ -6,6 +6,7 @@ import { ProteoLensLogo } from "@/components/logo";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ViewerControls } from "@/components/viewer-controls";
+import { ExplainSheet } from "@/components/explain-sheet";
 import { useStore } from "@/lib/store";
 
 interface ViewerHeaderProps {
@@ -87,6 +88,7 @@ export function ViewerHeader({
             Report
           </button>
         )}
+        {proteinId && <ExplainSheet proteinId={proteinId} disabled={!ready} />}
         <Button
           size="sm"
           variant="ghost"

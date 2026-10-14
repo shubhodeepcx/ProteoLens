@@ -20,6 +20,7 @@ from __future__ import annotations
 
 import logging
 from dataclasses import dataclass
+from typing import TYPE_CHECKING
 
 from Bio import Align
 from Bio.Align import substitution_matrices
@@ -35,6 +36,10 @@ from app.models.compare import (
     Superposition,
 )
 from app.models.protein import ChainInfo, ProteinSummary
+
+if TYPE_CHECKING:
+    from Bio.PDB.Residue import Residue
+    from Bio.PDB.Structure import Structure
 
 logger = logging.getLogger(__name__)
 
@@ -202,7 +207,7 @@ def paired_indices(aligned_a: str, aligned_b: str) -> list[tuple[int, int]]:
     return pairs
 
 
-def polymer_residues(structure, chain_label: str) -> list:
+def polymer_residues(structure: Structure, chain_label: str) -> list[Residue]:
     """Standard polymer residues of `chain_label` in model 1, in file order.
 
     This mirrors ``services/parser.py``'s chain walk exactly — first model, then
@@ -230,8 +235,8 @@ class SuperpositionOutcome:
 
 
 def superpose(
-    structure_a,
-    structure_b,
+    structure_a: Structure,
+    structure_b: Structure,
     alignment: SequenceAlignment,
     chain_a: ChainInfo,
     chain_b: ChainInfo,

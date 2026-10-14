@@ -4,10 +4,14 @@ import logging
 from collections import Counter
 from dataclasses import dataclass
 from pathlib import Path
+from typing import TYPE_CHECKING
 
 from Bio.PDB.MMCIF2Dict import MMCIF2Dict
 
 from app.services.parser import is_nucleic_acid_chain
+
+if TYPE_CHECKING:
+    from Bio.PDB.Structure import Structure
 
 logger = logging.getLogger(__name__)
 
@@ -327,7 +331,7 @@ def _parse_ss_ranges_from_mmcif(cif_path: Path | str) -> _MMCIFSecondaryStructur
     )
 
 
-def _chain_ids(structure) -> set[str]:
+def _chain_ids(structure: Structure) -> set[str]:
     """Chain labels present in model 1 of the structure."""
     try:
         model = next(structure.get_models())
@@ -353,7 +357,7 @@ def _select_numbering(
     return auth
 
 
-def _count_residues_in_ranges(structure, ranges: list[_ResidueRange]) -> int:
+def _count_residues_in_ranges(structure: Structure, ranges: list[_ResidueRange]) -> int:
     """Standard residues of model 1 that fall inside any of `ranges`.
 
     Counting real residues (rather than trusting a declared span length) keeps
@@ -398,7 +402,7 @@ def _sum_record_lengths(records: list[dict]) -> int:
     return total
 
 
-def _count_polymer_residues(structure) -> int:
+def _count_polymer_residues(structure: Structure) -> int:
     """Total standard-residue count across model 1 of the structure."""
     try:
         model = next(structure.get_models())
@@ -451,7 +455,7 @@ def _ss_fractions(
 
 
 def secondary_structure(
-    structure, path: Path | str | None = None
+    structure: Structure, path: Path | str | None = None
 ) -> SecondaryStructureResult:
     """Helix / sheet / coil fractions for a parsed structure, plus availability.
 
@@ -512,7 +516,7 @@ def secondary_structure(
 
 
 def secondary_structure_percentages(
-    structure, pdb_path: Path | str | None = None
+    structure: Structure, pdb_path: Path | str | None = None
 ) -> dict[str, float]:
     """Helix / sheet / coil fractions only, summing to 1.0.
 

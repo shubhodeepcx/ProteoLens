@@ -8,6 +8,7 @@ from fastapi import APIRouter, HTTPException, Query
 
 from app.models.search import ALL_SOURCES, SearchResponse, SearchResult, SourceFilter, SourceName
 from app.services.alphafold import AlphaFoldClient
+from app.services.external import Metadata
 from app.services.rcsb import RCSBClient
 from app.services.uniprot import UniProtClient
 
@@ -23,7 +24,7 @@ class SourceClient(Protocol):
 
     async def search(self, query: str) -> list[SearchResult]: ...
 
-    async def fetch_metadata(self, protein_id: str) -> dict: ...
+    async def fetch_metadata(self, protein_id: str) -> Metadata: ...
 
     async def download_structure(self, protein_id: str) -> tuple[bytes, str]: ...
 

@@ -31,6 +31,7 @@ Active design: [docs/design/2026-05-23-protein-mvp-slice-design.md](design/2026-
 
 _Nothing in progress._
 
+| **P21 Retro-futuristic theme** -- a dark neon "lab terminal" theme for the whole workspace (tokens, display fonts, HUD panel frames, grid backdrop, Mol* canvas and charts follow the theme), made the default, with the current light theme kept as "Classic" behind a header toggle | shubhodeep | `feature/p21-retro-theme` | wip | Stacked on P20 (`feature/p20-code-hardening`) because it touches the split helix field; print and the report paper stay light |
 ---
 
 ## Ready to claim

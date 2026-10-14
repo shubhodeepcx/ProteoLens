@@ -135,3 +135,21 @@
     letter-spacing: -0.011em;
   }
 }
+
+/* Report page (F9): print exactly the paper, nothing around it. */
+@media print {
+  @page {
+    size: A4;
+    margin: 14mm;
+  }
+  .no-print {
+    display: none !important;
+  }
+  /* The app's dark theme sets `color-scheme: dark` on <html>, which makes
+     Chromium paint the page margins dark; paper is always light. */
+  html,
+  body {
+    background: white !important;
+    color-scheme: light !important;
+  }
+}

@@ -12,7 +12,7 @@ import type { CompareProteinRef } from "@/lib/types";
 import { CompareViewerPane } from "./compare-viewer-pane";
 
 const SELECT_CLASS =
-  "h-7 rounded-md border border-zinc-700 bg-zinc-900 px-1.5 text-[11px] text-zinc-300 focus:border-zinc-500 focus:outline-none";
+  "h-7 rounded-md border border-input bg-card px-1.5 text-[11px] text-foreground/80 focus:border-ring focus:outline-none";
 
 /**
  * The coloring schemes that mean the same thing on both structures.
@@ -64,7 +64,7 @@ export function CompareViewers({
   return (
     <div className="flex flex-col gap-2">
       <div className="flex items-center gap-2">
-        <h2 className="text-[10px] font-semibold uppercase tracking-wide text-zinc-400">
+        <h2 className="text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
           Structures
         </h2>
         <div className="ml-auto flex items-center gap-1.5">

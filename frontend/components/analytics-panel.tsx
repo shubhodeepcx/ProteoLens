@@ -18,11 +18,11 @@ interface MetricProps {
 
 function Metric({ label, value, unit }: MetricProps) {
   return (
-    <div className="rounded-md border border-zinc-800 bg-zinc-900/30 px-3 py-2">
-      <div className="text-[10px] uppercase tracking-wide text-zinc-500">{label}</div>
+    <div className="rounded-md border border-border bg-muted/50 px-3 py-2">
+      <div className="text-[10px] uppercase tracking-wide text-muted-foreground">{label}</div>
       <div className="mt-0.5 flex items-baseline gap-1">
-        <span className="text-lg font-semibold text-zinc-100">{value}</span>
-        {unit && <span className="text-xs text-zinc-500">{unit}</span>}
+        <span className="text-lg font-semibold text-foreground">{value}</span>
+        {unit && <span className="text-xs text-muted-foreground">{unit}</span>}
       </div>
     </div>
   );
@@ -30,8 +30,8 @@ function Metric({ label, value, unit }: MetricProps) {
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div className="border-t border-zinc-800 px-3 py-3">
-      <h3 className="mb-2 text-[10px] font-semibold uppercase tracking-wide text-zinc-400">
+    <div className="border-t border-border px-3 py-3">
+      <h3 className="mb-2 text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
         {title}
       </h3>
       {children}
@@ -53,7 +53,7 @@ export function AnalyticsPanel({ proteinId }: { proteinId: string }) {
 
   if (loading && !analytics) {
     return (
-      <div className="flex h-full items-center justify-center text-zinc-500">
+      <div className="flex h-full items-center justify-center text-muted-foreground">
         <Loader2 className="size-5 animate-spin" aria-hidden />
         <span className="ml-2 text-xs">Computing analytics&hellip;</span>
       </div>
@@ -66,8 +66,8 @@ export function AnalyticsPanel({ proteinId }: { proteinId: string }) {
         role="alert"
         className="flex h-full flex-col items-center justify-center gap-2 px-4 text-center"
       >
-        <AlertCircle className="size-6 text-red-400" aria-hidden />
-        <p className="text-xs text-red-400">Analytics failed: {error.message}</p>
+        <AlertCircle className="size-6 text-red-700" aria-hidden />
+        <p className="text-xs text-red-700">Analytics failed: {error.message}</p>
       </div>
     );
   }
@@ -75,7 +75,7 @@ export function AnalyticsPanel({ proteinId }: { proteinId: string }) {
   if (!analytics) {
     return (
       <div className="flex h-full items-center justify-center px-4 text-center">
-        <p className="text-xs text-zinc-500">Load a protein to see analytics.</p>
+        <p className="text-xs text-muted-foreground">Load a protein to see analytics.</p>
       </div>
     );
   }
@@ -123,7 +123,7 @@ export function AnalyticsPanel({ proteinId }: { proteinId: string }) {
 
       {summary?.warnings && summary.warnings.length > 0 && (
         <Section title="Parser warnings">
-          <ul className="space-y-1 text-[11px] text-amber-400">
+          <ul className="space-y-1 text-[11px] text-amber-700">
             {summary.warnings.map((w, i) => (
               <li key={i}>&bull; {w}</li>
             ))}

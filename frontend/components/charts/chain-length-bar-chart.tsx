@@ -15,13 +15,13 @@ export function ChainLengthBarChart({ data }: { data: ChainLength[] }) {
   return (
     <ResponsiveContainer width="100%" height={150}>
       <BarChart data={data} margin={{ top: 8, right: 8, bottom: 4, left: 0 }}>
-        <CartesianGrid stroke="#27272a" vertical={false} />
-        <XAxis dataKey="chain_id" stroke="#a1a1aa" tick={{ fontSize: 10 }} />
-        <YAxis stroke="#a1a1aa" tick={{ fontSize: 10 }} width={28} />
+        <CartesianGrid stroke="#e2e8f0" vertical={false} />
+        <XAxis dataKey="chain_id" stroke="#64748b" tick={{ fontSize: 10 }} />
+        <YAxis stroke="#64748b" tick={{ fontSize: 10 }} width={28} />
         <Tooltip
-          contentStyle={{ background: "#18181b", border: "1px solid #3f3f46", fontSize: 11 }}
-          itemStyle={{ color: "#fafafa" }}
-          labelStyle={{ color: "#a1a1aa" }}
+          contentStyle={{ background: "#ffffff", border: "1px solid #e2e8f0", fontSize: 11 }}
+          itemStyle={{ color: "#0f172a" }}
+          labelStyle={{ color: "#64748b" }}
           formatter={(v: number) => [`${v} residues`, "length"]}
           labelFormatter={(v) => `chain ${v}`}
         />

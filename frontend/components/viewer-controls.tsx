@@ -13,7 +13,7 @@ import type { Representation, ColoringScheme } from "@/lib/store";
 const ELECTROSTATICS_OPTION = ["electrostatics", "Electrostatic potential"] as const;
 
 const SELECT_CLASS =
-  "h-7 rounded-md border border-zinc-700 bg-zinc-900 px-1.5 text-[11px] text-zinc-300 focus:border-zinc-500 focus:outline-none";
+  "h-7 rounded-md border border-input bg-card px-1.5 text-[11px] text-foreground/80 focus:border-ring focus:outline-none";
 
 /**
  * Toolbar controls bound to `viewerSlice`. The page owns the effects that push

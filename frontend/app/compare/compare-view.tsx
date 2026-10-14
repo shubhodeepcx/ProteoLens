@@ -37,7 +37,7 @@ function Section({
 }) {
   return (
     <section className="flex flex-col gap-2">
-      <h2 className="text-[10px] font-semibold uppercase tracking-wide text-zinc-400">
+      <h2 className="text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
         {title}
       </h2>
       {children}
@@ -108,7 +108,7 @@ export function CompareView() {
   return (
     <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-5">
       {loading && !data && (
-        <div className="flex items-center gap-2 text-xs text-zinc-500">
+        <div className="flex items-center gap-2 text-xs text-muted-foreground">
           <Loader2 className="size-4 animate-spin" aria-hidden />
           Comparing structures…
         </div>
@@ -117,7 +117,7 @@ export function CompareView() {
       {error && (
         <div
           role="alert"
-          className="flex items-start gap-2 rounded-md border border-red-900/70 bg-red-950/40 px-3 py-2 text-xs text-red-300"
+          className="flex items-start gap-2 rounded-md border border-red-200 bg-red-50 px-3 py-2 text-xs text-red-700"
         >
           <AlertCircle className="mt-0.5 size-3.5 shrink-0" aria-hidden />
           <span>{error}</span>

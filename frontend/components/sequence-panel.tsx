@@ -16,7 +16,7 @@ export { parseResidueQuery } from "@/lib/residue";
 
 function Legend() {
   return (
-    <div className="flex flex-wrap gap-x-3 gap-y-1 px-3 pb-2 text-[10px] text-zinc-500">
+    <div className="flex flex-wrap gap-x-3 gap-y-1 px-3 pb-2 text-[10px] text-muted-foreground">
       {RESIDUE_CLASS_ORDER.map((cls) => (
         <span key={cls} className="flex items-center gap-1">
           <span
@@ -86,7 +86,7 @@ export function SequencePanel() {
   if (!chains || chains.length === 0) {
     return (
       <div className="flex h-full items-center justify-center px-4 text-center">
-        <p className="text-xs text-zinc-500">
+        <p className="text-xs text-muted-foreground">
           No sequence available. Load a protein with at least one chain.
         </p>
       </div>
@@ -99,7 +99,7 @@ export function SequencePanel() {
         <div className="relative flex-1">
           <Search
             aria-hidden
-            className="pointer-events-none absolute left-2 top-1/2 size-3.5 -translate-y-1/2 text-zinc-500"
+            className="pointer-events-none absolute left-2 top-1/2 size-3.5 -translate-y-1/2 text-muted-foreground"
           />
           <input
             value={query}
@@ -109,26 +109,26 @@ export function SequencePanel() {
             }}
             placeholder="Find residue, e.g. A:12"
             aria-label="Find residue"
-            className="h-7 w-full rounded-md border border-zinc-800 bg-zinc-900/30 pl-7 pr-2 font-mono text-xs text-zinc-100 placeholder:text-zinc-600 focus:border-zinc-600 focus:outline-none"
+            className="h-7 w-full rounded-md border border-border bg-muted/50 pl-7 pr-2 font-mono text-xs text-foreground placeholder:text-muted-foreground/70 focus:border-ring focus:outline-none"
           />
         </div>
         <button
           type="submit"
-          className="h-7 shrink-0 rounded-md border border-zinc-800 bg-zinc-900/30 px-2 text-[11px] text-zinc-300 hover:bg-zinc-800"
+          className="h-7 shrink-0 rounded-md border border-border bg-muted/50 px-2 text-[11px] text-foreground/80 hover:bg-accent"
         >
           Go
         </button>
       </form>
 
       {queryError && (
-        <p role="alert" className="px-3 pb-2 text-[11px] text-red-400">
+        <p role="alert" className="px-3 pb-2 text-[11px] text-red-700">
           {queryError}
         </p>
       )}
 
       <Legend />
 
-      <div className="flex items-center justify-between px-3 pb-2 text-[10px] text-zinc-500">
+      <div className="flex items-center justify-between px-3 pb-2 text-[10px] text-muted-foreground">
         <span>
           {selected.size} residue{selected.size === 1 ? "" : "s"} selected
         </span>
@@ -136,7 +136,7 @@ export function SequencePanel() {
           <button
             type="button"
             onClick={() => clearSelection()}
-            className="flex items-center gap-1 text-zinc-400 hover:text-zinc-100"
+            className="flex items-center gap-1 text-muted-foreground hover:text-foreground"
           >
             <X aria-hidden className="size-3" />
             Clear

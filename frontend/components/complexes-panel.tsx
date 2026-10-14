@@ -37,7 +37,7 @@ export function ComplexesPanel({ proteinId }: { proteinId: string }) {
 
   if (loading && !complexes) {
     return (
-      <div className="flex h-full items-center justify-center text-zinc-500">
+      <div className="flex h-full items-center justify-center text-muted-foreground">
         <Loader2 className="size-5 animate-spin" aria-hidden />
         <span className="ml-2 text-xs">Fetching complexes&hellip;</span>
       </div>
@@ -50,8 +50,8 @@ export function ComplexesPanel({ proteinId }: { proteinId: string }) {
         role="alert"
         className="flex h-full flex-col items-center justify-center gap-2 px-4 text-center"
       >
-        <AlertCircle className="size-6 text-red-400" aria-hidden />
-        <p className="text-xs text-red-400">Complexes failed: {error.message}</p>
+        <AlertCircle className="size-6 text-red-700" aria-hidden />
+        <p className="text-xs text-red-700">Complexes failed: {error.message}</p>
       </div>
     );
   }
@@ -59,7 +59,7 @@ export function ComplexesPanel({ proteinId }: { proteinId: string }) {
   if (!complexes) {
     return (
       <div className="flex h-full items-center justify-center px-4 text-center">
-        <p className="text-xs text-zinc-500">Load a protein to see its complexes.</p>
+        <p className="text-xs text-muted-foreground">Load a protein to see its complexes.</p>
       </div>
     );
   }
@@ -72,7 +72,7 @@ export function ComplexesPanel({ proteinId }: { proteinId: string }) {
         <ComplexSelector list={list} index={index} onSelect={setSelected} />
       )}
       <ComplexDetail complex={list[index]} />
-      <p className="px-3 py-3 text-[10px] leading-relaxed text-zinc-600">
+      <p className="px-3 py-3 text-[10px] leading-relaxed text-muted-foreground/70">
         Complex data from the EBI Complex Portal.{" "}
         {complexes.search_matches > list.length &&
           `${complexes.search_matches - list.length} further record(s) name this accession in their description without containing the protein, and are not listed.`}
@@ -85,13 +85,13 @@ export function ComplexesPanel({ proteinId }: { proteinId: string }) {
 function NoComplexes({ payload }: { payload: ProteinComplexes }) {
   return (
     <div className="flex h-full flex-col items-center justify-center gap-2 px-6 text-center">
-      <Info className="size-5 text-zinc-500" aria-hidden />
-      <p className="text-xs text-zinc-400">
+      <Info className="size-5 text-muted-foreground" aria-hidden />
+      <p className="text-xs text-muted-foreground">
         {payload.accession_resolved
           ? "No Complex Portal complex contains this protein."
           : "No complexes for this structure."}
       </p>
-      <p className="text-[11px] leading-relaxed text-zinc-500">
+      <p className="text-[11px] leading-relaxed text-muted-foreground">
         {payload.resolution_note}
       </p>
     </div>
@@ -114,10 +114,10 @@ function ComplexSelector({
   onSelect: (i: number) => void;
 }) {
   return (
-    <div className="flex items-center gap-2 border-b border-zinc-800 px-3 py-2">
+    <div className="flex items-center gap-2 border-b border-border px-3 py-2">
       <label
         htmlFor="complex-select"
-        className="shrink-0 text-[10px] uppercase tracking-wide text-zinc-500"
+        className="shrink-0 text-[10px] uppercase tracking-wide text-muted-foreground"
       >
         Complex
       </label>
@@ -125,7 +125,7 @@ function ComplexSelector({
         id="complex-select"
         value={index}
         onChange={(e) => onSelect(Number(e.target.value))}
-        className="min-w-0 flex-1 truncate rounded border border-zinc-800 bg-zinc-900 px-2 py-1 text-xs text-zinc-200"
+        className="min-w-0 flex-1 truncate rounded border border-border bg-card px-2 py-1 text-xs text-foreground"
       >
         {list.map((c, i) => (
           <option key={c.accession} value={i}>
@@ -134,7 +134,7 @@ function ComplexSelector({
           </option>
         ))}
       </select>
-      <span className="shrink-0 text-[10px] tabular-nums text-zinc-500">
+      <span className="shrink-0 text-[10px] tabular-nums text-muted-foreground">
         {index + 1}/{list.length}
       </span>
     </div>
@@ -160,14 +160,14 @@ function ComplexDetail({ complex }: { complex: ProteinComplex }) {
         {complex.predicted && (
           <Field
             label="Evidence"
-            value={<span className="text-amber-400">Predicted, not curated</span>}
+            value={<span className="text-amber-700">Predicted, not curated</span>}
           />
         )}
       </AnnotationSection>
 
       {complex.description && (
         <AnnotationSection title="Function">
-          <p className="text-xs leading-relaxed text-zinc-300">{complex.description}</p>
+          <p className="text-xs leading-relaxed text-foreground/80">{complex.description}</p>
         </AnnotationSection>
       )}
 

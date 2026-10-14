@@ -25,9 +25,9 @@ export function CuratedSiteSection({
         {sites.map((site) => (
           <li key={`${site.kind}-${site.uniprot_start}-${site.uniprot_end}`}>
             <div className="flex items-baseline gap-2">
-              <span className="text-xs text-zinc-200">{site.label}</span>
+              <span className="text-xs text-foreground">{site.label}</span>
               <EvidenceBadge experimental={site.experimental} />
-              <span className="ml-auto shrink-0 font-mono text-[10px] text-zinc-500">
+              <span className="ml-auto shrink-0 font-mono text-[10px] text-muted-foreground">
                 UniProt{" "}
                 {site.uniprot_start === site.uniprot_end
                   ? site.uniprot_start
@@ -35,7 +35,7 @@ export function CuratedSiteSection({
               </span>
             </div>
             {site.description && site.label !== `${title}: ${site.description}` && (
-              <p className="mt-0.5 text-[11px] leading-relaxed text-zinc-400">
+              <p className="mt-0.5 text-[11px] leading-relaxed text-muted-foreground">
                 {site.description}
               </p>
             )}
@@ -47,10 +47,10 @@ export function CuratedSiteSection({
               )}
             </div>
             {site.located && site.location_note && (
-              <p className="mt-1 text-[10px] text-amber-300/80">{site.location_note}</p>
+              <p className="mt-1 text-[10px] text-amber-700/80">{site.location_note}</p>
             )}
             {site.substitutions.map((line) => (
-              <p key={line} className="mt-1 text-[10px] text-amber-300/80">
+              <p key={line} className="mt-1 text-[10px] text-amber-700/80">
                 {line}
               </p>
             ))}
@@ -72,7 +72,7 @@ export function LigandSection({
   if (ligands.length === 0) return null;
   return (
     <AnnotationSection title="Bound ligands" count={ligands.length}>
-      <p className="mb-2 text-[10px] leading-relaxed text-zinc-500">
+      <p className="mb-2 text-[10px] leading-relaxed text-muted-foreground">
         Residues with a heavy atom within {cutoff} Å of the ligand, measured in this
         file. Not a prediction.
       </p>
@@ -80,8 +80,8 @@ export function LigandSection({
         {ligands.map((ligand) => (
           <li key={`${ligand.chain}-${ligand.auth_seq_id}-${ligand.component}`}>
             <div className="flex items-baseline gap-2">
-              <span className="font-mono text-xs text-zinc-200">{ligand.label}</span>
-              <span className="ml-auto shrink-0 text-[10px] text-zinc-500">
+              <span className="font-mono text-xs text-foreground">{ligand.label}</span>
+              <span className="ml-auto shrink-0 text-[10px] text-muted-foreground">
                 {ligand.contacts.length} contact
                 {ligand.contacts.length === 1 ? "" : "s"}
               </span>
@@ -90,7 +90,7 @@ export function LigandSection({
               {ligand.contacts.length > 0 ? (
                 <ResidueChips residues={ligand.contacts} label={ligand.label} />
               ) : (
-                <p className="text-[10px] text-zinc-500">
+                <p className="text-[10px] text-muted-foreground">
                   No polymer residue is within {cutoff} Å — this group is not in a
                   pocket of the modelled chains.
                 </p>
@@ -112,20 +112,20 @@ export function PrioritySection({ residues }: { residues: PriorityResidue[] }) {
   return (
     <AnnotationSection title="High-priority residues" count={residues.length}>
       <div className="mb-2 flex items-center justify-between gap-2">
-        <p className="text-[10px] leading-relaxed text-zinc-500">
+        <p className="text-[10px] leading-relaxed text-muted-foreground">
           Ordered by how many independent kinds of evidence converge — a curator and
           this structure, or one of the two. There is no score.
         </p>
         <button
           type="button"
           onClick={() => setSelection(residues.map((r) => r.key))}
-          className="shrink-0 rounded border border-dashed border-zinc-700 px-1.5 py-0.5 text-[10px] text-zinc-400 hover:border-zinc-500 hover:text-zinc-100"
+          className="shrink-0 rounded border border-dashed border-input px-1.5 py-0.5 text-[10px] text-muted-foreground hover:border-ring hover:text-foreground"
         >
           select all
         </button>
       </div>
       {both.length > 0 && (
-        <p className="mb-2 text-[11px] text-emerald-300/90">
+        <p className="mb-2 text-[11px] text-emerald-700/90">
           {both.length} residue{both.length === 1 ? " is" : "s are"} both curated by
           UniProt and observed touching a ligand here.
         </p>
@@ -135,14 +135,14 @@ export function PrioritySection({ residues }: { residues: PriorityResidue[] }) {
           <li key={residue.key} className="flex items-start gap-2">
             <ResidueChip residue={residue} />
             <div className="min-w-0 flex-1">
-              <ul className="text-[10px] leading-relaxed text-zinc-400">
+              <ul className="text-[10px] leading-relaxed text-muted-foreground">
                 {residue.reasons.map((reason) => (
                   <li key={reason}>{reason}</li>
                 ))}
               </ul>
             </div>
             <span
-              className="shrink-0 font-mono text-[10px] tabular-nums text-zinc-500"
+              className="shrink-0 font-mono text-[10px] tabular-nums text-muted-foreground"
               title="Kyte-Doolittle hydropathy · formal charge · relative solvent accessibility"
             >
               {residue.hydropathy?.toFixed(1) ?? "—"} /{" "}

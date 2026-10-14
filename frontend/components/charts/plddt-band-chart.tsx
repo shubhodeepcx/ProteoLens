@@ -47,18 +47,18 @@ export function PlddtBandChart({ bands }: { bands: PlddtBand[] }) {
             type="category"
             dataKey="label"
             width={62}
-            tick={{ fontSize: 10, fill: "#a1a1aa" }}
+            tick={{ fontSize: 10, fill: "#64748b" }}
             axisLine={false}
             tickLine={false}
           />
           <Tooltip
-            cursor={{ fill: "#27272a" }}
+            cursor={{ fill: "#e2e8f0" }}
             contentStyle={{
-              background: "#18181b",
-              border: "1px solid #3f3f46",
+              background: "#ffffff",
+              border: "1px solid #e2e8f0",
               fontSize: 11,
             }}
-            itemStyle={{ color: "#fafafa" }}
+            itemStyle={{ color: "#0f172a" }}
             formatter={(value: number) => [`${value} residues`, "Count"]}
           />
           <Bar dataKey="residue_count" radius={2}>
@@ -74,7 +74,7 @@ export function PlddtBandChart({ bands }: { bands: PlddtBand[] }) {
           be the message. */}
       <ul
         data-testid="plddt-band-list"
-        className="space-y-0.5 px-1 text-[11px] text-zinc-400"
+        className="space-y-0.5 px-1 text-[11px] text-muted-foreground"
       >
         {data.map((band) => (
           <li key={band.key} className="flex items-baseline gap-1.5">
@@ -83,9 +83,9 @@ export function PlddtBandChart({ bands }: { bands: PlddtBand[] }) {
               style={{ background: PLDDT_BAND_COLORS[band.key] }}
               aria-hidden
             />
-            <span className="text-zinc-300">{band.label}</span>
-            <span className="text-zinc-500">{`(pLDDT ${band.range})`}</span>
-            <span className="ml-auto tabular-nums text-zinc-300">
+            <span className="text-foreground/80">{band.label}</span>
+            <span className="text-muted-foreground">{`(pLDDT ${band.range})`}</span>
+            <span className="ml-auto tabular-nums text-foreground/80">
               {`${band.residue_count} · ${(band.fraction * 100).toFixed(1)}%`}
             </span>
           </li>

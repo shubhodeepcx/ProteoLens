@@ -42,7 +42,7 @@ export function CompoundsPanel({ proteinId }: { proteinId: string }) {
 
   if (loading && !compounds) {
     return (
-      <div className="flex h-full items-center justify-center text-zinc-500">
+      <div className="flex h-full items-center justify-center text-muted-foreground">
         <Loader2 className="size-5 animate-spin" aria-hidden />
         <span className="ml-2 text-xs">Reading compounds&hellip;</span>
       </div>
@@ -55,8 +55,8 @@ export function CompoundsPanel({ proteinId }: { proteinId: string }) {
         role="alert"
         className="flex h-full flex-col items-center justify-center gap-2 px-4 text-center"
       >
-        <AlertCircle className="size-6 text-red-400" aria-hidden />
-        <p className="text-xs text-red-400">Compounds failed: {error.message}</p>
+        <AlertCircle className="size-6 text-red-700" aria-hidden />
+        <p className="text-xs text-red-700">Compounds failed: {error.message}</p>
       </div>
     );
   }
@@ -64,7 +64,7 @@ export function CompoundsPanel({ proteinId }: { proteinId: string }) {
   if (!compounds) {
     return (
       <div className="flex h-full items-center justify-center px-4 text-center">
-        <p className="text-xs text-zinc-500">Load a protein to see its compounds.</p>
+        <p className="text-xs text-muted-foreground">Load a protein to see its compounds.</p>
       </div>
     );
   }
@@ -76,15 +76,15 @@ export function CompoundsPanel({ proteinId }: { proteinId: string }) {
 
   return (
     <div className="flex h-full flex-col overflow-y-auto" data-testid="compounds-panel">
-      <div className="space-y-1.5 border-b border-zinc-800 px-3 py-2.5">
+      <div className="space-y-1.5 border-b border-border px-3 py-2.5">
         {compounds.notes.map((note) => (
-          <p key={note} className="flex gap-1.5 text-[10px] leading-relaxed text-zinc-400">
-            <Info className="mt-px size-3 shrink-0 text-zinc-500" aria-hidden />
+          <p key={note} className="flex gap-1.5 text-[10px] leading-relaxed text-muted-foreground">
+            <Info className="mt-px size-3 shrink-0 text-muted-foreground" aria-hidden />
             <span>{note}</span>
           </p>
         ))}
         {compounds.water_count > 0 && (
-          <p className="text-[10px] text-zinc-500">
+          <p className="text-[10px] text-muted-foreground">
             {compounds.water_count} water molecule
             {compounds.water_count === 1 ? "" : "s"} in the file (not listed).
           </p>

@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { ArrowRight, Search } from "lucide-react";
 
 const INPUT_CLASS =
-  "h-8 w-full rounded-md border border-zinc-700 bg-zinc-900 px-2 font-mono text-xs text-zinc-200 placeholder:text-zinc-600 focus:border-zinc-500 focus:outline-none";
+  "h-8 w-full rounded-md border border-input bg-card px-2 font-mono text-xs text-foreground placeholder:text-muted-foreground/70 focus:border-ring focus:outline-none";
 
 /**
  * Asks for the two protein ids when `/compare` is opened without both.
@@ -33,12 +33,12 @@ export function CompareIdForm({
   const ready = trimmedA.length > 0 && trimmedB.length > 0;
 
   return (
-    <div className="flex flex-col gap-4 rounded-md border border-zinc-800 bg-zinc-900/30 p-4">
+    <div className="flex flex-col gap-4 rounded-md border border-border bg-muted/50 p-4">
       <div>
-        <h2 className="text-sm font-medium text-zinc-100">
+        <h2 className="text-sm font-medium text-foreground">
           Choose two structures to compare
         </h2>
-        <p className="mt-1 text-xs leading-relaxed text-zinc-500">
+        <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
           Paste the IDs of two proteins already loaded in ProteoLens (the ID
           at the end of a viewer URL, <code>/viewer/&lt;id&gt;</code>). Or search
           for a protein and import both its experimental structure and AlphaFold
@@ -56,7 +56,7 @@ export function CompareIdForm({
           );
         }}
       >
-        <label className="flex-1 text-[10px] uppercase tracking-wide text-zinc-500">
+        <label className="flex-1 text-[10px] uppercase tracking-wide text-muted-foreground">
           Protein A
           <input
             className={`mt-1 ${INPUT_CLASS}`}
@@ -66,7 +66,7 @@ export function CompareIdForm({
             aria-label="Protein A id"
           />
         </label>
-        <label className="flex-1 text-[10px] uppercase tracking-wide text-zinc-500">
+        <label className="flex-1 text-[10px] uppercase tracking-wide text-muted-foreground">
           Protein B
           <input
             className={`mt-1 ${INPUT_CLASS}`}
@@ -79,7 +79,7 @@ export function CompareIdForm({
         <button
           type="submit"
           disabled={!ready}
-          className="inline-flex h-8 shrink-0 items-center gap-1.5 rounded-md border border-zinc-700 bg-zinc-800/70 px-3 text-xs font-medium text-zinc-100 transition-colors hover:border-zinc-600 hover:bg-zinc-700/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 disabled:cursor-not-allowed disabled:opacity-50"
+          className="inline-flex h-8 shrink-0 items-center gap-1.5 rounded-md border border-input bg-muted/70 px-3 text-xs font-medium text-foreground transition-colors hover:border-ring hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
         >
           Compare
           <ArrowRight className="size-3.5" aria-hidden />
@@ -88,7 +88,7 @@ export function CompareIdForm({
 
       <Link
         href="/search"
-        className="inline-flex items-center gap-1.5 self-start text-xs text-zinc-400 transition-colors hover:text-zinc-100"
+        className="inline-flex items-center gap-1.5 self-start text-xs text-muted-foreground transition-colors hover:text-foreground"
       >
         <Search className="size-3.5" aria-hidden />
         Search and import structures

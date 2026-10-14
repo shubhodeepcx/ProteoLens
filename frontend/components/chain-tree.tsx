@@ -51,7 +51,7 @@ export function ChainTree() {
   if (chains.length === 0) {
     return (
       <div className="flex h-full items-center justify-center px-4 text-center">
-        <p className="text-xs text-zinc-500">
+        <p className="text-xs text-muted-foreground">
           No chains — this structure parsed without a polymer chain.
         </p>
       </div>
@@ -60,17 +60,17 @@ export function ChainTree() {
 
   return (
     <div className="flex h-full min-h-0 flex-col">
-      <div className="flex shrink-0 items-center justify-between gap-2 border-b border-zinc-800 px-3 py-2">
-        <h2 className="text-[10px] font-semibold tracking-wide text-zinc-400 uppercase">
+      <div className="flex shrink-0 items-center justify-between gap-2 border-b border-border px-3 py-2">
+        <h2 className="text-[10px] font-semibold tracking-wide text-muted-foreground uppercase">
           Chains &amp; residues
         </h2>
-        <span className="text-[10px] text-zinc-500 tabular-nums">
+        <span className="text-[10px] text-muted-foreground tabular-nums">
           {chains.length} chain{chains.length === 1 ? "" : "s"} ·{" "}
           {total.toLocaleString()} aa
         </span>
       </div>
 
-      <div className="flex shrink-0 items-center justify-between px-3 py-1.5 text-[10px] text-zinc-500">
+      <div className="flex shrink-0 items-center justify-between px-3 py-1.5 text-[10px] text-muted-foreground">
         <span data-testid="chain-tree-selection-count">
           {selected.size.toLocaleString()} selected
         </span>
@@ -78,7 +78,7 @@ export function ChainTree() {
           <button
             type="button"
             onClick={() => clearSelection()}
-            className="flex items-center gap-1 text-zinc-400 hover:text-zinc-100"
+            className="flex items-center gap-1 text-muted-foreground hover:text-foreground"
           >
             <X aria-hidden className="size-3" />
             Clear
@@ -124,14 +124,14 @@ function ChainRow({
   const segments = chainSegments(chain.residue_count);
 
   return (
-    <div className="border-b border-zinc-800/70">
+    <div className="border-b border-border">
       <div className="flex items-stretch">
         <button
           type="button"
           aria-expanded={open}
           aria-label={`${open ? "Collapse" : "Expand"} chain ${chain.label}`}
           onClick={() => setOpen((v) => !v)}
-          className="flex w-7 shrink-0 items-center justify-center text-zinc-600 hover:text-zinc-300"
+          className="flex w-7 shrink-0 items-center justify-center text-muted-foreground/70 hover:text-foreground"
         >
           <ChevronRight
             aria-hidden
@@ -144,20 +144,20 @@ function ChainRow({
           data-testid={`chain-select-${chain.label}`}
           onClick={() => onSelect(chainKeys(chain.label, chain.residue_count))}
           title={`Select all ${chain.residue_count} residues of chain ${chain.label}`}
-          className="flex-1 py-2 pr-3 text-left hover:bg-zinc-900/60"
+          className="flex-1 py-2 pr-3 text-left hover:bg-accent"
         >
           <div className="flex items-baseline gap-2">
-            <span className="font-mono text-xs font-semibold text-zinc-100">
+            <span className="font-mono text-xs font-semibold text-foreground">
               {chain.label}
             </span>
-            <span className="text-[11px] text-zinc-400 tabular-nums">
+            <span className="text-[11px] text-muted-foreground tabular-nums">
               {chain.residue_count.toLocaleString()} aa
             </span>
-            <span className="text-[10px] text-zinc-600 tabular-nums">
+            <span className="text-[10px] text-muted-foreground/70 tabular-nums">
               {(share * 100).toFixed(0)}%
             </span>
             {hits > 0 && (
-              <span className="ml-auto text-[10px] text-sky-300 tabular-nums">
+              <span className="ml-auto text-[10px] text-sky-700 tabular-nums">
                 {hits.toLocaleString()} sel
               </span>
             )}
@@ -167,7 +167,7 @@ function ChainRow({
               sequence panel's legend. */}
           <div
             aria-hidden
-            className="mt-1.5 flex h-1 w-full overflow-hidden rounded-full bg-zinc-900"
+            className="mt-1.5 flex h-1 w-full overflow-hidden rounded-full bg-card"
           >
             {shares
               .filter((s) => s.count > 0)
@@ -184,7 +184,7 @@ function ChainRow({
 
       {open && (
         <div className="px-3 pb-3">
-          <ul className="mb-2 flex flex-wrap gap-x-3 gap-y-0.5 text-[10px] text-zinc-500">
+          <ul className="mb-2 flex flex-wrap gap-x-3 gap-y-0.5 text-[10px] text-muted-foreground">
             {shares
               .filter((s) => s.count > 0)
               .map((s) => (
@@ -197,7 +197,7 @@ function ChainRow({
                     )}
                   />
                   {RESIDUE_CLASS_LABEL[s.cls]}
-                  <span className="tabular-nums text-zinc-400">{s.count}</span>
+                  <span className="tabular-nums text-muted-foreground">{s.count}</span>
                 </li>
               ))}
           </ul>
@@ -210,7 +210,7 @@ function ChainRow({
                 data-testid={`chain-segment-${chain.label}-${seg.start}`}
                 onClick={() => onSelect(segmentKeys(chain.label, seg))}
                 title={`Select residues ${chain.label}:${seg.start}–${chain.label}:${seg.end}`}
-                className="rounded border border-zinc-800 bg-zinc-900/40 px-1.5 py-0.5 font-mono text-[10px] text-zinc-400 tabular-nums hover:border-zinc-600 hover:text-zinc-100"
+                className="rounded border border-border bg-muted/50 px-1.5 py-0.5 font-mono text-[10px] text-muted-foreground tabular-nums hover:border-ring hover:text-foreground"
               >
                 {seg.start}–{seg.end}
               </button>

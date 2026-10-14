@@ -20,8 +20,8 @@ import { fetchElectrostatics, potentialByKey } from "@/lib/electrostatics";
 const MolstarViewer = dynamic(() => import("@/components/molstar-viewer"), {
   ssr: false,
   loading: () => (
-    <div className="flex h-full items-center justify-center bg-zinc-950">
-      <Loader2 className="size-6 animate-spin text-zinc-500" />
+    <div className="flex h-full items-center justify-center bg-background">
+      <Loader2 className="size-6 animate-spin text-muted-foreground" />
     </div>
   ),
 });
@@ -185,7 +185,7 @@ export default function DynamicViewerPage() {
       {/* Mol* ships a bundled CSS — load it as a static asset. */}
       <link rel="stylesheet" href="/molstar.css" />
 
-      <div className="flex h-screen flex-col bg-zinc-950 text-zinc-100">
+      <div className="flex h-screen flex-col bg-background text-foreground">
         <ViewerHeader
           title={title}
           source={summary?.source ?? null}
@@ -200,7 +200,7 @@ export default function DynamicViewerPage() {
         <div className="grid flex-1 grid-cols-1 overflow-hidden xl:grid-cols-[15rem_1fr_24rem]">
           {/* xl+ left rail — the chain tree. Drives the same selection slice
               the sequence panel and the 3D click handler already share. */}
-          <aside className="hidden min-h-0 border-r border-zinc-800 bg-zinc-950 xl:block">
+          <aside className="hidden min-h-0 border-r border-border bg-background xl:block">
             {summary && <ChainTree />}
           </aside>
 
@@ -222,13 +222,13 @@ export default function DynamicViewerPage() {
           </div>
 
           {/* xl+ side panel */}
-          <aside className="hidden min-h-0 border-l border-zinc-800 bg-zinc-950 xl:block">
+          <aside className="hidden min-h-0 border-l border-border bg-background xl:block">
             {id && summary && <ViewerRail proteinId={id} />}
           </aside>
         </div>
 
         {/* Narrow viewports: stacked rail below the viewer. */}
-        <div className="border-t border-zinc-800 bg-zinc-950 xl:hidden">
+        <div className="border-t border-border bg-background xl:hidden">
           {id && summary && <ViewerRail proteinId={id} />}
         </div>
       </div>

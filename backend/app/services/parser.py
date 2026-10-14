@@ -218,7 +218,7 @@ def _extract_header_strings(structure) -> tuple[str | None, str | None]:
 def parse(
     path: Path | str,
     uid: str,
-    source: Literal["uploaded", "rcsb", "alphafold", "uniprot"] = "uploaded",
+    source: Literal["uploaded", "rcsb", "alphafold", "uniprot", "predicted"] = "uploaded",
     source_id: str | None = None,
 ) -> ProteinSummary:
     """Parse a PDB or mmCIF file into a ProteinSummary.
@@ -337,7 +337,8 @@ def parse(
         # Explicit when the file itself came from AlphaFold DB, or from a
         # UniProt import — UniProt has no coordinates of its own, so a
         # UniProt import downloads the cross-referenced AlphaFold model.
-        source in ("alphafold", "uniprot")
+        # A "predicted" model comes from ESMFold, which writes pLDDT there too.
+        source in ("alphafold", "uniprot", "predicted")
     )
 
     return ProteinSummary(

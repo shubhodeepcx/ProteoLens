@@ -44,7 +44,7 @@ async def parse_and_register(
     stored_path: Path,
     uid: str,
     *,
-    source: Literal["uploaded", "rcsb", "alphafold", "uniprot"],
+    source: Literal["uploaded", "rcsb", "alphafold", "uniprot", "predicted"],
     source_id: str | None = None,
 ) -> ProteinSummary:
     """Parse an already-stored structure file and register it, or clean up and raise.

@@ -144,7 +144,7 @@ If you're contributing, read [CONTRIBUTING.md](CONTRIBUTING.md) first. It covers
 
 - Mandatory reading order
 - Claim-before-code via [docs/PROJECT_TRACKER.md](docs/PROJECT_TRACKER.md)
-- Branch / commit conventions (`feature/<phase>-<slug>`, co-author footers)
+- Branch / commit conventions (`feature/<phase>-<slug>`, commit authorship)
 - Coding standards (TS strict on frontend, full type hints on backend)
 - Definition of done (smoke test passes, tracker updated, decisions logged)
 - Parallel-work etiquette and destructive-action gate

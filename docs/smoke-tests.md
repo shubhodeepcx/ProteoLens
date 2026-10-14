@@ -1,6 +1,6 @@
 # Smoke Tests
 
-Per-phase manual checks. A contributor claims a phase "Done" in `PROJECT_TRACKER.md` only when the corresponding smoke test passes — type-check and unit tests alone are not enough.
+Per-phase manual checks. A phase is marked "Done" in `PROJECT_TRACKER.md` only when the corresponding smoke test passes — type-check and unit tests alone are not enough.
 
 Run from the repo root (`g:\protein`) unless noted.
 

@@ -95,6 +95,7 @@ _No blocked tasks._
 
 | Task | Phase | Date | PR / commit |
 |---|---|---|---|
+| **P22 Contributor docs** -- the contributor guide is now CONTRIBUTING.md, written for human contributors; slice designs moved to docs/design; references updated | P22 | 2026-10-14 | `feature/p22-contributor-docs` |
 | **P15 surface electrostatics** -- `GET /api/proteins/{uid}/electrostatics`: Coulombic potential per residue (distance-dependent dielectric 4r, as ChimeraX), charged surface patches, net charge, pI per chain and dipole. An *Electrostatic potential* colouring (custom Mol* theme, red-white-blue) and a Surface electrostatics section in the Analytics tab with a per-residue profile and clickable patches. Switching representation now keeps the current colour scheme instead of resetting it | P15 | 2026-10-14 | feature/p15-electrostatics |
 | **P14 sequence tools** -- `/tools` page and `POST /api/tools/{orfs,restriction,primers,crispr}`: six-frame ORF finder, restriction map (31-enzyme teaching panel, linear or circular, fragment sizes), PCR primer pairs flanking a target (nearest-neighbour Tm, GC clamp, 3' dimers) and SpCas9 guide design (cut site, GC, poly-T, in-sequence off-targets). Linear SVG map on every tab. Offline; no new dependency | P14 | 2026-10-14 | feature/p14-sequence-tools |
 | **P13 report and export** -- a Report button in the viewer header opens `/report/[id]`, a paper-style A4 page with a 3D snapshot, structure facts, UniProt biology, analytics charts and FASTA-style sequences. Print / Save as PDF, plus JSON, composition CSV and hydropathy CSV downloads | P13 | 2026-10-14 | feature/p13-report-export |
@@ -411,7 +412,7 @@ Goal: search "insulin", click a result, see it in the viewer.
 
 ## Out of scope for this slice
 
-Tracked here so future contributors don't accidentally pull them in:
+Tracked here so future work doesn't accidentally pull them in:
 
 - AI annotation assistant (F8) — separate slice
 - Mutation impact visualizer (A2) — separate slice

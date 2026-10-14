@@ -3,7 +3,7 @@
 **Date:** 2026-08-22
 **Source:** client feedback, 2026-08-22
 **Predecessor:** [2026-05-23-protein-mvp-slice-design.md](2026-05-23-protein-mvp-slice-design.md) (P0–P5, complete)
-**Status:** Approved for execution — scheduled
+**Status:** Approved for execution
 **Owner:** Shubhodeep Chatterjee (@shubhodeepcx)
 
 ---

@@ -31,6 +31,7 @@ Active design: [docs/design/2026-05-23-protein-mvp-slice-design.md](design/2026-
 
 _Nothing in progress._
 
+| **P20 Code hardening against CONTRIBUTING.md standards** -- add the 44 missing type hints in backend services (BioPython `Structure`/`Model`/`Chain`/`Residue`/`Atom`), and split the six components over 200 LOC that no open branch touches | shubhodeep | `feature/p20-code-hardening` | wip | `app/page.tsx`, `app/viewer/[id]/page.tsx` and `components/molstar-viewer.tsx` are also over 200 LOC but every open feature branch edits them, so they are left for after those merge |
 ---
 
 ## Ready to claim

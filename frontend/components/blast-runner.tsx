@@ -104,7 +104,7 @@ export function BlastRunner({
             onClick={run}
             disabled={submitting}
             aria-busy={submitting}
-            className="inline-flex items-center justify-center gap-1.5 rounded-md border border-zinc-700 bg-zinc-800/70 px-3 py-1.5 text-xs font-medium text-zinc-100 hover:border-zinc-600 hover:bg-zinc-700/70 disabled:cursor-not-allowed disabled:opacity-60"
+            className="inline-flex items-center justify-center gap-1.5 rounded-md border border-input bg-muted/70 px-3 py-1.5 text-xs font-medium text-foreground hover:border-ring hover:bg-accent disabled:cursor-not-allowed disabled:opacity-60"
           >
             {submitting ? (
               <Loader2 className="size-3.5 animate-spin" aria-hidden />
@@ -113,7 +113,7 @@ export function BlastRunner({
             )}
             {submitting ? "Submitting…" : "Run blastp at EBI"}
           </button>
-          <p className="text-[10px] leading-relaxed text-zinc-500">
+          <p className="text-[10px] leading-relaxed text-muted-foreground">
             Runs against EBI&rsquo;s NCBI BLAST service. Searches usually take 30&nbsp;seconds
             to a few minutes; you can leave this tab and come back.
           </p>
@@ -125,7 +125,7 @@ export function BlastRunner({
       {error && (
         <p
           role="alert"
-          className="rounded border border-red-900/70 bg-red-950/40 px-2 py-1.5 text-[11px] text-red-300"
+          className="rounded border border-red-200 bg-red-50 px-2 py-1.5 text-[11px] text-red-700"
         >
           {error.message}
         </p>
@@ -137,7 +137,7 @@ export function BlastRunner({
         <button
           type="button"
           onClick={() => clearBlast(proteinId)}
-          className="inline-flex items-center justify-center gap-1.5 self-start rounded-md border border-zinc-800 px-2.5 py-1 text-[11px] text-zinc-300 hover:border-zinc-700 hover:bg-zinc-800/60"
+          className="inline-flex items-center justify-center gap-1.5 self-start rounded-md border border-border px-2.5 py-1 text-[11px] text-foreground/80 hover:border-ring hover:bg-accent"
         >
           <RotateCcw className="size-3" aria-hidden />
           New search
@@ -160,11 +160,11 @@ function Select({
 }) {
   return (
     <label className="flex flex-col gap-1">
-      <span className="text-[10px] uppercase tracking-wide text-zinc-500">{label}</span>
+      <span className="text-[10px] uppercase tracking-wide text-muted-foreground">{label}</span>
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="rounded border border-zinc-800 bg-zinc-900 px-1.5 py-1 text-[11px] text-zinc-200 focus:border-zinc-600 focus:outline-none"
+        className="rounded border border-border bg-card px-1.5 py-1 text-[11px] text-foreground focus:border-ring focus:outline-none"
       >
         {options.map((o) => (
           <option key={o.value} value={o.value}>

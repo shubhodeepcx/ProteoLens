@@ -16,9 +16,9 @@ export function ProteoLensLogo({ className }: { className?: string }) {
     >
       <defs>
         <linearGradient id="proteolens-grad" x1="4" y1="4" x2="28" y2="28">
-          <stop offset="0%" stopColor="#22d3ee" />
-          <stop offset="55%" stopColor="#818cf8" />
-          <stop offset="100%" stopColor="#c084fc" />
+          <stop offset="0%" stopColor="#0891b2" />
+          <stop offset="55%" stopColor="#4f46e5" />
+          <stop offset="100%" stopColor="#9333ea" />
         </linearGradient>
       </defs>
 

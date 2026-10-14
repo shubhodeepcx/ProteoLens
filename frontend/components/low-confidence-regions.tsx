@@ -31,7 +31,7 @@ export function LowConfidenceRegions({
       <p
         data-testid="no-low-confidence"
         role="status"
-        className="flex items-start gap-1.5 px-1 text-[11px] leading-relaxed text-emerald-400"
+        className="flex items-start gap-1.5 px-1 text-[11px] leading-relaxed text-emerald-700"
       >
         <CheckCircle2 className="mt-0.5 size-3 shrink-0" aria-hidden />
         <span>
@@ -49,7 +49,7 @@ export function LowConfidenceRegions({
       <p
         data-testid="low-confidence-summary"
         role="status"
-        className="flex items-start gap-1.5 px-1 text-[11px] leading-relaxed text-amber-400"
+        className="flex items-start gap-1.5 px-1 text-[11px] leading-relaxed text-amber-700"
       >
         <AlertTriangle className="mt-0.5 size-3 shrink-0" aria-hidden />
         <span>
@@ -75,12 +75,12 @@ export function LowConfidenceRegions({
             key={`${region.chain_id}:${region.start}-${region.end}`}
             className={`flex items-start gap-1.5 rounded border px-2 py-1 text-[11px] leading-relaxed ${
               region.likely_disordered
-                ? "border-orange-900/60 bg-orange-950/20 text-orange-300"
-                : "border-amber-900/50 bg-amber-950/15 text-amber-300"
+                ? "border-orange-200 bg-orange-50 text-orange-700"
+                : "border-amber-200 bg-amber-50 text-amber-700"
             }`}
           >
             <span
-              className="mt-[3px] shrink-0 rounded-[2px] px-1 text-[9px] font-semibold uppercase tracking-wide text-zinc-950"
+              className="mt-[3px] shrink-0 rounded-[2px] px-1 text-[9px] font-semibold uppercase tracking-wide text-primary-foreground"
               style={{
                 background: region.likely_disordered ? "#ff7d45" : "#ffdb13",
               }}

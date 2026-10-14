@@ -84,9 +84,9 @@ describe("formatPointsDelta", () => {
 
 describe("deltaToneClass", () => {
   it("dims zero and emphasises any difference", () => {
-    expect(deltaToneClass(0)).toBe("text-zinc-600");
-    expect(deltaToneClass(1)).toBe("text-zinc-200");
-    expect(deltaToneClass(-1)).toBe("text-zinc-200");
+    expect(deltaToneClass(0)).toBe("text-muted-foreground/70");
+    expect(deltaToneClass(1)).toBe("text-foreground");
+    expect(deltaToneClass(-1)).toBe("text-foreground");
   });
 
   it("does not colour by direction", () => {

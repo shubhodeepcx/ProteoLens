@@ -9,8 +9,8 @@ import {
 import type { CompositionDelta } from "@/lib/types";
 
 const HEAD_CLASS =
-  "px-2 py-1.5 text-left text-[10px] font-semibold uppercase tracking-wide text-zinc-500";
-const CELL_CLASS = "px-2 py-1.5 text-xs tabular-nums text-zinc-200";
+  "px-2 py-1.5 text-left text-[10px] font-semibold uppercase tracking-wide text-muted-foreground";
+const CELL_CLASS = "px-2 py-1.5 text-xs tabular-nums text-foreground";
 
 /**
  * Amino-acid composition, both sides plus the percentage-point difference.
@@ -39,14 +39,14 @@ export function CompositionTable({ rows }: { rows: CompositionDelta[] }) {
 
   return (
     <div className="flex flex-col gap-1.5">
-      <div className="overflow-x-auto rounded-md border border-zinc-800 bg-zinc-900/30">
+      <div className="overflow-x-auto rounded-md border border-border bg-muted/50">
         <table className="w-full min-w-96 border-collapse">
-          <caption className="px-2 pt-2 pb-1 text-left text-[10px] font-semibold uppercase tracking-wide text-zinc-400">
+          <caption className="px-2 pt-2 pb-1 text-left text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
             Amino-acid composition
             {showAll ? "" : " (largest differences)"}
           </caption>
           <thead>
-            <tr className="border-b border-zinc-800">
+            <tr className="border-b border-border">
               <th scope="col" className={HEAD_CLASS}>
                 Residue
               </th>
@@ -63,20 +63,20 @@ export function CompositionTable({ rows }: { rows: CompositionDelta[] }) {
           </thead>
           <tbody data-testid="composition-rows">
             {visible.map((row) => (
-              <tr key={row.aa} className="border-b border-zinc-800/60 last:border-0">
-                <th scope="row" className={`${CELL_CLASS} font-normal text-zinc-400`}>
-                  <span className="font-mono text-zinc-300">{row.aa}</span>{" "}
+              <tr key={row.aa} className="border-b border-border last:border-0">
+                <th scope="row" className={`${CELL_CLASS} font-normal text-muted-foreground`}>
+                  <span className="font-mono text-foreground/80">{row.aa}</span>{" "}
                   {row.label}
                 </th>
                 <td className={`${CELL_CLASS} text-right`}>
                   {row.percent_a.toFixed(2)}%
-                  <span className="ml-1 text-[10px] text-zinc-600">
+                  <span className="ml-1 text-[10px] text-muted-foreground/70">
                     ({formatNumber(row.count_a)})
                   </span>
                 </td>
                 <td className={`${CELL_CLASS} text-right`}>
                   {row.percent_b.toFixed(2)}%
-                  <span className="ml-1 text-[10px] text-zinc-600">
+                  <span className="ml-1 text-[10px] text-muted-foreground/70">
                     ({formatNumber(row.count_b)})
                   </span>
                 </td>
@@ -95,7 +95,7 @@ export function CompositionTable({ rows }: { rows: CompositionDelta[] }) {
         <button
           type="button"
           onClick={() => setShowAll((v) => !v)}
-          className="self-start rounded-md border border-zinc-800 px-2 py-1 text-[11px] text-zinc-400 transition-colors hover:border-zinc-700 hover:text-zinc-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-600"
+          className="self-start rounded-md border border-border px-2 py-1 text-[11px] text-muted-foreground transition-colors hover:border-ring hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
         >
           {showAll ? "Show largest differences only" : `Show all ${ranked.length} residues`}
         </button>

@@ -14,8 +14,8 @@ import type { CompareProteinRef } from "@/lib/types";
 const MolstarViewer = dynamic(() => import("@/components/molstar-viewer"), {
   ssr: false,
   loading: () => (
-    <div className="flex h-full items-center justify-center bg-zinc-950">
-      <Loader2 className="size-5 animate-spin text-zinc-600" aria-hidden />
+    <div className="flex h-full items-center justify-center bg-background">
+      <Loader2 className="size-5 animate-spin text-muted-foreground/70" aria-hidden />
     </div>
   ),
 });
@@ -106,16 +106,16 @@ export function CompareViewerPane({
   return (
     <section
       data-testid={`compare-pane-${side}`}
-      className="flex min-h-0 min-w-0 flex-col border border-zinc-800 bg-zinc-950"
+      className="flex min-h-0 min-w-0 flex-col border border-border bg-background"
     >
-      <header className="flex h-9 shrink-0 items-center gap-2 border-b border-zinc-800 px-2.5">
-        <span className="rounded bg-zinc-800 px-1.5 py-0.5 text-[10px] font-semibold text-zinc-300">
+      <header className="flex h-9 shrink-0 items-center gap-2 border-b border-border px-2.5">
+        <span className="rounded bg-muted px-1.5 py-0.5 text-[10px] font-semibold text-foreground/80">
           {side}
         </span>
-        <span className="truncate text-xs font-medium text-zinc-200" title={title}>
+        <span className="truncate text-xs font-medium text-foreground" title={title}>
           {title}
         </span>
-        <span className="ml-auto shrink-0 text-[10px] uppercase tracking-wide text-zinc-500">
+        <span className="ml-auto shrink-0 text-[10px] uppercase tracking-wide text-muted-foreground">
           {protein.source}
           {protein.source_id ? ` · ${protein.source_id}` : ""}
         </span>
@@ -123,10 +123,10 @@ export function CompareViewerPane({
 
       <div className="relative min-h-64 flex-1">
         {loading && (
-          <div className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center bg-zinc-950/60">
+          <div className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center bg-background/60">
             <Loader2
               data-testid={`compare-pane-${side}-spinner`}
-              className="size-5 animate-spin text-zinc-400"
+              className="size-5 animate-spin text-muted-foreground"
               aria-hidden
             />
           </div>
@@ -134,9 +134,9 @@ export function CompareViewerPane({
         {error && (
           <div
             role="alert"
-            className="absolute inset-0 z-20 flex items-center justify-center bg-zinc-950/90 px-4"
+            className="absolute inset-0 z-20 flex items-center justify-center bg-background/90 px-4"
           >
-            <p className="flex items-start gap-2 text-xs text-red-300">
+            <p className="flex items-start gap-2 text-xs text-red-700">
               <AlertCircle className="mt-0.5 size-3.5 shrink-0" aria-hidden />
               Could not load structure: {error}
             </p>

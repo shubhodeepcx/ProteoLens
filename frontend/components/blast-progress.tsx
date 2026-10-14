@@ -25,27 +25,27 @@ export function BlastProgress({ job }: { job: BlastJobStatus }) {
       data-testid="blast-progress"
       role="status"
       aria-live="polite"
-      className="rounded-md border border-zinc-800 bg-zinc-900/40 p-3"
+      className="rounded-md border border-border bg-muted/50 p-3"
     >
       <div className="flex items-center gap-2">
         <tone.Icon
           className={`size-4 shrink-0 ${tone.className} ${tone.spin ? "animate-spin" : ""}`}
           aria-hidden
         />
-        <span className="text-xs font-medium text-zinc-200">{tone.label}</span>
+        <span className="text-xs font-medium text-foreground">{tone.label}</span>
         {!job.finished && (
-          <span className="ml-auto inline-flex items-center gap-1 text-[11px] tabular-nums text-zinc-400">
+          <span className="ml-auto inline-flex items-center gap-1 text-[11px] tabular-nums text-muted-foreground">
             <Clock className="size-3" aria-hidden />
             {formatElapsed(job.elapsed_seconds)}
           </span>
         )}
       </div>
 
-      <p className="mt-1.5 text-[11px] leading-relaxed text-zinc-400">{job.message}</p>
+      <p className="mt-1.5 text-[11px] leading-relaxed text-muted-foreground">{job.message}</p>
 
       {!job.finished && (
         <div
-          className="mt-2 h-1 overflow-hidden rounded-full bg-zinc-800"
+          className="mt-2 h-1 overflow-hidden rounded-full bg-muted"
           role="presentation"
         >
           {/* Indeterminate on purpose — BLAST reports no completion fraction. */}
@@ -53,7 +53,7 @@ export function BlastProgress({ job }: { job: BlastJobStatus }) {
         </div>
       )}
 
-      <dl className="mt-2 grid grid-cols-2 gap-x-3 gap-y-0.5 text-[10px] text-zinc-500">
+      <dl className="mt-2 grid grid-cols-2 gap-x-3 gap-y-0.5 text-[10px] text-muted-foreground">
         <Fact label="Program" value={job.program} />
         <Fact label="Database" value={job.database} />
         <Fact label="Query" value={`${job.query_source} · ${job.query_length} aa`} />
@@ -75,7 +75,7 @@ function Fact({
   return (
     <div className="flex min-w-0 items-baseline gap-1.5">
       <dt className="shrink-0 uppercase tracking-wide">{label}</dt>
-      <dd className={`min-w-0 truncate text-zinc-400 ${mono ? "font-mono" : ""}`}>
+      <dd className={`min-w-0 truncate text-muted-foreground ${mono ? "font-mono" : ""}`}>
         {value}
       </dd>
     </div>
@@ -87,23 +87,23 @@ function statusTone(status: BlastJobStatus["status"]) {
     case "FINISHED":
       return {
         Icon: CheckCircle2,
-        className: "text-emerald-400",
+        className: "text-emerald-700",
         label: "Search complete",
         spin: false,
       };
     case "FAILURE":
     case "ERROR":
-      return { Icon: XCircle, className: "text-red-400", label: "Search failed", spin: false };
+      return { Icon: XCircle, className: "text-red-700", label: "Search failed", spin: false };
     case "NOT_FOUND":
       return {
         Icon: AlertCircle,
-        className: "text-amber-400",
+        className: "text-amber-700",
         label: "Job expired",
         spin: false,
       };
     case "QUEUED":
-      return { Icon: Loader2, className: "text-sky-400", label: "Queued", spin: true };
+      return { Icon: Loader2, className: "text-sky-700", label: "Queued", spin: true };
     default:
-      return { Icon: Loader2, className: "text-sky-400", label: "Running", spin: true };
+      return { Icon: Loader2, className: "text-sky-700", label: "Running", spin: true };
   }
 }

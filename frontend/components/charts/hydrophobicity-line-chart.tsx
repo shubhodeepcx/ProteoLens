@@ -19,19 +19,19 @@ export function HydrophobicityLineChart({ data }: { data: HydrophobicityProfile 
   return (
     <ResponsiveContainer width="100%" height={180}>
       <LineChart data={series} margin={{ top: 8, right: 8, bottom: 4, left: 0 }}>
-        <CartesianGrid stroke="#27272a" />
-        <XAxis dataKey="pos" stroke="#a1a1aa" tick={{ fontSize: 10 }} />
+        <CartesianGrid stroke="#e2e8f0" />
+        <XAxis dataKey="pos" stroke="#64748b" tick={{ fontSize: 10 }} />
         <YAxis
-          stroke="#a1a1aa"
+          stroke="#64748b"
           tick={{ fontSize: 10 }}
           width={28}
           domain={[-4.5, 4.5]}
         />
-        <ReferenceLine y={0} stroke="#52525b" strokeDasharray="2 2" />
+        <ReferenceLine y={0} stroke="#94a3b8" strokeDasharray="2 2" />
         <Tooltip
-          contentStyle={{ background: "#18181b", border: "1px solid #3f3f46", fontSize: 11 }}
-          itemStyle={{ color: "#fafafa" }}
-          labelStyle={{ color: "#a1a1aa" }}
+          contentStyle={{ background: "#ffffff", border: "1px solid #e2e8f0", fontSize: 11 }}
+          itemStyle={{ color: "#0f172a" }}
+          labelStyle={{ color: "#64748b" }}
           labelFormatter={(v) => `residue ${v}`}
           formatter={(value: number) => [
             value.toFixed(2),

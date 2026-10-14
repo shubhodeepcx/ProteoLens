@@ -20,6 +20,7 @@ import {
 } from "@/components/ui/tabs";
 import { HealthPill } from "@/components/health-pill";
 import { DropZone } from "@/components/drop-zone";
+import { HelixField } from "@/components/helix-field";
 import { RecentProteins } from "@/components/recent-proteins";
 import {
   DATA_SOURCES,
@@ -158,29 +159,32 @@ export default function HomePage() {
               Open demo structure
             </Link>
           </div>
-          {/* `molecular-field` is a CSS-only backdrop defined in globals.css.
-              It lives here and nowhere near the viewer route, so it cannot
-              interfere with the Mol* canvas. */}
-          <div className="molecular-field flex-1 overflow-y-auto">
-            <div
-              id="upload"
-              className="mx-auto flex w-full max-w-2xl flex-col gap-6 px-6 py-8"
-            >
-              <DropZone />
+          {/* `HelixField` is an animated canvas backdrop. It lives here and
+              nowhere near the viewer route, so it cannot interfere with the
+              Mol* canvas. */}
+          <div className="relative flex-1 overflow-hidden">
+            <HelixField className="absolute inset-0 size-full" />
+            <div className="relative h-full overflow-y-auto">
+              <div
+                id="upload"
+                className="mx-auto flex w-full max-w-2xl flex-col gap-6 px-6 py-8"
+              >
+                <DropZone />
 
-              <section aria-labelledby="sources-heading">
-                <h2
-                  id="sources-heading"
-                  className="mb-2 text-xs font-semibold tracking-wide text-muted-foreground uppercase"
-                >
-                  Wired to
-                </h2>
-                <div className="grid gap-2 sm:grid-cols-2">
-                  {DATA_SOURCES.map((source) => (
-                    <DataSourceCard key={source.name} source={source} />
-                  ))}
-                </div>
-              </section>
+                <section aria-labelledby="sources-heading">
+                  <h2
+                    id="sources-heading"
+                    className="mb-2 text-xs font-semibold tracking-wide text-muted-foreground uppercase"
+                  >
+                    Wired to
+                  </h2>
+                  <div className="grid gap-2 sm:grid-cols-2">
+                    {DATA_SOURCES.map((source) => (
+                      <DataSourceCard key={source.name} source={source} />
+                    ))}
+                  </div>
+                </section>
+              </div>
             </div>
           </div>
         </section>

@@ -16,7 +16,7 @@ function SubSection({
 }) {
   return (
     <div className="flex flex-col gap-1.5">
-      <h4 className="text-[10px] font-semibold uppercase tracking-wide text-zinc-500">
+      <h4 className="text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
         {title}
       </h4>
       {children}
@@ -49,7 +49,7 @@ export function ConfidencePanel({ proteinId }: { proteinId: string }) {
 
   if (loading && !confidence) {
     return (
-      <p className="flex items-center gap-2 px-1 text-xs text-zinc-500">
+      <p className="flex items-center gap-2 px-1 text-xs text-muted-foreground">
         <Loader2 className="size-3.5 animate-spin" aria-hidden />
         Reading model confidence&hellip;
       </p>
@@ -58,7 +58,7 @@ export function ConfidencePanel({ proteinId }: { proteinId: string }) {
 
   if (error && !confidence) {
     return (
-      <p role="alert" className="px-1 text-[11px] text-red-400">
+      <p role="alert" className="px-1 text-[11px] text-red-700">
         <AlertCircle className="mr-1 inline size-3" aria-hidden />
         Confidence analysis failed: {error.message}
       </p>
@@ -72,9 +72,9 @@ export function ConfidencePanel({ proteinId }: { proteinId: string }) {
       <p
         data-testid="confidence-not-applicable"
         role="status"
-        className="flex items-start gap-1.5 px-1 text-[11px] leading-relaxed text-zinc-400"
+        className="flex items-start gap-1.5 px-1 text-[11px] leading-relaxed text-muted-foreground"
       >
-        <Info className="mt-0.5 size-3 shrink-0 text-sky-400" aria-hidden />
+        <Info className="mt-0.5 size-3 shrink-0 text-sky-700" aria-hidden />
         <span>{confidence.note}</span>
       </p>
     );
@@ -82,33 +82,33 @@ export function ConfidencePanel({ proteinId }: { proteinId: string }) {
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 px-1 text-[11px] text-zinc-400">
+      <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 px-1 text-[11px] text-muted-foreground">
         <span>
           Mean pLDDT{" "}
           <span
             data-testid="mean-plddt"
-            className="tabular-nums text-base font-semibold text-zinc-100"
+            className="tabular-nums text-base font-semibold text-foreground"
           >
             {confidence.mean_plddt?.toFixed(1) ?? "—"}
           </span>
-          <span className="text-zinc-500"> / 100</span>
+          <span className="text-muted-foreground"> / 100</span>
         </span>
-        <span className="text-zinc-500">
+        <span className="text-muted-foreground">
           {confidence.residue_count} residues scored
         </span>
         {confidence.accession && (
-          <span className="text-zinc-500">AlphaFold {confidence.accession}</span>
+          <span className="text-muted-foreground">AlphaFold {confidence.accession}</span>
         )}
       </div>
 
       {confidence.note && (
-        <p className="px-1 text-[11px] leading-relaxed text-zinc-500">
+        <p className="px-1 text-[11px] leading-relaxed text-muted-foreground">
           {confidence.note}
         </p>
       )}
 
       {confidence.warnings.map((warning) => (
-        <p key={warning} role="alert" className="px-1 text-[11px] text-amber-400">
+        <p key={warning} role="alert" className="px-1 text-[11px] text-amber-700">
           {warning}
         </p>
       ))}

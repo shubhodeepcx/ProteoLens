@@ -31,7 +31,6 @@ Active design: [docs/design/2026-05-23-protein-mvp-slice-design.md](design/2026-
 
 _Nothing in progress._
 
-| **P20 Code hardening against CONTRIBUTING.md standards** -- add the 44 missing type hints in backend services (BioPython `Structure`/`Model`/`Chain`/`Residue`/`Atom`), and split the six components over 200 LOC that no open branch touches | shubhodeep | `feature/p20-code-hardening` | wip | `app/page.tsx`, `app/viewer/[id]/page.tsx` and `components/molstar-viewer.tsx` are also over 200 LOC but every open feature branch edits them, so they are left for after those merge |
 ---
 
 ## Ready to claim
@@ -40,6 +39,7 @@ Follow-ups discovered during P4/P5. None block the slice; each was deliberately 
 
 | Task | Phase | Dependencies | Estimate |
 |---|---|---|---|
+| **Split the last three components over 200 LOC**: `app/page.tsx` (228), `app/viewer/[id]/page.tsx` (248) and `components/molstar-viewer.tsx` (232). Left out of P20 because every open extension branch edits them; do it after those merge | follow-up | extension PRs merged | 1h |
 | **A5 Phase 2 — pocket *prediction*.** Phase 1 ships observed pockets only (residues within 4 A of a ligand in the file). An apo structure gets curated sites, surface and charge but no pocket, which is the honest answer and not a satisfying one. Phase 2 is a geometric detector (fpocket / LIGSITE style) or an ML scorer, and whatever it produces must be labelled a prediction and scored, never mixed into `ligands` | A5 | A5 merged | 1-2d |
 | **A5 follow-up — cross-check the alignment against RCSB SIFTS.** Positions are mapped by aligning the UniProt sequence to each parsed chain, which is self-contained and testable offline. RCSB publishes a residue-level SIFTS mapping for every PDB entry; fetching it as a *second opinion* would turn a silent disagreement into a visible one. Only useful for `rcsb` imports — an upload and an AlphaFold model have no SIFTS record | A5 | A5 merged | 4h |
 | **A5 follow-up — colour the 3D surface by hydrophobicity and charge.** `GET /functional-regions` already returns per-residue Kyte-Doolittle, formal charge and relative accessibility as per-chain arrays; the viewer renders none of them. Needs a Mol* colour theme driven from the store, beside the existing pLDDT/B-factor schemes | A5 | A5 merged | 4h |
@@ -96,6 +96,7 @@ _No blocked tasks._
 
 | Task | Phase | Date | PR / commit |
 |---|---|---|---|
+| **P20 code hardening** -- the 44 backend function signatures without type hints now have them (BioPython `Structure`/`Model`/`Chain`/`Residue`/`Atom` under `TYPE_CHECKING`, a `ParamSpec` for the tools runner), and six components over 200 LOC are split into sibling files with unchanged exports, markup and test ids: tool results, report page, helix field, electrostatics panel, variant panel, chain tree. README status brought up to date. No behaviour change; 656 backend and 480 frontend tests pass | P20 | 2026-10-14 | `feature/p20-code-hardening` |
 | **P15 surface electrostatics** -- `GET /api/proteins/{uid}/electrostatics`: Coulombic potential per residue (distance-dependent dielectric 4r, as ChimeraX), charged surface patches, net charge, pI per chain and dipole. An *Electrostatic potential* colouring (custom Mol* theme, red-white-blue) and a Surface electrostatics section in the Analytics tab with a per-residue profile and clickable patches. Switching representation now keeps the current colour scheme instead of resetting it | P15 | 2026-10-14 | feature/p15-electrostatics |
 | **P14 sequence tools** -- `/tools` page and `POST /api/tools/{orfs,restriction,primers,crispr}`: six-frame ORF finder, restriction map (31-enzyme teaching panel, linear or circular, fragment sizes), PCR primer pairs flanking a target (nearest-neighbour Tm, GC clamp, 3' dimers) and SpCas9 guide design (cut site, GC, poly-T, in-sequence off-targets). Linear SVG map on every tab. Offline; no new dependency | P14 | 2026-10-14 | feature/p14-sequence-tools |
 | **P13 report and export** -- a Report button in the viewer header opens `/report/[id]`, a paper-style A4 page with a 3D snapshot, structure facts, UniProt biology, analytics charts and FASTA-style sequences. Print / Save as PDF, plus JSON, composition CSV and hydropathy CSV downloads | P13 | 2026-10-14 | feature/p13-report-export |

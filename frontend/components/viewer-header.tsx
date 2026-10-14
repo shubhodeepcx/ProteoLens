@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Columns2, RotateCcw } from "lucide-react";
+import { Columns2, FileText, RotateCcw } from "lucide-react";
 import { ProteoLensLogo } from "@/components/logo";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -17,6 +17,8 @@ interface ViewerHeaderProps {
   /** Storage uid, used to open `/compare` with this protein already on side A. */
   proteinId?: string;
   onResetCamera: () => void;
+  /** Opens the printable report; rendered only when provided. */
+  onOpenReport?: () => void;
 }
 
 /** Workspace toolbar: breadcrumb, live selection count, and viewer controls. */
@@ -26,6 +28,7 @@ export function ViewerHeader({
   hasPlddt = false,
   proteinId,
   onResetCamera,
+  onOpenReport,
 }: ViewerHeaderProps) {
   const selectedCount = useStore((s) => s.selected.size);
   const ready = source !== null;
@@ -71,6 +74,18 @@ export function ViewerHeader({
             <Columns2 className="size-3.5" aria-hidden />
             Compare
           </Link>
+        )}
+        {onOpenReport && (
+          <button
+            type="button"
+            onClick={onOpenReport}
+            disabled={!ready}
+            title="Open a printable report with a snapshot of this view"
+            className="inline-flex h-7 items-center gap-1.5 rounded-md px-2 text-[11px] text-muted-foreground transition-colors hover:bg-accent hover:text-foreground disabled:opacity-50"
+          >
+            <FileText className="size-3.5" aria-hidden />
+            Report
+          </button>
         )}
         <Button
           size="sm"

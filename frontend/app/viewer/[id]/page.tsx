@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef, useEffect, useState, useCallback } from "react";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
 import { Loader2 } from "lucide-react";
 import type { MolstarViewerRef } from "@/components/molstar-viewer";
@@ -13,6 +13,7 @@ import {
   type ViewerError,
 } from "@/components/viewer-overlays";
 import { API_BASE_URL } from "@/lib/api";
+import { saveSnapshot } from "@/lib/report";
 import { useStore } from "@/lib/store";
 
 // Mol* must be dynamically imported (no SSR — it touches WebGL/window).
@@ -30,6 +31,15 @@ export default function DynamicViewerPage() {
   const id = params.id;
 
   const viewerRef = useRef<MolstarViewerRef>(null);
+  const router = useRouter();
+
+  // Report: capture the current 3D view first, so the report shows what the
+  // user was looking at, then hand off through sessionStorage.
+  const openReport = useCallback(async () => {
+    const image = await viewerRef.current?.snapshot();
+    if (image) saveSnapshot(id, image);
+    router.push(`/report/${id}`);
+  }, [id, router]);
 
   // Protein metadata lives in the shared Zustand store so other surfaces
   // (sequence panel, analytics) read the same `current` protein.
@@ -172,6 +182,7 @@ export default function DynamicViewerPage() {
           hasPlddt={hasPlddt}
           proteinId={summary ? id : undefined}
           onResetCamera={() => viewerRef.current?.resetCamera()}
+          onOpenReport={summary ? () => void openReport() : undefined}
         />
 
         {/* Split content: chain tree left, viewer centre, tabbed rail right

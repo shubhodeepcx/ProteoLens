@@ -6,7 +6,7 @@ import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.api import blast, compare, explain, import_, proteins, search
+from app.api import blast, compare, explain, import_, proteins, search, tools
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -24,6 +24,10 @@ app.openapi_tags = [
             "Sequence similarity search via EBI's NCBI BLAST REST service. "
             "Asynchronous: POST to submit, then poll GET /api/blast/{job_id}."
         ),
+    },
+    {
+        "name": "tools",
+        "description": "Offline DNA tools: ORFs, restriction map, PCR primers, CRISPR guides.",
     },
 ]
 
@@ -51,6 +55,7 @@ app.include_router(explain.router, prefix="/api")
 app.include_router(search.router, prefix="/api")
 app.include_router(compare.router, prefix="/api")
 app.include_router(blast.router, prefix="/api")
+app.include_router(tools.router, prefix="/api")
 
 
 @app.get("/health")

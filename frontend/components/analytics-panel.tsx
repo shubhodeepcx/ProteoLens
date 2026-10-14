@@ -8,6 +8,7 @@ import { SecondaryStructureDonut } from "@/components/charts/secondary-structure
 import { HydrophobicityLineChart } from "@/components/charts/hydrophobicity-line-chart";
 import { ChainLengthBarChart } from "@/components/charts/chain-length-bar-chart";
 import { ConfidencePanel } from "@/components/confidence-panel";
+import { ElectrostaticsPanel } from "@/components/electrostatics-panel";
 
 interface MetricProps {
   label: string;
@@ -112,6 +113,12 @@ export function AnalyticsPanel({ proteinId }: { proteinId: string }) {
           matching `RAIL_TABS` entry in `rail-tab-preview.tsx`. */}
       <Section title="Model confidence">
         <ConfidencePanel proteinId={proteinId} />
+      </Section>
+
+      {/* P15 — surface electrostatics. Also analytics about the structure, so
+          it joins the same tab for the same reason as model confidence. */}
+      <Section title="Surface electrostatics">
+        <ElectrostaticsPanel proteinId={proteinId} />
       </Section>
 
       {summary?.warnings && summary.warnings.length > 0 && (

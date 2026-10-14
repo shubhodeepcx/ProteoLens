@@ -8,6 +8,7 @@
 import { createPluginUI } from "molstar/lib/mol-plugin-ui";
 import { renderReact18 } from "molstar/lib/mol-plugin-ui/react18";
 import { DefaultPluginUISpec } from "molstar/lib/mol-plugin-ui/spec";
+import { ElectrostaticsColorThemeProvider } from "@/lib/molstar/electrostatics-theme";
 import type { PluginUIContext } from "molstar/lib/mol-plugin-ui/context";
 
 /**
@@ -21,7 +22,7 @@ export async function createViewerPlugin(
   target: HTMLElement,
 ): Promise<PluginUIContext> {
   const spec = DefaultPluginUISpec();
-  return createPluginUI({
+  const plugin = await createPluginUI({
     target,
     render: renderReact18,
     spec: {
@@ -40,4 +41,10 @@ export async function createViewerPlugin(
       },
     },
   });
+  // ProteoLens' own per-residue theme (P15 electrostatics). Registered once
+  // per plugin; `applyResidueValueColoring` selects it by name.
+  plugin.representation.structure.themes.colorThemeRegistry.add(
+    ElectrostaticsColorThemeProvider,
+  );
+  return plugin;
 }

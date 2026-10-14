@@ -105,3 +105,20 @@ describe("ViewerControls — B-factor column gating", () => {
     expect(useStore.getState().coloring).toBe("bfactor");
   });
 });
+
+describe("ViewerControls — electrostatics", () => {
+  afterEach(cleanup);
+
+  it("offers electrostatic potential on every structure and keeps it selected", () => {
+    act(() => {
+      useStore.setState({ coloring: "electrostatics", representation: "surface" });
+    });
+    for (const hasPlddt of [true, false]) {
+      render(<ViewerControls hasPlddt={hasPlddt} />);
+      expect(optionLabels()).toContain("Electrostatic potential");
+      // Listed, so the unlisted-value fallback must not reset it to "chain".
+      expect(useStore.getState().coloring).toBe("electrostatics");
+      cleanup();
+    }
+  });
+});

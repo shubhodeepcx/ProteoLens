@@ -6,7 +6,7 @@ import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.api import blast, compare, explain, import_, proteins, search, tools
+from app.api import blast, compare, electrostatics, explain, import_, proteins, search, tools
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -51,6 +51,7 @@ app.add_middleware(
 # never be shadowed by a future POST /api/proteins/{uid} route.
 app.include_router(import_.router, prefix="/api")
 app.include_router(proteins.router, prefix="/api")
+app.include_router(electrostatics.router, prefix="/api")
 app.include_router(explain.router, prefix="/api")
 app.include_router(search.router, prefix="/api")
 app.include_router(compare.router, prefix="/api")

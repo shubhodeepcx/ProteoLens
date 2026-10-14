@@ -24,6 +24,7 @@ from app.models.confidence import ConfidenceResponse
 from app.models.functional import FunctionalRegions
 from app.models.protein import ProteinSummary
 from app.models.similarity import DEFAULT_UNIREF_IDENTITY, SimilarProteinsResponse
+from app.models.variant import VariantImpact, VariantRequest
 from app.services import (
     analytics,
     annotations,
@@ -34,6 +35,7 @@ from app.services import (
     ingest,
     registry,
     similarity,
+    variant,
 )
 from app.services.external import SourceNotFoundError, SourceUnavailableError
 from app.storage import local as storage
@@ -585,3 +587,80 @@ async def get_protein_analytics(uid: str) -> AnalyticsResponse:
     except (FileNotFoundError, ValueError) as exc:
         raise HTTPException(status_code=404, detail="File not found") from exc
     return await run_in_threadpool(compute_analytics, uid, summary, file_path)
+
+
+@router.post("/{uid}/variant", response_model=VariantImpact)
+async def analyse_variant(uid: str, request: VariantRequest) -> VariantImpact:
+    """Where a protein variant sits in this structure and what it touches (A2).
+
+    The position is mapped through the UniProt sequence when an entry can be
+    resolved, exactly as `/functional-regions` maps curated sites. When UniProt
+    cannot be resolved or reached, the position is read as the file's own
+    residue number and the reference residue is checked there; the response
+    says which numbering was used. A notation that cannot be read, or does not
+    fit this structure, is a 422 with the reason.
+    """
+    from app.api.search import get_rcsb_client, get_uniprot_client
+
+    try:
+        storage.validate_uid(uid)
+    except ValueError as exc:
+        raise HTTPException(status_code=404, detail="Protein not found") from exc
+    summary = registry.get(uid)
+    if not summary:
+        raise HTTPException(status_code=404, detail="Protein not found")
+    try:
+        file_path = storage.get_file(uid)
+    except (FileNotFoundError, ValueError) as exc:
+        raise HTTPException(status_code=404, detail="File not found") from exc
+
+    try:
+        variant.parse_notation(request.notation)
+    except variant.VariantError as exc:
+        raise HTTPException(status_code=422, detail=str(exc)) from exc
+
+    uniprot = get_uniprot_client()
+    accession, _note = await annotations.resolve_accession(
+        summary, uniprot=uniprot, rcsb=get_rcsb_client()
+    )
+    entry: dict | None = None
+    upstream_note = ""
+    if accession is not None:
+        try:
+            entry = await uniprot.fetch_functional(accession)
+        except SourceNotFoundError:
+            upstream_note = f"UniProt has no entry for {accession}; the file's numbering was used."
+        except SourceUnavailableError as exc:
+            logger.warning("UniProt unavailable for variant on %s: %s", uid, exc)
+            upstream_note = "UniProt could not be reached; the file's own numbering was used."
+
+    try:
+        impact = await run_in_threadpool(
+            _compute_variant, uid, summary, file_path, request, entry, accession
+        )
+    except variant.VariantError as exc:
+        raise HTTPException(status_code=422, detail=str(exc)) from exc
+    if upstream_note:
+        impact.notes.append(upstream_note)
+    return impact
+
+
+def _compute_variant(
+    uid: str,
+    summary: ProteinSummary,
+    file_path: Path,
+    request: VariantRequest,
+    entry: dict | None,
+    accession: str | None,
+) -> VariantImpact:
+    """The blocking half of `/variant`: parse, align, neighbour search, SASA."""
+    structure = parse_structure_for_analytics(file_path)
+    return variant.analyse(
+        uid,
+        summary,
+        structure,
+        request.notation,
+        chain=request.chain,
+        entry=entry,
+        accession=accession if entry else None,
+    )

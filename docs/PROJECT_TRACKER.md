@@ -29,7 +29,9 @@ Active design: [docs/design/2026-05-23-protein-mvp-slice-design.md](design/2026-
 
 ## In progress
 
-_Nothing in progress._
+| Task | Owner | Branch | Status | Notes |
+|---|---|---|---|---|
+| **P19 Structure prediction from sequence** -- paste a protein sequence, fold it with ESMFold (ESM Atlas API), open the predicted model in the viewer coloured by pLDDT. Covers the feasibility matrix's "real-time folding engine" row with an existing model rather than a new one | shubhodeep | `feature/p19-structure-prediction` | wip | ESM Atlas is unreachable from the build environment; the client is tested against a recorded-shape fixture and must be checked live |
 
 ---
 

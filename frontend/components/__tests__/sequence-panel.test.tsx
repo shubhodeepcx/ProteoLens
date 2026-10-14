@@ -96,7 +96,7 @@ describe("SequencePanel", () => {
 
     const selectedCell = screen.getByRole("button", { name: "Residue B:2" });
     expect(selectedCell).toHaveAttribute("aria-pressed", "true");
-    expect(selectedCell.className).toContain("bg-zinc-100");
+    expect(selectedCell.className).toContain("bg-primary");
   });
 
   it("scrolls a key that arrives from outside (e.g. a 3D click) into view", () => {

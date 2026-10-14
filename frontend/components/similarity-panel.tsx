@@ -42,7 +42,7 @@ export function SimilarityPanel({ proteinId }: { proteinId: string }) {
         count={similar?.members.length}
       >
         {loading && !similar && (
-          <p className="flex items-center gap-2 text-[11px] text-zinc-500">
+          <p className="flex items-center gap-2 text-[11px] text-muted-foreground">
             <Loader2 className="size-3.5 animate-spin" aria-hidden />
             Looking up the UniRef cluster&hellip;
           </p>
@@ -50,7 +50,7 @@ export function SimilarityPanel({ proteinId }: { proteinId: string }) {
         {error && !similar && (
           <p
             role="alert"
-            className="flex items-start gap-1.5 text-[11px] text-red-400"
+            className="flex items-start gap-1.5 text-[11px] text-red-700"
           >
             <AlertCircle className="mt-0.5 size-3.5 shrink-0" aria-hidden />
             Homologs failed: {error.message}
@@ -63,7 +63,7 @@ export function SimilarityPanel({ proteinId }: { proteinId: string }) {
         <BlastRunner proteinId={proteinId} chains={current?.chains ?? []} />
       </AnnotationSection>
 
-      <p className="px-3 py-3 text-[10px] leading-relaxed text-zinc-600">
+      <p className="px-3 py-3 text-[10px] leading-relaxed text-muted-foreground/70">
         Homologs from UniProt&rsquo;s UniRef clusters. BLAST searches run on
         EBI&rsquo;s NCBI BLAST service, which uses the same NCBI algorithms.
       </p>

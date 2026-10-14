@@ -41,7 +41,7 @@ export function AnnotationsPanel({ proteinId }: { proteinId: string }) {
 
   if (loading && !annotations) {
     return (
-      <div className="flex h-full items-center justify-center text-zinc-500">
+      <div className="flex h-full items-center justify-center text-muted-foreground">
         <Loader2 className="size-5 animate-spin" aria-hidden />
         <span className="ml-2 text-xs">Fetching annotations&hellip;</span>
       </div>
@@ -54,8 +54,8 @@ export function AnnotationsPanel({ proteinId }: { proteinId: string }) {
         role="alert"
         className="flex h-full flex-col items-center justify-center gap-2 px-4 text-center"
       >
-        <AlertCircle className="size-6 text-red-400" aria-hidden />
-        <p className="text-xs text-red-400">Annotations failed: {error.message}</p>
+        <AlertCircle className="size-6 text-red-700" aria-hidden />
+        <p className="text-xs text-red-700">Annotations failed: {error.message}</p>
       </div>
     );
   }
@@ -63,7 +63,7 @@ export function AnnotationsPanel({ proteinId }: { proteinId: string }) {
   if (!annotations) {
     return (
       <div className="flex h-full items-center justify-center px-4 text-center">
-        <p className="text-xs text-zinc-500">Load a protein to see annotations.</p>
+        <p className="text-xs text-muted-foreground">Load a protein to see annotations.</p>
       </div>
     );
   }
@@ -71,13 +71,13 @@ export function AnnotationsPanel({ proteinId }: { proteinId: string }) {
   if (!annotations.accession_resolved) {
     return (
       <div className="flex h-full flex-col overflow-y-auto">
-        <div className="flex items-start gap-2 border-b border-zinc-800 px-3 py-3">
-          <Info className="mt-0.5 size-4 shrink-0 text-zinc-500" aria-hidden />
+        <div className="flex items-start gap-2 border-b border-border px-3 py-3">
+          <Info className="mt-0.5 size-4 shrink-0 text-muted-foreground" aria-hidden />
           <div>
-            <p className="text-xs text-zinc-400">
+            <p className="text-xs text-muted-foreground">
               No UniProt annotations for this structure.
             </p>
-            <p className="text-[11px] leading-relaxed text-zinc-500">
+            <p className="text-[11px] leading-relaxed text-muted-foreground">
               {annotations.resolution_note} What follows is measured from the
               coordinate file itself.
             </p>
@@ -108,7 +108,7 @@ export function AnnotationsPanel({ proteinId }: { proteinId: string }) {
       <FunctionalRegionsPanel proteinId={proteinId} />
       <FeatureSections a={annotations} />
 
-      <p className="px-3 py-3 text-[10px] leading-relaxed text-zinc-600">
+      <p className="px-3 py-3 text-[10px] leading-relaxed text-muted-foreground/70">
         {annotations.resolution_note} Annotation data from UniProtKB.
       </p>
     </div>

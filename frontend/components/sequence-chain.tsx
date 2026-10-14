@@ -24,10 +24,10 @@ export function SequenceChain({ chain, selected, onToggle }: SequenceChainProps)
   const rowCount = Math.ceil(residues.length / COLS);
 
   return (
-    <div className="border-t border-zinc-800 px-3 py-3">
-      <h3 className="mb-2 flex items-baseline gap-2 text-[10px] font-semibold uppercase tracking-wide text-zinc-400">
+    <div className="border-t border-border px-3 py-3">
+      <h3 className="mb-2 flex items-baseline gap-2 text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
         <span>Chain {chain.label}</span>
-        <span className="font-normal normal-case tracking-normal text-zinc-500">
+        <span className="font-normal normal-case tracking-normal text-muted-foreground">
           {chain.residue_count.toLocaleString()} residues
         </span>
       </h3>
@@ -42,7 +42,7 @@ export function SequenceChain({ chain, selected, onToggle }: SequenceChainProps)
             <React.Fragment key={row}>
               <span
                 aria-hidden
-                className="pr-1 text-right font-mono text-[10px] leading-5 text-zinc-600 tabular-nums"
+                className="pr-1 text-right font-mono text-[10px] leading-5 text-muted-foreground/70 tabular-nums"
               >
                 {start + 1}
               </span>
@@ -61,10 +61,10 @@ export function SequenceChain({ chain, selected, onToggle }: SequenceChainProps)
                     onClick={() => onToggle(key)}
                     className={cn(
                       "h-5 rounded-[3px] text-center font-mono text-[11px] leading-5 transition-colors",
-                      "focus-visible:outline-1 focus-visible:outline-offset-1 focus-visible:outline-zinc-300",
+                      "focus-visible:outline-1 focus-visible:outline-offset-1 focus-visible:outline-ring",
                       isSelected
-                        ? "bg-zinc-100 font-semibold text-zinc-950 ring-1 ring-zinc-100"
-                        : cn(RESIDUE_CLASS_TEXT[residueClass(aa)], "hover:bg-zinc-800"),
+                        ? "bg-primary font-semibold text-primary-foreground ring-1 ring-primary"
+                        : cn(RESIDUE_CLASS_TEXT[residueClass(aa)], "hover:bg-accent"),
                     )}
                   >
                     {aa}

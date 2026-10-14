@@ -12,11 +12,11 @@ function Metric({
   unit?: string;
 }) {
   return (
-    <div className="rounded-md border border-zinc-800 bg-zinc-900/30 px-3 py-2">
-      <div className="text-[10px] uppercase tracking-wide text-zinc-500">{label}</div>
+    <div className="rounded-md border border-border bg-muted/50 px-3 py-2">
+      <div className="text-[10px] uppercase tracking-wide text-muted-foreground">{label}</div>
       <div className="mt-0.5 flex items-baseline gap-1">
-        <span className="text-lg font-semibold text-zinc-100">{value}</span>
-        {unit && <span className="text-xs text-zinc-500">{unit}</span>}
+        <span className="text-lg font-semibold text-foreground">{value}</span>
+        {unit && <span className="text-xs text-muted-foreground">{unit}</span>}
       </div>
     </div>
   );
@@ -25,10 +25,10 @@ function Metric({
 function Field({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex items-baseline justify-between gap-3 py-1">
-      <span className="shrink-0 text-[10px] uppercase tracking-wide text-zinc-500">
+      <span className="shrink-0 text-[10px] uppercase tracking-wide text-muted-foreground">
         {label}
       </span>
-      <span className="truncate text-right text-xs text-zinc-200">{value}</span>
+      <span className="truncate text-right text-xs text-foreground">{value}</span>
     </div>
   );
 }
@@ -40,7 +40,7 @@ export function OverviewPanel() {
   if (!summary) {
     return (
       <div className="flex h-full items-center justify-center px-4 text-center">
-        <p className="text-xs text-zinc-500">Load a protein to see its details.</p>
+        <p className="text-xs text-muted-foreground">Load a protein to see its details.</p>
       </div>
     );
   }
@@ -48,10 +48,10 @@ export function OverviewPanel() {
   return (
     <div className="flex h-full flex-col overflow-y-auto">
       <div className="px-3 py-3">
-        <h3 className="mb-2 text-[10px] font-semibold uppercase tracking-wide text-zinc-400">
+        <h3 className="mb-2 text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
           Structure
         </h3>
-        <div className="rounded-md border border-zinc-800 bg-zinc-900/30 px-3 py-2">
+        <div className="rounded-md border border-border bg-muted/50 px-3 py-2">
           <Field label="Name" value={summary.name?.trim() || "Unnamed"} />
           <Field label="Organism" value={summary.organism?.trim() || "Unknown"} />
           <Field
@@ -96,11 +96,11 @@ export function OverviewPanel() {
       </div>
 
       {summary.warnings.length > 0 && (
-        <div className="border-t border-zinc-800 px-3 py-3">
-          <h3 className="mb-2 text-[10px] font-semibold uppercase tracking-wide text-zinc-400">
+        <div className="border-t border-border px-3 py-3">
+          <h3 className="mb-2 text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
             Parser warnings
           </h3>
-          <ul className="space-y-1 text-[11px] text-amber-400">
+          <ul className="space-y-1 text-[11px] text-amber-700">
             {summary.warnings.map((w, i) => (
               <li key={i}>&bull; {w}</li>
             ))}

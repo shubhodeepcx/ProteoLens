@@ -27,7 +27,7 @@ export function SurfaceSection({
     <AnnotationSection title="Surface hydrophobicity and charge" count={profiles.length}>
       <table className="w-full text-[11px] tabular-nums">
         <thead>
-          <tr className="text-[10px] uppercase tracking-wide text-zinc-500">
+          <tr className="text-[10px] uppercase tracking-wide text-muted-foreground">
             <th className="py-1 text-left font-normal">Chain</th>
             <th className="py-1 text-right font-normal">Net charge</th>
             <th className="py-1 text-right font-normal">Surface charge</th>
@@ -35,9 +35,9 @@ export function SurfaceSection({
             <th className="py-1 text-right font-normal">Surface KD</th>
           </tr>
         </thead>
-        <tbody className="text-zinc-300">
+        <tbody className="text-foreground/80">
           {profiles.map((profile) => (
-            <tr key={profile.chain} className="border-t border-zinc-800/60">
+            <tr key={profile.chain} className="border-t border-border">
               <td className="py-1 text-left font-mono">{profile.chain}</td>
               <td className="py-1 text-right">{signed(profile.net_charge)}</td>
               <td className="py-1 text-right">
@@ -53,7 +53,7 @@ export function SurfaceSection({
           ))}
         </tbody>
       </table>
-      <p className="mt-2 text-[10px] leading-relaxed text-zinc-500">
+      <p className="mt-2 text-[10px] leading-relaxed text-muted-foreground">
         {note} Histidine is counted apart from the charge: its side-chain pKa sits near
         neutral, so calling it positive at pH 7 would overstate it.
       </p>
@@ -70,7 +70,7 @@ export function MappingSection({ mappings }: { mappings: ChainMapping[] }) {
   if (mappings.length === 0) return null;
   return (
     <AnnotationSection title="UniProt position mapping" count={mappings.length} defaultOpen={false}>
-      <p className="mb-2 text-[10px] leading-relaxed text-zinc-500">
+      <p className="mb-2 text-[10px] leading-relaxed text-muted-foreground">
         A UniProt sequence position is not a residue number. Each chain is aligned to
         the UniProt sequence and positions are read through that alignment; a chain
         the alignment does not support is refused rather than guessed at.
@@ -78,15 +78,15 @@ export function MappingSection({ mappings }: { mappings: ChainMapping[] }) {
       <ul className="space-y-1.5">
         {mappings.map((mapping) => (
           <li key={mapping.chain} className="text-[11px] leading-relaxed">
-            <span className="font-mono text-zinc-200">Chain {mapping.chain}</span>{" "}
-            <span className={mapping.mapped ? "text-emerald-400" : "text-amber-400"}>
+            <span className="font-mono text-foreground">Chain {mapping.chain}</span>{" "}
+            <span className={mapping.mapped ? "text-emerald-700" : "text-amber-700"}>
               {mapping.mapped ? "mapped" : "not mapped"}
             </span>{" "}
-            <span className="text-zinc-500">
+            <span className="text-muted-foreground">
               ({mapping.identity_percent}% identity over {mapping.aligned_columns}{" "}
               aligned columns)
             </span>
-            <p className="text-[10px] text-zinc-400">
+            <p className="text-[10px] text-muted-foreground">
               {mapping.mapped ? mapping.offset_note : mapping.note}
             </p>
           </li>

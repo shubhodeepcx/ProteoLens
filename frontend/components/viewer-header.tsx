@@ -35,22 +35,22 @@ export function ViewerHeader({
   const ready = source !== null;
 
   return (
-    <header className="flex h-12 shrink-0 items-center gap-3 border-b border-zinc-800 px-4">
+    <header className="flex h-12 shrink-0 items-center gap-3 border-b border-border px-4">
       <Link
         href="/"
-        className="flex items-center gap-1.5 text-sm text-zinc-400 hover:text-zinc-100"
+        className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground"
       >
         <ProteoLensLogo className="size-4" />
         <span className="font-semibold">ProteoLens</span>
       </Link>
-      <span aria-hidden className="text-zinc-700">
+      <span aria-hidden className="text-muted-foreground/60">
         /
       </span>
       <span className="text-sm font-medium">{title}</span>
       {source && (
         <Badge
           variant="outline"
-          className="border-zinc-700 text-[10px] text-zinc-400 uppercase"
+          className="border-input text-[10px] text-muted-foreground uppercase"
         >
           {source}
         </Badge>
@@ -59,7 +59,7 @@ export function ViewerHeader({
       <div className="ml-auto flex items-center gap-1.5">
         <span
           data-testid="selection-count"
-          className="text-[11px] text-zinc-500 tabular-nums"
+          className="text-[11px] text-muted-foreground tabular-nums"
         >
           {selectedCount} selected
         </span>
@@ -70,7 +70,7 @@ export function ViewerHeader({
           <Link
             href={`/compare?a=${encodeURIComponent(proteinId)}`}
             title="Compare with another structure"
-            className="inline-flex h-7 items-center gap-1.5 rounded-md px-2 text-[11px] text-zinc-400 transition-colors hover:bg-zinc-800 hover:text-zinc-100"
+            className="inline-flex h-7 items-center gap-1.5 rounded-md px-2 text-[11px] text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
           >
             <Columns2 className="size-3.5" aria-hidden />
             Compare

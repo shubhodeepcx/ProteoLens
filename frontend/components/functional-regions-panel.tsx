@@ -47,7 +47,7 @@ export function FunctionalRegionsPanel({ proteinId }: { proteinId: string }) {
 
   if (loading && !functional) {
     return (
-      <div className="flex items-center justify-center gap-2 border-b border-zinc-800 px-3 py-4 text-zinc-500">
+      <div className="flex items-center justify-center gap-2 border-b border-border px-3 py-4 text-muted-foreground">
         <Loader2 className="size-4 animate-spin" aria-hidden />
         <span className="text-xs">Locating functional regions&hellip;</span>
       </div>
@@ -58,7 +58,7 @@ export function FunctionalRegionsPanel({ proteinId }: { proteinId: string }) {
     return (
       <div
         role="alert"
-        className="flex items-center gap-2 border-b border-zinc-800 px-3 py-3 text-xs text-red-400"
+        className="flex items-center gap-2 border-b border-border px-3 py-3 text-xs text-red-700"
       >
         <AlertCircle className="size-4 shrink-0" aria-hidden />
         <span>Functional regions failed: {error.message}</span>
@@ -80,7 +80,7 @@ export function FunctionalRegionsPanel({ proteinId }: { proteinId: string }) {
       <MappingSection mappings={functional.chain_mappings} />
       <ul
         data-testid="functional-notes"
-        className="space-y-1 px-3 py-3 text-[10px] leading-relaxed text-zinc-600"
+        className="space-y-1 px-3 py-3 text-[10px] leading-relaxed text-muted-foreground/70"
       >
         {functional.notes.map((note) => (
           <li key={note}>{note}</li>

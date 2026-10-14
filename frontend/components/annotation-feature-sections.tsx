@@ -15,13 +15,13 @@ function FeatureList({ features }: { features: SequenceFeature[] }) {
     <ul className="space-y-1">
       {features.map((feature, i) => (
         <li key={i} className="flex items-baseline gap-2 text-[11px] leading-relaxed">
-          <span className="w-20 shrink-0 font-mono tabular-nums text-zinc-500">
+          <span className="w-20 shrink-0 font-mono tabular-nums text-muted-foreground">
             {formatRange(feature.start, feature.end)}
           </span>
-          <span className="text-zinc-300">
+          <span className="text-foreground/80">
             {feature.type}
             {feature.description && (
-              <span className="text-zinc-500"> · {feature.description}</span>
+              <span className="text-muted-foreground"> · {feature.description}</span>
             )}
           </span>
         </li>
@@ -42,16 +42,16 @@ export function SubcellularLocationSection({
     <AnnotationSection title="Subcellular Location" count={locations.length}>
       <ul className="space-y-1">
         {locations.map((location, i) => (
-          <li key={i} className="text-[11px] leading-relaxed text-zinc-300">
+          <li key={i} className="text-[11px] leading-relaxed text-foreground/80">
             {location.location}
             {location.topology && (
-              <span className="text-zinc-500"> · {location.topology}</span>
+              <span className="text-muted-foreground"> · {location.topology}</span>
             )}
           </li>
         ))}
       </ul>
       {notes.map((note, i) => (
-        <p key={i} className="mt-2 text-[11px] leading-relaxed text-zinc-500">
+        <p key={i} className="mt-2 text-[11px] leading-relaxed text-muted-foreground">
           {note}
         </p>
       ))}
@@ -76,20 +76,20 @@ export function DiseaseSection({ diseases }: { diseases: DiseaseAssociation[] })
         {diseases.map((disease, i) => (
           <li
             key={i}
-            className="rounded-md border border-zinc-800 bg-zinc-900/30 px-3 py-2"
+            className="rounded-md border border-border bg-muted/50 px-3 py-2"
           >
             <div className="flex items-baseline justify-between gap-2">
-              <span className="text-xs font-medium text-zinc-200">
+              <span className="text-xs font-medium text-foreground">
                 {disease.name}
               </span>
               {disease.acronym && (
-                <span className="shrink-0 text-[10px] uppercase tracking-wide text-zinc-500">
+                <span className="shrink-0 text-[10px] uppercase tracking-wide text-muted-foreground">
                   {disease.acronym}
                 </span>
               )}
             </div>
             {disease.description && (
-              <p className="mt-1 text-[11px] leading-relaxed text-zinc-400">
+              <p className="mt-1 text-[11px] leading-relaxed text-muted-foreground">
                 {disease.description}
               </p>
             )}
@@ -118,7 +118,7 @@ export function PtmSection({
   return (
     <AnnotationSection title="PTM / Processing" count={features.length || undefined}>
       {notes.map((note, i) => (
-        <p key={i} className="mb-2 text-[11px] leading-relaxed text-zinc-400">
+        <p key={i} className="mb-2 text-[11px] leading-relaxed text-muted-foreground">
           {note}
         </p>
       ))}
@@ -138,7 +138,7 @@ export function CrossReferencesSection({ refs }: { refs: CrossReference[] }) {
     <AnnotationSection title="Cross-references" count={refs.length}>
       {[...groups].map(([database, entries]) => (
         <div key={database} className="mt-2 first:mt-0">
-          <div className="mb-1 text-[10px] uppercase tracking-wide text-zinc-500">
+          <div className="mb-1 text-[10px] uppercase tracking-wide text-muted-foreground">
             {database}
           </div>
           <ul className="space-y-1">
@@ -146,7 +146,7 @@ export function CrossReferencesSection({ refs }: { refs: CrossReference[] }) {
               <li key={ref.id} className="text-[11px] leading-relaxed">
                 <Outbound href={ref.url}>{ref.id}</Outbound>
                 {ref.description && (
-                  <span className="ml-1 text-zinc-400">{ref.description}</span>
+                  <span className="ml-1 text-muted-foreground">{ref.description}</span>
                 )}
               </li>
             ))}

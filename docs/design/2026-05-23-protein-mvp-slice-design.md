@@ -96,7 +96,7 @@ g:\protein\
 │   └── design\
 │       └── 2026-05-23-protein-mvp-slice-design.md   # This file
 │
-├── CONTRIBUTING.md                         # Contributor guide
+├── CONTRIBUTING.md                   # Contributor guide
 └── README.md
 ```
 
@@ -325,7 +325,7 @@ Frontend → /viewer/{id}
 - Mol* itself not unit-tested; treated as a trusted library.
 
 ### Manual smoke tests
-- `docs/smoke-tests.md` lists the demo sequence for each phase (P0–P5). A contributor claims a phase done only when its smoke test passes.
+- `docs/smoke-tests.md` lists the demo sequence for each phase (P0–P5). A phase is marked done only when its smoke test passes.
 
 ---
 
@@ -354,17 +354,17 @@ The initial tracker is created with this design and seeded with P0–P5 task lis
 
 ## 10. Contributor rules
 
-Living document at `CONTRIBUTING.md` (repo root). Read by every contributor before their first change.
+Living document at `CONTRIBUTING.md` (repo root). Every contributor reads it before starting work.
 
 ### What it contains
-1. **Mandatory reading before any work** — `docs/spec.md`, `docs/sdlc.md`, `docs/PROJECT_TRACKER.md`, `CONTRIBUTING.md` itself, per-directory `CONTRIBUTING.md` if present.
-2. **Claim-before-code rule** — the contributor updates the tracker to In progress with owner + branch **before** the first edit.
-3. **Branch + commit conventions** — `feature/<phase>-<slug>`, commits authored by the repo owner. No `--no-verify`. No force-push to `main`.
-4. **Coding standards** — TypeScript strict on frontend, full type hints on backend, components ≤ 200 LOC, Pydantic at API boundary, pure analytics functions.
-5. **Definition of done** — code merged + phase smoke test passes + tracker Done with PR link + decisions log appended if architectural choice made.
-6. **Parallel work etiquette** — independent tasks (separate phases / non-overlapping files) can be parallelized via separate git worktrees; cross-phase or shared-file work serializes.
-7. **Destructive-action gate** — mirrors the user's #1 hard global rule. No `git reset --hard`, no `rm -rf` outside your own worktree, no bulk-mutating scripts, no force-push without explicit in-turn user approval.
-8. **Update protocol** — after non-trivial work, update tracker (status + Done column) and append to decisions log if a new architectural choice was made. This is the handoff for the next contributor.
+1. **Mandatory reading before any work**: `docs/spec.md`, `docs/sdlc.md`, `docs/PROJECT_TRACKER.md`, `CONTRIBUTING.md` itself, per-directory `README.md` if present.
+2. **Claim-before-code rule**: the contributor updates the tracker to In progress with owner + branch **before** the first edit.
+3. **Branch + commit conventions**: `feature/<phase>-<slug>`, commits authored by the repo owner. No `--no-verify`. No force-push to `main`.
+4. **Coding standards**: TypeScript strict on frontend, full type hints on backend, components ≤ 200 LOC, Pydantic at API boundary, pure analytics functions.
+5. **Definition of done**: code merged + phase smoke test passes + tracker Done with PR link + decisions log appended if architectural choice made.
+6. **Parallel work**: independent tasks (separate phases / non-overlapping files) can be developed in parallel on separate branches or worktrees; cross-phase or shared-file work serializes.
+7. **Destructive-action gate**: no `git reset --hard`, no `rm -rf` outside your own worktree, no bulk-mutating scripts, no force-push without explicit approval from the project owner.
+8. **Update protocol**: after non-trivial work, update tracker (status + Done column) and append to decisions log if a new architectural choice was made. This is the handoff for the next contributor.
 
 ---
 

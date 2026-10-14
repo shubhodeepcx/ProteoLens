@@ -32,6 +32,7 @@ from __future__ import annotations
 import logging
 import re
 from dataclasses import dataclass
+from typing import TYPE_CHECKING
 
 from Bio.Align import substitution_matrices
 from Bio.PDB import NeighborSearch
@@ -43,6 +44,7 @@ from app.models.variant import (
     ImpactFlag,
     Numbering,
     Physicochemistry,
+    Severity,
     VariantImpact,
     VariantKind,
     VariantSite,
@@ -51,6 +53,12 @@ from app.services import functional
 from app.services.analytics import KD_HYDROPATHY
 from app.services.external import Metadata
 from app.services.parser import is_nucleic_acid_chain
+
+if TYPE_CHECKING:
+    from Bio.PDB.Atom import Atom
+    from Bio.PDB.Model import Model
+    from Bio.PDB.Residue import Residue
+    from Bio.PDB.Structure import Structure
 
 logger = logging.getLogger(__name__)
 
@@ -271,11 +279,11 @@ def locate(
 # ------------------------------------------------------------ measuring
 
 
-def _heavy_atoms(residue) -> list:
+def _heavy_atoms(residue: Residue) -> list[Atom]:
     return [atom for atom in residue.get_atoms() if not functional._is_hydrogen(atom)]
 
 
-def _polymer_residues(model) -> dict[str, list]:
+def _polymer_residues(model: Model) -> dict[str, list[Residue]]:
     """Chain label -> polymer residues in ordinal order, as the parser counts them."""
     return {
         chain.id: [r for r in chain.get_residues() if r.id[0] == " "]
@@ -284,7 +292,7 @@ def _polymer_residues(model) -> dict[str, list]:
 
 
 def measure_sites(
-    structure,
+    structure: Structure,
     chains: list[functional.ChainResidues],
     hits: list[ResidueRef],
     *,
@@ -390,7 +398,7 @@ def flags_for(
     """Plain-language reasons for concern at one site. Pure."""
     flags: list[ImpactFlag] = []
 
-    def add(severity, code, text):
+    def add(severity: Severity, code: str, text: str) -> None:
         flags.append(ImpactFlag(severity=severity, code=code, text=text))
 
     if parsed.kind == "synonymous":
@@ -455,7 +463,9 @@ def concern_of(flags: list[ImpactFlag]) -> Concern:
     return "high" if top == 2 else "moderate" if top == 1 else "low"
 
 
-def curated_labels(entry: Metadata | None, chains, accession: str | None) -> dict[str, list[str]]:
+def curated_labels(
+    entry: Metadata | None, chains: list[functional.ChainResidues], accession: str | None
+) -> dict[str, list[str]]:
     """Selection key -> UniProt site labels at that residue."""
     reference = functional.entry_sequence(entry) if entry else ""
     if not reference:
@@ -476,7 +486,7 @@ def curated_labels(entry: Metadata | None, chains, accession: str | None) -> dic
 def analyse(
     uid: str,
     summary: ProteinSummary,
-    structure,
+    structure: Structure,
     notation: str,
     *,
     chain: str | None = None,

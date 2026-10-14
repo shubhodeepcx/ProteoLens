@@ -2,7 +2,7 @@
 
 A web-based workspace for protein 3D visualization, structural analysis, annotation, and reporting. Combines a Mol*-based molecular viewer with bioinformatics pipelines, public-database integration (RCSB PDB, AlphaFold DB, UniProt), and AI-assisted annotation.
 
-**Status:** P0-P10 plus A1, A5 and Compounds are merged: viewer, upload and parse, analytics, linked sequence panel, RCSB/AlphaFold/UniProt search and import, UniProt annotations, structure comparison, BLAST and UniRef similarity, Complex Portal, pLDDT/PAE confidence, functional regions and bound compounds. 582 backend + 449 frontend tests run in CI on every pull request. Loaded proteins are kept in a SQLite table, so they survive a restart. Follow-ups are tracked in [docs/PROJECT_TRACKER.md](docs/PROJECT_TRACKER.md).
+**Status:** P0-P16 are merged: viewer, upload and parse, analytics, linked sequence panel, RCSB/AlphaFold/UniProt search and import, UniProt annotations, structure comparison, BLAST and UniRef similarity, Complex Portal, pLDDT/PAE confidence, functional regions, bound compounds, structural variant impact, printable report with export, DNA sequence tools, surface electrostatics and the Explain assistant. Clinical evidence, oncology, the Central Dogma Explorer, neoantigens, conservation, docking and ESMFold structure prediction are in review as pull requests. 656 backend + 480 frontend tests run in CI on every pull request. Loaded proteins are kept in a SQLite table, so they survive a restart. Follow-ups are tracked in [docs/PROJECT_TRACKER.md](docs/PROJECT_TRACKER.md).
 
 **Smoke tests:** After setup, run [docs/smoke-tests.md](docs/smoke-tests.md) to verify each phase end-to-end.
 

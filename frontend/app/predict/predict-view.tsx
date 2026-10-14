@@ -127,8 +127,7 @@ export function PredictView() {
           experimental entry or an AlphaFold DB model (both under Search) is usually better.
         </p>
         <p>
-          Up to {MAX_PREDICT_LENGTH} residues per request, which is the ESM Atlas limit; fold larger
-          proteins one domain at a time. The sequence leaves your machine for Meta&apos;s public ESM
+          {`Up to ${MAX_PREDICT_LENGTH} residues per request, which is the ESM Atlas limit; fold larger proteins one domain at a time. `} The sequence leaves your machine for Meta&apos;s public ESM
           Atlas service.
         </p>
       </section>

@@ -19,19 +19,19 @@ export const metadata = {
  */
 export default function ComparePage() {
   return (
-    <div className="flex min-h-screen flex-col bg-zinc-950 text-zinc-100">
-      <header className="flex h-14 shrink-0 items-center gap-3 border-b border-zinc-800 px-4">
+    <div className="flex min-h-screen flex-col bg-background text-foreground">
+      <header className="flex h-14 shrink-0 items-center gap-3 border-b border-border px-4">
         <Link
           href="/"
-          className="inline-flex items-center gap-1.5 text-xs text-zinc-400 transition-colors hover:text-zinc-100"
+          className="inline-flex items-center gap-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground"
         >
           <ArrowLeft className="size-3.5" aria-hidden />
           Back
         </Link>
-        <span className="h-5 w-px bg-zinc-800" aria-hidden />
+        <span className="h-5 w-px bg-muted" aria-hidden />
         <ProteoLensLogo className="size-4" />
         <h1 className="text-sm font-semibold tracking-tight">Compare structures</h1>
-        <span className="ml-auto text-[10px] font-semibold uppercase tracking-wide text-zinc-500">
+        <span className="ml-auto text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
           Metrics · Alignment · RMSD
         </span>
       </header>
@@ -39,7 +39,7 @@ export default function ComparePage() {
       <Suspense
         fallback={
           <div className="flex flex-1 items-center justify-center">
-            <Loader2 className="size-5 animate-spin text-zinc-600" aria-hidden />
+            <Loader2 className="size-5 animate-spin text-muted-foreground/70" aria-hidden />
           </div>
         }
       >

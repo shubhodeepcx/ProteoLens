@@ -129,7 +129,7 @@ export function DropZone({ className }: { className?: string }) {
       className={`relative flex w-full max-w-2xl cursor-pointer flex-col items-center justify-center border-2 border-dashed p-10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
         isDragging
           ? "border-primary bg-primary/5"
-          : "border-border/60 hover:border-border"
+          : "border-border/60 bg-card/85 backdrop-blur-sm hover:border-border"
       } ${isUploading ? "pointer-events-none opacity-70" : ""} ${className ?? ""}`}
       aria-label="Upload protein structure"
       aria-busy={isUploading}

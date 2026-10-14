@@ -8,9 +8,9 @@ const SOURCE_LABEL: Record<SearchSource, string> = {
 
 // One accent per database so a mixed result list stays scannable.
 const SOURCE_CLASS: Record<SearchSource, string> = {
-  rcsb: "border-sky-800/70 bg-sky-950/50 text-sky-300",
-  alphafold: "border-violet-800/70 bg-violet-950/50 text-violet-300",
-  uniprot: "border-emerald-800/70 bg-emerald-950/50 text-emerald-300",
+  rcsb: "border-sky-200 bg-sky-50 text-sky-700",
+  alphafold: "border-violet-200 bg-violet-50 text-violet-700",
+  uniprot: "border-emerald-200 bg-emerald-50 text-emerald-700",
 };
 
 export function sourceLabel(source: SearchSource): string {

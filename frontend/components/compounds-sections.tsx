@@ -22,37 +22,37 @@ export const CATEGORY_META: Record<
 > = {
   ligand: {
     title: "Ligands",
-    badge: "border-violet-500/40 bg-violet-500/10 text-violet-300",
+    badge: "border-violet-500/40 bg-violet-500/10 text-violet-700",
     blurb: "Small molecules bound to the protein: substrates, inhibitors, drugs.",
   },
   cofactor: {
     title: "Cofactors & nucleotides",
-    badge: "border-amber-500/40 bg-amber-500/10 text-amber-300",
+    badge: "border-amber-500/40 bg-amber-500/10 text-amber-700",
     blurb: "Hemes, flavins, NAD(P), ATP/GTP and other groups enzymes need to work.",
   },
   ion: {
     title: "Ions",
-    badge: "border-cyan-500/40 bg-cyan-500/10 text-cyan-300",
+    badge: "border-cyan-500/40 bg-cyan-500/10 text-cyan-700",
     blurb: "Metal and halide ions, often structural or catalytic.",
   },
   carbohydrate: {
     title: "Carbohydrates",
-    badge: "border-emerald-500/40 bg-emerald-500/10 text-emerald-300",
+    badge: "border-emerald-500/40 bg-emerald-500/10 text-emerald-700",
     blurb: "Sugars and glycans, including glycosylation on the protein surface.",
   },
   free_amino_acid: {
     title: "Free amino acids",
-    badge: "border-rose-500/40 bg-rose-500/10 text-rose-300",
+    badge: "border-rose-500/40 bg-rose-500/10 text-rose-700",
     blurb: "Amino acids bound as molecules in their own right, not part of a chain.",
   },
   modified_residue: {
     title: "Modified residues",
-    badge: "border-sky-500/40 bg-sky-500/10 text-sky-300",
+    badge: "border-sky-500/40 bg-sky-500/10 text-sky-700",
     blurb: "Residues inside the protein chain carrying a modification (e.g. phosphorylation).",
   },
   additive: {
     title: "Additives",
-    badge: "border-zinc-600 bg-zinc-800/60 text-zinc-400",
+    badge: "border-ring bg-muted/60 text-muted-foreground",
     blurb: "Crystallisation, cryoprotectant or buffer components.",
   },
 };
@@ -68,22 +68,22 @@ function instanceLabel(code: string, instance: CompoundInstance): string {
 function GroupCard({ group }: { group: CompoundGroup }) {
   const meta = CATEGORY_META[group.category];
   return (
-    <li className="rounded-md border border-zinc-800 bg-zinc-900/30 px-2.5 py-2">
+    <li className="rounded-md border border-border bg-muted/50 px-2.5 py-2">
       <div className="flex items-baseline gap-2">
         <span
           className={cn("rounded border px-1.5 py-0.5 font-mono text-[10px]", meta.badge)}
         >
           {group.code}
         </span>
-        <span className="min-w-0 flex-1 truncate text-xs text-zinc-200" title={group.name ?? ""}>
+        <span className="min-w-0 flex-1 truncate text-xs text-foreground" title={group.name ?? ""}>
           {group.name ?? "Unnamed component"}
         </span>
-        <span className="shrink-0 text-[10px] tabular-nums text-zinc-500">
+        <span className="shrink-0 text-[10px] tabular-nums text-muted-foreground">
           ×{group.instances.length}
         </span>
       </div>
       {(group.formula || group.formula_weight !== null || group.parent_residue) && (
-        <p className="mt-1 text-[10px] text-zinc-500">
+        <p className="mt-1 text-[10px] text-muted-foreground">
           {group.formula && <span className="font-mono">{group.formula}</span>}
           {group.formula_weight !== null && (
             <span> · {group.formula_weight.toFixed(1)} Da</span>
@@ -96,7 +96,7 @@ function GroupCard({ group }: { group: CompoundGroup }) {
           const label = instanceLabel(group.code, instance);
           return (
             <li key={label}>
-              <div className="text-[10px] text-zinc-400">
+              <div className="text-[10px] text-muted-foreground">
                 {label} · {instance.atom_count} atom{instance.atom_count === 1 ? "" : "s"}
                 {group.category !== "modified_residue" && (
                   <span>
@@ -135,7 +135,7 @@ export function CompoundCategorySection({
       count={groups.length}
       defaultOpen={category !== "additive"}
     >
-      <p className="mb-2 text-[10px] text-zinc-500">{meta.blurb}</p>
+      <p className="mb-2 text-[10px] text-muted-foreground">{meta.blurb}</p>
       <ul className="space-y-2">
         {groups.map((group) => (
           <GroupCard key={`${group.category}-${group.code}`} group={group} />
@@ -150,7 +150,7 @@ export function NucleicAcidSection({ chains }: { chains: NucleicAcidChain[] }) {
   if (chains.length === 0) return null;
   return (
     <AnnotationSection title="Nucleic acids" count={chains.length}>
-      <p className="mb-2 text-[10px] text-zinc-500">
+      <p className="mb-2 text-[10px] text-muted-foreground">
         DNA and RNA strands in the file. Contact residues form the protein&apos;s
         nucleic-acid-binding interface.
       </p>
@@ -158,26 +158,26 @@ export function NucleicAcidSection({ chains }: { chains: NucleicAcidChain[] }) {
         {chains.map((chain) => (
           <li
             key={chain.label}
-            className="rounded-md border border-zinc-800 bg-zinc-900/30 px-2.5 py-2"
+            className="rounded-md border border-border bg-muted/50 px-2.5 py-2"
           >
             <div className="flex items-baseline gap-2 text-xs">
-              <span className="rounded border border-orange-500/40 bg-orange-500/10 px-1.5 py-0.5 font-mono text-[10px] text-orange-300">
+              <span className="rounded border border-orange-500/40 bg-orange-500/10 px-1.5 py-0.5 font-mono text-[10px] text-orange-700">
                 {chain.kind}
               </span>
-              <span className="text-zinc-200">Chain {chain.label}</span>
-              <span className="ml-auto text-[10px] tabular-nums text-zinc-500">
+              <span className="text-foreground">Chain {chain.label}</span>
+              <span className="ml-auto text-[10px] tabular-nums text-muted-foreground">
                 {chain.length} nt
                 {chain.gc_fraction !== null &&
                   ` · GC ${(chain.gc_fraction * 100).toFixed(0)}%`}
               </span>
             </div>
             <p
-              className="mt-1 break-all font-mono text-[10px] leading-relaxed text-zinc-400"
+              className="mt-1 break-all font-mono text-[10px] leading-relaxed text-muted-foreground"
               data-testid={`nucleic-sequence-${chain.label}`}
             >
               {chain.sequence}
             </p>
-            <div className="mt-1.5 text-[10px] text-zinc-400">
+            <div className="mt-1.5 text-[10px] text-muted-foreground">
               {chain.contacts.length} protein contact
               {chain.contacts.length === 1 ? "" : "s"}
             </div>

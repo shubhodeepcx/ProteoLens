@@ -63,22 +63,22 @@ export const RESIDUE_CLASS_LABEL: Readonly<Record<ResidueClass, string>> = {
   other: "Other",
 };
 
-/** Tailwind text colours, tuned for contrast on the zinc-950 rail. */
+/** Tailwind text colours, tuned for contrast on the light rail. */
 export const RESIDUE_CLASS_TEXT: Readonly<Record<ResidueClass, string>> = {
-  hydrophobic: "text-amber-300",
-  polar: "text-emerald-300",
-  positive: "text-sky-300",
-  negative: "text-rose-300",
-  other: "text-zinc-500",
+  hydrophobic: "text-amber-700",
+  polar: "text-emerald-700",
+  positive: "text-sky-700",
+  negative: "text-rose-700",
+  other: "text-muted-foreground",
 };
 
 /** Matching swatch backgrounds for the legend. */
 export const RESIDUE_CLASS_SWATCH: Readonly<Record<ResidueClass, string>> = {
-  hydrophobic: "bg-amber-300",
-  polar: "bg-emerald-300",
-  positive: "bg-sky-300",
-  negative: "bg-rose-300",
-  other: "bg-zinc-500",
+  hydrophobic: "bg-amber-400",
+  polar: "bg-emerald-400",
+  positive: "bg-sky-400",
+  negative: "bg-rose-400",
+  other: "bg-muted-foreground",
 };
 
 export const RESIDUE_CLASS_ORDER: readonly ResidueClass[] = [

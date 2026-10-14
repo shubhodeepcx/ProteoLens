@@ -45,7 +45,7 @@ export function SearchForm({
     >
       <div className="relative flex-1">
         <Search
-          className="pointer-events-none absolute left-2.5 top-1/2 size-3.5 -translate-y-1/2 text-zinc-500"
+          className="pointer-events-none absolute left-2.5 top-1/2 size-3.5 -translate-y-1/2 text-muted-foreground"
           aria-hidden
         />
         <label htmlFor="db-search" className="sr-only">
@@ -57,7 +57,7 @@ export function SearchForm({
           value={query}
           onChange={(e) => onQueryChange(e.target.value)}
           placeholder="insulin, 1CRN, P69905…"
-          className="h-9 w-full rounded-md border border-zinc-800 bg-zinc-900/50 pl-8 pr-3 text-sm text-zinc-100 placeholder:text-zinc-600 focus-visible:border-zinc-600 focus-visible:outline-none"
+          className="h-9 w-full rounded-md border border-border bg-muted/70 pl-8 pr-3 text-sm text-foreground placeholder:text-muted-foreground/70 focus-visible:border-ring focus-visible:outline-none"
         />
       </div>
 
@@ -68,7 +68,7 @@ export function SearchForm({
         id="db-source"
         value={source}
         onChange={(e) => onSourceChange(e.target.value as SearchSourceFilter)}
-        className="h-9 rounded-md border border-zinc-800 bg-zinc-900/50 px-2 text-sm text-zinc-100 focus-visible:border-zinc-600 focus-visible:outline-none"
+        className="h-9 rounded-md border border-border bg-muted/70 px-2 text-sm text-foreground focus-visible:border-ring focus-visible:outline-none"
       >
         {SOURCE_OPTIONS.map((o) => (
           <option key={o.value} value={o.value}>
@@ -80,7 +80,7 @@ export function SearchForm({
       <button
         type="submit"
         disabled={isLoading}
-        className="inline-flex h-9 shrink-0 items-center justify-center gap-1.5 rounded-md border border-zinc-700 bg-zinc-800 px-4 text-sm font-medium text-zinc-100 transition-colors hover:bg-zinc-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 disabled:cursor-not-allowed disabled:opacity-60"
+        className="inline-flex h-9 shrink-0 items-center justify-center gap-1.5 rounded-md border border-input bg-muted px-4 text-sm font-medium text-foreground transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-60"
       >
         {isLoading && <Loader2 className="size-3.5 animate-spin" aria-hidden />}
         Search

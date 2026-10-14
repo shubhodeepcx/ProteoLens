@@ -62,5 +62,5 @@ export function formatPointsDelta(value: number, fractionDigits = 2): string {
  * dimmed. Colour carries "these differ", nothing more.
  */
 export function deltaToneClass(value: number): string {
-  return value === 0 ? "text-zinc-600" : "text-zinc-200";
+  return value === 0 ? "text-muted-foreground/70" : "text-foreground";
 }

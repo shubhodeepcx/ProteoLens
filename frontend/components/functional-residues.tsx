@@ -40,8 +40,8 @@ export function ResidueChip({ residue }: { residue: ResidueRef }) {
       className={cn(
         "rounded border px-1.5 py-0.5 font-mono text-[10px] tabular-nums",
         selected
-          ? "border-sky-500 bg-sky-500/20 text-sky-200"
-          : "border-zinc-800 bg-zinc-900/40 text-zinc-300 hover:border-zinc-600 hover:text-zinc-100",
+          ? "border-sky-500 bg-sky-500/20 text-sky-700"
+          : "border-border bg-muted/50 text-foreground/80 hover:border-ring hover:text-foreground",
       )}
     >
       {residue.residue}
@@ -71,7 +71,7 @@ export function ResidueChips({
           type="button"
           onClick={() => setSelection(residues.map((r) => r.key))}
           title={`Select all ${residues.length} residues of ${label}`}
-          className="rounded border border-dashed border-zinc-700 px-1.5 py-0.5 text-[10px] text-zinc-400 hover:border-zinc-500 hover:text-zinc-100"
+          className="rounded border border-dashed border-input px-1.5 py-0.5 text-[10px] text-muted-foreground hover:border-ring hover:text-foreground"
         >
           all {residues.length}
         </button>
@@ -89,7 +89,7 @@ export function ResidueChips({
  */
 export function Unplaced({ note }: { note: string }) {
   return (
-    <p className="rounded border border-amber-900/60 bg-amber-950/30 px-2 py-1 text-[10px] leading-relaxed text-amber-300/90">
+    <p className="rounded border border-amber-200 bg-amber-50 px-2 py-1 text-[10px] leading-relaxed text-amber-700/90">
       {note}
     </p>
   );
@@ -102,8 +102,8 @@ export function EvidenceBadge({ experimental }: { experimental: boolean }) {
       className={cn(
         "shrink-0 rounded px-1 py-px text-[9px] uppercase tracking-wide",
         experimental
-          ? "bg-emerald-950/60 text-emerald-300"
-          : "bg-zinc-800 text-zinc-400",
+          ? "bg-emerald-50 text-emerald-700"
+          : "bg-muted text-muted-foreground",
       )}
       title={
         experimental

@@ -29,7 +29,7 @@ export function ParticipantTable({
     <div className="overflow-x-auto">
       <table className="w-full border-collapse text-left text-[11px]">
         <thead>
-          <tr className="border-b border-zinc-800 text-[10px] uppercase tracking-wide text-zinc-500">
+          <tr className="border-b border-border text-[10px] uppercase tracking-wide text-muted-foreground">
             <th scope="col" className="py-1 pr-2 font-medium">
               Participant
             </th>
@@ -55,32 +55,32 @@ function ParticipantRow({ participant: p }: { participant: ComplexParticipant })
   return (
     <tr
       className={cn(
-        "border-b border-zinc-900 align-top last:border-b-0",
-        p.is_query_protein && "bg-sky-950/30",
+        "border-b border-border align-top last:border-b-0",
+        p.is_query_protein && "bg-sky-50",
       )}
     >
       <th scope="row" className="py-1.5 pr-2 font-normal">
         <span className="flex flex-wrap items-center gap-1.5">
-          <span className="font-medium text-zinc-200">{p.name || p.identifier}</span>
+          <span className="font-medium text-foreground">{p.name || p.identifier}</span>
           {p.is_query_protein && (
-            <span className="rounded bg-sky-900/60 px-1 py-px text-[9px] uppercase tracking-wide text-sky-300">
+            <span className="rounded bg-sky-50 px-1 py-px text-[9px] uppercase tracking-wide text-sky-700">
               This protein
             </span>
           )}
         </span>
         {p.description && (
-          <span className="block text-[10px] leading-snug text-zinc-500">
+          <span className="block text-[10px] leading-snug text-muted-foreground">
             {p.description}
           </span>
         )}
-        <span className="block text-[10px] text-zinc-600">
+        <span className="block text-[10px] text-muted-foreground/70">
           <Outbound href={p.url}>{p.identifier}</Outbound>
         </span>
       </th>
-      <td className="py-1.5 pr-2 text-zinc-400">{p.interactor_type ?? "—"}</td>
-      <td className="py-1.5 text-right tabular-nums text-zinc-300">
+      <td className="py-1.5 pr-2 text-muted-foreground">{p.interactor_type ?? "—"}</td>
+      <td className="py-1.5 text-right tabular-nums text-foreground/80">
         {p.stoichiometry ?? (
-          <span className="text-zinc-600" title="Stoichiometry not curated">
+          <span className="text-muted-foreground/70" title="Stoichiometry not curated">
             n/a
           </span>
         )}

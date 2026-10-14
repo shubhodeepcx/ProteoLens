@@ -28,26 +28,26 @@ export function AnnotationSection({
   const [open, setOpen] = useState(defaultOpen);
 
   return (
-    <section className="border-b border-zinc-800">
+    <section className="border-b border-border">
       <h3>
         <button
           type="button"
           onClick={() => setOpen((o) => !o)}
           aria-expanded={open}
-          className="flex w-full items-center gap-2 px-3 py-2 text-left hover:bg-zinc-900/60"
+          className="flex w-full items-center gap-2 px-3 py-2 text-left hover:bg-accent"
         >
           <ChevronRight
             className={cn(
-              "size-3 shrink-0 text-zinc-500 transition-transform",
+              "size-3 shrink-0 text-muted-foreground transition-transform",
               open && "rotate-90",
             )}
             aria-hidden
           />
-          <span className="text-[10px] font-semibold uppercase tracking-wide text-zinc-300">
+          <span className="text-[10px] font-semibold uppercase tracking-wide text-foreground/80">
             {title}
           </span>
           {count !== undefined && (
-            <span className="ml-auto text-[10px] tabular-nums text-zinc-500">
+            <span className="ml-auto text-[10px] tabular-nums text-muted-foreground">
               {count}
             </span>
           )}
@@ -71,13 +71,13 @@ export function Outbound({
   href: string | null;
   children: ReactNode;
 }) {
-  if (!href) return <span className="text-zinc-300">{children}</span>;
+  if (!href) return <span className="text-foreground/80">{children}</span>;
   return (
     <a
       href={href}
       target="_blank"
       rel="noreferrer noopener"
-      className="inline-flex items-center gap-1 text-sky-400 hover:text-sky-300 hover:underline"
+      className="inline-flex items-center gap-1 text-sky-700 hover:text-sky-700 hover:underline"
     >
       {children}
       <ExternalLink className="size-2.5 shrink-0" aria-hidden />
@@ -88,7 +88,7 @@ export function Outbound({
 /** A small labelled pill — keywords, gene names, lineage steps. */
 export function Chip({ children }: { children: ReactNode }) {
   return (
-    <span className="rounded border border-zinc-800 bg-zinc-900/60 px-1.5 py-0.5 text-[11px] text-zinc-300">
+    <span className="rounded border border-border bg-muted/70 px-1.5 py-0.5 text-[11px] text-foreground/80">
       {children}
     </span>
   );
@@ -98,10 +98,10 @@ export function Chip({ children }: { children: ReactNode }) {
 export function Field({ label, value }: { label: string; value: ReactNode }) {
   return (
     <div className="flex items-baseline justify-between gap-3 py-1">
-      <span className="shrink-0 text-[10px] uppercase tracking-wide text-zinc-500">
+      <span className="shrink-0 text-[10px] uppercase tracking-wide text-muted-foreground">
         {label}
       </span>
-      <span className="text-right text-xs text-zinc-200">{value}</span>
+      <span className="text-right text-xs text-foreground">{value}</span>
     </div>
   );
 }

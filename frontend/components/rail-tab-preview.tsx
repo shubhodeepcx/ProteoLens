@@ -169,7 +169,7 @@ export const DATA_SOURCES: readonly DataSource[] = [
 /** A compact card per integrated database. */
 export function DataSourceCard({ source }: { source: DataSource }) {
   return (
-    <div className="rounded-md border border-border/60 bg-card/40 px-3 py-2.5">
+    <div className="rounded-md border border-border/60 bg-card/85 px-3 py-2.5 backdrop-blur-sm">
       <div className="flex items-baseline justify-between gap-2">
         <span className="text-xs font-semibold">{source.name}</span>
         <span className="truncate font-mono text-[10px] text-muted-foreground">

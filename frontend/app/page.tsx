@@ -6,6 +6,7 @@ import {
   FileDown,
   Boxes,
   ArrowRight,
+  Dna,
 } from "lucide-react";
 import { ProteoLensLogo } from "@/components/logo";
 import { buttonVariants } from "@/components/ui/button";
@@ -79,6 +80,13 @@ export default function HomePage() {
 
         <div className="ml-auto flex items-center gap-2">
           <HealthPill />
+          <Link
+            href="/tools"
+            className={buttonVariants({ size: "sm", variant: "secondary" })}
+          >
+            <Dna aria-hidden />
+            DNA tools
+          </Link>
           <Link
             href="/search"
             className={buttonVariants({ size: "sm", variant: "secondary" })}

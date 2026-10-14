@@ -48,7 +48,9 @@ misplaced one drawn in 3D is a lie.
 from __future__ import annotations
 
 import logging
+from collections.abc import Sequence
 from dataclasses import dataclass
+from typing import TYPE_CHECKING, TypeVar
 
 from Bio.PDB import NeighborSearch
 from Bio.PDB.SASA import ShrakeRupley
@@ -70,7 +72,14 @@ from app.services.compare import GAP, UNKNOWN_RESIDUE, build_aligner
 from app.services.external import Metadata, as_int
 from app.services.parser import is_nucleic_acid_chain, to_one_letter
 
+if TYPE_CHECKING:
+    from Bio.PDB.Atom import Atom
+    from Bio.PDB.Residue import Residue
+    from Bio.PDB.Structure import Structure
+
 logger = logging.getLogger(__name__)
+
+_T = TypeVar("_T")
 
 # --------------------------------------------------------------- thresholds
 
@@ -196,7 +205,7 @@ class ChainReadError(RuntimeError):
     """The structure's chains do not match the summary the parser produced."""
 
 
-def read_chain_residues(structure, summary: ProteinSummary) -> list[ChainResidues]:
+def read_chain_residues(structure: Structure, summary: ProteinSummary) -> list[ChainResidues]:
     """Re-walk the structure with the parser's filter, keeping file numbering.
 
     The parser returns one-letter sequences but no residue numbers, and the
@@ -611,7 +620,7 @@ def _text(value: object) -> str | None:
 
 
 def bound_ligands(
-    structure, chains: list[ChainResidues], *, cutoff: float = CONTACT_CUTOFF_ANGSTROMS
+    structure: Structure, chains: list[ChainResidues], *, cutoff: float = CONTACT_CUTOFF_ANGSTROMS
 ) -> list[BoundLigand]:
     """Every non-polymer group in the file, with the residues it touches.
 
@@ -668,7 +677,7 @@ def bound_ligands(
 
 
 def _describe_ligand(
-    residue,
+    residue: Residue,
     chain_label: str,
     search: NeighborSearch,
     owner: dict[int, tuple[str, int]],
@@ -715,18 +724,18 @@ def _describe_ligand(
     )
 
 
-def _is_hydrogen(atom) -> bool:
+def _is_hydrogen(atom: Atom) -> bool:
     element = (getattr(atom, "element", "") or "").strip().upper()
     if element:
         return element in ("H", "D")
     return atom.get_name().strip().startswith(("H", "D"))
 
 
-def _is_solvent(residue) -> bool:
+def _is_solvent(residue: Residue) -> bool:
     return residue.get_resname().strip().upper() in WATER_NAMES
 
 
-def _is_in_polymer(residue) -> bool:
+def _is_in_polymer(residue: Residue) -> bool:
     """True for a hetero group that is an amino acid sitting inside a chain."""
     names = {atom.get_name().strip().upper() for atom in residue.get_atoms()}
     return all(backbone in names for backbone in _PEPTIDE_BACKBONE)
@@ -735,7 +744,7 @@ def _is_in_polymer(residue) -> bool:
 # ---------------------------------------------------- surface, charge, SASA
 
 
-def strip_non_polymer(structure) -> int:
+def strip_non_polymer(structure: Structure) -> int:
     """Detach every hetero residue from model 1. Returns how many were removed.
 
     Solvent-accessible area is a property of a surface, and which surface is a
@@ -761,7 +770,7 @@ def strip_non_polymer(structure) -> int:
 
 
 def surface_profiles(
-    structure, chains: list[ChainResidues]
+    structure: Structure, chains: list[ChainResidues]
 ) -> tuple[list[SurfaceProfile], str]:
     """Per-residue hydropathy, formal charge and relative accessibility.
 
@@ -779,7 +788,7 @@ def surface_profiles(
 
 
 def _residue_areas(
-    structure, chains: list[ChainResidues]
+    structure: Structure, chains: list[ChainResidues]
 ) -> tuple[dict[str, list[float]], str]:
     """Shrake-Rupley area per residue, keyed by chain, in ordinal order."""
     try:
@@ -968,7 +977,7 @@ def priority_residues(
     return out
 
 
-def _at(values: list, index: int):  # type: ignore[type-arg]
+def _at(values: Sequence[_T], index: int) -> _T | None:
     return values[index] if 0 <= index < len(values) else None
 
 
@@ -978,7 +987,7 @@ def _at(values: list, index: int):  # type: ignore[type-arg]
 def build_functional_regions(
     uid: str,
     summary: ProteinSummary,
-    structure,
+    structure: Structure,
     *,
     accession: str | None,
     resolution_note: str,

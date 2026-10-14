@@ -1,0 +1,134 @@
+"use client";
+
+import { useState } from "react";
+import { ChevronRight } from "lucide-react";
+import { cn } from "@/lib/utils";
+import {
+  chainKeys,
+  chainSegments,
+  classShares,
+  segmentKeys,
+  selectedInChain,
+} from "@/lib/chain-stats";
+import { RESIDUE_CLASS_LABEL, RESIDUE_CLASS_SWATCH } from "@/lib/residue";
+import type { ChainInfo } from "@/lib/types";
+
+interface ChainRowProps {
+  chain: ChainInfo;
+  /** This chain's share of the structure's residues, 0-1. */
+  share: number;
+  selected: ReadonlySet<string>;
+  onSelect: (keys: Iterable<string>) => void;
+  defaultOpen: boolean;
+}
+
+export function ChainRow({
+  chain,
+  share,
+  selected,
+  onSelect,
+  defaultOpen,
+}: ChainRowProps) {
+  const [open, setOpen] = useState(defaultOpen);
+  const hits = selectedInChain(chain.label, chain.residue_count, selected);
+  const shares = classShares(chain.sequence);
+  const segments = chainSegments(chain.residue_count);
+
+  return (
+    <div className="border-b border-border">
+      <div className="flex items-stretch">
+        <button
+          type="button"
+          aria-expanded={open}
+          aria-label={`${open ? "Collapse" : "Expand"} chain ${chain.label}`}
+          onClick={() => setOpen((v) => !v)}
+          className="flex w-7 shrink-0 items-center justify-center text-muted-foreground/70 hover:text-foreground"
+        >
+          <ChevronRight
+            aria-hidden
+            className={cn("size-3.5 transition-transform", open && "rotate-90")}
+          />
+        </button>
+
+        <button
+          type="button"
+          data-testid={`chain-select-${chain.label}`}
+          onClick={() => onSelect(chainKeys(chain.label, chain.residue_count))}
+          title={`Select all ${chain.residue_count} residues of chain ${chain.label}`}
+          className="flex-1 py-2 pr-3 text-left hover:bg-accent"
+        >
+          <div className="flex items-baseline gap-2">
+            <span className="font-mono text-xs font-semibold text-foreground">
+              {chain.label}
+            </span>
+            <span className="text-[11px] text-muted-foreground tabular-nums">
+              {chain.residue_count.toLocaleString()} aa
+            </span>
+            <span className="text-[10px] text-muted-foreground/70 tabular-nums">
+              {(share * 100).toFixed(0)}%
+            </span>
+            {hits > 0 && (
+              <span className="ml-auto text-[10px] text-sky-700 tabular-nums">
+                {hits.toLocaleString()} sel
+              </span>
+            )}
+          </div>
+
+          {/* Residue-class composition, same five classes and colours as the
+              sequence panel's legend. */}
+          <div
+            aria-hidden
+            className="mt-1.5 flex h-1 w-full overflow-hidden rounded-full bg-card"
+          >
+            {shares
+              .filter((s) => s.count > 0)
+              .map((s) => (
+                <span
+                  key={s.cls}
+                  className={RESIDUE_CLASS_SWATCH[s.cls]}
+                  style={{ width: `${s.fraction * 100}%` }}
+                />
+              ))}
+          </div>
+        </button>
+      </div>
+
+      {open && (
+        <div className="px-3 pb-3">
+          <ul className="mb-2 flex flex-wrap gap-x-3 gap-y-0.5 text-[10px] text-muted-foreground">
+            {shares
+              .filter((s) => s.count > 0)
+              .map((s) => (
+                <li key={s.cls} className="flex items-center gap-1">
+                  <span
+                    aria-hidden
+                    className={cn(
+                      "inline-block size-2 rounded-[2px]",
+                      RESIDUE_CLASS_SWATCH[s.cls],
+                    )}
+                  />
+                  {RESIDUE_CLASS_LABEL[s.cls]}
+                  <span className="tabular-nums text-muted-foreground">{s.count}</span>
+                </li>
+              ))}
+          </ul>
+
+          <div className="flex flex-wrap gap-1">
+            {segments.map((seg) => (
+              <button
+                key={seg.start}
+                type="button"
+                data-testid={`chain-segment-${chain.label}-${seg.start}`}
+                onClick={() => onSelect(segmentKeys(chain.label, seg))}
+                title={`Select residues ${chain.label}:${seg.start}–${chain.label}:${seg.end}`}
+                className="rounded border border-border bg-muted/50 px-1.5 py-0.5 font-mono text-[10px] text-muted-foreground tabular-nums hover:border-ring hover:text-foreground"
+              >
+                {seg.start}–{seg.end}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}

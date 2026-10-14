@@ -23,6 +23,7 @@ from __future__ import annotations
 
 import re
 from itertools import pairwise
+from typing import TYPE_CHECKING
 
 import numpy as np
 from Bio import Restriction
@@ -43,6 +44,9 @@ from app.models.seqtools import (
     RestrictionResponse,
     SequenceStats,
 )
+
+if TYPE_CHECKING:
+    from Bio.Restriction.Restriction import RestrictionType
 
 MAX_LENGTH = 100_000
 STOPS = frozenset({"TAA", "TAG", "TGA"})
@@ -177,7 +181,12 @@ def find_orfs(seq: str, min_codons: int = 30, require_atg: bool = True) -> OrfRe
             frames.append(FrameTranslation(frame=frame, protein=_translate(strand_seq[offset:])))
 
             def emit(
-                a: int, b: int, complete: bool, strand=strand, frame=frame, s=strand_seq
+                a: int,
+                b: int,
+                complete: bool,
+                strand: str = strand,
+                frame: int = frame,
+                s: str = strand_seq,
             ) -> None:
                 coding = b - a - (3 if complete else 0)
                 if coding // 3 < min_codons:
@@ -220,14 +229,14 @@ def find_orfs(seq: str, min_codons: int = 30, require_atg: bool = True) -> OrfRe
 # ---------------------------------------------------------------- restriction
 
 
-def _enzyme(name: str):
+def _enzyme(name: str) -> RestrictionType:
     enzyme = getattr(Restriction, name.strip(), None)
     if enzyme is None or not hasattr(enzyme, "search"):
         raise SequenceError(f"Unknown restriction enzyme {name!r}.")
     return enzyme
 
 
-def _overhang(enzyme) -> str:
+def _overhang(enzyme: RestrictionType) -> str:
     if enzyme.is_blunt():
         return "blunt"
     if enzyme.is_5overhang():

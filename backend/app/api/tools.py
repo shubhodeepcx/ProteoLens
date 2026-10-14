@@ -6,6 +6,9 @@ the only failure mode is bad input, reported as a 422 with the reason.
 
 from __future__ import annotations
 
+from collections.abc import Callable
+from typing import ParamSpec, TypeVar
+
 from fastapi import APIRouter, HTTPException
 from fastapi.concurrency import run_in_threadpool
 
@@ -23,8 +26,11 @@ from app.services import seqtools
 
 router = APIRouter(prefix="/tools", tags=["tools"])
 
+P = ParamSpec("P")
+T = TypeVar("T")
 
-async def _run(fn, *args, **kwargs):
+
+async def _run(fn: Callable[P, T], *args: P.args, **kwargs: P.kwargs) -> T:
     try:
         return await run_in_threadpool(fn, *args, **kwargs)
     except seqtools.SequenceError as exc:

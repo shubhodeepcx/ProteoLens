@@ -8,6 +8,7 @@ import { createViewerPlugin } from "@/lib/molstar/plugin";
 import {
   applyColoring,
   applyRepresentation,
+  applyResidueValueColoring,
   applySelection,
   loadStructureInto,
   type ColoringOptions,
@@ -25,6 +26,7 @@ import type {
   MolstarColoring,
   MolstarRepresentation,
 } from "@/lib/molstar/theming";
+import { setResidueValues } from "@/lib/molstar/electrostatics-theme";
 import type { QueryChain } from "@/lib/residue";
 
 export type {
@@ -44,6 +46,12 @@ export interface MolstarViewerRef {
    * because the `plddt` scheme renders backwards without it.
    */
   setColoring(scheme: MolstarColoring, options: ColoringOptions): void;
+  /**
+   * Colour by a per-residue value (P15 electrostatics), red at `-range`,
+   * white at 0, blue at `+range`. Keys are `"<chain>:<ordinal>"`; residues
+   * with no value render grey.
+   */
+  colorByResidueValues(values: ReadonlyMap<string, number>, range: number): void;
   resetCamera(): void;
 }
 
@@ -184,6 +192,16 @@ const MolstarViewer = React.forwardRef<MolstarViewerRef, MolstarViewerProps>(
       },
       setColoring: (scheme, options) => {
         if (pluginRef.current) applyColoring(pluginRef.current, scheme, options);
+      },
+      colorByResidueValues: (values, range) => {
+        const plugin = pluginRef.current;
+        if (!plugin) return;
+        const byResidue = new Map<number, number>();
+        for (const [key, value] of values) {
+          const residue = indexRef.current.keyToResidue.get(key);
+          if (residue !== undefined) byResidue.set(residue, value);
+        }
+        applyResidueValueColoring(plugin, setResidueValues(byResidue, range));
       },
       resetCamera: () => {
         if (pluginRef.current) PluginCommands.Camera.Reset(pluginRef.current, {});

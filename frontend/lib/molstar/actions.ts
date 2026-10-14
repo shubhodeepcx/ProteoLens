@@ -10,6 +10,7 @@ import type { PluginContext } from "molstar/lib/mol-plugin/context";
 import { StructureElement, type Structure } from "molstar/lib/mol-model/structure";
 import { createStructureRepresentationParams } from "molstar/lib/mol-plugin-state/helpers/structure-representation-params";
 import { keysToLoci, type ResidueIndexMap } from "@/lib/molstar/residue-index";
+import { ELECTROSTATICS_THEME } from "@/lib/molstar/electrostatics-theme";
 import {
   COLOR_THEME,
   REPRESENTATION_SPEC,
@@ -97,10 +98,14 @@ export function applyRepresentation(
     for (const component of s.components) {
       const pivot = component.representations[0];
       if (!pivot) continue;
+      // `createStructureRepresentationParams` fills in the default colour
+      // theme, so a bare switch would silently drop whatever scheme the
+      // toolbar shows. Carry the current one across.
+      const colorTheme = pivot.cell.transform.params?.colorTheme;
       void plugin.managers.structure.component.updateRepresentations(
         [component],
         pivot,
-        params,
+        colorTheme ? { ...params, colorTheme } : params,
       );
     }
   }
@@ -136,6 +141,23 @@ export function applyColoring(
     void plugin.managers.structure.component.updateRepresentationsTheme(
       s.components,
       params,
+    );
+  }
+}
+
+/**
+ * Paint every representation with the ProteoLens per-residue value theme.
+ * `version` comes from `setResidueValues` and forces Mol* to rebuild the theme
+ * with the new values rather than reuse the previous instance.
+ */
+export function applyResidueValueColoring(plugin: PluginContext, version: number): void {
+  const params = { color: ELECTROSTATICS_THEME, colorParams: { version } };
+  for (const s of plugin.managers.structure.hierarchy.current.structures) {
+    void plugin.managers.structure.component.updateRepresentationsTheme(
+      s.components,
+      params as unknown as Parameters<
+        typeof plugin.managers.structure.component.updateRepresentationsTheme
+      >[1],
     );
   }
 }

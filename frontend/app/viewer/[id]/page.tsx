@@ -14,6 +14,7 @@ import {
 } from "@/components/viewer-overlays";
 import { API_BASE_URL } from "@/lib/api";
 import { useStore } from "@/lib/store";
+import { fetchElectrostatics, potentialByKey } from "@/lib/electrostatics";
 
 // Mol* must be dynamically imported (no SSR — it touches WebGL/window).
 const MolstarViewer = dynamic(() => import("@/components/molstar-viewer"), {
@@ -43,6 +44,7 @@ export default function DynamicViewerPage() {
   const clearSelection = useStore((s) => s.clearSelection);
   const representation = useStore((s) => s.representation);
   const coloring = useStore((s) => s.coloring);
+  const setColoring = useStore((s) => s.setColoring);
   const resetView = useStore((s) => s.resetView);
   /** Does this structure's B-factor column hold pLDDT? Drives both the
    *  coloring domain and which coloring options the toolbar offers. */
@@ -133,8 +135,26 @@ export default function DynamicViewerPage() {
   // or inverted (pLDDT), so the coloring must be re-applied when it changes.
   useEffect(() => {
     if (structureVersion === 0) return;
-    viewerRef.current?.setColoring(coloring, { hasPlddt });
-  }, [structureVersion, coloring, hasPlddt]);
+    if (coloring !== "electrostatics") {
+      viewerRef.current?.setColoring(coloring, { hasPlddt });
+      return;
+    }
+    // P15: the potential comes from the backend, so this scheme is async. A
+    // switch away (or to another protein) before it lands must not repaint.
+    let cancelled = false;
+    fetchElectrostatics(id)
+      .then((data) => {
+        if (!cancelled) {
+          viewerRef.current?.colorByResidueValues(potentialByKey(data), data.color_range);
+        }
+      })
+      .catch(() => {
+        if (!cancelled) setColoring("chain");
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [structureVersion, coloring, hasPlddt, id, setColoring]);
 
   // Mol* -> store: a 3D click toggles the residue, empty space clears.
   const onResidueClick = useCallback(

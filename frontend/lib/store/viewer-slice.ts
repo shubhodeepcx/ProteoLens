@@ -14,6 +14,9 @@ export type Representation =
  * for any given structure — `ViewerControls` resolves that from
  * `ProteinSummary.has_plddt`, since this slice has no idea which protein is
  * open.
+ *
+ * `electrostatics` is the one scheme that is not a Mol* built-in: the viewer
+ * page fetches the P15 potential and paints it with ProteoLens' own theme.
  */
 export type ColoringScheme =
   | "chain"
@@ -21,7 +24,8 @@ export type ColoringScheme =
   | "hydrophobicity"
   | "plddt"
   | "bfactor"
-  | "residueType";
+  | "residueType"
+  | "electrostatics";
 
 export interface ViewerSlice {
   representation: Representation;

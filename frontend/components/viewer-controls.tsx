@@ -8,6 +8,10 @@ import {
 } from "@/lib/molstar/theming";
 import type { Representation, ColoringScheme } from "@/lib/store";
 
+// Not a Mol* built-in, so it is appended here rather than listed in
+// `COLORING_OPTIONS`, which the comparison view also offers.
+const ELECTROSTATICS_OPTION = ["electrostatics", "Electrostatic potential"] as const;
+
 const SELECT_CLASS =
   "h-7 rounded-md border border-zinc-700 bg-zinc-900 px-1.5 text-[11px] text-zinc-300 focus:border-zinc-500 focus:outline-none";
 
@@ -32,7 +36,10 @@ export function ViewerControls({
   const setRepresentation = useStore((s) => s.setRepresentation);
   const setColoring = useStore((s) => s.setColoring);
 
-  const coloringOptions = useMemo(() => coloringOptionsFor(hasPlddt), [hasPlddt]);
+  const coloringOptions = useMemo(
+    () => [...coloringOptionsFor(hasPlddt), ELECTROSTATICS_OPTION],
+    [hasPlddt],
+  );
 
   // `coloring` lives in the store and survives navigation, so leaving an
   // AlphaFold model on pLDDT and opening an X-ray entry would leave the select

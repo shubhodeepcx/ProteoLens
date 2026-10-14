@@ -21,6 +21,7 @@ venv/
 # Runtime storage (uploaded proteins) — ignore contents but keep the directory
 backend/storage/proteins/*
 !backend/storage/proteins/.gitkeep
+backend/storage/*.db
 
 # IDE
 .vscode/

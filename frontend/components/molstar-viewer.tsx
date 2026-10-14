@@ -53,6 +53,8 @@ export interface MolstarViewerRef {
    */
   colorByResidueValues(values: ReadonlyMap<string, number>, range: number): void;
   resetCamera(): void;
+  /** PNG data URI of the current view, or null before the plugin exists. */
+  snapshot(): Promise<string | null>;
 }
 
 export interface MolstarViewerProps {
@@ -205,6 +207,15 @@ const MolstarViewer = React.forwardRef<MolstarViewerRef, MolstarViewerProps>(
       },
       resetCamera: () => {
         if (pluginRef.current) PluginCommands.Camera.Reset(pluginRef.current, {});
+      },
+      snapshot: async () => {
+        const helper = pluginRef.current?.helpers.viewportScreenshot;
+        if (!helper) return null;
+        try {
+          return await helper.getImageDataUri();
+        } catch {
+          return null;
+        }
       },
     }));
 

@@ -21,6 +21,7 @@ import {
 } from "@/components/ui/tabs";
 import { HealthPill } from "@/components/health-pill";
 import { DropZone } from "@/components/drop-zone";
+import { RecentProteins } from "@/components/recent-proteins";
 import {
   DATA_SOURCES,
   DataSourceCard,
@@ -142,6 +143,7 @@ export default function HomePage() {
                 </Link>
               ))}
             </nav>
+            <RecentProteins />
             <Separator />
             <p className="p-3 text-[11px] leading-relaxed text-muted-foreground">
               When a structure is loaded, this sidebar becomes its chain tree:

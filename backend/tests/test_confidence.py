@@ -21,6 +21,7 @@ Two directions are load-bearing in this feature and both are pinned here:
 
 from __future__ import annotations
 
+import itertools
 import json
 from pathlib import Path
 
@@ -140,7 +141,7 @@ def test_band_edges_are_ordered_high_is_confident() -> None:
 
 def test_bands_are_exhaustive_and_disjoint() -> None:
     """Every value 0-100 lands in exactly one band, so the counts always sum."""
-    values = [i / 10 for i in range(0, 1001)]
+    values = [i / 10 for i in range(1001)]
     bands = confidence.summarise_bands(values)
     assert [b.key for b in bands] == ["very_high", "confident", "low", "very_low"]
     assert sum(b.residue_count for b in bands) == len(values)
@@ -162,7 +163,7 @@ def test_band_rows_carry_the_thresholds_they_were_counted_with() -> None:
 
     # Contiguous and ascending: each band starts where the one below it ends.
     ordered = confidence.summarise_bands([95.0])[::-1]
-    for lower, upper in zip(ordered, ordered[1:]):
+    for lower, upper in itertools.pairwise(ordered):
         assert lower.max_plddt == upper.min_plddt
         assert lower.min_plddt < upper.min_plddt
 

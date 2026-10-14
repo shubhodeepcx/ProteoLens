@@ -31,7 +31,6 @@ Active design: [docs/design/2026-05-23-protein-mvp-slice-design.md](design/2026-
 
 _Nothing in progress._
 
-| **P21 Retro-futuristic theme** -- a dark neon "lab terminal" theme for the whole workspace (tokens, display fonts, HUD panel frames, grid backdrop, Mol* canvas and charts follow the theme), made the default, with the current light theme kept as "Classic" behind a header toggle | shubhodeep | `feature/p21-retro-theme` | wip | Stacked on P20 (`feature/p20-code-hardening`) because it touches the split helix field; print and the report paper stay light |
 ---
 
 ## Ready to claim
@@ -97,6 +96,7 @@ _No blocked tasks._
 
 | Task | Phase | Date | PR / commit |
 |---|---|---|---|
+| **P21 retro-futuristic theme** -- new default `retro` theme: near-black indigo canvas, neon magenta/cyan tokens, Orbitron headings, Space Grotesk body, Share Tech Mono HUD labels, a synthwave horizon grid and faint scanlines behind the app, HUD corner brackets on cards, gradient primary buttons. Charts read their colours from CSS variables, the Mol* canvas and its buttons follow the theme, the landing helix switches palette live. The light theme stays as "Classic" behind a toggle; the report stays white paper and prints without effects. 4 new tests | P21 | 2026-10-14 | `feature/p21-retro-theme` |
 | **P20 code hardening** -- the 44 backend function signatures without type hints now have them (BioPython `Structure`/`Model`/`Chain`/`Residue`/`Atom` under `TYPE_CHECKING`, a `ParamSpec` for the tools runner), and six components over 200 LOC are split into sibling files with unchanged exports, markup and test ids: tool results, report page, helix field, electrostatics panel, variant panel, chain tree. README status brought up to date. No behaviour change; 656 backend and 480 frontend tests pass | P20 | 2026-10-14 | `feature/p20-code-hardening` |
 | **P15 surface electrostatics** -- `GET /api/proteins/{uid}/electrostatics`: Coulombic potential per residue (distance-dependent dielectric 4r, as ChimeraX), charged surface patches, net charge, pI per chain and dipole. An *Electrostatic potential* colouring (custom Mol* theme, red-white-blue) and a Surface electrostatics section in the Analytics tab with a per-residue profile and clickable patches. Switching representation now keeps the current colour scheme instead of resetting it | P15 | 2026-10-14 | feature/p15-electrostatics |
 | **P14 sequence tools** -- `/tools` page and `POST /api/tools/{orfs,restriction,primers,crispr}`: six-frame ORF finder, restriction map (31-enzyme teaching panel, linear or circular, fragment sizes), PCR primer pairs flanking a target (nearest-neighbour Tm, GC clamp, 3' dimers) and SpCas9 guide design (cut site, GC, poly-T, in-sequence off-targets). Linear SVG map on every tab. Offline; no new dependency | P14 | 2026-10-14 | feature/p14-sequence-tools |
@@ -196,6 +196,7 @@ _No blocked tasks._
 Append-only. Never edit past entries — supersede with a new entry referencing the old one.
 
 | Date | Decision | Rationale | Reversible? |
+| 2026-10-14 | The retro theme is a next-themes class (`retro`) over the same shadcn tokens, plus a scoped remap of the few Tailwind palette colours used for status text, instead of rewriting component classes | Every component already reads tokens, so one stylesheet block restyles the app and the classic theme keeps working unchanged. The `.paper` scope restores light tokens for the report | Yes: drop `retro` from `themes` and the default goes back to light |
 |---|---|---|---|
 | 2026-10-14 | Electrostatics is a Coulombic estimate (eps = 4r, distances floored at 3 Å), not APBS / Poisson-Boltzmann, and is coloured per residue through a ProteoLens Mol* theme whose values live in a module and are refreshed by a `version` param | APBS needs a native binary, PDB2PQR protonation and a grid per request. The Coulombic model is what ChimeraX ships as its default surface colouring, runs in well under a second on lysozyme, and shows the basic/acidic surface a student is looking for. The notes in every response say it is not PB | yes |
 | 2026-10-14 | Primer ranking and CRISPR guide scores are transparent rule-of-thumb penalties computed with BioPython, not Primer3 or Rule Set 2 / Azimuth, and the responses say so in their notes. Off-targets are counted only within the submitted sequence | primer3-py and the Azimuth model add native or ML dependencies the Docker images and CI would have to carry, and a genome-wide off-target search needs an indexed genome. Every criterion shown is one a student can check by hand, which suits a teaching tool; the notes point to CRISPOR / Cas-OFFinder for real ordering | yes |

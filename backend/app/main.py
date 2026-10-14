@@ -6,7 +6,17 @@ import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.api import blast, compare, electrostatics, explain, import_, proteins, search, tools
+from app.api import (
+    blast,
+    compare,
+    electrostatics,
+    explain,
+    import_,
+    predict,
+    proteins,
+    search,
+    tools,
+)
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -17,6 +27,7 @@ app.openapi_tags = [
     {"name": "proteins", "description": "Protein upload, metadata, and structure files."},
     {"name": "search", "description": "Full-text search across RCSB PDB, AlphaFold DB, and UniProt."},
     {"name": "import", "description": "One-click import of a public structure into local storage."},
+    {"name": "predict", "description": "Structure prediction from a sequence with ESMFold (P19)."},
     {"name": "compare", "description": "Side-by-side comparison of two stored proteins (spec A3)."},
     {
         "name": "blast",
@@ -50,6 +61,7 @@ app.add_middleware(
 # `import_` is registered before `proteins` so POST /api/proteins/import can
 # never be shadowed by a future POST /api/proteins/{uid} route.
 app.include_router(import_.router, prefix="/api")
+app.include_router(predict.router, prefix="/api")
 app.include_router(proteins.router, prefix="/api")
 app.include_router(electrostatics.router, prefix="/api")
 app.include_router(explain.router, prefix="/api")

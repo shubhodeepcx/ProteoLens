@@ -43,7 +43,7 @@ def new_client(**kwargs: Any) -> httpx.AsyncClient:
     headers = {"User-Agent": USER_AGENT, **kwargs.pop("headers", {})}
     transport = kwargs.pop("transport", None) or RetryingTransport()
     return httpx.AsyncClient(
-        timeout=EXTERNAL_TIMEOUT_SECONDS,
+        timeout=kwargs.pop("timeout", EXTERNAL_TIMEOUT_SECONDS),
         follow_redirects=True,
         headers=headers,
         transport=transport,

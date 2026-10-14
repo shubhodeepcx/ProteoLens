@@ -7,6 +7,7 @@ import {
   Boxes,
   ArrowRight,
   Dna,
+  Sparkles,
 } from "lucide-react";
 import { ProteoLensLogo } from "@/components/logo";
 import { buttonVariants } from "@/components/ui/button";
@@ -43,6 +44,12 @@ const QUICK_ACTIONS = [
     icon: Database,
     title: "Search the databases",
     body: "Search RCSB PDB, AlphaFold DB, and UniProt in one place, then import directly.",
+  },
+  {
+    href: "/predict",
+    icon: Sparkles,
+    title: "Predict a structure",
+    body: "Paste a protein sequence and fold it with ESMFold, coloured by confidence.",
   },
   {
     href: "#upload",

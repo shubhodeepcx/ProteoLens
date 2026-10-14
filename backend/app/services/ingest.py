@@ -44,8 +44,9 @@ async def parse_and_register(
     stored_path: Path,
     uid: str,
     *,
-    source: Literal["uploaded", "rcsb", "alphafold", "uniprot"],
+    source: Literal["uploaded", "rcsb", "alphafold", "uniprot", "predicted"],
     source_id: str | None = None,
+    name: str | None = None,
 ) -> ProteinSummary:
     """Parse an already-stored structure file and register it, or clean up and raise.
 
@@ -55,6 +56,10 @@ async def parse_and_register(
     performs. Callers catch `StructureParseFailed` / `EmptyStructureError` and
     translate them into their own `HTTPException` (status code and message
     differ per route).
+
+    `name`, when given, replaces the name read from the file. BioPython
+    lower-cases HEADER/TITLE text, so a caller that already knows the display
+    name (a predicted model named by the user) passes it through unchanged.
     """
     try:
         summary = await run_in_threadpool(
@@ -72,6 +77,8 @@ async def parse_and_register(
             )
         raise EmptyStructureError("Parsed structure has no protein chains")
 
+    if name:
+        summary = summary.model_copy(update={"name": name})
     registry.put(uid, summary)
     return summary
 

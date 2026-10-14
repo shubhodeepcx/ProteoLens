@@ -18,7 +18,7 @@ class ProteinSummary(BaseModel):
     """API-facing summary for uploaded or imported protein structures."""
 
     id: str = Field(..., description="UUID for the locally stored protein.")
-    source: Literal["uploaded", "rcsb", "alphafold", "uniprot"] = Field(
+    source: Literal["uploaded", "rcsb", "alphafold", "uniprot", "predicted"] = Field(
         ..., description="Protein source."
     )
     source_id: str | None = Field(None, description="PDB ID or UniProt accession.")

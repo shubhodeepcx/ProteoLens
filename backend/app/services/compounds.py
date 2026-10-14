@@ -34,6 +34,7 @@ import re
 from collections.abc import Iterable
 from dataclasses import dataclass, field
 from pathlib import Path
+from typing import TYPE_CHECKING
 
 from Bio.PDB import NeighborSearch
 
@@ -55,6 +56,13 @@ from app.services.functional import (
     read_chain_residues,
 )
 from app.services.parser import NUCLEOTIDE_ONE_LETTER, to_one_letter
+
+if TYPE_CHECKING:
+    from Bio.PDB.Atom import Atom
+    from Bio.PDB.Chain import Chain
+    from Bio.PDB.Model import Model
+    from Bio.PDB.Residue import Residue
+    from Bio.PDB.Structure import Structure
 
 logger = logging.getLogger(__name__)
 
@@ -360,7 +368,7 @@ class _ProteinIndex:
     by_label: dict[str, ChainResidues]
 
 
-def _heavy_atoms(residue) -> list:
+def _heavy_atoms(residue: Residue) -> list[Atom]:
     out = []
     for atom in residue.get_atoms():
         element = (getattr(atom, "element", "") or "").strip().upper()
@@ -372,7 +380,7 @@ def _heavy_atoms(residue) -> list:
     return out
 
 
-def _protein_index(model, chains: list[ChainResidues]) -> _ProteinIndex:
+def _protein_index(model: Model, chains: list[ChainResidues]) -> _ProteinIndex:
     by_label = {chain.label: chain for chain in chains}
     owner: dict[int, tuple[str, int]] = {}
     atoms: list = []
@@ -416,7 +424,7 @@ def _contacts(atoms: Iterable, index: _ProteinIndex, cutoff: float) -> list[Liga
     return contacts
 
 
-def _peptide_linked(chain) -> set[int]:
+def _peptide_linked(chain: Chain) -> set[int]:
     """`id()` of every hetero residue in `chain` that is peptide-bonded to a neighbour."""
     termini: list = []
     for residue in chain.get_residues():
@@ -459,7 +467,7 @@ def _nucleic_kind(resnames: list[str]) -> NucleicAcidKind:
     return "DNA/RNA hybrid"
 
 
-def _describe_nucleic_chain(chain, index: _ProteinIndex, cutoff: float) -> NucleicAcidChain:
+def _describe_nucleic_chain(chain: Chain, index: _ProteinIndex, cutoff: float) -> NucleicAcidChain:
     polymer = [r for r in chain.get_residues() if r.id[0] == " "]
     names = [r.get_resname().strip().upper() for r in polymer]
     sequence = "".join(NUCLEOTIDE_ONE_LETTER.get(name, "N") for name in names)
@@ -493,7 +501,7 @@ class _GroupDraft:
 def build_compounds(
     uid: str,
     summary: ProteinSummary,
-    structure,
+    structure: Structure,
     components: dict[str, ComponentInfo] | None = None,
     *,
     cutoff: float = CONTACT_CUTOFF_ANGSTROMS,

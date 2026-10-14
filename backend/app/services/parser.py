@@ -2,13 +2,16 @@ from __future__ import annotations
 
 from collections.abc import Sequence
 from pathlib import Path
-from typing import Literal
+from typing import TYPE_CHECKING, Literal
 
 from Bio.PDB import MMCIFParser, PDBParser
 from Bio.PDB.MMCIF2Dict import MMCIF2Dict
 from Bio.SeqUtils.ProtParam import ProteinAnalysis
 
 from app.models.protein import ChainInfo, ProteinSummary
+
+if TYPE_CHECKING:
+    from Bio.PDB.Structure import Structure
 
 # Standard amino-acid 3-letter -> 1-letter mapping.
 # BioPython removed `three_to_one` in 1.80+, so we maintain the mapping here.
@@ -186,7 +189,7 @@ def _mmcif_dict_for(struct_parser: MMCIFParser, path: Path) -> dict[str, object]
     return MMCIF2Dict(str(path))
 
 
-def _extract_header_strings(structure) -> tuple[str | None, str | None]:
+def _extract_header_strings(structure: Structure) -> tuple[str | None, str | None]:
     """Pull (name, organism) from PDB header dict when available."""
     header = getattr(structure, "header", None) or {}
     name: str | None = None

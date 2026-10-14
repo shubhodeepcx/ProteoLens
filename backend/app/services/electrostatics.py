@@ -24,6 +24,7 @@ a DNA-binding groove or an acidic active site, not a binding free energy.
 from __future__ import annotations
 
 import math
+from typing import TYPE_CHECKING
 
 import numpy as np
 from Bio.SeqUtils.ProtParam import ProteinAnalysis
@@ -32,6 +33,12 @@ from app.models.electrostatics import ChainPotential, ChargedPatch, Electrostati
 from app.models.protein import ProteinSummary
 from app.services import functional
 from app.services.functional import ChainResidues
+
+if TYPE_CHECKING:
+    from Bio.PDB.Atom import Atom
+    from Bio.PDB.Model import Model
+    from Bio.PDB.Residue import Residue
+    from Bio.PDB.Structure import Structure
 
 COULOMB = 332.0  # kcal·Å/(mol·e²)
 DIELECTRIC_SLOPE = 4.0  # eps(r) = 4r
@@ -70,7 +77,7 @@ TERMINI_NOTE = (
 )
 
 
-def _polymer_residues(model, chain_label: str) -> list:
+def _polymer_residues(model: Model, chain_label: str) -> list[Residue]:
     chain = model[chain_label]
     return [r for r in chain.get_residues() if r.id[0] == " "]
 
@@ -106,7 +113,7 @@ def potential_at(points: np.ndarray, coords: np.ndarray, charges: np.ndarray) ->
     return out
 
 
-def _probe_atoms(residue) -> list:
+def _probe_atoms(residue: Residue) -> list[Atom]:
     atoms = [a for a in residue.get_atoms() if a.element != "H"]
     side = [a for a in atoms if a.get_name().strip() not in BACKBONE]
     return side or atoms
@@ -149,7 +156,9 @@ def _patch_label(sign: str) -> str:
     return "Acidic patch: a candidate site for metal ions, basic partners or substrates."
 
 
-def build_electrostatics(uid: str, summary: ProteinSummary, structure) -> ElectrostaticsResponse:
+def build_electrostatics(
+    uid: str, summary: ProteinSummary, structure: Structure
+) -> ElectrostaticsResponse:
     chains: list[ChainResidues] = functional.read_chain_residues(structure, summary)
     functional.strip_non_polymer(structure)
     notes = [MODEL_NOTE, PATCH_NOTE, TERMINI_NOTE]

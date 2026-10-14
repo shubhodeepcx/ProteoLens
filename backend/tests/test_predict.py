@@ -80,7 +80,7 @@ def test_predict_folds_stores_and_registers_a_plddt_model():
     assert body["source"] == "predicted"
     assert body["has_plddt"] is True
     assert body["chains"][0]["sequence"] == CRAMBIN
-    assert body["name"].lower() == "esmfold model, 46 residues"
+    assert body["name"] == "ESMFold model, 46 residues"
     # The bare sequence is what ESM Atlas expects as the body.
     assert route.calls.last.request.content == CRAMBIN.encode()
 
@@ -96,7 +96,9 @@ def test_predict_folds_stores_and_registers_a_plddt_model():
 def test_predict_uses_the_given_name():
     respx.post(esmfold.API_URL).mock(return_value=httpx.Response(200, text=_model()))
     res = client.post("/api/proteins/predict", json={"sequence": CRAMBIN, "name": "Crambin fold"})
-    assert res.json()["name"].lower() == "crambin fold"
+    # Exactly as typed: BioPython lower-cases the TITLE record it is also written to.
+    assert res.json()["name"] == "Crambin fold"
+    assert client.get(f"/api/proteins/{res.json()['id']}").json()["name"] == "Crambin fold"
 
 
 def test_predict_rejects_a_bad_sequence_without_calling_out():

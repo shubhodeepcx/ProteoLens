@@ -49,7 +49,9 @@ async def predict_structure(payload: PredictRequest) -> ProteinSummary:
         raise HTTPException(status_code=500, detail="Could not store the predicted model.") from exc
 
     try:
-        summary = await ingest.parse_and_register(stored_path, uid, source="predicted")
+        summary = await ingest.parse_and_register(
+            stored_path, uid, source="predicted", name=name
+        )
     except ingest.StructureParseError as exc:
         logger.warning("Predicted model failed to parse: %r", exc)
         raise HTTPException(

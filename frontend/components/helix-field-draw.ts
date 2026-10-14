@@ -12,12 +12,39 @@ const CURSOR_RADIUS = 100;
 /** Opacity buckets; crosses are batched per bucket to cut fillStyle churn. */
 const BUCKETS = 12;
 
-// Two tones, mixed per cross: the deep accent for the helix strands and a
-// lighter sky tone toward the glowing centre.
-const DEEP = [37, 99, 235] as const; // blue-600
-const LIGHT = [56, 189, 248] as const; // sky-400
+// Two tones per palette, mixed per cross: the deep accent for the helix
+// strands and a lighter tone toward the glowing centre. `classic` is the
+// light theme's blue; `retro` is the neon magenta-to-cyan of the retro theme.
+type RGB = readonly [number, number, number];
+interface HelixPalette {
+  deep: RGB;
+  light: RGB;
+  /** Centre wash, inner and outer stop colours as "r,g,b". */
+  glow: [string, string];
+  glowAlpha: [number, number];
+  cursor: string;
+}
 
-function mix(a: readonly number[], b: readonly number[], t: number): string {
+export const HELIX_PALETTES = {
+  classic: {
+    deep: [37, 99, 235], // blue-600
+    light: [56, 189, 248], // sky-400
+    glow: ["186,230,253", "191,219,254"],
+    glowAlpha: [0.55, 0.22],
+    cursor: "147,197,253",
+  },
+  retro: {
+    deep: [255, 60, 172], // neon magenta
+    light: [46, 230, 255], // neon cyan
+    glow: ["168,85,247", "88,28,135"],
+    glowAlpha: [0.35, 0.16],
+    cursor: "46,230,255",
+  },
+} as const satisfies Record<string, HelixPalette>;
+
+export type HelixPaletteName = keyof typeof HELIX_PALETTES;
+
+function mix(a: RGB, b: RGB, t: number): string {
   const r = Math.round(a[0] + (b[0] - a[0]) * t);
   const g = Math.round(a[1] + (b[1] - a[1]) * t);
   const bl = Math.round(a[2] + (b[2] - a[2]) * t);
@@ -25,9 +52,11 @@ function mix(a: readonly number[], b: readonly number[], t: number): string {
 }
 
 const TONES = 4;
-const TONE_RGB = Array.from({ length: TONES }, (_, i) =>
-  mix(DEEP, LIGHT, i / (TONES - 1)),
-);
+
+function tonesFor(name: HelixPaletteName): string[] {
+  const { deep, light } = HELIX_PALETTES[name];
+  return Array.from({ length: TONES }, (_, i) => mix(deep, light, i / (TONES - 1)));
+}
 
 /** Mutable state shared between the component's handlers and each frame. */
 export interface HelixFieldState {
@@ -40,10 +69,23 @@ export interface HelixFieldState {
   cursor: { x: number; y: number; strength: number };
   // Reused per frame: rect lists per (tone, alpha bucket).
   batches: number[][];
+  palette: HelixPaletteName;
+  tones: string[];
 }
 
-export function createHelixFieldState(start: number): HelixFieldState {
+/** Switches the palette; the next frame draws in it. */
+export function setHelixPalette(state: HelixFieldState, name: HelixPaletteName): void {
+  state.palette = name;
+  state.tones = tonesFor(name);
+}
+
+export function createHelixFieldState(
+  start: number,
+  palette: HelixPaletteName = "classic",
+): HelixFieldState {
   return {
+    palette,
+    tones: tonesFor(palette),
     width: 0,
     height: 0,
     start,
@@ -58,7 +100,8 @@ export function drawHelixField(
   state: HelixFieldState,
   now: number,
 ): void {
-  const { width, height, start, cursor, target, batches } = state;
+  const { width, height, start, cursor, target, batches, tones } = state;
+  const pal = HELIX_PALETTES[state.palette];
   const t = (now - start) / 1000;
   const cx = width / 2;
   const cy = height / 2;
@@ -74,9 +117,9 @@ export function drawHelixField(
   // Light centre: a soft radial wash behind the grid.
   const glowR = Math.max(width, height) * 0.55;
   const glow = ctx.createRadialGradient(cx, cy, 0, cx, cy, glowR);
-  glow.addColorStop(0, "rgba(186,230,253,0.55)");
-  glow.addColorStop(0.35, "rgba(191,219,254,0.22)");
-  glow.addColorStop(1, "rgba(191,219,254,0)");
+  glow.addColorStop(0, `rgba(${pal.glow[0]},${pal.glowAlpha[0]})`);
+  glow.addColorStop(0.35, `rgba(${pal.glow[1]},${pal.glowAlpha[1]})`);
+  glow.addColorStop(1, `rgba(${pal.glow[1]},0)`);
   ctx.fillStyle = glow;
   ctx.fillRect(0, 0, width, height);
 
@@ -84,8 +127,8 @@ export function drawHelixField(
     const cg = ctx.createRadialGradient(
       cursor.x, cursor.y, 0, cursor.x, cursor.y, CURSOR_RADIUS * 1.6,
     );
-    cg.addColorStop(0, `rgba(147,197,253,${0.28 * cursor.strength})`);
-    cg.addColorStop(1, "rgba(147,197,253,0)");
+    cg.addColorStop(0, `rgba(${pal.cursor},${0.28 * cursor.strength})`);
+    cg.addColorStop(1, `rgba(${pal.cursor},0)`);
     ctx.fillStyle = cg;
     ctx.fillRect(0, 0, width, height);
   }
@@ -181,7 +224,7 @@ export function drawHelixField(
       const list = batches[tone * BUCKETS + bucket];
       if (list.length === 0) continue;
       const alpha = 0.18 + 0.72 * ((bucket + 0.5) / BUCKETS);
-      ctx.fillStyle = `rgba(${TONE_RGB[tone]},${alpha.toFixed(3)})`;
+      ctx.fillStyle = `rgba(${tones[tone]},${alpha.toFixed(3)})`;
       for (let n = 0; n < list.length; n += 3) {
         const x = list[n];
         const y = list[n + 1];

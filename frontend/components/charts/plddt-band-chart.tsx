@@ -47,18 +47,18 @@ export function PlddtBandChart({ bands }: { bands: PlddtBand[] }) {
             type="category"
             dataKey="label"
             width={62}
-            tick={{ fontSize: 10, fill: "#64748b" }}
+            tick={{ fontSize: 10, fill: "var(--chart-axis)" }}
             axisLine={false}
             tickLine={false}
           />
           <Tooltip
-            cursor={{ fill: "#e2e8f0" }}
+            cursor={{ fill: "var(--chart-grid)" }}
             contentStyle={{
-              background: "#ffffff",
-              border: "1px solid #e2e8f0",
+              background: "var(--chart-tooltip-bg)",
+              border: "1px solid var(--chart-tooltip-border)",
               fontSize: 11,
             }}
-            itemStyle={{ color: "#0f172a" }}
+            itemStyle={{ color: "var(--chart-tooltip-text)" }}
             formatter={(value: number) => [`${value} residues`, "Count"]}
           />
           <Bar dataKey="residue_count" radius={2}>

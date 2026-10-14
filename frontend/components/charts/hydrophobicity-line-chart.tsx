@@ -19,26 +19,26 @@ export function HydrophobicityLineChart({ data }: { data: HydrophobicityProfile 
   return (
     <ResponsiveContainer width="100%" height={180}>
       <LineChart data={series} margin={{ top: 8, right: 8, bottom: 4, left: 0 }}>
-        <CartesianGrid stroke="#e2e8f0" />
-        <XAxis dataKey="pos" stroke="#64748b" tick={{ fontSize: 10 }} />
+        <CartesianGrid stroke="var(--chart-grid)" />
+        <XAxis dataKey="pos" stroke="var(--chart-axis)" tick={{ fontSize: 10 }} />
         <YAxis
-          stroke="#64748b"
+          stroke="var(--chart-axis)"
           tick={{ fontSize: 10 }}
           width={28}
           domain={[-4.5, 4.5]}
         />
-        <ReferenceLine y={0} stroke="#94a3b8" strokeDasharray="2 2" />
+        <ReferenceLine y={0} stroke="var(--chart-axis-soft)" strokeDasharray="2 2" />
         <Tooltip
-          contentStyle={{ background: "#ffffff", border: "1px solid #e2e8f0", fontSize: 11 }}
-          itemStyle={{ color: "#0f172a" }}
-          labelStyle={{ color: "#64748b" }}
+          contentStyle={{ background: "var(--chart-tooltip-bg)", border: "1px solid var(--chart-tooltip-border)", fontSize: 11 }}
+          itemStyle={{ color: "var(--chart-tooltip-text)" }}
+          labelStyle={{ color: "var(--chart-axis)" }}
           labelFormatter={(v) => `residue ${v}`}
           formatter={(value: number) => [
             value.toFixed(2),
             `KD (chain ${data.chain_id}, w=${data.window})`,
           ]}
         />
-        <Line type="monotone" dataKey="value" stroke="#10b981" strokeWidth={1.5} dot={false} />
+        <Line type="monotone" dataKey="value" stroke="var(--chart-2)" strokeWidth={1.5} dot={false} />
       </LineChart>
     </ResponsiveContainer>
   );

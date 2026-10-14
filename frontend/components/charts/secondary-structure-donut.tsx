@@ -4,7 +4,7 @@ import { AlertTriangle } from "lucide-react";
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from "recharts";
 import type { SecondaryStructurePercentages } from "@/lib/types";
 
-const COLORS = { helix: "#f59e0b", sheet: "#06b6d4", coil: "#94a3b8" } as const;
+const COLORS = { helix: "#f59e0b", sheet: "#06b6d4", coil: "var(--chart-axis-soft)" } as const;
 
 /**
  * Ring colour for "the file never said". Deliberately not one of the three
@@ -63,7 +63,7 @@ export function SecondaryStructureDonut({
             innerRadius={42}
             outerRadius={66}
             strokeWidth={1}
-            stroke="#ffffff"
+            stroke="var(--card)"
           >
             {slices.map((s) => (
               <Cell key={s.name} fill={s.fill} />
@@ -71,18 +71,18 @@ export function SecondaryStructureDonut({
           </Pie>
           <Tooltip
             contentStyle={{
-              background: "#ffffff",
-              border: "1px solid #e2e8f0",
+              background: "var(--chart-tooltip-bg)",
+              border: "1px solid var(--chart-tooltip-border)",
               fontSize: 11,
             }}
-            itemStyle={{ color: "#0f172a" }}
+            itemStyle={{ color: "var(--chart-tooltip-text)" }}
             formatter={(value: number) =>
               available ? `${(value * 100).toFixed(1)}%` : "no assignment"
             }
           />
           <Legend
             iconSize={8}
-            wrapperStyle={{ fontSize: 11, color: "#64748b" }}
+            wrapperStyle={{ fontSize: 11, color: "var(--chart-axis)" }}
             formatter={(value, entry) => {
               if (!available) return value;
               const v = (entry.payload as { value: number })?.value ?? 0;

@@ -1,7 +1,17 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { createHelixFieldState, drawHelixField } from "./helix-field-draw";
+import {
+  createHelixFieldState,
+  drawHelixField,
+  setHelixPalette,
+  type HelixPaletteName,
+} from "./helix-field-draw";
+
+/** The palette matching the theme class next-themes puts on `<html>`. */
+function currentPalette(): HelixPaletteName {
+  return document.documentElement.classList.contains("retro") ? "retro" : "classic";
+}
 
 /**
  * Animated landing-page backdrop: a halftone grid of cross-shaped "pixels"
@@ -30,7 +40,16 @@ export function HelixField({ className }: { className?: string }) {
 
     let frame = 0;
     const start = performance.now();
-    const state = createHelixFieldState(start);
+    const state = createHelixFieldState(start, currentPalette());
+    // Follow theme switches without remounting the canvas.
+    const themeObserver = new MutationObserver(() => {
+      setHelixPalette(state, currentPalette());
+      if (reduceMotion) draw(start);
+    });
+    themeObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
     const { target, cursor } = state;
 
     function resize() {
@@ -93,6 +112,7 @@ export function HelixField({ className }: { className?: string }) {
     return () => {
       cancelAnimationFrame(frame);
       observer.disconnect();
+      themeObserver.disconnect();
       window.removeEventListener("pointermove", onPointerMove);
       document.removeEventListener("pointerleave", onPointerLeave);
     };

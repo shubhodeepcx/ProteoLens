@@ -10,6 +10,40 @@ import { renderReact18 } from "molstar/lib/mol-plugin-ui/react18";
 import { DefaultPluginUISpec } from "molstar/lib/mol-plugin-ui/spec";
 import { ElectrostaticsColorThemeProvider } from "@/lib/molstar/electrostatics-theme";
 import type { PluginUIContext } from "molstar/lib/mol-plugin-ui/context";
+import { Color } from "molstar/lib/mol-util/color";
+
+/** Reads `--viewer-bg` (a #rrggbb colour set per theme in globals.css). */
+function themeBackground(): Color | null {
+  const raw = getComputedStyle(document.documentElement)
+    .getPropertyValue("--viewer-bg")
+    .trim();
+  const m = /^#([0-9a-f]{6})$/i.exec(raw);
+  return m ? Color(parseInt(m[1], 16)) : null;
+}
+
+/**
+ * Paints the canvas in the theme's viewer colour now and again whenever the
+ * theme class on `<html>` changes. Stops once the plugin has been disposed.
+ */
+function followThemeBackground(plugin: PluginUIContext): void {
+  const apply = (): boolean => {
+    const canvas = plugin.canvas3d;
+    if (!canvas) return false;
+    const color = themeBackground();
+    if (color !== null) {
+      canvas.setProps({ renderer: { backgroundColor: color } });
+    }
+    return true;
+  };
+  apply();
+  const observer = new MutationObserver(() => {
+    if (!apply()) observer.disconnect();
+  });
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ["class"],
+  });
+}
 
 /**
  * Creates a plugin with every built-in Mol* panel hidden.
@@ -46,5 +80,6 @@ export async function createViewerPlugin(
   plugin.representation.structure.themes.colorThemeRegistry.add(
     ElectrostaticsColorThemeProvider,
   );
+  followThemeBackground(plugin);
   return plugin;
 }

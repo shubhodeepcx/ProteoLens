@@ -72,6 +72,17 @@ export const RAIL_TABS: readonly RailTab[] = [
     ],
   },
   {
+    value: "variants",
+    title: "Variants",
+    source: "Structure file, UniProt",
+    items: [
+      "Type a protein change such as R175H, p.Arg175His, W53* or F508del",
+      "Clinical numbering mapped through UniProt, with the reference residue checked",
+      "Burial, neighbours, interfaces, DNA/RNA, ligands and disulfides at that residue",
+      "Structural rules of thumb with their reasons, never a pathogenicity score",
+    ],
+  },
+  {
     value: "compounds",
     title: "Compounds",
     source: "Structure file",

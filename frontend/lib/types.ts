@@ -837,3 +837,60 @@ export interface CompoundsResponse {
   water_count: number;
   notes: string[];
 }
+
+// ---------------------------------------------------------------- variants (A2)
+
+export type VariantKind = "missense" | "nonsense" | "synonymous" | "deletion";
+export type VariantConcern = "high" | "moderate" | "low";
+
+export interface VariantPhysicochemistry {
+  hydropathy_ref: number;
+  hydropathy_alt: number | null;
+  charge_ref: number;
+  charge_alt: number | null;
+  /** Side-chain volume, cubic angstroms (Zamyatnin 1972). */
+  volume_ref: number;
+  volume_alt: number | null;
+  blosum62: number | null;
+}
+
+export interface VariantFlag {
+  severity: "high" | "moderate" | "info";
+  code: string;
+  text: string;
+}
+
+export interface VariantSite {
+  residue: ResidueRef;
+  relative_accessibility: number | null;
+  burial: "buried" | "exposed" | null;
+  neighbours: ResidueRef[];
+  interface_chains: string[];
+  nucleic_acid_chains: string[];
+  ligand_contacts: string[];
+  disulfide_partner: ResidueRef | null;
+  curated_sites: string[];
+  flags: VariantFlag[];
+  concern: VariantConcern;
+}
+
+/** `POST /api/proteins/{id}/variant` — where a variant sits and what it touches. */
+export interface VariantImpact {
+  id: string;
+  notation: string;
+  hgvs: string;
+  kind: VariantKind;
+  ref: string;
+  alt: string | null;
+  position: number;
+  numbering: "uniprot" | "author";
+  numbering_note: string;
+  accession: string | null;
+  physicochemistry: VariantPhysicochemistry;
+  truncated_residues: number | null;
+  sites: VariantSite[];
+  concern: VariantConcern;
+  neighbour_cutoff: number;
+  contact_cutoff: number;
+  notes: string[];
+}

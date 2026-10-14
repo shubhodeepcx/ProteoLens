@@ -735,6 +735,36 @@ analytics no longer see DNA.
 
 ---
 
+## P19 — Structure prediction from a sequence
+
+Goal: a pasted protein sequence is folded by ESMFold and opens in the viewer as a predicted model with
+pLDDT colouring. Needs a machine that can reach `api.esmatlas.com`.
+
+1. Start the backend with `CORS_ORIGINS=http://localhost:3000` and the frontend.
+2. On the landing page, click **Predict a structure**: expect `/predict` with an empty
+   *Protein sequence* box, a counter reading *0 / 400 aa* and **Predict structure** disabled.
+3. Click **Load example**: expect ubiquitin (76 residues) and the name *Ubiquitin (ESMFold)*.
+4. Click **Predict structure**: expect *Folding…* for a few seconds, then the viewer at
+   `/viewer/<id>` with the name *Ubiquitin (ESMFold)*, a **PREDICTED** badge and pLDDT colouring.
+   The Confidence tab shows bands with most residues *Very high* or *Confident*.
+5. Negative cases on `/predict`:
+   - Paste `ATGGCCATTGTAATGGGCCGC`: expect *"This looks like DNA or RNA. Translate it first…"*.
+   - Paste `MKTAYIAKQRQISFVKSHFSRQ1`: expect *"Only the 20 standard amino-acid letters…"* naming `'1'`.
+   - Paste 401 residues: the counter reads *401 / 400 aa* and the button stays disabled.
+6. With the network to ESM Atlas blocked, folding must fail with a 502 and the message
+   *"Could not reach the ESMFold service."*, not a blank page.
+7. Tests:
+   ```
+   cd backend && pytest tests/test_predict.py
+   cd frontend && npx vitest run app/__tests__/predict.test.tsx
+   ```
+   - Expect: 15 backend and 4 frontend tests pass.
+
+**Pass criteria:** a valid sequence becomes a viewable model with confidence colouring; invalid input
+and upstream failures give a plain message.
+
+---
+
 ## How to add a smoke test
 
 When you start a phase, replace the placeholder for that phase with the concrete steps. The steps should be the minimum sequence a new contributor needs to verify the phase works end-to-end, including:

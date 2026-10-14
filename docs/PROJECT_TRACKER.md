@@ -29,7 +29,8 @@ Active design: [docs/design/2026-05-23-protein-mvp-slice-design.md](design/2026-
 
 ## In progress
 
-_Nothing in progress._
+| Task | Owner | Branch | Status | Notes |
+|---|---|---|---|---|
 
 ---
 
@@ -97,6 +98,7 @@ _No blocked tasks._
 | Task | Phase | Date | PR / commit |
 |---|---|---|---|
 | **P22 Contributor docs** -- the contributor guide is now CONTRIBUTING.md, written for human contributors; slice designs moved to docs/design; references updated | P22 | 2026-10-14 | `feature/p22-contributor-docs` |
+| **P19 structure prediction from sequence** -- `POST /api/proteins/predict` folds a pasted protein sequence (plain or FASTA, 10 to 400 residues) with ESMFold through the ESM Atlas API, rescales the 0-1 pLDDT column to 0-100, adds HEADER/TITLE records and registers the model with source `predicted`, so the viewer opens it with pLDDT colouring and the PREDICTED badge. New `/predict` page with an example (ubiquitin), residue counter and DNA detection; landing quick action. 15 backend tests (recorded-shape fixture), 4 frontend tests. The live ESM Atlas call is unverified because egress is blocked here | P19 | 2026-10-14 | `feature/p19-structure-prediction` |
 | **P20 code hardening** -- the 44 backend function signatures without type hints now have them (BioPython `Structure`/`Model`/`Chain`/`Residue`/`Atom` under `TYPE_CHECKING`, a `ParamSpec` for the tools runner), and six components over 200 LOC are split into sibling files with unchanged exports, markup and test ids: tool results, report page, helix field, electrostatics panel, variant panel, chain tree. README status brought up to date. No behaviour change; 656 backend and 480 frontend tests pass | P20 | 2026-10-14 | `feature/p20-code-hardening` |
 | **P15 surface electrostatics** -- `GET /api/proteins/{uid}/electrostatics`: Coulombic potential per residue (distance-dependent dielectric 4r, as ChimeraX), charged surface patches, net charge, pI per chain and dipole. An *Electrostatic potential* colouring (custom Mol* theme, red-white-blue) and a Surface electrostatics section in the Analytics tab with a per-residue profile and clickable patches. Switching representation now keeps the current colour scheme instead of resetting it | P15 | 2026-10-14 | feature/p15-electrostatics |
 | **P14 sequence tools** -- `/tools` page and `POST /api/tools/{orfs,restriction,primers,crispr}`: six-frame ORF finder, restriction map (31-enzyme teaching panel, linear or circular, fragment sizes), PCR primer pairs flanking a target (nearest-neighbour Tm, GC clamp, 3' dimers) and SpCas9 guide design (cut site, GC, poly-T, in-sequence off-targets). Linear SVG map on every tab. Offline; no new dependency | P14 | 2026-10-14 | feature/p14-sequence-tools |
@@ -196,6 +198,7 @@ _No blocked tasks._
 Append-only. Never edit past entries — supersede with a new entry referencing the old one.
 
 | Date | Decision | Rationale | Reversible? |
+| 2026-10-14 | Structure prediction calls Meta's hosted ESMFold (ESM Atlas `foldSequence/v1/pdb`) instead of running a model locally or reproducing AlphaFold. Timeout 120 s for this one client; sequences capped at 400 residues to match the service; a 0-1 pLDDT column is rescaled to 0-100 so the existing colour scale and bands apply unchanged | ESMFold needs no MSA, so it answers while the user waits, and hosting a 15B-parameter model or training one is outside what this project can run. The cost is a dependency on a public endpoint with no SLA; failures surface as a 502 with a plain message | Yes: `services/esmfold.fold` is the only call site, so a self-hosted ESMFold or ColabFold server can replace the URL |
 |---|---|---|---|
 | 2026-10-14 | Electrostatics is a Coulombic estimate (eps = 4r, distances floored at 3 Å), not APBS / Poisson-Boltzmann, and is coloured per residue through a ProteoLens Mol* theme whose values live in a module and are refreshed by a `version` param | APBS needs a native binary, PDB2PQR protonation and a grid per request. The Coulombic model is what ChimeraX ships as its default surface colouring, runs in well under a second on lysozyme, and shows the basic/acidic surface a student is looking for. The notes in every response say it is not PB | yes |
 | 2026-10-14 | Primer ranking and CRISPR guide scores are transparent rule-of-thumb penalties computed with BioPython, not Primer3 or Rule Set 2 / Azimuth, and the responses say so in their notes. Off-targets are counted only within the submitted sequence | primer3-py and the Azimuth model add native or ML dependencies the Docker images and CI would have to carry, and a genome-wide off-target search needs an indexed genome. Every criterion shown is one a student can check by hand, which suits a teaching tool; the notes point to CRISPOR / Cas-OFFinder for real ordering | yes |

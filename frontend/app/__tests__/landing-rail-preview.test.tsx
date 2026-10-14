@@ -90,7 +90,7 @@ describe("landing page rail preview", () => {
     expect(screen.queryByText(/^empty$/i)).toBeNull();
   });
 
-  it("offers the demo, the databases and the drop zone as real routes", () => {
+  it("offers the demo, the databases, prediction and the drop zone as real routes", () => {
     render(<HomePage />);
     // Scoped to the rail's own nav on purpose. Querying the whole document
     // proved nothing: the header carries its own links to `#upload` and the
@@ -100,7 +100,7 @@ describe("landing page rail preview", () => {
     const hrefs = Array.from(nav.querySelectorAll("a")).map((a) =>
       a.getAttribute("href"),
     );
-    expect(hrefs).toEqual(["/viewer/demo", "/search", "#upload"]);
+    expect(hrefs).toEqual(["/viewer/demo", "/search", "/predict", "#upload"]);
   });
 
   it("lists a database the backend really talks to, for each source card", () => {

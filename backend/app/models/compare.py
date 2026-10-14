@@ -42,7 +42,7 @@ class ProteinRef(BaseModel):
     """
 
     id: str
-    source: Literal["uploaded", "rcsb", "alphafold", "uniprot"]
+    source: Literal["uploaded", "rcsb", "alphafold", "uniprot", "predicted"]
     source_id: str | None
     name: str | None
     organism: str | None

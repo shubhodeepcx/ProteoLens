@@ -1,0 +1,26 @@
+# Run the whole workspace with `docker compose up --build`, then open
+# http://localhost:3000. Uploaded structures and the protein table persist in
+# the `proteolens-data` volume.
+services:
+  backend:
+    build: ./backend
+    environment:
+      CORS_ORIGINS: http://localhost:3000
+      BLAST_CONTACT_EMAIL: ${BLAST_CONTACT_EMAIL:-}
+    volumes:
+      - proteolens-data:/app/storage
+    ports:
+      - "8000:8000"
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        NEXT_PUBLIC_API_URL: http://localhost:8000
+    depends_on:
+      - backend
+    ports:
+      - "3000:3000"
+
+volumes:
+  proteolens-data:

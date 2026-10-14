@@ -97,6 +97,7 @@ _No blocked tasks._
 
 | Task | Phase | Date | PR / commit |
 |---|---|---|---|
+| **P22 Contributor docs** -- the contributor guide is now CONTRIBUTING.md, written for human contributors; slice designs moved to docs/design; references updated | P22 | 2026-10-14 | `feature/p22-contributor-docs` |
 | **P19 structure prediction from sequence** -- `POST /api/proteins/predict` folds a pasted protein sequence (plain or FASTA, 10 to 400 residues) with ESMFold through the ESM Atlas API, rescales the 0-1 pLDDT column to 0-100, adds HEADER/TITLE records and registers the model with source `predicted`, so the viewer opens it with pLDDT colouring and the PREDICTED badge. New `/predict` page with an example (ubiquitin), residue counter and DNA detection; landing quick action. 15 backend tests (recorded-shape fixture), 4 frontend tests. The live ESM Atlas call is unverified because egress is blocked here | P19 | 2026-10-14 | `feature/p19-structure-prediction` |
 | **P20 code hardening** -- the 44 backend function signatures without type hints now have them (BioPython `Structure`/`Model`/`Chain`/`Residue`/`Atom` under `TYPE_CHECKING`, a `ParamSpec` for the tools runner), and six components over 200 LOC are split into sibling files with unchanged exports, markup and test ids: tool results, report page, helix field, electrostatics panel, variant panel, chain tree. README status brought up to date. No behaviour change; 656 backend and 480 frontend tests pass | P20 | 2026-10-14 | `feature/p20-code-hardening` |
 | **P15 surface electrostatics** -- `GET /api/proteins/{uid}/electrostatics`: Coulombic potential per residue (distance-dependent dielectric 4r, as ChimeraX), charged surface patches, net charge, pI per chain and dipole. An *Electrostatic potential* colouring (custom Mol* theme, red-white-blue) and a Surface electrostatics section in the Analytics tab with a per-residue profile and clickable patches. Switching representation now keeps the current colour scheme instead of resetting it | P15 | 2026-10-14 | feature/p15-electrostatics |
@@ -416,7 +417,7 @@ Goal: search "insulin", click a result, see it in the viewer.
 
 ## Out of scope for this slice
 
-Tracked here so future contributors don't accidentally pull them in:
+Tracked here so future work doesn't accidentally pull them in:
 
 - AI annotation assistant (F8) — separate slice
 - Mutation impact visualizer (A2) — separate slice

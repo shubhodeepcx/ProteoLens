@@ -20,7 +20,7 @@ A web-based workspace for protein 3D visualization, structural analysis, annotat
 │   ├── project_report.md                        # Project report (background, motivation, scope)
 │   ├── PROJECT_TRACKER.md                       # Living tracker — claim-before-code
 │   ├── smoke-tests.md                           # Per-phase manual verification scripts
-│   └── design/                       # Slice designs
+│   └── design/                                  # Slice designs
 └── CONTRIBUTING.md   # Contributor guide
 ```
 

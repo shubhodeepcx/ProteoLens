@@ -9,11 +9,12 @@ All upstream calls are mocked with respx. Nothing reaches the network.
 
 from __future__ import annotations
 
+from urllib.parse import quote
+
 import httpx
 import pytest
 import respx
 from fastapi.testclient import TestClient
-from urllib.parse import quote
 
 from app.main import app
 from app.models.protein import ChainInfo, ProteinSummary

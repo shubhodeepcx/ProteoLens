@@ -20,8 +20,8 @@ from app.models.analytics import (
 from app.models.annotations import ProteinAnnotations
 from app.models.complexes import ProteinComplexes
 from app.models.compounds import CompoundsResponse
-from app.models.functional import FunctionalRegions
 from app.models.confidence import ConfidenceResponse
+from app.models.functional import FunctionalRegions
 from app.models.protein import ProteinSummary
 from app.models.similarity import DEFAULT_UNIREF_IDENTITY, SimilarProteinsResponse
 from app.services import (
@@ -29,8 +29,8 @@ from app.services import (
     annotations,
     complexes,
     compounds,
-    functional,
     confidence,
+    functional,
     ingest,
     registry,
     similarity,
@@ -46,6 +46,13 @@ _STATIC = Path(__file__).parent.parent / "static"
 
 # Parsed summaries live in `services/registry` so the import router (P5) can
 # register into the same store this router reads from.
+
+
+@router.get("", response_model=list[ProteinSummary])
+def list_recent_proteins(limit: int = 20) -> list[ProteinSummary]:
+    """The most recently loaded proteins, newest first. Survives a restart."""
+    limit = max(1, min(limit, 100))
+    return [summary for _uid, summary in registry.recent(limit)]
 
 
 @router.get("/demo/file")

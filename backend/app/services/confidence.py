@@ -143,7 +143,7 @@ def band_for(plddt: float) -> BandKey:
     return "very_low"
 
 
-def extract_plddt(structure: "Structure") -> list[tuple[str, list[float]]]:
+def extract_plddt(structure: Structure) -> list[tuple[str, list[float]]]:
     """Per-residue pLDDT from the B-factor column, per chain, in file order.
 
     The residue filter mirrors `services/parser.py` exactly — first model,
@@ -384,7 +384,7 @@ def unavailable_pae(reason: str) -> PaeMatrix:
 
 
 async def pae_matrix_for(
-    accession: str, client: "AlphaFoldClient", max_cells: int = MAX_PAE_CELLS
+    accession: str, client: AlphaFoldClient, max_cells: int = MAX_PAE_CELLS
 ) -> PaeMatrix:
     """Fetch + bin the PAE for one accession, or explain why there is none.
 

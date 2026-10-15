@@ -13,6 +13,7 @@ import {
   type ViewerError,
 } from "@/components/viewer-overlays";
 import { API_BASE_URL } from "@/lib/api";
+import { selectKeyFromSearch } from "@/lib/deep-link";
 import { saveSnapshot } from "@/lib/report";
 import { useStore } from "@/lib/store";
 import { fetchElectrostatics, potentialByKey } from "@/lib/electrostatics";
@@ -50,6 +51,7 @@ export default function DynamicViewerPage() {
   const loadProtein = useStore((s) => s.loadProtein);
   const clearProtein = useStore((s) => s.clearProtein);
   const selected = useStore((s) => s.selected);
+  const setSelection = useStore((s) => s.setSelection);
   const toggleResidue = useStore((s) => s.toggleResidue);
   const clearSelection = useStore((s) => s.clearSelection);
   const representation = useStore((s) => s.representation);
@@ -135,6 +137,16 @@ export default function DynamicViewerPage() {
     if (structureVersion === 0) return;
     viewerRef.current?.highlightResidues([...selected]);
   }, [structureVersion, selected]);
+
+  // Deep link: `?select=A:7` selects and focuses one residue, once, on the
+  // first structure load (the Central Dogma Explorer's hand-off).
+  useEffect(() => {
+    if (structureVersion !== 1) return;
+    const key = selectKeyFromSearch(window.location.search);
+    if (!key) return;
+    setSelection([key]);
+    viewerRef.current?.highlightResidues([key], { focus: true });
+  }, [structureVersion, setSelection]);
 
   // Store -> Mol*: representation + coloring.
   useEffect(() => {

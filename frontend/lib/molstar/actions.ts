@@ -73,6 +73,7 @@ export function applySelection(
   structure: Structure,
   keys: readonly string[],
   index: ResidueIndexMap,
+  focus = false,
 ): void {
   const loci = keys.length === 0 ? null : keysToLoci(structure, keys, index);
   // An empty loci must clear rather than "select nothing", which would leave
@@ -82,6 +83,9 @@ export function applySelection(
     return;
   }
   plugin.managers.structure.selection.fromLoci("set", loci);
+  // Only on request (a deep link): moving the camera on every click would
+  // throw away the view the user just set up.
+  if (focus) plugin.managers.camera.focusLoci(loci);
 }
 
 export function applyRepresentation(

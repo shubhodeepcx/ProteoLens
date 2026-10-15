@@ -41,7 +41,7 @@ export type {
 export interface MolstarViewerRef {
   loadStructure(url: string, format?: MolstarFormat): Promise<void>;
   /** Keys are `"<chain>:<1-based position>"`, matching the sequence panel. */
-  highlightResidues(keys: string[]): void;
+  highlightResidues(keys: string[], options?: { focus?: boolean }): void;
   setRepresentation(type: MolstarRepresentation): void;
   /**
    * `options.hasPlddt` carries `ProteinSummary.has_plddt`; it is required
@@ -189,11 +189,11 @@ const MolstarViewer = React.forwardRef<MolstarViewerRef, MolstarViewerProps>(
 
       // The remaining entry points are one-liners over `lib/molstar/actions`,
       // each guarding on the asynchronously created plugin.
-      highlightResidues: (keys) => {
+      highlightResidues: (keys, options) => {
         const plugin = pluginRef.current;
         const structure = structureRef.current;
         if (plugin && structure) {
-          applySelection(plugin, structure, keys, indexRef.current);
+          applySelection(plugin, structure, keys, indexRef.current, options?.focus);
         }
       },
       setRepresentation: (type) => {

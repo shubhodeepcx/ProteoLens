@@ -86,6 +86,13 @@ export default function HomePage() {
         <div className="ml-auto flex items-center gap-2">
           <HealthPill />
           <Link
+            href="/explore"
+            className={buttonVariants({ size: "sm", variant: "secondary" })}
+          >
+            <Dna aria-hidden />
+            Explore DNA
+          </Link>
+          <Link
             href="/tools"
             className={buttonVariants({ size: "sm", variant: "secondary" })}
           >

@@ -8,32 +8,37 @@ import respx
 from fastapi.testclient import TestClient
 
 from app.main import app
-from app.services import explain as ex
 from tests.test_functional_api import register_lysozyme
 
 client = TestClient(app)
 
 
+URL = "https://llm.test/v1/chat/completions"
+
+
 def _reply(text: str = "Lysozyme is a small enzyme.", model: str = "test-model") -> httpx.Response:
     return httpx.Response(
-        200, json={"model": model, "content": [{"type": "text", "text": text}], "role": "assistant"}
+        200,
+        json={"model": model, "choices": [{"message": {"role": "assistant", "content": text}}]},
     )
 
 
 @pytest.fixture
 def with_key(monkeypatch):
+    monkeypatch.setenv("EXPLAIN_API_URL", URL)
     monkeypatch.setenv("EXPLAIN_API_KEY", "sk-test")
     monkeypatch.setenv("EXPLAIN_MODEL", "test-model")
 
 
 def test_without_settings_the_endpoint_says_which_variables_to_set(monkeypatch):
+    monkeypatch.delenv("EXPLAIN_API_URL", raising=False)
     monkeypatch.delenv("EXPLAIN_API_KEY", raising=False)
     monkeypatch.delenv("EXPLAIN_MODEL", raising=False)
     uid = register_lysozyme()
     res = client.post(f"/api/proteins/{uid}/explain", json={})
     assert res.status_code == 503
     detail = res.json()["detail"]
-    assert "EXPLAIN_API_KEY" in detail and "EXPLAIN_MODEL" in detail
+    assert all(v in detail for v in ("EXPLAIN_API_URL", "EXPLAIN_API_KEY", "EXPLAIN_MODEL"))
 
 
 def test_a_key_without_a_model_is_still_unavailable(with_key, monkeypatch):
@@ -47,7 +52,7 @@ def test_a_key_without_a_model_is_still_unavailable(with_key, monkeypatch):
 
 @respx.mock
 def test_explains_with_measured_facts_and_selected_residues(with_key):
-    route = respx.post(ex.API_URL).mock(return_value=_reply())
+    route = respx.post(URL).mock(return_value=_reply())
     uid = register_lysozyme()
     res = client.post(
         f"/api/proteins/{uid}/explain",
@@ -67,45 +72,45 @@ def test_explains_with_measured_facts_and_selected_residues(with_key):
     assert "E35 (chain A)" in selected and "1 residue(s)" in selected
 
     request = route.calls.last.request
-    assert request.headers["x-api-key"] == "sk-test"
-    assert request.headers["api-version"] == ex.API_VERSION
+    assert request.headers["authorization"] == "Bearer sk-test"
     sent = json.loads(request.content)
     assert sent["model"] == "test-model"
-    assert "secondary-school" in sent["system"]
-    assert "Why is E35 important?" in sent["messages"][0]["content"]
-    assert "E35 (chain A)" in sent["messages"][0]["content"]
+    assert sent["messages"][0]["role"] == "system"
+    assert "secondary-school" in sent["messages"][0]["content"]
+    assert "Why is E35 important?" in sent["messages"][1]["content"]
+    assert "E35 (chain A)" in sent["messages"][1]["content"]
 
 
 @respx.mock
 def test_configured_model_and_default_overview_question(with_key, monkeypatch):
     monkeypatch.setenv("EXPLAIN_MODEL", "other-model")
-    route = respx.post(ex.API_URL).mock(return_value=_reply(model="other-model"))
+    route = respx.post(URL).mock(return_value=_reply(model="other-model"))
     uid = register_lysozyme()
     assert client.post(f"/api/proteins/{uid}/explain", json={}).status_code == 200
     sent = json.loads(route.calls.last.request.content)
     assert sent["model"] == "other-model"
-    assert "overview" in sent["messages"][0]["content"]
+    assert "overview" in sent["messages"][1]["content"]
 
 
 @respx.mock
 def test_upstream_error_is_a_502_with_the_reason(with_key):
-    respx.post(ex.API_URL).mock(
+    respx.post(URL).mock(
         return_value=httpx.Response(
-            401, json={"error": {"type": "authentication_error", "message": "invalid x-api-key"}}
+            401, json={"error": {"type": "authentication_error", "message": "invalid api key"}}
         )
     )
     uid = register_lysozyme()
     res = client.post(f"/api/proteins/{uid}/explain", json={})
     assert res.status_code == 502
-    assert "invalid x-api-key" in res.json()["detail"]
+    assert "invalid api key" in res.json()["detail"]
 
 
 @respx.mock
 def test_network_failure_and_empty_answer_are_502(with_key):
     uid = register_lysozyme()
-    respx.post(ex.API_URL).mock(side_effect=httpx.ConnectError("down"))
+    respx.post(URL).mock(side_effect=httpx.ConnectError("down"))
     assert client.post(f"/api/proteins/{uid}/explain", json={}).status_code == 502
-    respx.post(ex.API_URL).mock(return_value=_reply(text="  "))
+    respx.post(URL).mock(return_value=_reply(text="  "))
     res = client.post(f"/api/proteins/{uid}/explain", json={})
     assert res.status_code == 502 and "empty" in res.json()["detail"]
 

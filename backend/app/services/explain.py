@@ -6,9 +6,9 @@ selected residues) and asked to explain them at the reader's level. It is told
 to mark anything that comes from general knowledge rather than from those
 facts, so a student can tell what was measured from what was recalled.
 
-The API key and model id are read from the backend's environment and never
-reach the browser. Without them the endpoint answers 503 and says which
-variables to set.
+The endpoint, API key and model id are read from the backend's environment
+and never reach the browser. Any chat-completions compatible endpoint works.
+Without them the endpoint answers 503 and says which variables to set.
 """
 
 from __future__ import annotations
@@ -23,8 +23,6 @@ from app.models.explain import Level
 from app.models.protein import ProteinSummary
 from app.services.functional import ChainResidues
 
-API_URL = "https://api.example.com/v1/chat/completions"
-API_VERSION = "2023-06-01"
 MAX_TOKENS = 1200
 TIMEOUT = httpx.Timeout(60.0, connect=10.0)
 
@@ -49,11 +47,15 @@ emphasis. Stay under 250 words."""
 
 
 class ExplainUnavailable(RuntimeError):
-    """No API key is configured."""
+    """The endpoint, key or model is not configured."""
 
 
 class ExplainFailed(RuntimeError):
     """The model API answered with an error."""
+
+
+def api_url() -> str | None:
+    return os.getenv("EXPLAIN_API_URL") or None
 
 
 def api_key() -> str | None:
@@ -68,7 +70,11 @@ def missing_settings() -> list[str]:
     """Environment variables the assistant still needs, in the order to set them."""
     return [
         name
-        for name, value in (("EXPLAIN_API_KEY", api_key()), ("EXPLAIN_MODEL", model_name()))
+        for name, value in (
+            ("EXPLAIN_API_URL", api_url()),
+            ("EXPLAIN_API_KEY", api_key()),
+            ("EXPLAIN_MODEL", model_name()),
+        )
         if not value
     ]
 
@@ -146,7 +152,9 @@ def build_facts(
     return facts
 
 
-def build_messages(facts: list[str], question: str | None) -> list[dict[str, str]]:
+def build_messages(
+    facts: list[str], question: str | None, level: Level
+) -> list[dict[str, str]]:
     ask = (
         question.strip()
         if question and question.strip()
@@ -156,7 +164,10 @@ def build_messages(facts: list[str], question: str | None) -> list[dict[str, str
         )
     )
     body = "Measured facts:\n" + "\n".join(f"- {f}" for f in facts) + f"\n\nQuestion: {ask}"
-    return [{"role": "user", "content": body}]
+    return [
+        {"role": "system", "content": SYSTEM_PROMPT.format(audience=LEVEL_GUIDE[level])},
+        {"role": "user", "content": body},
+    ]
 
 
 async def explain(
@@ -166,25 +177,21 @@ async def explain(
     client: httpx.AsyncClient | None = None,
 ) -> tuple[str, str]:
     """Ask the model; return (answer, model). Raises ExplainUnavailable / ExplainFailed."""
+    url = api_url()
     key = api_key()
     model = model_name()
-    if not key or not model:
+    if not url or not key or not model:
         raise ExplainUnavailable(unavailable_message())
     payload = {
         "model": model,
         "max_tokens": MAX_TOKENS,
-        "system": SYSTEM_PROMPT.format(audience=LEVEL_GUIDE[level]),
-        "messages": build_messages(facts, question),
+        "messages": build_messages(facts, question, level),
     }
-    headers = {
-        "x-api-key": key,
-        "api-version": API_VERSION,
-        "content-type": "application/json",
-    }
+    headers = {"authorization": f"Bearer {key}", "content-type": "application/json"}
     owns_client = client is None
     client = client or httpx.AsyncClient(timeout=TIMEOUT)
     try:
-        response = await client.post(API_URL, json=payload, headers=headers)
+        response = await client.post(url, json=payload, headers=headers)
     except httpx.HTTPError as exc:
         raise ExplainFailed(f"Could not reach the model API: {exc.__class__.__name__}.") from exc
     finally:
@@ -200,9 +207,8 @@ async def explain(
             f"The model API answered {response.status_code}" + (f": {message}" if message else ".")
         )
     data = response.json()
-    text = "".join(
-        block.get("text", "") for block in data.get("content", []) if block.get("type") == "text"
-    ).strip()
+    choices = data.get("choices") or [{}]
+    text = ((choices[0].get("message") or {}).get("content") or "").strip()
     if not text:
         raise ExplainFailed("The model returned an empty answer.")
     return text, data.get("model", model)

@@ -13,6 +13,7 @@ import type { ColorTheme } from "molstar/lib/mol-theme/color";
 import { keysToLoci, type ResidueIndexMap } from "@/lib/molstar/residue-index";
 import { residueIndicesForKeys } from "@/lib/residue-map";
 import { OVERLAY_THEME_NAME } from "@/lib/molstar/overlay-theme";
+import { proteinStructures } from "@/lib/molstar/docked-pose";
 import { ELECTROSTATICS_THEME } from "@/lib/molstar/electrostatics-theme";
 import {
   COLOR_THEME,
@@ -89,7 +90,7 @@ export function applyRepresentation(
 ): void {
   const spec = REPRESENTATION_SPEC[type];
 
-  for (const s of plugin.managers.structure.hierarchy.current.structures) {
+  for (const s of proteinStructures(plugin)) {
     const data = s.cell.obj?.data;
     const params =
       spec.sizeAspectRatio === undefined
@@ -140,7 +141,7 @@ export function applyColoring(
   // merges the key in and would clear any theme defaults — so build the two
   // shapes separately.
   const params = colorParams ? { color, colorParams } : { color };
-  for (const s of plugin.managers.structure.hierarchy.current.structures) {
+  for (const s of proteinStructures(plugin)) {
     void plugin.managers.structure.component.updateRepresentationsTheme(
       s.components,
       params,
@@ -168,7 +169,7 @@ export function applyResidueOverlay(
   // Mol*'s typings only admit built-in theme names here; the overlay is
   // registered at plugin creation (`plugin.ts`), so the name does resolve.
   const color = OVERLAY_THEME_NAME as unknown as ColorTheme.BuiltIn;
-  for (const s of plugin.managers.structure.hierarchy.current.structures) {
+  for (const s of proteinStructures(plugin)) {
     void plugin.managers.structure.component.updateRepresentationsTheme(
       s.components,
       { color, colorParams: { colors } },
@@ -183,7 +184,7 @@ export function applyResidueOverlay(
  */
 export function applyResidueValueColoring(plugin: PluginContext, version: number): void {
   const params = { color: ELECTROSTATICS_THEME, colorParams: { version } };
-  for (const s of plugin.managers.structure.hierarchy.current.structures) {
+  for (const s of proteinStructures(plugin)) {
     void plugin.managers.structure.component.updateRepresentationsTheme(
       s.components,
       params as unknown as Parameters<

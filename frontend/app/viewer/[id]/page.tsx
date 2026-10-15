@@ -55,6 +55,7 @@ export default function DynamicViewerPage() {
   const representation = useStore((s) => s.representation);
   const coloring = useStore((s) => s.coloring);
   const residueOverlay = useStore((s) => s.residueOverlay);
+  const dockedPose = useStore((s) => s.dockedPose);
   const setColoring = useStore((s) => s.setColoring);
   const resetView = useStore((s) => s.resetView);
   /** Does this structure's B-factor column hold pLDDT? Drives both the
@@ -172,6 +173,12 @@ export default function DynamicViewerPage() {
       cancelled = true;
     };
   }, [structureVersion, coloring, hasPlddt, residueOverlay, id, setColoring]);
+
+  // Store -> Mol*: the Docking tab's chosen pose, re-added after every load.
+  useEffect(() => {
+    if (structureVersion === 0) return;
+    viewerRef.current?.showDockedPose(dockedPose?.sdf ?? null);
+  }, [structureVersion, dockedPose]);
 
   // Mol* -> store: a 3D click toggles the residue, empty space clears.
   const onResidueClick = useCallback(

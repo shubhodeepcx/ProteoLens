@@ -18,6 +18,9 @@ venv/
 .mypy_cache/
 .ruff_cache/
 
+# AutoDock Vina binary (backend/scripts/install_vina.py downloads it)
+backend/bin/
+
 # Runtime storage (uploaded proteins) — ignore contents but keep the directory
 backend/storage/proteins/*
 !backend/storage/proteins/.gitkeep

@@ -11,6 +11,7 @@ from app.api import (
     clinical,
     compare,
     conservation,
+    docking,
     electrostatics,
     explain,
     import_,
@@ -48,6 +49,10 @@ app.openapi_tags = [
         ),
     },
     {
+        "name": "docking",
+        "description": "Ligand docking with AutoDock Vina into a crystal site or chosen residues.",
+    },
+    {
         "name": "tools",
         "description": "Offline DNA tools: ORFs, restriction map, PCR primers, CRISPR guides.",
     },
@@ -83,6 +88,7 @@ app.include_router(clinical.router, prefix="/api")
 app.include_router(oncology.router, prefix="/api")
 app.include_router(neoantigen.router, prefix="/api")
 app.include_router(conservation.router, prefix="/api")
+app.include_router(docking.router, prefix="/api")
 app.include_router(tools.router, prefix="/api")
 
 

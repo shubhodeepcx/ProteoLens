@@ -30,4 +30,5 @@ export type {
   Representation,
   ColoringScheme,
   ResidueOverlay,
+  DockedPose,
 } from "./viewer-slice";

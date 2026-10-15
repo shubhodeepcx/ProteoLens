@@ -80,6 +80,7 @@ python -m venv .venv
 .\.venv\Scripts\Activate.ps1      # PowerShell
 # or: source .venv/bin/activate   # bash
 pip install -e ".[dev]"
+python scripts/install_vina.py      # optional: AutoDock Vina for the Docking tab
 ```
 
 ### Frontend

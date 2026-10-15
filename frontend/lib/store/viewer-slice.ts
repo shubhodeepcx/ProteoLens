@@ -41,10 +41,19 @@ export interface ResidueOverlay {
   legend: ReadonlyArray<readonly [string, number]>;
 }
 
+/** A docked ligand pose the Docking tab is showing in 3D. */
+export interface DockedPose {
+  /** The pose with hydrogens, as an MDL molfile. */
+  sdf: string;
+  /** e.g. "Pose 1, -11.4 kcal/mol". */
+  label: string;
+}
+
 export interface ViewerSlice {
   representation: Representation;
   coloring: ColoringScheme;
   residueOverlay: ResidueOverlay | null;
+  dockedPose: DockedPose | null;
   /**
    * Incremented to signal that the viewer should reset its camera. Components
    * subscribe to this counter rather than holding an imperative ref to Mol*.
@@ -53,6 +62,7 @@ export interface ViewerSlice {
   setRepresentation: (representation: Representation) => void;
   setColoring: (coloring: ColoringScheme) => void;
   setResidueOverlay: (overlay: ResidueOverlay | null) => void;
+  setDockedPose: (pose: DockedPose | null) => void;
   resetCamera: () => void;
   /**
    * Restores representation/coloring to their defaults. Called when leaving a
@@ -71,15 +81,18 @@ export const createViewerSlice: StateCreator<ViewerSlice, [], [], ViewerSlice> =
   representation: DEFAULT_REPRESENTATION,
   coloring: DEFAULT_COLORING,
   residueOverlay: null,
+  dockedPose: null,
   cameraResetTick: 0,
   setRepresentation: (representation) => set({ representation }),
   setColoring: (coloring) => set({ coloring, residueOverlay: null }),
   setResidueOverlay: (residueOverlay) => set({ residueOverlay }),
+  setDockedPose: (dockedPose) => set({ dockedPose }),
   resetCamera: () => set((state) => ({ cameraResetTick: state.cameraResetTick + 1 })),
   resetView: () =>
     set({
       representation: DEFAULT_REPRESENTATION,
       coloring: DEFAULT_COLORING,
       residueOverlay: null,
+      dockedPose: null,
     }),
 });

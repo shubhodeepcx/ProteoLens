@@ -155,6 +155,17 @@ export const RAIL_TABS: readonly RailTab[] = [
       "Paint the structure from variable (turquoise) to conserved (maroon)",
     ],
   },
+  {
+    value: "docking",
+    title: "Docking",
+    source: "AutoDock Vina 1.2, run locally",
+    items: [
+      "Dock any SMILES into a crystal ligand's pocket or around selected residues",
+      "Ranked poses with Vina binding scores",
+      "Redocking checks the top pose against the crystal ligand by RMSD",
+      "Each pose shown in 3D with the residues it touches",
+    ],
+  },
 ];
 
 export interface DataSource {

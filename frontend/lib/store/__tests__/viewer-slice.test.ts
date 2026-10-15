@@ -62,3 +62,16 @@ describe("viewerSlice residue overlay", () => {
     expect(store.getState().residueOverlay).toBeNull();
   });
 });
+
+describe("viewerSlice docked pose", () => {
+  const pose = { sdf: "x\nM  END\n", label: "Pose 1, -11.4 kcal/mol" };
+
+  it("survives a coloring change but not resetView", () => {
+    const store = create<ViewerSlice>()((...a) => createViewerSlice(...a));
+    store.getState().setDockedPose(pose);
+    store.getState().setColoring("ss");
+    expect(store.getState().dockedPose).toBe(pose);
+    store.getState().resetView();
+    expect(store.getState().dockedPose).toBeNull();
+  });
+});

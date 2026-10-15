@@ -888,6 +888,42 @@ another sequence version is refused rather than painted.
 
 ---
 
+## Docking — AutoDock Vina into a crystal pocket or selected residues
+
+Goal: dock a SMILES into the structure, rank Vina's poses, show each in 3D, and prove the setup by
+redocking a crystal ligand onto its own pose.
+
+1. Install Vina once: `cd backend && python scripts/install_vina.py` (downloads the 1.2.7 binary
+   into `backend/bin/`). Start the backend with `CORS_ORIGINS=http://localhost:3000` and the frontend.
+2. Import **RCSB 1HSG** (HIV-1 protease with indinavir). Open **Docking**.
+3. Expect *Dock into* to offer the **MK1** pocket (chain B 902) and *Selected residues (0)*, with the
+   SMILES box prefilled with indinavir and the note *"This is MK1 itself, so poses are scored
+   against its crystal pose."*
+4. Keep *Standard (8)* and click **Dock**. Expect *"Vina is searching…"*, then after one to three
+   minutes: *"MK1 site, chain B: 9 poses"*, *"Best score -10.5 kcal/mol (very strong)"* and, in
+   green, *"Top pose is 0.78 Å from the crystal pose: the crystal binding mode is reproduced."*
+   The amber pose sits on top of the crystal indinavir, and the camera zooms to it.
+5. Click pose **2**: it replaces pose 1 in 3D and its contact residues are selected (about 29,
+   including Asp25 of both chains). **Hide pose** removes it.
+6. Choose *Selected residues*, edit the SMILES to aspirin `CC(=O)Oc1ccccc1C(=O)O`, and dock: poses
+   list contacts instead of crystal RMSD.
+7. Negative cases:
+   - SMILES `C1CC`: *"Docking failed: RDKit could not read that SMILES."* (HTTP 400).
+   - *Selected residues* with nothing selected: **Dock** is disabled with a hint.
+   - No Vina binary (`VINA_BINARY=/nonexistent`): the tab reads *"Docking needs AutoDock Vina."*
+     with the install command, and `POST /dock` is a 503.
+8. Tests:
+   ```
+   cd backend && pytest
+   cd frontend && npm ci && npm test && npm run build
+   ```
+   - Expect: 655 backend (the real-Vina test skips without a binary), 503 frontend, build clean.
+
+**Pass criteria:** the redock reproduces the crystal pose within 2 Å; a pose never changes the
+protein's representation or colouring; the app works without Vina installed.
+
+---
+
 ## How to add a smoke test
 
 When you start a phase, replace the placeholder for that phase with the concrete steps. The steps should be the minimum sequence a new contributor needs to verify the phase works end-to-end, including:

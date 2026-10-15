@@ -15,6 +15,7 @@ import {
   type ColoringOptions,
   type MolstarFormat,
 } from "@/lib/molstar/actions";
+import { isOtherStructure, showDockedPose } from "@/lib/molstar/docked-pose";
 import {
   buildResidueIndex,
   warnOnResidueDrift,
@@ -49,6 +50,8 @@ export interface MolstarViewerRef {
   setColoring(scheme: MolstarColoring, options: ColoringOptions): void;
   /** Paints residues from a `"A:12" -> 0xRRGGBB` table (rail-panel overlays). */
   setResidueOverlay(colors: Readonly<Record<string, number>>): void;
+  /** Shows a docked ligand pose (MDL molfile) beside the protein; null removes it. */
+  showDockedPose(sdf: string | null): void;
   /**
    * Colour by a per-residue value (P15 electrostatics), red at `-range`,
    * white at 0, blue at `+range`. Keys are `"<chain>:<ordinal>"`; residues
@@ -134,6 +137,7 @@ const MolstarViewer = React.forwardRef<MolstarViewerRef, MolstarViewerProps>(
           }
           // `undefined` means "say nothing": the user clicked a ligand or
           // water, which must not be mistaken for a background click.
+          if (isOtherStructure(e.current.loci, structureRef.current)) return;
           const payload = residueClickPayload(
             resolveResidueLocus(e.current.loci, indexRef.current),
           );
@@ -201,6 +205,9 @@ const MolstarViewer = React.forwardRef<MolstarViewerRef, MolstarViewerProps>(
       setResidueOverlay: (colors) => {
         const plugin = pluginRef.current;
         if (plugin) applyResidueOverlay(plugin, colors, indexRef.current);
+      },
+      showDockedPose: (sdf) => {
+        if (pluginRef.current) void showDockedPose(pluginRef.current, sdf);
       },
       colorByResidueValues: (values, range) => {
         const plugin = pluginRef.current;

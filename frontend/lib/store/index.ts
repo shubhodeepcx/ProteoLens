@@ -29,4 +29,5 @@ export type {
   ViewerSlice,
   Representation,
   ColoringScheme,
+  ResidueOverlay,
 } from "./viewer-slice";

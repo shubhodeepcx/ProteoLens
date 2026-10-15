@@ -10,6 +10,7 @@ import { renderReact18 } from "molstar/lib/mol-plugin-ui/react18";
 import { DefaultPluginUISpec } from "molstar/lib/mol-plugin-ui/spec";
 import { ElectrostaticsColorThemeProvider } from "@/lib/molstar/electrostatics-theme";
 import type { PluginUIContext } from "molstar/lib/mol-plugin-ui/context";
+import { OverlayColorThemeProvider } from "@/lib/molstar/overlay-theme";
 import { Color } from "molstar/lib/mol-util/color";
 
 /** Reads `--viewer-bg` (a #rrggbb colour set per theme in globals.css). */
@@ -75,6 +76,12 @@ export async function createViewerPlugin(
       },
     },
   });
+  // The overlay theme lets rail panels (clinical evidence, oncology) paint
+  // residues from data the file does not carry; see `overlay-theme.ts`.
+  const registry = plugin.representation.structure.themes.colorThemeRegistry;
+  if (!registry.has(OverlayColorThemeProvider)) {
+    registry.add(OverlayColorThemeProvider);
+  }
   // ProteoLens' own per-residue theme (P15 electrostatics). Registered once
   // per plugin; `applyResidueValueColoring` selects it by name.
   plugin.representation.structure.themes.colorThemeRegistry.add(

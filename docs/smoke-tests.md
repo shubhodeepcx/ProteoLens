@@ -765,6 +765,37 @@ and upstream failures give a plain message.
 
 ---
 
+## Clinical evidence — ClinVar, gnomAD and AlphaMissense on the structure (A2, clinical half)
+
+Goal: the **Clinical** tab lists what variant databases say about each position, every variant
+lands on the right residue of the loaded file, and the structure can be painted by AlphaMissense
+or by pathogenic burden.
+
+1. Start the backend with `CORS_ORIGINS=http://localhost:3000` and the frontend.
+2. Import **AlphaFold P68871** (haemoglobin beta). Open **Clinical**.
+   - Header: *HBB P68871*, ~760 reported variants, 147 positions placed on this structure.
+   - Diseases: *beta Thalassemia (BTHAL)* first.
+   - Type `E7V` in the variant search: one row, `p.Glu7Val`, **Pathogenic**, *Sickle cell anemia*.
+     Click `E7V`: the header reads *1 selected* and residue A:7 (Glu) is highlighted in 3D.
+3. Click **AlphaMissense**: the toolbar's colouring select reads *AlphaMissense*, the legend shows
+   three bands, and the structure turns blue/grey/red. Click it again: back to the toolbar scheme.
+   Pick any scheme from the toolbar while painted: the overlay clears.
+4. Import **RCSB 2OCJ** (p53 core domain, four chains, numbering starts at 94). Open **Clinical**.
+   - Search `R175H`: **Pathogenic**, AM residue 0.99. Click it: four residues are selected
+     (`A:80`, `B:80`, `C:80`, `D:80` — ordinal 80 is auth residue 175 in every chain).
+   - **Pathogenic burden** paints the DNA-binding loops dark red.
+5. Upload `backend/app/static/1CRN.pdb`: expect *No clinical variant evidence for this structure*
+   with the reason that an upload has no accession.
+6. Negative case: with the network to `www.ebi.ac.uk` blocked, the tab shows *Clinical evidence
+   failed* and a **Try again** button; with only `alphafold.ebi.ac.uk` blocked the variants still
+   show and **AlphaMissense** is disabled with a note.
+7. Tests: `cd backend && pytest tests/test_clinical.py`, `cd frontend && npm test -- clinical`.
+
+**Pass criteria:** every itemised variant names its sources, AlphaMissense is labelled a residue
+mean, and no variant is placed on a residue the alignment did not map.
+
+---
+
 ## How to add a smoke test
 
 When you start a phase, replace the placeholder for that phase with the concrete steps. The steps should be the minimum sequence a new contributor needs to verify the phase works end-to-end, including:

@@ -9,7 +9,10 @@
 import type { PluginContext } from "molstar/lib/mol-plugin/context";
 import { StructureElement, type Structure } from "molstar/lib/mol-model/structure";
 import { createStructureRepresentationParams } from "molstar/lib/mol-plugin-state/helpers/structure-representation-params";
+import type { ColorTheme } from "molstar/lib/mol-theme/color";
 import { keysToLoci, type ResidueIndexMap } from "@/lib/molstar/residue-index";
+import { residueIndicesForKeys } from "@/lib/residue-map";
+import { OVERLAY_THEME_NAME } from "@/lib/molstar/overlay-theme";
 import { ELECTROSTATICS_THEME } from "@/lib/molstar/electrostatics-theme";
 import {
   COLOR_THEME,
@@ -141,6 +144,34 @@ export function applyColoring(
     void plugin.managers.structure.component.updateRepresentationsTheme(
       s.components,
       params,
+    );
+  }
+}
+
+/**
+ * Paints residues from a `"A:12" -> 0xRRGGBB` table through the overlay theme.
+ *
+ * Keys are resolved to model residue indices with the same index selection
+ * uses, so a key that highlights a residue is the key that colours it.
+ */
+export function applyResidueOverlay(
+  plugin: PluginContext,
+  colorsByKey: Readonly<Record<string, number>>,
+  index: ResidueIndexMap,
+): void {
+  const colors = new Map<number, number>();
+  for (const [key, color] of Object.entries(colorsByKey)) {
+    for (const residue of residueIndicesForKeys(index, [key])) {
+      colors.set(residue, color);
+    }
+  }
+  // Mol*'s typings only admit built-in theme names here; the overlay is
+  // registered at plugin creation (`plugin.ts`), so the name does resolve.
+  const color = OVERLAY_THEME_NAME as unknown as ColorTheme.BuiltIn;
+  for (const s of plugin.managers.structure.hierarchy.current.structures) {
+    void plugin.managers.structure.component.updateRepresentationsTheme(
+      s.components,
+      { color, colorParams: { colors } },
     );
   }
 }

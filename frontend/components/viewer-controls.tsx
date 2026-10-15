@@ -8,6 +8,7 @@ import {
 } from "@/lib/molstar/theming";
 import type { Representation, ColoringScheme } from "@/lib/store";
 
+const OVERLAY_VALUE = "__overlay";
 // Not a Mol* built-in, so it is appended here rather than listed in
 // `COLORING_OPTIONS`, which the comparison view also offers.
 const ELECTROSTATICS_OPTION = ["electrostatics", "Electrostatic potential"] as const;
@@ -35,6 +36,7 @@ export function ViewerControls({
   const coloring = useStore((s) => s.coloring);
   const setRepresentation = useStore((s) => s.setRepresentation);
   const setColoring = useStore((s) => s.setColoring);
+  const overlay = useStore((s) => s.residueOverlay);
 
   const coloringOptions = useMemo(
     () => [...coloringOptionsFor(hasPlddt), ELECTROSTATICS_OPTION],
@@ -75,9 +77,15 @@ export function ViewerControls({
         title="Coloring"
         className={SELECT_CLASS}
         disabled={disabled}
-        value={coloring}
-        onChange={(e) => setColoring(e.target.value as ColoringScheme)}
+        value={overlay ? OVERLAY_VALUE : coloring}
+        onChange={(e) => {
+          if (e.target.value !== OVERLAY_VALUE) {
+            setColoring(e.target.value as ColoringScheme);
+          }
+        }}
       >
+        {/* A rail panel is painting the structure; any real scheme clears it. */}
+        {overlay && <option value={OVERLAY_VALUE}>{overlay.label}</option>}
         {coloringOptions.map(([value, label]) => (
           <option key={value} value={value}>
             {label}

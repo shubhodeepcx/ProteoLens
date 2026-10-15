@@ -20,7 +20,8 @@ logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/proteins", tags=["clinical"])
 
 
-def _stored(uid: str) -> tuple[ProteinSummary, Path]:
+def stored_protein(uid: str) -> tuple[ProteinSummary, Path]:
+    """The registry summary and stored file for `uid`, or a 404."""
     try:
         storage.validate_uid(uid)
     except ValueError as exc:
@@ -45,7 +46,7 @@ async def get_clinical_evidence(uid: str) -> ClinicalEvidence:
     """
     from app.api.search import get_rcsb_client, get_uniprot_client
 
-    summary, file_path = _stored(uid)
+    summary, file_path = stored_protein(uid)
     accession, note = await annotations.resolve_accession(
         summary, uniprot=get_uniprot_client(), rcsb=get_rcsb_client()
     )

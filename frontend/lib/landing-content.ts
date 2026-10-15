@@ -120,6 +120,19 @@ export const RAIL_TABS: readonly RailTab[] = [
       "Click a variant to select it in 3D",
     ],
   },
+  {
+    value: "oncology",
+    title: "Oncology",
+    source: "cancerhotspots.org, cBioPortal, ChEMBL, CIViC, Reactome, STRING",
+    items: [
+      "Somatic mutation lollipop plot across 32 TCGA PanCancer studies",
+      "Recurrent tumour hotspots and the cancer types that carry them",
+      "Drugs acting on the protein, including mutant-specific inhibitors",
+      "CIViC sensitivity, resistance and prognostic evidence",
+      "Reactome pathways and STRING interaction partners",
+      "Paint the structure by hotspot or by mutation density",
+    ],
+  },
 ];
 
 export interface DataSource {
@@ -154,6 +167,16 @@ export const DATA_SOURCES: readonly DataSource[] = [
     name: "EBI Proteins API",
     host: "ebi.ac.uk/proteins",
     body: "Variants with ClinVar significance, disease associations and gnomAD frequencies.",
+  },
+  {
+    name: "cBioPortal",
+    host: "www.cbioportal.org",
+    body: "Somatic mutations across the TCGA PanCancer Atlas, with cancerhotspots.org hotspots.",
+  },
+  {
+    name: "ChEMBL + CIViC",
+    host: "civicdb.org",
+    body: "Drugs with a mechanism on the protein, and curated sensitivity and resistance evidence.",
   },
   {
     name: "Complex Portal",

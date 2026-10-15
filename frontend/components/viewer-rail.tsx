@@ -6,6 +6,7 @@ import { AnnotationsPanel } from "@/components/annotations-panel";
 import { ClinicalPanel } from "@/components/clinical-panel";
 import { ComplexesPanel } from "@/components/complexes-panel";
 import { CompoundsPanel } from "@/components/compounds-panel";
+import { OncologyPanel } from "@/components/oncology-panel";
 import { OverviewPanel } from "@/components/overview-panel";
 import { SequencePanel } from "@/components/sequence-panel";
 import { SimilarityPanel } from "@/components/similarity-panel";
@@ -14,7 +15,7 @@ import { VariantPanel } from "@/components/variant-panel";
 /**
  * The workspace's right rail (spec 4.1, extended in P6, P8 and P9):
  * Overview / Sequence / Analytics / Annotations / Variants / Compounds / Similarity /
- * Complexes / Clinical.
+ * Complexes / Clinical / Oncology.
  *
  * Rendered twice by the viewer page — once as the `xl` side rail and once
  * stacked below the viewer at narrow widths — so it keeps its own tab state.
@@ -53,6 +54,9 @@ export function ViewerRail({ proteinId }: { proteinId: string }) {
         <TabsTrigger value="clinical" className="text-xs">
           Clinical
         </TabsTrigger>
+        <TabsTrigger value="oncology" className="text-xs">
+          Oncology
+        </TabsTrigger>
       </TabsList>
 
       <TabsContent value="overview" className="min-h-0 overflow-hidden">
@@ -81,6 +85,9 @@ export function ViewerRail({ proteinId }: { proteinId: string }) {
       </TabsContent>
       <TabsContent value="clinical" className="min-h-0 overflow-hidden">
         <ClinicalPanel proteinId={proteinId} />
+      </TabsContent>
+      <TabsContent value="oncology" className="min-h-0 overflow-hidden">
+        <OncologyPanel proteinId={proteinId} />
       </TabsContent>
     </Tabs>
   );

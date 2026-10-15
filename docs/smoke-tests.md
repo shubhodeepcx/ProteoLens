@@ -796,6 +796,34 @@ mean, and no variant is placed on a residue the alignment did not map.
 
 ---
 
+## Oncology — hotspots, TCGA, drugs, CIViC, pathways (A2, oncology layer)
+
+Goal: the **Oncology** tab answers "where do tumours mutate this protein, what targets it, and
+what does the clinical literature say", and every position lands on the right residue.
+
+1. Start the backend with `CORS_ORIGINS=http://localhost:3000` and the frontend.
+2. Import **RCSB 6OIM** (KRAS G12C + sotorasib). Open **Oncology**. The first load queries six
+   services and can take ~15-30 s (ChEMBL is the slow one); a reload is served from cache.
+   - Header: *KRAS P01116*, *Mutated in 763 of 10,967 tumours across 32 TCGA PanCancer studies*,
+     six green source chips.
+   - Lollipop: the tallest head is labelled `G12D`; `G13D`, `Q61H` and `A146T` are labelled too.
+   - Hotspots: `G12` first with ~2,175 tumours. Click it: *1 selected*, residue `A:13`
+     (6OIM numbers from Gly0, so UniProt 12 is ordinal 13, auth 12).
+   - Cancer types: *Pancreatic Adenocarcinoma 64%* first.
+   - Drugs: **Sotorasib** and **Adagrasib**, both *G12C-specific*, *approved*.
+   - CIViC: level-A items first; clicking `KRAS G12C` selects `A:13`.
+3. Click **Tumour hotspots**: G12 turns dark red next to the bound drug, G13/Q61 orange, the rest
+   grey; the toolbar reads *Tumour hotspots*. **TCGA mutation density** shades every mutated residue.
+4. Negative case: with `civicdb.org` blocked, the CIViC chip reads *CIViC · unavailable*, a note
+   says so, and every other section still renders.
+5. Upload `backend/app/static/1CRN.pdb`: *No oncology context for this structure*.
+6. Tests: `cd backend && pytest tests/test_oncology.py`, `cd frontend && npm test -- oncology`.
+
+**Pass criteria:** each section names its source; a position whose reference residue differs
+from UniProt is listed but never painted.
+
+---
+
 ## How to add a smoke test
 
 When you start a phase, replace the placeholder for that phase with the concrete steps. The steps should be the minimum sequence a new contributor needs to verify the phase works end-to-end, including:

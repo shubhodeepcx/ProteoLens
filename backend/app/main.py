@@ -13,6 +13,7 @@ from app.api import (
     electrostatics,
     explain,
     import_,
+    oncology,
     predict,
     proteins,
     search,
@@ -39,7 +40,10 @@ app.openapi_tags = [
     },
     {
         "name": "clinical",
-        "description": "Clinical variant evidence, AlphaMissense and disease context.",
+        "description": (
+            "Clinical variant evidence, AlphaMissense, and oncology context "
+            "(hotspots, TCGA, drugs, CIViC, pathways)."
+        ),
     },
     {
         "name": "tools",
@@ -74,6 +78,7 @@ app.include_router(search.router, prefix="/api")
 app.include_router(compare.router, prefix="/api")
 app.include_router(blast.router, prefix="/api")
 app.include_router(clinical.router, prefix="/api")
+app.include_router(oncology.router, prefix="/api")
 app.include_router(tools.router, prefix="/api")
 
 

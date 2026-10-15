@@ -43,3 +43,22 @@ describe("viewerSlice.resetView", () => {
     expect(useTestStore.getState().cameraResetTick).toBe(2);
   });
 });
+
+describe("viewerSlice residue overlay", () => {
+  const overlay = { label: "AlphaMissense", colors: { "A:1": 0xff0000 }, legend: [] };
+
+  it("is cleared by picking a coloring scheme", () => {
+    const store = create<ViewerSlice>()((...a) => createViewerSlice(...a));
+    store.getState().setResidueOverlay(overlay);
+    expect(store.getState().residueOverlay).toBe(overlay);
+    store.getState().setColoring("ss");
+    expect(store.getState().residueOverlay).toBeNull();
+  });
+
+  it("is cleared by resetView", () => {
+    const store = create<ViewerSlice>()((...a) => createViewerSlice(...a));
+    store.getState().setResidueOverlay(overlay);
+    store.getState().resetView();
+    expect(store.getState().residueOverlay).toBeNull();
+  });
+});

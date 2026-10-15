@@ -8,6 +8,7 @@ import { createViewerPlugin } from "@/lib/molstar/plugin";
 import {
   applyColoring,
   applyRepresentation,
+  applyResidueOverlay,
   applyResidueValueColoring,
   applySelection,
   loadStructureInto,
@@ -46,6 +47,8 @@ export interface MolstarViewerRef {
    * because the `plddt` scheme renders backwards without it.
    */
   setColoring(scheme: MolstarColoring, options: ColoringOptions): void;
+  /** Paints residues from a `"A:12" -> 0xRRGGBB` table (rail-panel overlays). */
+  setResidueOverlay(colors: Readonly<Record<string, number>>): void;
   /**
    * Colour by a per-residue value (P15 electrostatics), red at `-range`,
    * white at 0, blue at `+range`. Keys are `"<chain>:<ordinal>"`; residues
@@ -194,6 +197,10 @@ const MolstarViewer = React.forwardRef<MolstarViewerRef, MolstarViewerProps>(
       },
       setColoring: (scheme, options) => {
         if (pluginRef.current) applyColoring(pluginRef.current, scheme, options);
+      },
+      setResidueOverlay: (colors) => {
+        const plugin = pluginRef.current;
+        if (plugin) applyResidueOverlay(plugin, colors, indexRef.current);
       },
       colorByResidueValues: (values, range) => {
         const plugin = pluginRef.current;

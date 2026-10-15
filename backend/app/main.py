@@ -8,6 +8,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.api import (
     blast,
+    clinical,
     compare,
     electrostatics,
     explain,
@@ -35,6 +36,10 @@ app.openapi_tags = [
             "Sequence similarity search via EBI's NCBI BLAST REST service. "
             "Asynchronous: POST to submit, then poll GET /api/blast/{job_id}."
         ),
+    },
+    {
+        "name": "clinical",
+        "description": "Clinical variant evidence, AlphaMissense and disease context.",
     },
     {
         "name": "tools",
@@ -68,6 +73,7 @@ app.include_router(explain.router, prefix="/api")
 app.include_router(search.router, prefix="/api")
 app.include_router(compare.router, prefix="/api")
 app.include_router(blast.router, prefix="/api")
+app.include_router(clinical.router, prefix="/api")
 app.include_router(tools.router, prefix="/api")
 
 

@@ -54,6 +54,7 @@ export default function DynamicViewerPage() {
   const clearSelection = useStore((s) => s.clearSelection);
   const representation = useStore((s) => s.representation);
   const coloring = useStore((s) => s.coloring);
+  const residueOverlay = useStore((s) => s.residueOverlay);
   const setColoring = useStore((s) => s.setColoring);
   const resetView = useStore((s) => s.resetView);
   /** Does this structure's B-factor column hold pLDDT? Drives both the
@@ -143,8 +144,14 @@ export default function DynamicViewerPage() {
   // `hasPlddt` is part of this effect's input, not just a passenger: it decides
   // whether the shared `uncertainty` theme runs its scale forwards (B-factor)
   // or inverted (pLDDT), so the coloring must be re-applied when it changes.
+  // A panel overlay (clinical evidence, oncology) takes precedence; clearing
+  // it falls back to the toolbar scheme.
   useEffect(() => {
     if (structureVersion === 0) return;
+    if (residueOverlay) {
+      viewerRef.current?.setResidueOverlay(residueOverlay.colors);
+      return;
+    }
     if (coloring !== "electrostatics") {
       viewerRef.current?.setColoring(coloring, { hasPlddt });
       return;
@@ -164,7 +171,7 @@ export default function DynamicViewerPage() {
     return () => {
       cancelled = true;
     };
-  }, [structureVersion, coloring, hasPlddt, id, setColoring]);
+  }, [structureVersion, coloring, hasPlddt, residueOverlay, id, setColoring]);
 
   // Mol* -> store: a 3D click toggles the residue, empty space clears.
   const onResidueClick = useCallback(

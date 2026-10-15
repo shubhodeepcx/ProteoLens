@@ -11,7 +11,7 @@ import { join } from "node:path";
 
 import HomePage from "@/app/page";
 import { ViewerRail } from "@/components/viewer-rail";
-import { DATA_SOURCES, RAIL_TABS } from "@/components/rail-tab-preview";
+import { DATA_SOURCES, RAIL_TABS } from "@/lib/landing-content";
 import { useStore } from "@/lib/store";
 
 /**

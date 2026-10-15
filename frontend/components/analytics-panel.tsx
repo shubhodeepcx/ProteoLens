@@ -110,7 +110,7 @@ export function AnalyticsPanel({ proteinId }: { proteinId: string }) {
 
       {/* A1 — model confidence. Folded in here rather than given its own rail
           tab: it is analytics about the model, and a new tab would also need a
-          matching `RAIL_TABS` entry in `rail-tab-preview.tsx`. */}
+          matching `RAIL_TABS` entry in `lib/landing-content.ts`. */}
       <Section title="Model confidence">
         <ConfidencePanel proteinId={proteinId} />
       </Section>

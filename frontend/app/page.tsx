@@ -24,12 +24,8 @@ import { HealthPill } from "@/components/health-pill";
 import { DropZone } from "@/components/drop-zone";
 import { HelixField } from "@/components/helix-field";
 import { RecentProteins } from "@/components/recent-proteins";
-import {
-  DATA_SOURCES,
-  DataSourceCard,
-  RAIL_TABS,
-  RailTabPreview,
-} from "@/components/rail-tab-preview";
+import { DataSourceCard, RailTabPreview } from "@/components/rail-tab-preview";
+import { DATA_SOURCES, RAIL_TABS } from "@/lib/landing-content";
 
 /** Left-rail entry points. Every one of these is a route that exists today. */
 const QUICK_ACTIONS = [

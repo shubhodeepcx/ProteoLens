@@ -10,9 +10,11 @@ from app.api import (
     blast,
     clinical,
     compare,
+    conservation,
     electrostatics,
     explain,
     import_,
+    neoantigen,
     oncology,
     predict,
     proteins,
@@ -79,6 +81,8 @@ app.include_router(compare.router, prefix="/api")
 app.include_router(blast.router, prefix="/api")
 app.include_router(clinical.router, prefix="/api")
 app.include_router(oncology.router, prefix="/api")
+app.include_router(neoantigen.router, prefix="/api")
+app.include_router(conservation.router, prefix="/api")
 app.include_router(tools.router, prefix="/api")
 
 

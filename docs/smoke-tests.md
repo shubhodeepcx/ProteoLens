@@ -824,6 +824,70 @@ from UniProt is listed but never painted.
 
 ---
 
+## Neoantigens — HLA class I candidates from a tumour mutation
+
+Goal: for a missense change, list the mutant peptides predicted to be presented on HLA class I,
+each beside its wild-type peptide, and paint them on the structure.
+
+1. Start the backend with `CORS_ORIGINS=http://localhost:3000` and the frontend.
+2. Import **RCSB 6OIM** (KRAS G12C with sotorasib). Open **Neoantigens**.
+3. Enter `G12C` and keep the default alleles (A*02:01, A*03:01, A*11:01, A*24:02). Click **Predict**.
+   Expect the spinner text *"This takes about a minute"*, then *"KRAS G12C: 4 binders among 152 mutant
+   peptides on 4 alleles."*
+4. Expect the first candidate `VVGACGVGK` on `HLA-A*11:01`, *weak · 0.5%*, the `C` highlighted,
+   *"wild type VVGAGGVGK 0.2% · wild type binds better · change faces the T-cell receptor"*; then
+   `VVVGACGVGK` on A*11:01 and A*03:01.
+5. Click the first candidate: the header reads *9 selected* (ordinals A:9-A:17, UniProt 8-16).
+6. Click **Neoantigen epitopes**: the peptide residues turn amber and residue 12 (ordinal 13) violet,
+   with the legend shown and the toolbar reading *Neoantigen epitopes*.
+7. Negative cases:
+   - `A12C` → *"Residue 12 is Gly in UniProt, not Ala."* (HTTP 400).
+   - `G12` or `G12*` → **Predict** stays disabled; the API answers 400.
+   - IEDB unreachable → *"IEDB's prediction service did not answer. Try again."* (HTTP 502).
+8. Tests:
+   ```
+   cd backend && pytest
+   cd frontend && npm ci && npm test && npm run build
+   ```
+   - Expect: 627 backend, 482 frontend, build clean.
+
+**Pass criteria:** every candidate contains the mutated residue; each sits beside the wild-type
+peptide at the same start; a wrong reference residue is refused rather than scored.
+
+---
+
+## Conservation — evolutionary conservation painted on the structure
+
+Goal: every residue scored by how strongly homologues keep it, shown along the sequence and painted
+on the structure from variable (turquoise) to conserved (maroon).
+
+1. Start the backend with `CORS_ORIGINS=http://localhost:3000` and the frontend.
+2. Import **RCSB 6OIM** (KRAS G12C). Open **Conservation**.
+3. Expect *"P01116: 189 positions, mean 0.7 bits; 166 sit on residues in this structure."*, a bar
+   strip with the tallest maroon bars near the start (residues 10-16), and **Most conserved residues**
+   starting `G10 2.8`, `G15 2.7`, `K16 2.6`, `D119 2.3`, `D57 2.1`.
+4. Click `K16`: the header reads *1 selected* (ordinal A:17).
+5. Click **Conservation** under *Paint 3D by*: the P-loop and the strands around the bound nucleotide
+   turn maroon, surface helices turquoise; the toolbar reads *Conservation* and the legend shows
+   0 bits / 1 bit / ≥2.5 bits.
+6. Hover a bar in the strip: the tooltip reads e.g. *"G10: 2.85 bits, G in 81%"*.
+7. Negative cases:
+   - Upload `backend/app/static/1CRN.pdb` (no accession): expect *"No conservation profile for this
+     structure."* with the reason.
+   - PDBe unreachable: the tab shows *"Conservation failed: Could not reach PDBe or UniProt…"* and
+     **Try again** (HTTP 502).
+8. Tests:
+   ```
+   cd backend && pytest
+   cd frontend && npm ci && npm test && npm run build
+   ```
+   - Expect: 635 backend, 491 frontend, build clean.
+
+**Pass criteria:** the GTPase motifs rank at the top; colours use a fixed bits scale; a profile for
+another sequence version is refused rather than painted.
+
+---
+
 ## How to add a smoke test
 
 When you start a phase, replace the placeholder for that phase with the concrete steps. The steps should be the minimum sequence a new contributor needs to verify the phase works end-to-end, including:

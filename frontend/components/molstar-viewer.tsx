@@ -2,23 +2,11 @@
 
 import React, { useEffect, useRef, useImperativeHandle } from "react";
 import type { PluginUIContext } from "molstar/lib/mol-plugin-ui/context";
-import { PluginCommands } from "molstar/lib/mol-plugin/commands";
 import type { Structure } from "molstar/lib/mol-model/structure";
 import { createViewerPlugin } from "@/lib/molstar/plugin";
+import type { ColoringOptions, MolstarFormat } from "@/lib/molstar/actions";
+import { isOtherStructure } from "@/lib/molstar/docked-pose";
 import {
-  applyColoring,
-  applyRepresentation,
-  applyResidueOverlay,
-  applyResidueValueColoring,
-  applySelection,
-  loadStructureInto,
-  type ColoringOptions,
-  type MolstarFormat,
-} from "@/lib/molstar/actions";
-import { isOtherStructure, showDockedPose } from "@/lib/molstar/docked-pose";
-import {
-  buildResidueIndex,
-  warnOnResidueDrift,
   resolveResidueLocus,
   residueClickPayload,
   EMPTY_RESIDUE_INDEX,
@@ -28,53 +16,17 @@ import type {
   MolstarColoring,
   MolstarRepresentation,
 } from "@/lib/molstar/theming";
-import { setResidueValues } from "@/lib/molstar/electrostatics-theme";
-import type { QueryChain } from "@/lib/residue";
+import { createViewerHandle } from "@/lib/molstar/viewer-handle";
+import type { MolstarViewerProps, MolstarViewerRef } from "./molstar-viewer-types";
 
 export type {
   ColoringOptions,
   MolstarFormat,
   MolstarRepresentation,
   MolstarColoring,
+  MolstarViewerProps,
+  MolstarViewerRef,
 };
-
-export interface MolstarViewerRef {
-  loadStructure(url: string, format?: MolstarFormat): Promise<void>;
-  /** Keys are `"<chain>:<1-based position>"`, matching the sequence panel. */
-  highlightResidues(keys: string[], options?: { focus?: boolean }): void;
-  setRepresentation(type: MolstarRepresentation): void;
-  /**
-   * `options.hasPlddt` carries `ProteinSummary.has_plddt`; it is required
-   * because the `plddt` scheme renders backwards without it.
-   */
-  setColoring(scheme: MolstarColoring, options: ColoringOptions): void;
-  /** Paints residues from a `"A:12" -> 0xRRGGBB` table (rail-panel overlays). */
-  setResidueOverlay(colors: Readonly<Record<string, number>>): void;
-  /** Shows a docked ligand pose (MDL molfile) beside the protein; null removes it. */
-  showDockedPose(sdf: string | null): void;
-  /**
-   * Colour by a per-residue value (P15 electrostatics), red at `-range`,
-   * white at 0, blue at `+range`. Keys are `"<chain>:<ordinal>"`; residues
-   * with no value render grey.
-   */
-  colorByResidueValues(values: ReadonlyMap<string, number>, range: number): void;
-  resetCamera(): void;
-  /** PNG data URI of the current view, or null before the plugin exists. */
-  snapshot(): Promise<string | null>;
-}
-
-export interface MolstarViewerProps {
-  className?: string;
-  style?: React.CSSProperties;
-  onReady?: () => void;
-  /**
-   * Residue key on click, `null` on empty space, and nothing at all for
-   * geometry outside the index (ligand, water) — see `residueClickPayload`.
-   */
-  onResidueClick?: (key: string | null) => void;
-  /** Optional: used only to warn when Mol*'s residue count drifts from the API's. */
-  chains?: readonly QueryChain[];
-}
 
 const MolstarViewer = React.forwardRef<MolstarViewerRef, MolstarViewerProps>(
   function MolstarViewer(
@@ -164,74 +116,9 @@ const MolstarViewer = React.forwardRef<MolstarViewerRef, MolstarViewerProps>(
       };
     }, []);
 
-    useImperativeHandle(ref, () => ({
-      async loadStructure(url: string, format: MolstarFormat = "pdb") {
-        const plugin = pluginRef.current;
-        if (!plugin) return;
-
-        // Stale once the plugin is disposed (pluginRef is nulled on cleanup)
-        // or once a newer loadStructure call has superseded this one.
-        const seq = ++loadSeqRef.current;
-        const isStale = () =>
-          pluginRef.current !== plugin || loadSeqRef.current !== seq;
-
-        structureRef.current = null;
-        indexRef.current = EMPTY_RESIDUE_INDEX;
-
-        const structure = await loadStructureInto(plugin, url, format, isStale);
-        if (isStale()) return;
-        structureRef.current = structure;
-        indexRef.current = structure
-          ? buildResidueIndex(structure)
-          : EMPTY_RESIDUE_INDEX;
-        warnOnResidueDrift(indexRef.current, chainsRef.current);
-      },
-
-      // The remaining entry points are one-liners over `lib/molstar/actions`,
-      // each guarding on the asynchronously created plugin.
-      highlightResidues: (keys, options) => {
-        const plugin = pluginRef.current;
-        const structure = structureRef.current;
-        if (plugin && structure) {
-          applySelection(plugin, structure, keys, indexRef.current, options?.focus);
-        }
-      },
-      setRepresentation: (type) => {
-        if (pluginRef.current) applyRepresentation(pluginRef.current, type);
-      },
-      setColoring: (scheme, options) => {
-        if (pluginRef.current) applyColoring(pluginRef.current, scheme, options);
-      },
-      setResidueOverlay: (colors) => {
-        const plugin = pluginRef.current;
-        if (plugin) applyResidueOverlay(plugin, colors, indexRef.current);
-      },
-      showDockedPose: (sdf) => {
-        if (pluginRef.current) void showDockedPose(pluginRef.current, sdf);
-      },
-      colorByResidueValues: (values, range) => {
-        const plugin = pluginRef.current;
-        if (!plugin) return;
-        const byResidue = new Map<number, number>();
-        for (const [key, value] of values) {
-          const residue = indexRef.current.keyToResidue.get(key);
-          if (residue !== undefined) byResidue.set(residue, value);
-        }
-        applyResidueValueColoring(plugin, setResidueValues(byResidue, range));
-      },
-      resetCamera: () => {
-        if (pluginRef.current) PluginCommands.Camera.Reset(pluginRef.current, {});
-      },
-      snapshot: async () => {
-        const helper = pluginRef.current?.helpers.viewportScreenshot;
-        if (!helper) return null;
-        try {
-          return await helper.getImageDataUri();
-        } catch {
-          return null;
-        }
-      },
-    }));
+    useImperativeHandle(ref, () =>
+      createViewerHandle({ pluginRef, structureRef, indexRef, chainsRef, loadSeqRef }),
+    );
 
     return (
       <div

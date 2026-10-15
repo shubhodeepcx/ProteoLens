@@ -1,0 +1,8161 @@
+{
+ "lookup": {
+  "seq_region_name": "11",
+  "logic_name": "ensembl_havana_gene_homo_sapiens",
+  "start": 5225464,
+  "biotype": "protein_coding",
+  "db_type": "core",
+  "end": 5229395,
+  "assembly_name": "GRCh38",
+  "Transcript": [
+   {
+    "seq_region_name": "11",
+    "start": 5225464,
+    "logic_name": "ensembl_havana_transcript_homo_sapiens",
+    "end": 5227197,
+    "length": 754,
+    "db_type": "core",
+    "biotype": "protein_coding",
+    "gencode_primary": 0,
+    "assembly_name": "GRCh38",
+    "is_canonical": 0,
+    "source": "ensembl_havana",
+    "Translation": {
+     "species": "homo_sapiens",
+     "version": 1,
+     "object_type": "Translation",
+     "start": 5225598,
+     "length": 147,
+     "db_type": "core",
+     "end": 5227021,
+     "Parent": "ENST00000647020",
+     "id": "ENSP00000494175"
+    },
+    "species": "homo_sapiens",
+    "version": 1,
+    "object_type": "Transcript",
+    "Exon": [
+     {
+      "species": "homo_sapiens",
+      "seq_region_name": "11",
+      "object_type": "Exon",
+      "version": 1,
+      "start": 5226930,
+      "db_type": "core",
+      "end": 5227197,
+      "assembly_name": "GRCh38",
+      "strand": -1,
+      "id": "ENSE00003820402"
+     },
+     {
+      "end": 5226799,
+      "db_type": "core",
+      "start": 5226577,
+      "object_type": "Exon",
+      "seq_region_name": "11",
+      "version": 1,
+      "species": "homo_sapiens",
+      "id": "ENSE00001057381",
+      "strand": -1,
+      "assembly_name": "GRCh38"
+     },
+     {
+      "id": "ENSE00001600613",
+      "strand": -1,
+      "assembly_name": "GRCh38",
+      "start": 5225464,
+      "db_type": "core",
+      "end": 5225726,
+      "species": "homo_sapiens",
+      "seq_region_name": "11",
+      "object_type": "Exon",
+      "version": 2
+     }
+    ],
+    "display_name": "HBB-206",
+    "ens_canon_extended": 0,
+    "Parent": "ENSG00000244734",
+    "id": "ENST00000647020",
+    "strand": -1
+   },
+   {
+    "ens_canon_extended": 0,
+    "Exon": [
+     {
+      "start": 5226930,
+      "end": 5227071,
+      "db_type": "core",
+      "species": "homo_sapiens",
+      "seq_region_name": "11",
+      "object_type": "Exon",
+      "version": 2,
+      "strand": -1,
+      "id": "ENSE00001829867",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "id": "ENSE00001057381",
+      "strand": -1,
+      "assembly_name": "GRCh38",
+      "db_type": "core",
+      "end": 5226799,
+      "start": 5226577,
+      "object_type": "Exon",
+      "seq_region_name": "11",
+      "version": 1,
+      "species": "homo_sapiens"
+     },
+     {
+      "end": 5225726,
+      "db_type": "core",
+      "start": 5225464,
+      "object_type": "Exon",
+      "seq_region_name": "11",
+      "version": 2,
+      "species": "homo_sapiens",
+      "strand": -1,
+      "id": "ENSE00001600613",
+      "assembly_name": "GRCh38"
+     }
+    ],
+    "display_name": "HBB-201",
+    "version": 4,
+    "object_type": "Transcript",
+    "species": "homo_sapiens",
+    "id": "ENST00000335295",
+    "strand": -1,
+    "Parent": "ENSG00000244734",
+    "end": 5227071,
+    "length": 628,
+    "db_type": "core",
+    "biotype": "protein_coding",
+    "start": 5225464,
+    "logic_name": "ensembl_havana_transcript_homo_sapiens",
+    "seq_region_name": "11",
+    "Translation": {
+     "id": "ENSP00000333994",
+     "Parent": "ENST00000335295",
+     "end": 5227021,
+     "length": 147,
+     "db_type": "core",
+     "start": 5225598,
+     "object_type": "Translation",
+     "version": 3,
+     "species": "homo_sapiens"
+    },
+    "source": "ensembl_havana",
+    "is_canonical": 1,
+    "assembly_name": "GRCh38",
+    "gencode_primary": 1
+   }
+  ],
+  "canonical_transcript": "ENST00000335295.4",
+  "source": "ensembl_havana",
+  "species": "homo_sapiens",
+  "version": 6,
+  "object_type": "Gene",
+  "display_name": "HBB",
+  "description": "hemoglobin subunit beta [Source:HGNC Symbol;Acc:HGNC:4827]",
+  "strand": -1,
+  "id": "ENSG00000244734"
+ },
+ "assembly": {
+  "karyotype": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10",
+   "11",
+   "12",
+   "13",
+   "14",
+   "15",
+   "16",
+   "17",
+   "18",
+   "19",
+   "20",
+   "21",
+   "22",
+   "X",
+   "Y",
+   "MT"
+  ],
+  "assembly_name": "GRCh38.p14",
+  "top_level_region": [
+   {
+    "name": "Y",
+    "length": 57227415,
+    "coord_system": "chromosome",
+    "bands": [
+     {
+      "end": 10400000,
+      "start": 10300001,
+      "id": "p11.1",
+      "strand": 0,
+      "stain": "acen",
+      "seq_region_name": "Y",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "seq_region_name": "Y",
+      "stain": "gneg",
+      "assembly_name": "GRCh38",
+      "end": 10300000,
+      "strand": 0,
+      "id": "p11.2",
+      "start": 600001
+     },
+     {
+      "strand": 0,
+      "start": 300001,
+      "id": "p11.31",
+      "end": 600000,
+      "assembly_name": "GRCh38",
+      "stain": "gpos50",
+      "seq_region_name": "Y"
+     },
+     {
+      "strand": 0,
+      "id": "p11.32",
+      "start": 1,
+      "end": 300000,
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "Y"
+     },
+     {
+      "stain": "acen",
+      "seq_region_name": "Y",
+      "assembly_name": "GRCh38",
+      "end": 10600000,
+      "strand": 0,
+      "start": 10400001,
+      "id": "q11.1"
+     },
+     {
+      "seq_region_name": "Y",
+      "stain": "gneg",
+      "assembly_name": "GRCh38",
+      "end": 12400000,
+      "start": 10600001,
+      "id": "q11.21",
+      "strand": 0
+     },
+     {
+      "end": 17100000,
+      "strand": 0,
+      "id": "q11.221",
+      "start": 12400001,
+      "stain": "gpos50",
+      "seq_region_name": "Y",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "end": 19600000,
+      "strand": 0,
+      "start": 17100001,
+      "id": "q11.222",
+      "seq_region_name": "Y",
+      "stain": "gneg",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "Y",
+      "stain": "gpos50",
+      "start": 19600001,
+      "id": "q11.223",
+      "strand": 0,
+      "end": 23800000
+     },
+     {
+      "seq_region_name": "Y",
+      "stain": "gneg",
+      "assembly_name": "GRCh38",
+      "end": 26600000,
+      "strand": 0,
+      "start": 23800001,
+      "id": "q11.23"
+     },
+     {
+      "strand": 0,
+      "start": 26600001,
+      "id": "q12",
+      "end": 57227415,
+      "assembly_name": "GRCh38",
+      "stain": "gvar",
+      "seq_region_name": "Y"
+     }
+    ]
+   },
+   {
+    "coord_system": "chromosome",
+    "length": 64444167,
+    "bands": [
+     {
+      "strand": 0,
+      "id": "p11.1",
+      "start": 25700001,
+      "end": 28100000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "20",
+      "stain": "acen"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "20",
+      "id": "p11.21",
+      "start": 22300001,
+      "strand": 0,
+      "end": 25700000
+     },
+     {
+      "start": 21300001,
+      "id": "p11.22",
+      "strand": 0,
+      "end": 22300000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "20",
+      "stain": "gpos25"
+     },
+     {
+      "stain": "gneg",
+      "seq_region_name": "20",
+      "assembly_name": "GRCh38",
+      "end": 21300000,
+      "strand": 0,
+      "start": 17900001,
+      "id": "p11.23"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "20",
+      "stain": "gpos75",
+      "start": 12000001,
+      "id": "p12.1",
+      "strand": 0,
+      "end": 17900000
+     },
+     {
+      "strand": 0,
+      "start": 9200001,
+      "id": "p12.2",
+      "end": 12000000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "20",
+      "stain": "gneg"
+     },
+     {
+      "strand": 0,
+      "id": "p12.3",
+      "start": 5100001,
+      "end": 9200000,
+      "assembly_name": "GRCh38",
+      "stain": "gpos75",
+      "seq_region_name": "20"
+     },
+     {
+      "stain": "gneg",
+      "seq_region_name": "20",
+      "assembly_name": "GRCh38",
+      "end": 5100000,
+      "start": 1,
+      "id": "p13",
+      "strand": 0
+     },
+     {
+      "end": 30400000,
+      "id": "q11.1",
+      "start": 28100001,
+      "strand": 0,
+      "seq_region_name": "20",
+      "stain": "acen",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "20",
+      "start": 30400001,
+      "id": "q11.21",
+      "strand": 0,
+      "end": 33500000
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "20",
+      "stain": "gpos25",
+      "strand": 0,
+      "start": 33500001,
+      "id": "q11.22",
+      "end": 35800000
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "20",
+      "stain": "gneg",
+      "strand": 0,
+      "start": 35800001,
+      "id": "q11.23",
+      "end": 39000000
+     },
+     {
+      "seq_region_name": "20",
+      "stain": "gpos75",
+      "assembly_name": "GRCh38",
+      "end": 43100000,
+      "strand": 0,
+      "start": 39000001,
+      "id": "q12"
+     },
+     {
+      "seq_region_name": "20",
+      "stain": "gneg",
+      "assembly_name": "GRCh38",
+      "end": 43500000,
+      "strand": 0,
+      "id": "q13.11",
+      "start": 43100001
+     },
+     {
+      "start": 43500001,
+      "id": "q13.12",
+      "strand": 0,
+      "end": 47800000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "20",
+      "stain": "gpos25"
+     },
+     {
+      "end": 51200000,
+      "start": 47800001,
+      "id": "q13.13",
+      "strand": 0,
+      "seq_region_name": "20",
+      "stain": "gneg",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "strand": 0,
+      "id": "q13.2",
+      "start": 51200001,
+      "end": 56400000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "20",
+      "stain": "gpos75"
+     },
+     {
+      "id": "q13.31",
+      "start": 56400001,
+      "strand": 0,
+      "end": 57800000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "20",
+      "stain": "gneg"
+     },
+     {
+      "strand": 0,
+      "start": 57800001,
+      "id": "q13.32",
+      "end": 59700000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "20",
+      "stain": "gpos50"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "20",
+      "strand": 0,
+      "id": "q13.33",
+      "start": 59700001,
+      "end": 64444167
+     }
+    ],
+    "name": "20"
+   },
+   {
+    "bands": [
+     {
+      "end": 61000000,
+      "id": "p11.1",
+      "start": 58100001,
+      "strand": 0,
+      "seq_region_name": "X",
+      "stain": "acen",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "X",
+      "stain": "gneg",
+      "strand": 0,
+      "id": "p11.21",
+      "start": 54800001,
+      "end": 58100000
+     },
+     {
+      "id": "p11.22",
+      "start": 50100001,
+      "strand": 0,
+      "end": 54800000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "X",
+      "stain": "gpos25"
+     },
+     {
+      "end": 50100000,
+      "start": 47600001,
+      "id": "p11.23",
+      "strand": 0,
+      "stain": "gneg",
+      "seq_region_name": "X",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "X",
+      "stain": "gpos75",
+      "id": "p11.3",
+      "start": 42500001,
+      "strand": 0,
+      "end": 47600000
+     },
+     {
+      "strand": 0,
+      "start": 37800001,
+      "id": "p11.4",
+      "end": 42500000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "X",
+      "stain": "gneg"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "X",
+      "stain": "gpos100",
+      "id": "p21.1",
+      "start": 31500001,
+      "strand": 0,
+      "end": 37800000
+     },
+     {
+      "id": "p21.2",
+      "start": 29300001,
+      "strand": 0,
+      "end": 31500000,
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "X"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gpos100",
+      "seq_region_name": "X",
+      "id": "p21.3",
+      "start": 24900001,
+      "strand": 0,
+      "end": 29300000
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "X",
+      "stain": "gneg",
+      "strand": 0,
+      "start": 21900001,
+      "id": "p22.11",
+      "end": 24900000
+     },
+     {
+      "id": "p22.12",
+      "start": 19200001,
+      "strand": 0,
+      "end": 21900000,
+      "assembly_name": "GRCh38",
+      "stain": "gpos50",
+      "seq_region_name": "X"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "X",
+      "stain": "gneg",
+      "id": "p22.13",
+      "start": 17400001,
+      "strand": 0,
+      "end": 19200000
+     },
+     {
+      "stain": "gpos50",
+      "seq_region_name": "X",
+      "assembly_name": "GRCh38",
+      "end": 17400000,
+      "id": "p22.2",
+      "start": 9600001,
+      "strand": 0
+     },
+     {
+      "seq_region_name": "X",
+      "stain": "gneg",
+      "assembly_name": "GRCh38",
+      "end": 9600000,
+      "strand": 0,
+      "id": "p22.31",
+      "start": 6100001
+     },
+     {
+      "id": "p22.32",
+      "start": 4400001,
+      "strand": 0,
+      "end": 6100000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "X",
+      "stain": "gpos50"
+     },
+     {
+      "seq_region_name": "X",
+      "stain": "gneg",
+      "assembly_name": "GRCh38",
+      "end": 4400000,
+      "id": "p22.33",
+      "start": 1,
+      "strand": 0
+     },
+     {
+      "end": 63800000,
+      "strand": 0,
+      "id": "q11.1",
+      "start": 61000001,
+      "seq_region_name": "X",
+      "stain": "acen",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "stain": "gneg",
+      "seq_region_name": "X",
+      "assembly_name": "GRCh38",
+      "end": 65400000,
+      "id": "q11.2",
+      "start": 63800001,
+      "strand": 0
+     },
+     {
+      "start": 65400001,
+      "id": "q12",
+      "strand": 0,
+      "end": 68500000,
+      "assembly_name": "GRCh38",
+      "stain": "gpos50",
+      "seq_region_name": "X"
+     },
+     {
+      "id": "q13.1",
+      "start": 68500001,
+      "strand": 0,
+      "end": 73000000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "X",
+      "stain": "gneg"
+     },
+     {
+      "strand": 0,
+      "start": 73000001,
+      "id": "q13.2",
+      "end": 74700000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "X",
+      "stain": "gpos50"
+     },
+     {
+      "strand": 0,
+      "start": 74700001,
+      "id": "q13.3",
+      "end": 76800000,
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "X"
+     },
+     {
+      "end": 85400000,
+      "strand": 0,
+      "id": "q21.1",
+      "start": 76800001,
+      "stain": "gpos100",
+      "seq_region_name": "X",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "start": 85400001,
+      "id": "q21.2",
+      "strand": 0,
+      "end": 87000000,
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "X"
+     },
+     {
+      "stain": "gpos100",
+      "seq_region_name": "X",
+      "assembly_name": "GRCh38",
+      "end": 92700000,
+      "strand": 0,
+      "id": "q21.31",
+      "start": 87000001
+     },
+     {
+      "stain": "gneg",
+      "seq_region_name": "X",
+      "assembly_name": "GRCh38",
+      "end": 94300000,
+      "strand": 0,
+      "start": 92700001,
+      "id": "q21.32"
+     },
+     {
+      "strand": 0,
+      "start": 94300001,
+      "id": "q21.33",
+      "end": 99100000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "X",
+      "stain": "gpos75"
+     },
+     {
+      "start": 99100001,
+      "id": "q22.1",
+      "strand": 0,
+      "end": 103300000,
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "X"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gpos50",
+      "seq_region_name": "X",
+      "id": "q22.2",
+      "start": 103300001,
+      "strand": 0,
+      "end": 104500000
+     },
+     {
+      "seq_region_name": "X",
+      "stain": "gneg",
+      "assembly_name": "GRCh38",
+      "end": 109400000,
+      "id": "q22.3",
+      "start": 104500001,
+      "strand": 0
+     },
+     {
+      "end": 117400000,
+      "start": 109400001,
+      "id": "q23",
+      "strand": 0,
+      "seq_region_name": "X",
+      "stain": "gpos75",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "id": "q24",
+      "start": 117400001,
+      "strand": 0,
+      "end": 121800000,
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "X"
+     },
+     {
+      "seq_region_name": "X",
+      "stain": "gpos100",
+      "assembly_name": "GRCh38",
+      "end": 129500000,
+      "strand": 0,
+      "id": "q25",
+      "start": 121800001
+     },
+     {
+      "seq_region_name": "X",
+      "stain": "gneg",
+      "assembly_name": "GRCh38",
+      "end": 131300000,
+      "id": "q26.1",
+      "start": 129500001,
+      "strand": 0
+     },
+     {
+      "end": 134500000,
+      "id": "q26.2",
+      "start": 131300001,
+      "strand": 0,
+      "seq_region_name": "X",
+      "stain": "gpos25",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "strand": 0,
+      "start": 134500001,
+      "id": "q26.3",
+      "end": 138900000,
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "X"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "X",
+      "stain": "gpos75",
+      "id": "q27.1",
+      "start": 138900001,
+      "strand": 0,
+      "end": 141200000
+     },
+     {
+      "strand": 0,
+      "start": 141200001,
+      "id": "q27.2",
+      "end": 143000000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "X",
+      "stain": "gneg"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "X",
+      "stain": "gpos100",
+      "id": "q27.3",
+      "start": 143000001,
+      "strand": 0,
+      "end": 148000000
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "X",
+      "id": "q28",
+      "start": 148000001,
+      "strand": 0,
+      "end": 156040895
+     }
+    ],
+    "length": 156040895,
+    "coord_system": "chromosome",
+    "name": "X"
+   },
+   {
+    "name": "13",
+    "bands": [
+     {
+      "stain": "acen",
+      "seq_region_name": "13",
+      "assembly_name": "GRCh38",
+      "end": 17700000,
+      "start": 16500001,
+      "id": "p11.1",
+      "strand": 0
+     },
+     {
+      "strand": 0,
+      "start": 10100001,
+      "id": "p11.2",
+      "end": 16500000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "13",
+      "stain": "gvar"
+     },
+     {
+      "end": 10100000,
+      "id": "p12",
+      "start": 4600001,
+      "strand": 0,
+      "stain": "stalk",
+      "seq_region_name": "13",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "end": 4600000,
+      "id": "p13",
+      "start": 1,
+      "strand": 0,
+      "stain": "gvar",
+      "seq_region_name": "13",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "start": 17700001,
+      "id": "q11",
+      "strand": 0,
+      "end": 18900000,
+      "assembly_name": "GRCh38",
+      "stain": "acen",
+      "seq_region_name": "13"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "13",
+      "stain": "gneg",
+      "strand": 0,
+      "id": "q12.11",
+      "start": 18900001,
+      "end": 22600000
+     },
+     {
+      "id": "q12.12",
+      "start": 22600001,
+      "strand": 0,
+      "end": 24900000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "13",
+      "stain": "gpos25"
+     },
+     {
+      "end": 27200000,
+      "strand": 0,
+      "id": "q12.13",
+      "start": 24900001,
+      "seq_region_name": "13",
+      "stain": "gneg",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "end": 28300000,
+      "id": "q12.2",
+      "start": 27200001,
+      "strand": 0,
+      "stain": "gpos25",
+      "seq_region_name": "13",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "strand": 0,
+      "id": "q12.3",
+      "start": 28300001,
+      "end": 31600000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "13",
+      "stain": "gneg"
+     },
+     {
+      "end": 33400000,
+      "strand": 0,
+      "start": 31600001,
+      "id": "q13.1",
+      "seq_region_name": "13",
+      "stain": "gpos50",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "end": 34900000,
+      "strand": 0,
+      "start": 33400001,
+      "id": "q13.2",
+      "seq_region_name": "13",
+      "stain": "gneg",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "id": "q13.3",
+      "start": 34900001,
+      "strand": 0,
+      "end": 39500000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "13",
+      "stain": "gpos75"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "13",
+      "stain": "gneg",
+      "strand": 0,
+      "start": 39500001,
+      "id": "q14.11",
+      "end": 44600000
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "13",
+      "stain": "gpos25",
+      "strand": 0,
+      "id": "q14.12",
+      "start": 44600001,
+      "end": 45200000
+     },
+     {
+      "stain": "gneg",
+      "seq_region_name": "13",
+      "assembly_name": "GRCh38",
+      "end": 46700000,
+      "strand": 0,
+      "start": 45200001,
+      "id": "q14.13"
+     },
+     {
+      "start": 46700001,
+      "id": "q14.2",
+      "strand": 0,
+      "end": 50300000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "13",
+      "stain": "gpos50"
+     },
+     {
+      "id": "q14.3",
+      "start": 50300001,
+      "strand": 0,
+      "end": 54700000,
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "13"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gpos100",
+      "seq_region_name": "13",
+      "start": 54700001,
+      "id": "q21.1",
+      "strand": 0,
+      "end": 59000000
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "13",
+      "strand": 0,
+      "id": "q21.2",
+      "start": 59000001,
+      "end": 61800000
+     },
+     {
+      "seq_region_name": "13",
+      "stain": "gpos75",
+      "assembly_name": "GRCh38",
+      "end": 65200000,
+      "strand": 0,
+      "id": "q21.31",
+      "start": 61800001
+     },
+     {
+      "start": 65200001,
+      "id": "q21.32",
+      "strand": 0,
+      "end": 68100000,
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "13"
+     },
+     {
+      "start": 68100001,
+      "id": "q21.33",
+      "strand": 0,
+      "end": 72800000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "13",
+      "stain": "gpos100"
+     },
+     {
+      "start": 72800001,
+      "id": "q22.1",
+      "strand": 0,
+      "end": 74900000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "13",
+      "stain": "gneg"
+     },
+     {
+      "end": 76700000,
+      "id": "q22.2",
+      "start": 74900001,
+      "strand": 0,
+      "stain": "gpos50",
+      "seq_region_name": "13",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "stain": "gneg",
+      "seq_region_name": "13",
+      "assembly_name": "GRCh38",
+      "end": 78500000,
+      "strand": 0,
+      "start": 76700001,
+      "id": "q22.3"
+     },
+     {
+      "seq_region_name": "13",
+      "stain": "gpos100",
+      "assembly_name": "GRCh38",
+      "end": 87100000,
+      "strand": 0,
+      "id": "q31.1",
+      "start": 78500001
+     },
+     {
+      "strand": 0,
+      "id": "q31.2",
+      "start": 87100001,
+      "end": 89400000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "13",
+      "stain": "gneg"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gpos100",
+      "seq_region_name": "13",
+      "start": 89400001,
+      "id": "q31.3",
+      "strand": 0,
+      "end": 94400000
+     },
+     {
+      "seq_region_name": "13",
+      "stain": "gneg",
+      "assembly_name": "GRCh38",
+      "end": 97500000,
+      "id": "q32.1",
+      "start": 94400001,
+      "strand": 0
+     },
+     {
+      "start": 97500001,
+      "id": "q32.2",
+      "strand": 0,
+      "end": 98700000,
+      "assembly_name": "GRCh38",
+      "stain": "gpos25",
+      "seq_region_name": "13"
+     },
+     {
+      "end": 101100000,
+      "start": 98700001,
+      "id": "q32.3",
+      "strand": 0,
+      "stain": "gneg",
+      "seq_region_name": "13",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "stain": "gpos100",
+      "seq_region_name": "13",
+      "assembly_name": "GRCh38",
+      "end": 104200000,
+      "start": 101100001,
+      "id": "q33.1",
+      "strand": 0
+     },
+     {
+      "start": 104200001,
+      "id": "q33.2",
+      "strand": 0,
+      "end": 106400000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "13",
+      "stain": "gneg"
+     },
+     {
+      "strand": 0,
+      "id": "q33.3",
+      "start": 106400001,
+      "end": 109600000,
+      "assembly_name": "GRCh38",
+      "stain": "gpos100",
+      "seq_region_name": "13"
+     },
+     {
+      "end": 114364328,
+      "strand": 0,
+      "id": "q34",
+      "start": 109600001,
+      "stain": "gneg",
+      "seq_region_name": "13",
+      "assembly_name": "GRCh38"
+     }
+    ],
+    "coord_system": "chromosome",
+    "length": 114364328
+   },
+   {
+    "bands": [
+     {
+      "seq_region_name": "22",
+      "stain": "acen",
+      "assembly_name": "GRCh38",
+      "end": 15000000,
+      "strand": 0,
+      "start": 13700001,
+      "id": "p11.1"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gvar",
+      "seq_region_name": "22",
+      "start": 9400001,
+      "id": "p11.2",
+      "strand": 0,
+      "end": 13700000
+     },
+     {
+      "end": 9400000,
+      "strand": 0,
+      "start": 4300001,
+      "id": "p12",
+      "stain": "stalk",
+      "seq_region_name": "22",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "stain": "gvar",
+      "seq_region_name": "22",
+      "assembly_name": "GRCh38",
+      "end": 4300000,
+      "id": "p13",
+      "start": 1,
+      "strand": 0
+     },
+     {
+      "end": 17400000,
+      "id": "q11.1",
+      "start": 15000001,
+      "strand": 0,
+      "stain": "acen",
+      "seq_region_name": "22",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "22",
+      "start": 17400001,
+      "id": "q11.21",
+      "strand": 0,
+      "end": 21700000
+     },
+     {
+      "end": 23100000,
+      "start": 21700001,
+      "id": "q11.22",
+      "strand": 0,
+      "stain": "gpos25",
+      "seq_region_name": "22",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "22",
+      "start": 23100001,
+      "id": "q11.23",
+      "strand": 0,
+      "end": 25500000
+     },
+     {
+      "end": 29200000,
+      "start": 25500001,
+      "id": "q12.1",
+      "strand": 0,
+      "seq_region_name": "22",
+      "stain": "gpos50",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "end": 31800000,
+      "id": "q12.2",
+      "start": 29200001,
+      "strand": 0,
+      "stain": "gneg",
+      "seq_region_name": "22",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "stain": "gpos50",
+      "seq_region_name": "22",
+      "assembly_name": "GRCh38",
+      "end": 37200000,
+      "id": "q12.3",
+      "start": 31800001,
+      "strand": 0
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "22",
+      "stain": "gneg",
+      "id": "q13.1",
+      "start": 37200001,
+      "strand": 0,
+      "end": 40600000
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "22",
+      "stain": "gpos50",
+      "strand": 0,
+      "id": "q13.2",
+      "start": 40600001,
+      "end": 43800000
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "22",
+      "stain": "gneg",
+      "id": "q13.31",
+      "start": 43800001,
+      "strand": 0,
+      "end": 48100000
+     },
+     {
+      "strand": 0,
+      "start": 48100001,
+      "id": "q13.32",
+      "end": 49100000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "22",
+      "stain": "gpos50"
+     },
+     {
+      "id": "q13.33",
+      "start": 49100001,
+      "strand": 0,
+      "end": 50818468,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "22",
+      "stain": "gneg"
+     }
+    ],
+    "length": 50818468,
+    "coord_system": "chromosome",
+    "name": "22"
+   },
+   {
+    "bands": [
+     {
+      "seq_region_name": "10",
+      "stain": "acen",
+      "assembly_name": "GRCh38",
+      "end": 39800000,
+      "start": 38000001,
+      "id": "p11.1",
+      "strand": 0
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "10",
+      "strand": 0,
+      "id": "p11.21",
+      "start": 34200001,
+      "end": 38000000
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "10",
+      "stain": "gpos25",
+      "id": "p11.22",
+      "start": 31100001,
+      "strand": 0,
+      "end": 34200000
+     },
+     {
+      "end": 31100000,
+      "strand": 0,
+      "start": 29300001,
+      "id": "p11.23",
+      "seq_region_name": "10",
+      "stain": "gneg",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "start": 24300001,
+      "id": "p12.1",
+      "strand": 0,
+      "end": 29300000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "10",
+      "stain": "gpos50"
+     },
+     {
+      "end": 24300000,
+      "strand": 0,
+      "id": "p12.2",
+      "start": 22300001,
+      "stain": "gneg",
+      "seq_region_name": "10",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "id": "p12.31",
+      "start": 18400001,
+      "strand": 0,
+      "end": 22300000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "10",
+      "stain": "gpos75"
+     },
+     {
+      "stain": "gneg",
+      "seq_region_name": "10",
+      "assembly_name": "GRCh38",
+      "end": 18400000,
+      "strand": 0,
+      "start": 18300001,
+      "id": "p12.32"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "10",
+      "stain": "gpos75",
+      "id": "p12.33",
+      "start": 17300001,
+      "strand": 0,
+      "end": 18300000
+     },
+     {
+      "end": 17300000,
+      "strand": 0,
+      "start": 12200001,
+      "id": "p13",
+      "seq_region_name": "10",
+      "stain": "gneg",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "end": 12200000,
+      "start": 6600001,
+      "id": "p14",
+      "strand": 0,
+      "seq_region_name": "10",
+      "stain": "gpos75",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "seq_region_name": "10",
+      "stain": "gneg",
+      "assembly_name": "GRCh38",
+      "end": 6600000,
+      "strand": 0,
+      "id": "p15.1",
+      "start": 3800001
+     },
+     {
+      "seq_region_name": "10",
+      "stain": "gpos25",
+      "assembly_name": "GRCh38",
+      "end": 3800000,
+      "id": "p15.2",
+      "start": 3000001,
+      "strand": 0
+     },
+     {
+      "seq_region_name": "10",
+      "stain": "gneg",
+      "assembly_name": "GRCh38",
+      "end": 3000000,
+      "strand": 0,
+      "id": "p15.3",
+      "start": 1
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "10",
+      "stain": "acen",
+      "strand": 0,
+      "start": 39800001,
+      "id": "q11.1",
+      "end": 41600000
+     },
+     {
+      "seq_region_name": "10",
+      "stain": "gneg",
+      "assembly_name": "GRCh38",
+      "end": 45500000,
+      "strand": 0,
+      "id": "q11.21",
+      "start": 41600001
+     },
+     {
+      "strand": 0,
+      "start": 45500001,
+      "id": "q11.22",
+      "end": 48600000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "10",
+      "stain": "gpos25"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "10",
+      "start": 48600001,
+      "id": "q11.23",
+      "strand": 0,
+      "end": 51100000
+     },
+     {
+      "end": 59400000,
+      "start": 51100001,
+      "id": "q21.1",
+      "strand": 0,
+      "seq_region_name": "10",
+      "stain": "gpos100",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "end": 62800000,
+      "strand": 0,
+      "start": 59400001,
+      "id": "q21.2",
+      "stain": "gneg",
+      "seq_region_name": "10",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gpos100",
+      "seq_region_name": "10",
+      "strand": 0,
+      "id": "q21.3",
+      "start": 62800001,
+      "end": 68800000
+     },
+     {
+      "id": "q22.1",
+      "start": 68800001,
+      "strand": 0,
+      "end": 73100000,
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "10"
+     },
+     {
+      "strand": 0,
+      "start": 73100001,
+      "id": "q22.2",
+      "end": 75900000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "10",
+      "stain": "gpos50"
+     },
+     {
+      "seq_region_name": "10",
+      "stain": "gneg",
+      "assembly_name": "GRCh38",
+      "end": 80300000,
+      "strand": 0,
+      "id": "q22.3",
+      "start": 75900001
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gpos100",
+      "seq_region_name": "10",
+      "id": "q23.1",
+      "start": 80300001,
+      "strand": 0,
+      "end": 86100000
+     },
+     {
+      "seq_region_name": "10",
+      "stain": "gneg",
+      "assembly_name": "GRCh38",
+      "end": 87700000,
+      "start": 86100001,
+      "id": "q23.2",
+      "strand": 0
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "10",
+      "stain": "gpos75",
+      "strand": 0,
+      "id": "q23.31",
+      "start": 87700001,
+      "end": 91100000
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "10",
+      "stain": "gneg",
+      "strand": 0,
+      "id": "q23.32",
+      "start": 91100001,
+      "end": 92300000
+     },
+     {
+      "seq_region_name": "10",
+      "stain": "gpos50",
+      "assembly_name": "GRCh38",
+      "end": 95300000,
+      "id": "q23.33",
+      "start": 92300001,
+      "strand": 0
+     },
+     {
+      "seq_region_name": "10",
+      "stain": "gneg",
+      "assembly_name": "GRCh38",
+      "end": 97500000,
+      "strand": 0,
+      "id": "q24.1",
+      "start": 95300001
+     },
+     {
+      "end": 100100000,
+      "strand": 0,
+      "start": 97500001,
+      "id": "q24.2",
+      "stain": "gpos50",
+      "seq_region_name": "10",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "10",
+      "stain": "gneg",
+      "strand": 0,
+      "start": 100100001,
+      "id": "q24.31",
+      "end": 101200000
+     },
+     {
+      "seq_region_name": "10",
+      "stain": "gpos25",
+      "assembly_name": "GRCh38",
+      "end": 103100000,
+      "start": 101200001,
+      "id": "q24.32",
+      "strand": 0
+     },
+     {
+      "id": "q24.33",
+      "start": 103100001,
+      "strand": 0,
+      "end": 104000000,
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "10"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "10",
+      "stain": "gpos100",
+      "id": "q25.1",
+      "start": 104000001,
+      "strand": 0,
+      "end": 110100000
+     },
+     {
+      "start": 110100001,
+      "id": "q25.2",
+      "strand": 0,
+      "end": 113100000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "10",
+      "stain": "gneg"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "10",
+      "stain": "gpos75",
+      "start": 113100001,
+      "id": "q25.3",
+      "strand": 0,
+      "end": 117300000
+     },
+     {
+      "stain": "gneg",
+      "seq_region_name": "10",
+      "assembly_name": "GRCh38",
+      "end": 119900000,
+      "id": "q26.11",
+      "start": 117300001,
+      "strand": 0
+     },
+     {
+      "strand": 0,
+      "id": "q26.12",
+      "start": 119900001,
+      "end": 121400000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "10",
+      "stain": "gpos50"
+     },
+     {
+      "stain": "gneg",
+      "seq_region_name": "10",
+      "assembly_name": "GRCh38",
+      "end": 125700000,
+      "start": 121400001,
+      "id": "q26.13",
+      "strand": 0
+     },
+     {
+      "strand": 0,
+      "id": "q26.2",
+      "start": 125700001,
+      "end": 128800000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "10",
+      "stain": "gpos50"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "10",
+      "stain": "gneg",
+      "start": 128800001,
+      "id": "q26.3",
+      "strand": 0,
+      "end": 133797422
+     }
+    ],
+    "length": 133797422,
+    "coord_system": "chromosome",
+    "name": "10"
+   },
+   {
+    "name": "6",
+    "length": 170805979,
+    "coord_system": "chromosome",
+    "bands": [
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "6",
+      "stain": "acen",
+      "strand": 0,
+      "start": 58500001,
+      "id": "p11.1",
+      "end": 59800000
+     },
+     {
+      "strand": 0,
+      "id": "p11.2",
+      "start": 57200001,
+      "end": 58500000,
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "6"
+     },
+     {
+      "start": 53000001,
+      "id": "p12.1",
+      "strand": 0,
+      "end": 57200000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "6",
+      "stain": "gpos100"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "6",
+      "strand": 0,
+      "start": 51800001,
+      "id": "p12.2",
+      "end": 53000000
+     },
+     {
+      "end": 51800000,
+      "strand": 0,
+      "start": 46200001,
+      "id": "p12.3",
+      "seq_region_name": "6",
+      "stain": "gpos100",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "end": 46200000,
+      "id": "p21.1",
+      "start": 40500001,
+      "strand": 0,
+      "seq_region_name": "6",
+      "stain": "gneg",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "end": 40500000,
+      "id": "p21.2",
+      "start": 36600001,
+      "strand": 0,
+      "stain": "gpos25",
+      "seq_region_name": "6",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "seq_region_name": "6",
+      "stain": "gneg",
+      "assembly_name": "GRCh38",
+      "end": 36600000,
+      "start": 33500001,
+      "id": "p21.31",
+      "strand": 0
+     },
+     {
+      "stain": "gpos25",
+      "seq_region_name": "6",
+      "assembly_name": "GRCh38",
+      "end": 33500000,
+      "strand": 0,
+      "id": "p21.32",
+      "start": 32100001
+     },
+     {
+      "strand": 0,
+      "start": 30500001,
+      "id": "p21.33",
+      "end": 32100000,
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "6"
+     },
+     {
+      "end": 30500000,
+      "start": 27100001,
+      "id": "p22.1",
+      "strand": 0,
+      "seq_region_name": "6",
+      "stain": "gpos50",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "strand": 0,
+      "start": 25200001,
+      "id": "p22.2",
+      "end": 27100000,
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "6"
+     },
+     {
+      "start": 15200001,
+      "id": "p22.3",
+      "strand": 0,
+      "end": 25200000,
+      "assembly_name": "GRCh38",
+      "stain": "gpos75",
+      "seq_region_name": "6"
+     },
+     {
+      "seq_region_name": "6",
+      "stain": "gneg",
+      "assembly_name": "GRCh38",
+      "end": 15200000,
+      "strand": 0,
+      "id": "p23",
+      "start": 13400001
+     },
+     {
+      "strand": 0,
+      "start": 11600001,
+      "id": "p24.1",
+      "end": 13400000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "6",
+      "stain": "gpos25"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "6",
+      "stain": "gneg",
+      "id": "p24.2",
+      "start": 10600001,
+      "strand": 0,
+      "end": 11600000
+     },
+     {
+      "start": 7100001,
+      "id": "p24.3",
+      "strand": 0,
+      "end": 10600000,
+      "assembly_name": "GRCh38",
+      "stain": "gpos50",
+      "seq_region_name": "6"
+     },
+     {
+      "seq_region_name": "6",
+      "stain": "gneg",
+      "assembly_name": "GRCh38",
+      "end": 7100000,
+      "id": "p25.1",
+      "start": 4200001,
+      "strand": 0
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "6",
+      "stain": "gpos25",
+      "start": 2300001,
+      "id": "p25.2",
+      "strand": 0,
+      "end": 4200000
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "6",
+      "stain": "gneg",
+      "start": 1,
+      "id": "p25.3",
+      "strand": 0,
+      "end": 2300000
+     },
+     {
+      "seq_region_name": "6",
+      "stain": "acen",
+      "assembly_name": "GRCh38",
+      "end": 62600000,
+      "strand": 0,
+      "start": 59800001,
+      "id": "q11.1"
+     },
+     {
+      "end": 62700000,
+      "start": 62600001,
+      "id": "q11.2",
+      "strand": 0,
+      "stain": "gneg",
+      "seq_region_name": "6",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "end": 69200000,
+      "strand": 0,
+      "id": "q12",
+      "start": 62700001,
+      "seq_region_name": "6",
+      "stain": "gpos100",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "strand": 0,
+      "id": "q13",
+      "start": 69200001,
+      "end": 75200000,
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "6"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "6",
+      "stain": "gpos50",
+      "start": 75200001,
+      "id": "q14.1",
+      "strand": 0,
+      "end": 83200000
+     },
+     {
+      "end": 84200000,
+      "id": "q14.2",
+      "start": 83200001,
+      "strand": 0,
+      "stain": "gneg",
+      "seq_region_name": "6",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "start": 84200001,
+      "id": "q14.3",
+      "strand": 0,
+      "end": 87300000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "6",
+      "stain": "gpos50"
+     },
+     {
+      "end": 92500000,
+      "start": 87300001,
+      "id": "q15",
+      "strand": 0,
+      "seq_region_name": "6",
+      "stain": "gneg",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "strand": 0,
+      "start": 92500001,
+      "id": "q16.1",
+      "end": 98900000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "6",
+      "stain": "gpos100"
+     },
+     {
+      "end": 100000000,
+      "id": "q16.2",
+      "start": 98900001,
+      "strand": 0,
+      "seq_region_name": "6",
+      "stain": "gneg",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "end": 105000000,
+      "strand": 0,
+      "id": "q16.3",
+      "start": 100000001,
+      "seq_region_name": "6",
+      "stain": "gpos100",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "6",
+      "strand": 0,
+      "start": 105000001,
+      "id": "q21",
+      "end": 114200000
+     },
+     {
+      "seq_region_name": "6",
+      "stain": "gpos75",
+      "assembly_name": "GRCh38",
+      "end": 117900000,
+      "strand": 0,
+      "start": 114200001,
+      "id": "q22.1"
+     },
+     {
+      "strand": 0,
+      "id": "q22.2",
+      "start": 117900001,
+      "end": 118100000,
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "6"
+     },
+     {
+      "seq_region_name": "6",
+      "stain": "gpos100",
+      "assembly_name": "GRCh38",
+      "end": 125800000,
+      "start": 118100001,
+      "id": "q22.31",
+      "strand": 0
+     },
+     {
+      "end": 126800000,
+      "strand": 0,
+      "start": 125800001,
+      "id": "q22.32",
+      "stain": "gneg",
+      "seq_region_name": "6",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "seq_region_name": "6",
+      "stain": "gpos75",
+      "assembly_name": "GRCh38",
+      "end": 130000000,
+      "start": 126800001,
+      "id": "q22.33",
+      "strand": 0
+     },
+     {
+      "end": 130900000,
+      "id": "q23.1",
+      "start": 130000001,
+      "strand": 0,
+      "seq_region_name": "6",
+      "stain": "gneg",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "id": "q23.2",
+      "start": 130900001,
+      "strand": 0,
+      "end": 134700000,
+      "assembly_name": "GRCh38",
+      "stain": "gpos50",
+      "seq_region_name": "6"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "6",
+      "stain": "gneg",
+      "strand": 0,
+      "start": 134700001,
+      "id": "q23.3",
+      "end": 138300000
+     },
+     {
+      "id": "q24.1",
+      "start": 138300001,
+      "strand": 0,
+      "end": 142200000,
+      "assembly_name": "GRCh38",
+      "stain": "gpos75",
+      "seq_region_name": "6"
+     },
+     {
+      "end": 145100000,
+      "start": 142200001,
+      "id": "q24.2",
+      "strand": 0,
+      "stain": "gneg",
+      "seq_region_name": "6",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "6",
+      "stain": "gpos75",
+      "start": 145100001,
+      "id": "q24.3",
+      "strand": 0,
+      "end": 148500000
+     },
+     {
+      "stain": "gneg",
+      "seq_region_name": "6",
+      "assembly_name": "GRCh38",
+      "end": 152100000,
+      "start": 148500001,
+      "id": "q25.1",
+      "strand": 0
+     },
+     {
+      "end": 155200000,
+      "start": 152100001,
+      "id": "q25.2",
+      "strand": 0,
+      "stain": "gpos50",
+      "seq_region_name": "6",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "6",
+      "stain": "gneg",
+      "strand": 0,
+      "id": "q25.3",
+      "start": 155200001,
+      "end": 160600000
+     },
+     {
+      "strand": 0,
+      "start": 160600001,
+      "id": "q26",
+      "end": 164100000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "6",
+      "stain": "gpos50"
+     },
+     {
+      "id": "q27",
+      "start": 164100001,
+      "strand": 0,
+      "end": 170805979,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "6",
+      "stain": "gneg"
+     }
+    ]
+   },
+   {
+    "length": 58617616,
+    "coord_system": "chromosome",
+    "bands": [
+     {
+      "seq_region_name": "19",
+      "stain": "acen",
+      "assembly_name": "GRCh38",
+      "end": 26200000,
+      "start": 24200001,
+      "id": "p11",
+      "strand": 0
+     },
+     {
+      "end": 24200000,
+      "strand": 0,
+      "id": "p12",
+      "start": 19900001,
+      "stain": "gvar",
+      "seq_region_name": "19",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "end": 19900000,
+      "strand": 0,
+      "id": "p13.11",
+      "start": 16100001,
+      "seq_region_name": "19",
+      "stain": "gneg",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "stain": "gpos25",
+      "seq_region_name": "19",
+      "assembly_name": "GRCh38",
+      "end": 16100000,
+      "strand": 0,
+      "id": "p13.12",
+      "start": 13800001
+     },
+     {
+      "end": 13800000,
+      "id": "p13.13",
+      "start": 12600001,
+      "strand": 0,
+      "stain": "gneg",
+      "seq_region_name": "19",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "strand": 0,
+      "id": "p13.2",
+      "start": 6900001,
+      "end": 12600000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "19",
+      "stain": "gpos25"
+     },
+     {
+      "seq_region_name": "19",
+      "stain": "gneg",
+      "assembly_name": "GRCh38",
+      "end": 6900000,
+      "strand": 0,
+      "start": 1,
+      "id": "p13.3"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "acen",
+      "seq_region_name": "19",
+      "start": 26200001,
+      "id": "q11",
+      "strand": 0,
+      "end": 28100000
+     },
+     {
+      "end": 31900000,
+      "strand": 0,
+      "id": "q12",
+      "start": 28100001,
+      "seq_region_name": "19",
+      "stain": "gvar",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "id": "q13.11",
+      "start": 31900001,
+      "strand": 0,
+      "end": 35100000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "19",
+      "stain": "gneg"
+     },
+     {
+      "strand": 0,
+      "id": "q13.12",
+      "start": 35100001,
+      "end": 37800000,
+      "assembly_name": "GRCh38",
+      "stain": "gpos25",
+      "seq_region_name": "19"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "19",
+      "strand": 0,
+      "start": 37800001,
+      "id": "q13.13",
+      "end": 38200000
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gpos25",
+      "seq_region_name": "19",
+      "start": 38200001,
+      "id": "q13.2",
+      "strand": 0,
+      "end": 42900000
+     },
+     {
+      "end": 44700000,
+      "strand": 0,
+      "start": 42900001,
+      "id": "q13.31",
+      "seq_region_name": "19",
+      "stain": "gneg",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "seq_region_name": "19",
+      "stain": "gpos25",
+      "assembly_name": "GRCh38",
+      "end": 47500000,
+      "strand": 0,
+      "start": 44700001,
+      "id": "q13.32"
+     },
+     {
+      "end": 50900000,
+      "start": 47500001,
+      "id": "q13.33",
+      "strand": 0,
+      "stain": "gneg",
+      "seq_region_name": "19",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "strand": 0,
+      "id": "q13.41",
+      "start": 50900001,
+      "end": 53100000,
+      "assembly_name": "GRCh38",
+      "stain": "gpos25",
+      "seq_region_name": "19"
+     },
+     {
+      "seq_region_name": "19",
+      "stain": "gneg",
+      "assembly_name": "GRCh38",
+      "end": 55800000,
+      "strand": 0,
+      "id": "q13.42",
+      "start": 53100001
+     },
+     {
+      "stain": "gpos25",
+      "seq_region_name": "19",
+      "assembly_name": "GRCh38",
+      "end": 58617616,
+      "id": "q13.43",
+      "start": 55800001,
+      "strand": 0
+     }
+    ],
+    "name": "19"
+   },
+   {
+    "coord_system": "chromosome",
+    "length": 107043718,
+    "bands": [
+     {
+      "stain": "acen",
+      "seq_region_name": "14",
+      "assembly_name": "GRCh38",
+      "end": 17200000,
+      "strand": 0,
+      "start": 16100001,
+      "id": "p11.1"
+     },
+     {
+      "start": 8000001,
+      "id": "p11.2",
+      "strand": 0,
+      "end": 16100000,
+      "assembly_name": "GRCh38",
+      "stain": "gvar",
+      "seq_region_name": "14"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "14",
+      "stain": "stalk",
+      "id": "p12",
+      "start": 3600001,
+      "strand": 0,
+      "end": 8000000
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gvar",
+      "seq_region_name": "14",
+      "start": 1,
+      "id": "p13",
+      "strand": 0,
+      "end": 3600000
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "acen",
+      "seq_region_name": "14",
+      "strand": 0,
+      "start": 17200001,
+      "id": "q11.1",
+      "end": 18200000
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "14",
+      "id": "q11.2",
+      "start": 18200001,
+      "strand": 0,
+      "end": 24100000
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "14",
+      "stain": "gpos100",
+      "id": "q12",
+      "start": 24100001,
+      "strand": 0,
+      "end": 32900000
+     },
+     {
+      "end": 34800000,
+      "strand": 0,
+      "start": 32900001,
+      "id": "q13.1",
+      "seq_region_name": "14",
+      "stain": "gneg",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "14",
+      "stain": "gpos50",
+      "start": 34800001,
+      "id": "q13.2",
+      "strand": 0,
+      "end": 36100000
+     },
+     {
+      "strand": 0,
+      "id": "q13.3",
+      "start": 36100001,
+      "end": 37400000,
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "14"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "14",
+      "stain": "gpos100",
+      "strand": 0,
+      "id": "q21.1",
+      "start": 37400001,
+      "end": 43000000
+     },
+     {
+      "stain": "gneg",
+      "seq_region_name": "14",
+      "assembly_name": "GRCh38",
+      "end": 46700000,
+      "strand": 0,
+      "start": 43000001,
+      "id": "q21.2"
+     },
+     {
+      "start": 46700001,
+      "id": "q21.3",
+      "strand": 0,
+      "end": 50400000,
+      "assembly_name": "GRCh38",
+      "stain": "gpos100",
+      "seq_region_name": "14"
+     },
+     {
+      "end": 53600000,
+      "id": "q22.1",
+      "start": 50400001,
+      "strand": 0,
+      "stain": "gneg",
+      "seq_region_name": "14",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "seq_region_name": "14",
+      "stain": "gpos25",
+      "assembly_name": "GRCh38",
+      "end": 55000000,
+      "start": 53600001,
+      "id": "q22.2",
+      "strand": 0
+     },
+     {
+      "strand": 0,
+      "start": 55000001,
+      "id": "q22.3",
+      "end": 57600000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "14",
+      "stain": "gneg"
+     },
+     {
+      "start": 57600001,
+      "id": "q23.1",
+      "strand": 0,
+      "end": 61600000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "14",
+      "stain": "gpos75"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "14",
+      "stain": "gneg",
+      "start": 61600001,
+      "id": "q23.2",
+      "strand": 0,
+      "end": 64300000
+     },
+     {
+      "end": 67400000,
+      "strand": 0,
+      "start": 64300001,
+      "id": "q23.3",
+      "stain": "gpos50",
+      "seq_region_name": "14",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "14",
+      "id": "q24.1",
+      "start": 67400001,
+      "strand": 0,
+      "end": 69800000
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "14",
+      "stain": "gpos50",
+      "strand": 0,
+      "id": "q24.2",
+      "start": 69800001,
+      "end": 73300000
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "14",
+      "stain": "gneg",
+      "start": 73300001,
+      "id": "q24.3",
+      "strand": 0,
+      "end": 78800000
+     },
+     {
+      "id": "q31.1",
+      "start": 78800001,
+      "strand": 0,
+      "end": 83100000,
+      "assembly_name": "GRCh38",
+      "stain": "gpos100",
+      "seq_region_name": "14"
+     },
+     {
+      "stain": "gneg",
+      "seq_region_name": "14",
+      "assembly_name": "GRCh38",
+      "end": 84400000,
+      "start": 83100001,
+      "id": "q31.2",
+      "strand": 0
+     },
+     {
+      "id": "q31.3",
+      "start": 84400001,
+      "strand": 0,
+      "end": 89300000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "14",
+      "stain": "gpos100"
+     },
+     {
+      "seq_region_name": "14",
+      "stain": "gneg",
+      "assembly_name": "GRCh38",
+      "end": 91400000,
+      "strand": 0,
+      "id": "q32.11",
+      "start": 89300001
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "14",
+      "stain": "gpos25",
+      "start": 91400001,
+      "id": "q32.12",
+      "strand": 0,
+      "end": 94200000
+     },
+     {
+      "start": 94200001,
+      "id": "q32.13",
+      "strand": 0,
+      "end": 95800000,
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "14"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gpos50",
+      "seq_region_name": "14",
+      "start": 95800001,
+      "id": "q32.2",
+      "strand": 0,
+      "end": 100900000
+     },
+     {
+      "seq_region_name": "14",
+      "stain": "gneg",
+      "assembly_name": "GRCh38",
+      "end": 102700000,
+      "strand": 0,
+      "id": "q32.31",
+      "start": 100900001
+     },
+     {
+      "end": 103500000,
+      "strand": 0,
+      "id": "q32.32",
+      "start": 102700001,
+      "stain": "gpos50",
+      "seq_region_name": "14",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "14",
+      "stain": "gneg",
+      "start": 103500001,
+      "id": "q32.33",
+      "strand": 0,
+      "end": 107043718
+     }
+    ],
+    "name": "14"
+   },
+   {
+    "name": "18",
+    "bands": [
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "18",
+      "stain": "acen",
+      "strand": 0,
+      "start": 15400001,
+      "id": "p11.1",
+      "end": 18500000
+     },
+     {
+      "end": 15400000,
+      "strand": 0,
+      "start": 10900001,
+      "id": "p11.21",
+      "seq_region_name": "18",
+      "stain": "gneg",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "end": 10900000,
+      "strand": 0,
+      "start": 8500001,
+      "id": "p11.22",
+      "stain": "gpos25",
+      "seq_region_name": "18",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "18",
+      "start": 7200001,
+      "id": "p11.23",
+      "strand": 0,
+      "end": 8500000
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "18",
+      "stain": "gpos50",
+      "strand": 0,
+      "id": "p11.31",
+      "start": 2900001,
+      "end": 7200000
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "18",
+      "stain": "gneg",
+      "id": "p11.32",
+      "start": 1,
+      "strand": 0,
+      "end": 2900000
+     },
+     {
+      "end": 21500000,
+      "id": "q11.1",
+      "start": 18500001,
+      "strand": 0,
+      "seq_region_name": "18",
+      "stain": "acen",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "end": 27500000,
+      "strand": 0,
+      "id": "q11.2",
+      "start": 21500001,
+      "stain": "gneg",
+      "seq_region_name": "18",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gpos100",
+      "seq_region_name": "18",
+      "strand": 0,
+      "start": 27500001,
+      "id": "q12.1",
+      "end": 35100000
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "18",
+      "stain": "gneg",
+      "strand": 0,
+      "start": 35100001,
+      "id": "q12.2",
+      "end": 39500000
+     },
+     {
+      "end": 45900000,
+      "strand": 0,
+      "start": 39500001,
+      "id": "q12.3",
+      "stain": "gpos75",
+      "seq_region_name": "18",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "18",
+      "stain": "gneg",
+      "strand": 0,
+      "id": "q21.1",
+      "start": 45900001,
+      "end": 50700000
+     },
+     {
+      "stain": "gpos75",
+      "seq_region_name": "18",
+      "assembly_name": "GRCh38",
+      "end": 56200000,
+      "id": "q21.2",
+      "start": 50700001,
+      "strand": 0
+     },
+     {
+      "stain": "gneg",
+      "seq_region_name": "18",
+      "assembly_name": "GRCh38",
+      "end": 58600000,
+      "strand": 0,
+      "id": "q21.31",
+      "start": 56200001
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gpos50",
+      "seq_region_name": "18",
+      "start": 58600001,
+      "id": "q21.32",
+      "strand": 0,
+      "end": 61300000
+     },
+     {
+      "end": 63900000,
+      "id": "q21.33",
+      "start": 61300001,
+      "strand": 0,
+      "stain": "gneg",
+      "seq_region_name": "18",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "stain": "gpos100",
+      "seq_region_name": "18",
+      "assembly_name": "GRCh38",
+      "end": 69100000,
+      "strand": 0,
+      "start": 63900001,
+      "id": "q22.1"
+     },
+     {
+      "stain": "gneg",
+      "seq_region_name": "18",
+      "assembly_name": "GRCh38",
+      "end": 71000000,
+      "start": 69100001,
+      "id": "q22.2",
+      "strand": 0
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gpos25",
+      "seq_region_name": "18",
+      "strand": 0,
+      "id": "q22.3",
+      "start": 71000001,
+      "end": 75400000
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "18",
+      "id": "q23",
+      "start": 75400001,
+      "strand": 0,
+      "end": 80373285
+     }
+    ],
+    "length": 80373285,
+    "coord_system": "chromosome"
+   },
+   {
+    "bands": [
+     {
+      "strand": 0,
+      "start": 91800001,
+      "id": "p11.1",
+      "end": 93900000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "2",
+      "stain": "acen"
+     },
+     {
+      "strand": 0,
+      "start": 83100001,
+      "id": "p11.2",
+      "end": 91800000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "2",
+      "stain": "gneg"
+     },
+     {
+      "id": "p12",
+      "start": 74800001,
+      "strand": 0,
+      "end": 83100000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "2",
+      "stain": "gpos100"
+     },
+     {
+      "id": "p13.1",
+      "start": 73300001,
+      "strand": 0,
+      "end": 74800000,
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "2"
+     },
+     {
+      "strand": 0,
+      "id": "p13.2",
+      "start": 71300001,
+      "end": 73300000,
+      "assembly_name": "GRCh38",
+      "stain": "gpos50",
+      "seq_region_name": "2"
+     },
+     {
+      "end": 71300000,
+      "id": "p13.3",
+      "start": 68400001,
+      "strand": 0,
+      "seq_region_name": "2",
+      "stain": "gneg",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "seq_region_name": "2",
+      "stain": "gpos50",
+      "assembly_name": "GRCh38",
+      "end": 68400000,
+      "start": 63900001,
+      "id": "p14",
+      "strand": 0
+     },
+     {
+      "start": 61000001,
+      "id": "p15",
+      "strand": 0,
+      "end": 63900000,
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "2"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gpos100",
+      "seq_region_name": "2",
+      "start": 54700001,
+      "id": "p16.1",
+      "strand": 0,
+      "end": 61000000
+     },
+     {
+      "start": 52600001,
+      "id": "p16.2",
+      "strand": 0,
+      "end": 54700000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "2",
+      "stain": "gneg"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "2",
+      "stain": "gpos100",
+      "start": 47500001,
+      "id": "p16.3",
+      "strand": 0,
+      "end": 52600000
+     },
+     {
+      "end": 47500000,
+      "id": "p21",
+      "start": 41500001,
+      "strand": 0,
+      "seq_region_name": "2",
+      "stain": "gneg",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "stain": "gpos50",
+      "seq_region_name": "2",
+      "assembly_name": "GRCh38",
+      "end": 41500000,
+      "strand": 0,
+      "start": 38300001,
+      "id": "p22.1"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "2",
+      "stain": "gneg",
+      "strand": 0,
+      "id": "p22.2",
+      "start": 36300001,
+      "end": 38300000
+     },
+     {
+      "end": 36300000,
+      "start": 31800001,
+      "id": "p22.3",
+      "strand": 0,
+      "seq_region_name": "2",
+      "stain": "gpos75",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "seq_region_name": "2",
+      "stain": "gneg",
+      "assembly_name": "GRCh38",
+      "end": 31800000,
+      "start": 29800001,
+      "id": "p23.1",
+      "strand": 0
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gpos25",
+      "seq_region_name": "2",
+      "start": 27700001,
+      "id": "p23.2",
+      "strand": 0,
+      "end": 29800000
+     },
+     {
+      "strand": 0,
+      "start": 23800001,
+      "id": "p23.3",
+      "end": 27700000,
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "2"
+     },
+     {
+      "strand": 0,
+      "start": 19000001,
+      "id": "p24.1",
+      "end": 23800000,
+      "assembly_name": "GRCh38",
+      "stain": "gpos75",
+      "seq_region_name": "2"
+     },
+     {
+      "stain": "gneg",
+      "seq_region_name": "2",
+      "assembly_name": "GRCh38",
+      "end": 19000000,
+      "start": 16500001,
+      "id": "p24.2",
+      "strand": 0
+     },
+     {
+      "end": 16500000,
+      "start": 12000001,
+      "id": "p24.3",
+      "strand": 0,
+      "seq_region_name": "2",
+      "stain": "gpos75",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "2",
+      "stain": "gneg",
+      "strand": 0,
+      "id": "p25.1",
+      "start": 6900001,
+      "end": 12000000
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "2",
+      "stain": "gpos50",
+      "strand": 0,
+      "start": 4400001,
+      "id": "p25.2",
+      "end": 6900000
+     },
+     {
+      "stain": "gneg",
+      "seq_region_name": "2",
+      "assembly_name": "GRCh38",
+      "end": 4400000,
+      "strand": 0,
+      "id": "p25.3",
+      "start": 1
+     },
+     {
+      "stain": "acen",
+      "seq_region_name": "2",
+      "assembly_name": "GRCh38",
+      "end": 96000000,
+      "strand": 0,
+      "start": 93900001,
+      "id": "q11.1"
+     },
+     {
+      "id": "q11.2",
+      "start": 96000001,
+      "strand": 0,
+      "end": 102100000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "2",
+      "stain": "gneg"
+     },
+     {
+      "seq_region_name": "2",
+      "stain": "gpos50",
+      "assembly_name": "GRCh38",
+      "end": 105300000,
+      "strand": 0,
+      "start": 102100001,
+      "id": "q12.1"
+     },
+     {
+      "end": 106700000,
+      "strand": 0,
+      "start": 105300001,
+      "id": "q12.2",
+      "stain": "gneg",
+      "seq_region_name": "2",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "seq_region_name": "2",
+      "stain": "gpos25",
+      "assembly_name": "GRCh38",
+      "end": 108700000,
+      "strand": 0,
+      "start": 106700001,
+      "id": "q12.3"
+     },
+     {
+      "strand": 0,
+      "start": 108700001,
+      "id": "q13",
+      "end": 112200000,
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "2"
+     },
+     {
+      "end": 118100000,
+      "start": 112200001,
+      "id": "q14.1",
+      "strand": 0,
+      "stain": "gpos50",
+      "seq_region_name": "2",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "2",
+      "id": "q14.2",
+      "start": 118100001,
+      "strand": 0,
+      "end": 121600000
+     },
+     {
+      "end": 129100000,
+      "start": 121600001,
+      "id": "q14.3",
+      "strand": 0,
+      "seq_region_name": "2",
+      "stain": "gpos50",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "2",
+      "stain": "gneg",
+      "start": 129100001,
+      "id": "q21.1",
+      "strand": 0,
+      "end": 131700000
+     },
+     {
+      "seq_region_name": "2",
+      "stain": "gpos25",
+      "assembly_name": "GRCh38",
+      "end": 134300000,
+      "id": "q21.2",
+      "start": 131700001,
+      "strand": 0
+     },
+     {
+      "end": 136100000,
+      "id": "q21.3",
+      "start": 134300001,
+      "strand": 0,
+      "stain": "gneg",
+      "seq_region_name": "2",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "end": 141500000,
+      "strand": 0,
+      "id": "q22.1",
+      "start": 136100001,
+      "stain": "gpos100",
+      "seq_region_name": "2",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "2",
+      "stain": "gneg",
+      "id": "q22.2",
+      "start": 141500001,
+      "strand": 0,
+      "end": 143400000
+     },
+     {
+      "end": 147900000,
+      "strand": 0,
+      "start": 143400001,
+      "id": "q22.3",
+      "seq_region_name": "2",
+      "stain": "gpos100",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "2",
+      "start": 147900001,
+      "id": "q23.1",
+      "strand": 0,
+      "end": 149000000
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gpos25",
+      "seq_region_name": "2",
+      "start": 149000001,
+      "id": "q23.2",
+      "strand": 0,
+      "end": 149600000
+     },
+     {
+      "seq_region_name": "2",
+      "stain": "gneg",
+      "assembly_name": "GRCh38",
+      "end": 154000000,
+      "start": 149600001,
+      "id": "q23.3",
+      "strand": 0
+     },
+     {
+      "end": 158900000,
+      "strand": 0,
+      "start": 154000001,
+      "id": "q24.1",
+      "seq_region_name": "2",
+      "stain": "gpos75",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "strand": 0,
+      "id": "q24.2",
+      "start": 158900001,
+      "end": 162900000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "2",
+      "stain": "gneg"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gpos75",
+      "seq_region_name": "2",
+      "start": 162900001,
+      "id": "q24.3",
+      "strand": 0,
+      "end": 168900000
+     },
+     {
+      "seq_region_name": "2",
+      "stain": "gneg",
+      "assembly_name": "GRCh38",
+      "end": 177100000,
+      "strand": 0,
+      "id": "q31.1",
+      "start": 168900001
+     },
+     {
+      "end": 179700000,
+      "start": 177100001,
+      "id": "q31.2",
+      "strand": 0,
+      "seq_region_name": "2",
+      "stain": "gpos50",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "seq_region_name": "2",
+      "stain": "gneg",
+      "assembly_name": "GRCh38",
+      "end": 182100000,
+      "start": 179700001,
+      "id": "q31.3",
+      "strand": 0
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gpos75",
+      "seq_region_name": "2",
+      "strand": 0,
+      "start": 182100001,
+      "id": "q32.1",
+      "end": 188500000
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "2",
+      "strand": 0,
+      "start": 188500001,
+      "id": "q32.2",
+      "end": 191100000
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gpos75",
+      "seq_region_name": "2",
+      "strand": 0,
+      "start": 191100001,
+      "id": "q32.3",
+      "end": 196600000
+     },
+     {
+      "end": 202500000,
+      "strand": 0,
+      "start": 196600001,
+      "id": "q33.1",
+      "stain": "gneg",
+      "seq_region_name": "2",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "end": 204100000,
+      "strand": 0,
+      "start": 202500001,
+      "id": "q33.2",
+      "seq_region_name": "2",
+      "stain": "gpos50",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "2",
+      "stain": "gneg",
+      "id": "q33.3",
+      "start": 204100001,
+      "strand": 0,
+      "end": 208200000
+     },
+     {
+      "end": 214500000,
+      "start": 208200001,
+      "id": "q34",
+      "strand": 0,
+      "seq_region_name": "2",
+      "stain": "gpos100",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "2",
+      "id": "q35",
+      "start": 214500001,
+      "strand": 0,
+      "end": 220700000
+     },
+     {
+      "end": 224300000,
+      "strand": 0,
+      "start": 220700001,
+      "id": "q36.1",
+      "stain": "gpos75",
+      "seq_region_name": "2",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "end": 225200000,
+      "id": "q36.2",
+      "start": 224300001,
+      "strand": 0,
+      "seq_region_name": "2",
+      "stain": "gneg",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "seq_region_name": "2",
+      "stain": "gpos100",
+      "assembly_name": "GRCh38",
+      "end": 230100000,
+      "start": 225200001,
+      "id": "q36.3",
+      "strand": 0
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "2",
+      "start": 230100001,
+      "id": "q37.1",
+      "strand": 0,
+      "end": 234700000
+     },
+     {
+      "end": 236400000,
+      "start": 234700001,
+      "id": "q37.2",
+      "strand": 0,
+      "seq_region_name": "2",
+      "stain": "gpos50",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "2",
+      "strand": 0,
+      "start": 236400001,
+      "id": "q37.3",
+      "end": 242193529
+     }
+    ],
+    "coord_system": "chromosome",
+    "length": 242193529,
+    "name": "2"
+   },
+   {
+    "length": 190214555,
+    "coord_system": "chromosome",
+    "bands": [
+     {
+      "strand": 0,
+      "id": "p11",
+      "start": 48200001,
+      "end": 50000000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "4",
+      "stain": "acen"
+     },
+     {
+      "start": 44600001,
+      "id": "p12",
+      "strand": 0,
+      "end": 48200000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "4",
+      "stain": "gneg"
+     },
+     {
+      "start": 41200001,
+      "id": "p13",
+      "strand": 0,
+      "end": 44600000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "4",
+      "stain": "gpos50"
+     },
+     {
+      "end": 41200000,
+      "id": "p14",
+      "start": 35800001,
+      "strand": 0,
+      "seq_region_name": "4",
+      "stain": "gneg",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "end": 35800000,
+      "strand": 0,
+      "start": 27700001,
+      "id": "p15.1",
+      "stain": "gpos100",
+      "seq_region_name": "4",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "id": "p15.2",
+      "start": 21300001,
+      "strand": 0,
+      "end": 27700000,
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "4"
+     },
+     {
+      "seq_region_name": "4",
+      "stain": "gpos75",
+      "assembly_name": "GRCh38",
+      "end": 21300000,
+      "strand": 0,
+      "start": 17700001,
+      "id": "p15.31"
+     },
+     {
+      "end": 17700000,
+      "start": 15000001,
+      "id": "p15.32",
+      "strand": 0,
+      "seq_region_name": "4",
+      "stain": "gneg",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "strand": 0,
+      "start": 11300001,
+      "id": "p15.33",
+      "end": 15000000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "4",
+      "stain": "gpos50"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "4",
+      "stain": "gneg",
+      "strand": 0,
+      "start": 6000001,
+      "id": "p16.1",
+      "end": 11300000
+     },
+     {
+      "start": 4500001,
+      "id": "p16.2",
+      "strand": 0,
+      "end": 6000000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "4",
+      "stain": "gpos25"
+     },
+     {
+      "end": 4500000,
+      "strand": 0,
+      "start": 1,
+      "id": "p16.3",
+      "seq_region_name": "4",
+      "stain": "gneg",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "end": 51800000,
+      "strand": 0,
+      "start": 50000001,
+      "id": "q11",
+      "seq_region_name": "4",
+      "stain": "acen",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "end": 58500000,
+      "strand": 0,
+      "start": 51800001,
+      "id": "q12",
+      "stain": "gneg",
+      "seq_region_name": "4",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "end": 65500000,
+      "strand": 0,
+      "id": "q13.1",
+      "start": 58500001,
+      "seq_region_name": "4",
+      "stain": "gpos100",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "id": "q13.2",
+      "start": 65500001,
+      "strand": 0,
+      "end": 69400000,
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "4"
+     },
+     {
+      "strand": 0,
+      "id": "q13.3",
+      "start": 69400001,
+      "end": 75300000,
+      "assembly_name": "GRCh38",
+      "stain": "gpos75",
+      "seq_region_name": "4"
+     },
+     {
+      "stain": "gneg",
+      "seq_region_name": "4",
+      "assembly_name": "GRCh38",
+      "end": 78000000,
+      "start": 75300001,
+      "id": "q21.1",
+      "strand": 0
+     },
+     {
+      "end": 81500000,
+      "strand": 0,
+      "start": 78000001,
+      "id": "q21.21",
+      "stain": "gpos50",
+      "seq_region_name": "4",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "strand": 0,
+      "start": 81500001,
+      "id": "q21.22",
+      "end": 83200000,
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "4"
+     },
+     {
+      "end": 86000000,
+      "id": "q21.23",
+      "start": 83200001,
+      "strand": 0,
+      "seq_region_name": "4",
+      "stain": "gpos25",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "4",
+      "strand": 0,
+      "start": 86000001,
+      "id": "q21.3",
+      "end": 87100000
+     },
+     {
+      "end": 92800000,
+      "start": 87100001,
+      "id": "q22.1",
+      "strand": 0,
+      "stain": "gpos75",
+      "seq_region_name": "4",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "4",
+      "stain": "gneg",
+      "id": "q22.2",
+      "start": 92800001,
+      "strand": 0,
+      "end": 94200000
+     },
+     {
+      "strand": 0,
+      "id": "q22.3",
+      "start": 94200001,
+      "end": 97900000,
+      "assembly_name": "GRCh38",
+      "stain": "gpos75",
+      "seq_region_name": "4"
+     },
+     {
+      "stain": "gneg",
+      "seq_region_name": "4",
+      "assembly_name": "GRCh38",
+      "end": 100100000,
+      "start": 97900001,
+      "id": "q23",
+      "strand": 0
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "4",
+      "stain": "gpos50",
+      "strand": 0,
+      "start": 100100001,
+      "id": "q24",
+      "end": 106700000
+     },
+     {
+      "end": 113200000,
+      "start": 106700001,
+      "id": "q25",
+      "strand": 0,
+      "seq_region_name": "4",
+      "stain": "gneg",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "stain": "gpos75",
+      "seq_region_name": "4",
+      "assembly_name": "GRCh38",
+      "end": 119900000,
+      "strand": 0,
+      "start": 113200001,
+      "id": "q26"
+     },
+     {
+      "end": 122800000,
+      "strand": 0,
+      "start": 119900001,
+      "id": "q27",
+      "stain": "gneg",
+      "seq_region_name": "4",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "id": "q28.1",
+      "start": 122800001,
+      "strand": 0,
+      "end": 127900000,
+      "assembly_name": "GRCh38",
+      "stain": "gpos50",
+      "seq_region_name": "4"
+     },
+     {
+      "stain": "gneg",
+      "seq_region_name": "4",
+      "assembly_name": "GRCh38",
+      "end": 130100000,
+      "strand": 0,
+      "start": 127900001,
+      "id": "q28.2"
+     },
+     {
+      "end": 138500000,
+      "id": "q28.3",
+      "start": 130100001,
+      "strand": 0,
+      "seq_region_name": "4",
+      "stain": "gpos100",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "seq_region_name": "4",
+      "stain": "gneg",
+      "assembly_name": "GRCh38",
+      "end": 140600000,
+      "start": 138500001,
+      "id": "q31.1",
+      "strand": 0
+     },
+     {
+      "strand": 0,
+      "start": 140600001,
+      "id": "q31.21",
+      "end": 145900000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "4",
+      "stain": "gpos25"
+     },
+     {
+      "end": 147500000,
+      "strand": 0,
+      "id": "q31.22",
+      "start": 145900001,
+      "seq_region_name": "4",
+      "stain": "gneg",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "start": 147500001,
+      "id": "q31.23",
+      "strand": 0,
+      "end": 150200000,
+      "assembly_name": "GRCh38",
+      "stain": "gpos25",
+      "seq_region_name": "4"
+     },
+     {
+      "stain": "gneg",
+      "seq_region_name": "4",
+      "assembly_name": "GRCh38",
+      "end": 154600000,
+      "strand": 0,
+      "id": "q31.3",
+      "start": 150200001
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "4",
+      "stain": "gpos100",
+      "start": 154600001,
+      "id": "q32.1",
+      "strand": 0,
+      "end": 160800000
+     },
+     {
+      "end": 163600000,
+      "strand": 0,
+      "start": 160800001,
+      "id": "q32.2",
+      "seq_region_name": "4",
+      "stain": "gneg",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "seq_region_name": "4",
+      "stain": "gpos100",
+      "assembly_name": "GRCh38",
+      "end": 169200000,
+      "start": 163600001,
+      "id": "q32.3",
+      "strand": 0
+     },
+     {
+      "end": 171000000,
+      "start": 169200001,
+      "id": "q33",
+      "strand": 0,
+      "seq_region_name": "4",
+      "stain": "gneg",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "strand": 0,
+      "start": 171000001,
+      "id": "q34.1",
+      "end": 175400000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "4",
+      "stain": "gpos75"
+     },
+     {
+      "end": 176600000,
+      "start": 175400001,
+      "id": "q34.2",
+      "strand": 0,
+      "seq_region_name": "4",
+      "stain": "gneg",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "end": 182300000,
+      "start": 176600001,
+      "id": "q34.3",
+      "strand": 0,
+      "seq_region_name": "4",
+      "stain": "gpos100",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "strand": 0,
+      "start": 182300001,
+      "id": "q35.1",
+      "end": 186200000,
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "4"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "4",
+      "stain": "gpos25",
+      "strand": 0,
+      "id": "q35.2",
+      "start": 186200001,
+      "end": 190214555
+     }
+    ],
+    "name": "4"
+   },
+   {
+    "name": "21",
+    "coord_system": "chromosome",
+    "length": 46709983,
+    "bands": [
+     {
+      "end": 12000000,
+      "start": 10900001,
+      "id": "p11.1",
+      "strand": 0,
+      "seq_region_name": "21",
+      "stain": "acen",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "strand": 0,
+      "start": 7000001,
+      "id": "p11.2",
+      "end": 10900000,
+      "assembly_name": "GRCh38",
+      "stain": "gvar",
+      "seq_region_name": "21"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "21",
+      "stain": "stalk",
+      "start": 3100001,
+      "id": "p12",
+      "strand": 0,
+      "end": 7000000
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "21",
+      "stain": "gvar",
+      "strand": 0,
+      "start": 1,
+      "id": "p13",
+      "end": 3100000
+     },
+     {
+      "seq_region_name": "21",
+      "stain": "acen",
+      "assembly_name": "GRCh38",
+      "end": 13000000,
+      "start": 12000001,
+      "id": "q11.1",
+      "strand": 0
+     },
+     {
+      "seq_region_name": "21",
+      "stain": "gneg",
+      "assembly_name": "GRCh38",
+      "end": 15000000,
+      "id": "q11.2",
+      "start": 13000001,
+      "strand": 0
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gpos100",
+      "seq_region_name": "21",
+      "strand": 0,
+      "start": 15000001,
+      "id": "q21.1",
+      "end": 22600000
+     },
+     {
+      "end": 25500000,
+      "start": 22600001,
+      "id": "q21.2",
+      "strand": 0,
+      "seq_region_name": "21",
+      "stain": "gneg",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "seq_region_name": "21",
+      "stain": "gpos75",
+      "assembly_name": "GRCh38",
+      "end": 30200000,
+      "strand": 0,
+      "start": 25500001,
+      "id": "q21.3"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "21",
+      "id": "q22.11",
+      "start": 30200001,
+      "strand": 0,
+      "end": 34400000
+     },
+     {
+      "end": 36400000,
+      "strand": 0,
+      "start": 34400001,
+      "id": "q22.12",
+      "stain": "gpos50",
+      "seq_region_name": "21",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "end": 38300000,
+      "id": "q22.13",
+      "start": 36400001,
+      "strand": 0,
+      "stain": "gneg",
+      "seq_region_name": "21",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "seq_region_name": "21",
+      "stain": "gpos50",
+      "assembly_name": "GRCh38",
+      "end": 41200000,
+      "strand": 0,
+      "id": "q22.2",
+      "start": 38300001
+     },
+     {
+      "end": 46709983,
+      "strand": 0,
+      "id": "q22.3",
+      "start": 41200001,
+      "seq_region_name": "21",
+      "stain": "gneg",
+      "assembly_name": "GRCh38"
+     }
+    ]
+   },
+   {
+    "name": "9",
+    "bands": [
+     {
+      "start": 42200001,
+      "id": "p11.1",
+      "strand": 0,
+      "end": 43000000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "9",
+      "stain": "acen"
+     },
+     {
+      "id": "p11.2",
+      "start": 40000001,
+      "strand": 0,
+      "end": 42200000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "9",
+      "stain": "gneg"
+     },
+     {
+      "seq_region_name": "9",
+      "stain": "gpos50",
+      "assembly_name": "GRCh38",
+      "end": 40000000,
+      "strand": 0,
+      "start": 39000001,
+      "id": "p12"
+     },
+     {
+      "strand": 0,
+      "start": 37900001,
+      "id": "p13.1",
+      "end": 39000000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "9",
+      "stain": "gneg"
+     },
+     {
+      "end": 37900000,
+      "start": 36300001,
+      "id": "p13.2",
+      "strand": 0,
+      "stain": "gpos25",
+      "seq_region_name": "9",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "end": 36300000,
+      "start": 33200001,
+      "id": "p13.3",
+      "strand": 0,
+      "stain": "gneg",
+      "seq_region_name": "9",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "end": 33200000,
+      "strand": 0,
+      "start": 28000001,
+      "id": "p21.1",
+      "seq_region_name": "9",
+      "stain": "gpos100",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "strand": 0,
+      "start": 25600001,
+      "id": "p21.2",
+      "end": 28000000,
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "9"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "9",
+      "stain": "gpos100",
+      "start": 19900001,
+      "id": "p21.3",
+      "strand": 0,
+      "end": 25600000
+     },
+     {
+      "strand": 0,
+      "id": "p22.1",
+      "start": 18500001,
+      "end": 19900000,
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "9"
+     },
+     {
+      "strand": 0,
+      "id": "p22.2",
+      "start": 16600001,
+      "end": 18500000,
+      "assembly_name": "GRCh38",
+      "stain": "gpos25",
+      "seq_region_name": "9"
+     },
+     {
+      "seq_region_name": "9",
+      "stain": "gneg",
+      "assembly_name": "GRCh38",
+      "end": 16600000,
+      "id": "p22.3",
+      "start": 14200001,
+      "strand": 0
+     },
+     {
+      "strand": 0,
+      "start": 9000001,
+      "id": "p23",
+      "end": 14200000,
+      "assembly_name": "GRCh38",
+      "stain": "gpos75",
+      "seq_region_name": "9"
+     },
+     {
+      "end": 9000000,
+      "id": "p24.1",
+      "start": 4600001,
+      "strand": 0,
+      "stain": "gneg",
+      "seq_region_name": "9",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "seq_region_name": "9",
+      "stain": "gpos25",
+      "assembly_name": "GRCh38",
+      "end": 4600000,
+      "strand": 0,
+      "id": "p24.2",
+      "start": 2200001
+     },
+     {
+      "end": 2200000,
+      "start": 1,
+      "id": "p24.3",
+      "strand": 0,
+      "seq_region_name": "9",
+      "stain": "gneg",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "acen",
+      "seq_region_name": "9",
+      "strand": 0,
+      "start": 43000001,
+      "id": "q11",
+      "end": 45500000
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "9",
+      "stain": "gvar",
+      "start": 45500001,
+      "id": "q12",
+      "strand": 0,
+      "end": 61500000
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "9",
+      "stain": "gneg",
+      "id": "q13",
+      "start": 61500001,
+      "strand": 0,
+      "end": 65000000
+     },
+     {
+      "stain": "gpos25",
+      "seq_region_name": "9",
+      "assembly_name": "GRCh38",
+      "end": 69300000,
+      "start": 65000001,
+      "id": "q21.11",
+      "strand": 0
+     },
+     {
+      "end": 71300000,
+      "strand": 0,
+      "id": "q21.12",
+      "start": 69300001,
+      "stain": "gneg",
+      "seq_region_name": "9",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "start": 71300001,
+      "id": "q21.13",
+      "strand": 0,
+      "end": 76600000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "9",
+      "stain": "gpos50"
+     },
+     {
+      "end": 78500000,
+      "id": "q21.2",
+      "start": 76600001,
+      "strand": 0,
+      "seq_region_name": "9",
+      "stain": "gneg",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "stain": "gpos50",
+      "seq_region_name": "9",
+      "assembly_name": "GRCh38",
+      "end": 81500000,
+      "start": 78500001,
+      "id": "q21.31",
+      "strand": 0
+     },
+     {
+      "id": "q21.32",
+      "start": 81500001,
+      "strand": 0,
+      "end": 84300000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "9",
+      "stain": "gneg"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gpos50",
+      "seq_region_name": "9",
+      "strand": 0,
+      "start": 84300001,
+      "id": "q21.33",
+      "end": 87800000
+     },
+     {
+      "stain": "gneg",
+      "seq_region_name": "9",
+      "assembly_name": "GRCh38",
+      "end": 89200000,
+      "strand": 0,
+      "start": 87800001,
+      "id": "q22.1"
+     },
+     {
+      "end": 91200000,
+      "strand": 0,
+      "id": "q22.2",
+      "start": 89200001,
+      "seq_region_name": "9",
+      "stain": "gpos25",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "seq_region_name": "9",
+      "stain": "gneg",
+      "assembly_name": "GRCh38",
+      "end": 93900000,
+      "strand": 0,
+      "start": 91200001,
+      "id": "q22.31"
+     },
+     {
+      "id": "q22.32",
+      "start": 93900001,
+      "strand": 0,
+      "end": 96500000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "9",
+      "stain": "gpos25"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "9",
+      "stain": "gneg",
+      "strand": 0,
+      "start": 96500001,
+      "id": "q22.33",
+      "end": 99800000
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "9",
+      "stain": "gpos100",
+      "start": 99800001,
+      "id": "q31.1",
+      "strand": 0,
+      "end": 105400000
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "9",
+      "stain": "gneg",
+      "start": 105400001,
+      "id": "q31.2",
+      "strand": 0,
+      "end": 108500000
+     },
+     {
+      "end": 112100000,
+      "id": "q31.3",
+      "start": 108500001,
+      "strand": 0,
+      "seq_region_name": "9",
+      "stain": "gpos25",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "start": 112100001,
+      "id": "q32",
+      "strand": 0,
+      "end": 114900000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "9",
+      "stain": "gneg"
+     },
+     {
+      "seq_region_name": "9",
+      "stain": "gpos75",
+      "assembly_name": "GRCh38",
+      "end": 119800000,
+      "start": 114900001,
+      "id": "q33.1",
+      "strand": 0
+     },
+     {
+      "strand": 0,
+      "start": 119800001,
+      "id": "q33.2",
+      "end": 123100000,
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "9"
+     },
+     {
+      "stain": "gpos25",
+      "seq_region_name": "9",
+      "assembly_name": "GRCh38",
+      "end": 127500000,
+      "strand": 0,
+      "start": 123100001,
+      "id": "q33.3"
+     },
+     {
+      "start": 127500001,
+      "id": "q34.11",
+      "strand": 0,
+      "end": 130600000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "9",
+      "stain": "gneg"
+     },
+     {
+      "strand": 0,
+      "start": 130600001,
+      "id": "q34.12",
+      "end": 131100000,
+      "assembly_name": "GRCh38",
+      "stain": "gpos25",
+      "seq_region_name": "9"
+     },
+     {
+      "seq_region_name": "9",
+      "stain": "gneg",
+      "assembly_name": "GRCh38",
+      "end": 133100000,
+      "start": 131100001,
+      "id": "q34.13",
+      "strand": 0
+     },
+     {
+      "stain": "gpos25",
+      "seq_region_name": "9",
+      "assembly_name": "GRCh38",
+      "end": 134500000,
+      "id": "q34.2",
+      "start": 133100001,
+      "strand": 0
+     },
+     {
+      "end": 138394717,
+      "strand": 0,
+      "id": "q34.3",
+      "start": 134500001,
+      "stain": "gneg",
+      "seq_region_name": "9",
+      "assembly_name": "GRCh38"
+     }
+    ],
+    "length": 138394717,
+    "coord_system": "chromosome"
+   },
+   {
+    "name": "11",
+    "coord_system": "chromosome",
+    "length": 135086622,
+    "bands": [
+     {
+      "end": 53400000,
+      "strand": 0,
+      "start": 51000001,
+      "id": "p11.11",
+      "seq_region_name": "11",
+      "stain": "acen",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "strand": 0,
+      "start": 48800001,
+      "id": "p11.12",
+      "end": 51000000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "11",
+      "stain": "gpos75"
+     },
+     {
+      "end": 48800000,
+      "strand": 0,
+      "start": 43400001,
+      "id": "p11.2",
+      "stain": "gneg",
+      "seq_region_name": "11",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "id": "p12",
+      "start": 36400001,
+      "strand": 0,
+      "end": 43400000,
+      "assembly_name": "GRCh38",
+      "stain": "gpos100",
+      "seq_region_name": "11"
+     },
+     {
+      "start": 31000001,
+      "id": "p13",
+      "strand": 0,
+      "end": 36400000,
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "11"
+     },
+     {
+      "seq_region_name": "11",
+      "stain": "gpos75",
+      "assembly_name": "GRCh38",
+      "end": 31000000,
+      "id": "p14.1",
+      "start": 27200001,
+      "strand": 0
+     },
+     {
+      "id": "p14.2",
+      "start": 26200001,
+      "strand": 0,
+      "end": 27200000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "11",
+      "stain": "gneg"
+     },
+     {
+      "id": "p14.3",
+      "start": 22000001,
+      "strand": 0,
+      "end": 26200000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "11",
+      "stain": "gpos100"
+     },
+     {
+      "seq_region_name": "11",
+      "stain": "gneg",
+      "assembly_name": "GRCh38",
+      "end": 22000000,
+      "strand": 0,
+      "id": "p15.1",
+      "start": 16900001
+     },
+     {
+      "end": 16900000,
+      "id": "p15.2",
+      "start": 13800001,
+      "strand": 0,
+      "seq_region_name": "11",
+      "stain": "gpos50",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "end": 13800000,
+      "id": "p15.3",
+      "start": 11700001,
+      "strand": 0,
+      "seq_region_name": "11",
+      "stain": "gneg",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "id": "p15.4",
+      "start": 2800001,
+      "strand": 0,
+      "end": 11700000,
+      "assembly_name": "GRCh38",
+      "stain": "gpos50",
+      "seq_region_name": "11"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "11",
+      "strand": 0,
+      "id": "p15.5",
+      "start": 1,
+      "end": 2800000
+     },
+     {
+      "strand": 0,
+      "id": "q11",
+      "start": 53400001,
+      "end": 55800000,
+      "assembly_name": "GRCh38",
+      "stain": "acen",
+      "seq_region_name": "11"
+     },
+     {
+      "end": 60100000,
+      "strand": 0,
+      "id": "q12.1",
+      "start": 55800001,
+      "seq_region_name": "11",
+      "stain": "gpos75",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "start": 60100001,
+      "id": "q12.2",
+      "strand": 0,
+      "end": 61900000,
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "11"
+     },
+     {
+      "id": "q12.3",
+      "start": 61900001,
+      "strand": 0,
+      "end": 63600000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "11",
+      "stain": "gpos25"
+     },
+     {
+      "strand": 0,
+      "id": "q13.1",
+      "start": 63600001,
+      "end": 66100000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "11",
+      "stain": "gneg"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gpos25",
+      "seq_region_name": "11",
+      "start": 66100001,
+      "id": "q13.2",
+      "strand": 0,
+      "end": 68700000
+     },
+     {
+      "id": "q13.3",
+      "start": 68700001,
+      "strand": 0,
+      "end": 70500000,
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "11"
+     },
+     {
+      "stain": "gpos50",
+      "seq_region_name": "11",
+      "assembly_name": "GRCh38",
+      "end": 75500000,
+      "strand": 0,
+      "id": "q13.4",
+      "start": 70500001
+     },
+     {
+      "id": "q13.5",
+      "start": 75500001,
+      "strand": 0,
+      "end": 77400000,
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "11"
+     },
+     {
+      "strand": 0,
+      "start": 77400001,
+      "id": "q14.1",
+      "end": 85900000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "11",
+      "stain": "gpos100"
+     },
+     {
+      "strand": 0,
+      "id": "q14.2",
+      "start": 85900001,
+      "end": 88600000,
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "11"
+     },
+     {
+      "strand": 0,
+      "start": 88600001,
+      "id": "q14.3",
+      "end": 93000000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "11",
+      "stain": "gpos100"
+     },
+     {
+      "end": 97400000,
+      "strand": 0,
+      "start": 93000001,
+      "id": "q21",
+      "seq_region_name": "11",
+      "stain": "gneg",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gpos100",
+      "seq_region_name": "11",
+      "start": 97400001,
+      "id": "q22.1",
+      "strand": 0,
+      "end": 102300000
+     },
+     {
+      "stain": "gneg",
+      "seq_region_name": "11",
+      "assembly_name": "GRCh38",
+      "end": 103000000,
+      "id": "q22.2",
+      "start": 102300001,
+      "strand": 0
+     },
+     {
+      "end": 110600000,
+      "id": "q22.3",
+      "start": 103000001,
+      "strand": 0,
+      "seq_region_name": "11",
+      "stain": "gpos100",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "11",
+      "strand": 0,
+      "id": "q23.1",
+      "start": 110600001,
+      "end": 112700000
+     },
+     {
+      "start": 112700001,
+      "id": "q23.2",
+      "strand": 0,
+      "end": 114600000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "11",
+      "stain": "gpos50"
+     },
+     {
+      "id": "q23.3",
+      "start": 114600001,
+      "strand": 0,
+      "end": 121300000,
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "11"
+     },
+     {
+      "end": 124000000,
+      "strand": 0,
+      "start": 121300001,
+      "id": "q24.1",
+      "seq_region_name": "11",
+      "stain": "gpos50",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "seq_region_name": "11",
+      "stain": "gneg",
+      "assembly_name": "GRCh38",
+      "end": 127900000,
+      "start": 124000001,
+      "id": "q24.2",
+      "strand": 0
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gpos50",
+      "seq_region_name": "11",
+      "start": 127900001,
+      "id": "q24.3",
+      "strand": 0,
+      "end": 130900000
+     },
+     {
+      "end": 135086622,
+      "id": "q25",
+      "start": 130900001,
+      "strand": 0,
+      "stain": "gneg",
+      "seq_region_name": "11",
+      "assembly_name": "GRCh38"
+     }
+    ]
+   },
+   {
+    "name": "17",
+    "length": 83257441,
+    "coord_system": "chromosome",
+    "bands": [
+     {
+      "end": 25100000,
+      "strand": 0,
+      "id": "p11.1",
+      "start": 22700001,
+      "stain": "acen",
+      "seq_region_name": "17",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "start": 16100001,
+      "id": "p11.2",
+      "strand": 0,
+      "end": 22700000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "17",
+      "stain": "gneg"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gpos75",
+      "seq_region_name": "17",
+      "strand": 0,
+      "id": "p12",
+      "start": 10800001,
+      "end": 16100000
+     },
+     {
+      "end": 10800000,
+      "id": "p13.1",
+      "start": 6500001,
+      "strand": 0,
+      "stain": "gneg",
+      "seq_region_name": "17",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "17",
+      "stain": "gpos50",
+      "start": 3400001,
+      "id": "p13.2",
+      "strand": 0,
+      "end": 6500000
+     },
+     {
+      "end": 3400000,
+      "strand": 0,
+      "id": "p13.3",
+      "start": 1,
+      "stain": "gneg",
+      "seq_region_name": "17",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "end": 27400000,
+      "id": "q11.1",
+      "start": 25100001,
+      "strand": 0,
+      "stain": "acen",
+      "seq_region_name": "17",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "17",
+      "stain": "gneg",
+      "strand": 0,
+      "start": 27400001,
+      "id": "q11.2",
+      "end": 33500000
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "17",
+      "stain": "gpos50",
+      "start": 33500001,
+      "id": "q12",
+      "strand": 0,
+      "end": 39800000
+     },
+     {
+      "end": 40200000,
+      "strand": 0,
+      "start": 39800001,
+      "id": "q21.1",
+      "stain": "gneg",
+      "seq_region_name": "17",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "start": 40200001,
+      "id": "q21.2",
+      "strand": 0,
+      "end": 42800000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "17",
+      "stain": "gpos25"
+     },
+     {
+      "end": 46800000,
+      "start": 42800001,
+      "id": "q21.31",
+      "strand": 0,
+      "stain": "gneg",
+      "seq_region_name": "17",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "seq_region_name": "17",
+      "stain": "gpos25",
+      "assembly_name": "GRCh38",
+      "end": 49300000,
+      "strand": 0,
+      "start": 46800001,
+      "id": "q21.32"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "17",
+      "stain": "gneg",
+      "strand": 0,
+      "id": "q21.33",
+      "start": 49300001,
+      "end": 52100000
+     },
+     {
+      "id": "q22",
+      "start": 52100001,
+      "strand": 0,
+      "end": 59500000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "17",
+      "stain": "gpos75"
+     },
+     {
+      "stain": "gneg",
+      "seq_region_name": "17",
+      "assembly_name": "GRCh38",
+      "end": 60200000,
+      "strand": 0,
+      "id": "q23.1",
+      "start": 59500001
+     },
+     {
+      "seq_region_name": "17",
+      "stain": "gpos75",
+      "assembly_name": "GRCh38",
+      "end": 63100000,
+      "id": "q23.2",
+      "start": 60200001,
+      "strand": 0
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "17",
+      "stain": "gneg",
+      "strand": 0,
+      "start": 63100001,
+      "id": "q23.3",
+      "end": 64600000
+     },
+     {
+      "strand": 0,
+      "start": 64600001,
+      "id": "q24.1",
+      "end": 66200000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "17",
+      "stain": "gpos50"
+     },
+     {
+      "strand": 0,
+      "start": 66200001,
+      "id": "q24.2",
+      "end": 69100000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "17",
+      "stain": "gneg"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gpos75",
+      "seq_region_name": "17",
+      "strand": 0,
+      "id": "q24.3",
+      "start": 69100001,
+      "end": 72900000
+     },
+     {
+      "stain": "gneg",
+      "seq_region_name": "17",
+      "assembly_name": "GRCh38",
+      "end": 76800000,
+      "strand": 0,
+      "id": "q25.1",
+      "start": 72900001
+     },
+     {
+      "stain": "gpos25",
+      "seq_region_name": "17",
+      "assembly_name": "GRCh38",
+      "end": 77200000,
+      "start": 76800001,
+      "id": "q25.2",
+      "strand": 0
+     },
+     {
+      "stain": "gneg",
+      "seq_region_name": "17",
+      "assembly_name": "GRCh38",
+      "end": 83257441,
+      "strand": 0,
+      "start": 77200001,
+      "id": "q25.3"
+     }
+    ]
+   },
+   {
+    "bands": [
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "8",
+      "stain": "acen",
+      "start": 43200001,
+      "id": "p11.1",
+      "strand": 0,
+      "end": 45200000
+     },
+     {
+      "end": 43200000,
+      "strand": 0,
+      "id": "p11.21",
+      "start": 39900001,
+      "seq_region_name": "8",
+      "stain": "gneg",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "end": 39900000,
+      "strand": 0,
+      "id": "p11.22",
+      "start": 38500001,
+      "stain": "gpos25",
+      "seq_region_name": "8",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "8",
+      "strand": 0,
+      "id": "p11.23",
+      "start": 36700001,
+      "end": 38500000
+     },
+     {
+      "end": 36700000,
+      "strand": 0,
+      "start": 29000001,
+      "id": "p12",
+      "seq_region_name": "8",
+      "stain": "gpos75",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "end": 29000000,
+      "id": "p21.1",
+      "start": 27500001,
+      "strand": 0,
+      "stain": "gneg",
+      "seq_region_name": "8",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "stain": "gpos50",
+      "seq_region_name": "8",
+      "assembly_name": "GRCh38",
+      "end": 27500000,
+      "start": 23500001,
+      "id": "p21.2",
+      "strand": 0
+     },
+     {
+      "stain": "gneg",
+      "seq_region_name": "8",
+      "assembly_name": "GRCh38",
+      "end": 23500000,
+      "start": 19200001,
+      "id": "p21.3",
+      "strand": 0
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "8",
+      "stain": "gpos100",
+      "id": "p22",
+      "start": 12800001,
+      "strand": 0,
+      "end": 19200000
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "8",
+      "strand": 0,
+      "id": "p23.1",
+      "start": 6300001,
+      "end": 12800000
+     },
+     {
+      "end": 6300000,
+      "id": "p23.2",
+      "start": 2300001,
+      "strand": 0,
+      "seq_region_name": "8",
+      "stain": "gpos75",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "strand": 0,
+      "start": 1,
+      "id": "p23.3",
+      "end": 2300000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "8",
+      "stain": "gneg"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "acen",
+      "seq_region_name": "8",
+      "strand": 0,
+      "start": 45200001,
+      "id": "q11.1",
+      "end": 47200000
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "8",
+      "id": "q11.21",
+      "start": 47200001,
+      "strand": 0,
+      "end": 51300000
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "8",
+      "stain": "gpos75",
+      "id": "q11.22",
+      "start": 51300001,
+      "strand": 0,
+      "end": 51700000
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "8",
+      "stain": "gneg",
+      "id": "q11.23",
+      "start": 51700001,
+      "strand": 0,
+      "end": 54600000
+     },
+     {
+      "start": 54600001,
+      "id": "q12.1",
+      "strand": 0,
+      "end": 60600000,
+      "assembly_name": "GRCh38",
+      "stain": "gpos50",
+      "seq_region_name": "8"
+     },
+     {
+      "strand": 0,
+      "start": 60600001,
+      "id": "q12.2",
+      "end": 61300000,
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "8"
+     },
+     {
+      "strand": 0,
+      "start": 61300001,
+      "id": "q12.3",
+      "end": 65100000,
+      "assembly_name": "GRCh38",
+      "stain": "gpos50",
+      "seq_region_name": "8"
+     },
+     {
+      "stain": "gneg",
+      "seq_region_name": "8",
+      "assembly_name": "GRCh38",
+      "end": 67100000,
+      "start": 65100001,
+      "id": "q13.1",
+      "strand": 0
+     },
+     {
+      "seq_region_name": "8",
+      "stain": "gpos50",
+      "assembly_name": "GRCh38",
+      "end": 69600000,
+      "start": 67100001,
+      "id": "q13.2",
+      "strand": 0
+     },
+     {
+      "strand": 0,
+      "start": 69600001,
+      "id": "q13.3",
+      "end": 72000000,
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "8"
+     },
+     {
+      "start": 72000001,
+      "id": "q21.11",
+      "strand": 0,
+      "end": 74600000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "8",
+      "stain": "gpos100"
+     },
+     {
+      "stain": "gneg",
+      "seq_region_name": "8",
+      "assembly_name": "GRCh38",
+      "end": 74700000,
+      "strand": 0,
+      "start": 74600001,
+      "id": "q21.12"
+     },
+     {
+      "strand": 0,
+      "start": 74700001,
+      "id": "q21.13",
+      "end": 83500000,
+      "assembly_name": "GRCh38",
+      "stain": "gpos75",
+      "seq_region_name": "8"
+     },
+     {
+      "seq_region_name": "8",
+      "stain": "gneg",
+      "assembly_name": "GRCh38",
+      "end": 85900000,
+      "id": "q21.2",
+      "start": 83500001,
+      "strand": 0
+     },
+     {
+      "stain": "gpos100",
+      "seq_region_name": "8",
+      "assembly_name": "GRCh38",
+      "end": 92300000,
+      "id": "q21.3",
+      "start": 85900001,
+      "strand": 0
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "8",
+      "start": 92300001,
+      "id": "q22.1",
+      "strand": 0,
+      "end": 97900000
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gpos25",
+      "seq_region_name": "8",
+      "strand": 0,
+      "start": 97900001,
+      "id": "q22.2",
+      "end": 100500000
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "8",
+      "start": 100500001,
+      "id": "q22.3",
+      "strand": 0,
+      "end": 105100000
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "8",
+      "stain": "gpos75",
+      "id": "q23.1",
+      "start": 105100001,
+      "strand": 0,
+      "end": 109500000
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "8",
+      "strand": 0,
+      "id": "q23.2",
+      "start": 109500001,
+      "end": 111100000
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "8",
+      "stain": "gpos100",
+      "start": 111100001,
+      "id": "q23.3",
+      "strand": 0,
+      "end": 116700000
+     },
+     {
+      "end": 118300000,
+      "id": "q24.11",
+      "start": 116700001,
+      "strand": 0,
+      "seq_region_name": "8",
+      "stain": "gneg",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "stain": "gpos50",
+      "seq_region_name": "8",
+      "assembly_name": "GRCh38",
+      "end": 121500000,
+      "id": "q24.12",
+      "start": 118300001,
+      "strand": 0
+     },
+     {
+      "stain": "gneg",
+      "seq_region_name": "8",
+      "assembly_name": "GRCh38",
+      "end": 126300000,
+      "strand": 0,
+      "id": "q24.13",
+      "start": 121500001
+     },
+     {
+      "seq_region_name": "8",
+      "stain": "gpos50",
+      "assembly_name": "GRCh38",
+      "end": 130400000,
+      "start": 126300001,
+      "id": "q24.21",
+      "strand": 0
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "8",
+      "id": "q24.22",
+      "start": 130400001,
+      "strand": 0,
+      "end": 135400000
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gpos75",
+      "seq_region_name": "8",
+      "start": 135400001,
+      "id": "q24.23",
+      "strand": 0,
+      "end": 138900000
+     },
+     {
+      "stain": "gneg",
+      "seq_region_name": "8",
+      "assembly_name": "GRCh38",
+      "end": 145138636,
+      "strand": 0,
+      "start": 138900001,
+      "id": "q24.3"
+     }
+    ],
+    "length": 145138636,
+    "coord_system": "chromosome",
+    "name": "8"
+   },
+   {
+    "coord_system": "chromosome",
+    "length": 159345973,
+    "bands": [
+     {
+      "assembly_name": "GRCh38",
+      "stain": "acen",
+      "seq_region_name": "7",
+      "strand": 0,
+      "start": 58100001,
+      "id": "p11.1",
+      "end": 60100000
+     },
+     {
+      "end": 58100000,
+      "start": 53900001,
+      "id": "p11.2",
+      "strand": 0,
+      "seq_region_name": "7",
+      "stain": "gneg",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "stain": "gpos75",
+      "seq_region_name": "7",
+      "assembly_name": "GRCh38",
+      "end": 53900000,
+      "id": "p12.1",
+      "start": 50500001,
+      "strand": 0
+     },
+     {
+      "seq_region_name": "7",
+      "stain": "gneg",
+      "assembly_name": "GRCh38",
+      "end": 50500000,
+      "strand": 0,
+      "id": "p12.2",
+      "start": 49000001
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gpos75",
+      "seq_region_name": "7",
+      "strand": 0,
+      "id": "p12.3",
+      "start": 45400001,
+      "end": 49000000
+     },
+     {
+      "end": 45400000,
+      "strand": 0,
+      "id": "p13",
+      "start": 43300001,
+      "stain": "gneg",
+      "seq_region_name": "7",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "seq_region_name": "7",
+      "stain": "gpos75",
+      "assembly_name": "GRCh38",
+      "end": 43300000,
+      "start": 37100001,
+      "id": "p14.1",
+      "strand": 0
+     },
+     {
+      "seq_region_name": "7",
+      "stain": "gneg",
+      "assembly_name": "GRCh38",
+      "end": 37100000,
+      "id": "p14.2",
+      "start": 34900001,
+      "strand": 0
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gpos75",
+      "seq_region_name": "7",
+      "start": 28800001,
+      "id": "p14.3",
+      "strand": 0,
+      "end": 34900000
+     },
+     {
+      "end": 28800000,
+      "strand": 0,
+      "id": "p15.1",
+      "start": 27900001,
+      "stain": "gneg",
+      "seq_region_name": "7",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gpos50",
+      "seq_region_name": "7",
+      "strand": 0,
+      "start": 25500001,
+      "id": "p15.2",
+      "end": 27900000
+     },
+     {
+      "end": 25500000,
+      "start": 20900001,
+      "id": "p15.3",
+      "strand": 0,
+      "seq_region_name": "7",
+      "stain": "gneg",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "id": "p21.1",
+      "start": 16500001,
+      "strand": 0,
+      "end": 20900000,
+      "assembly_name": "GRCh38",
+      "stain": "gpos100",
+      "seq_region_name": "7"
+     },
+     {
+      "strand": 0,
+      "start": 13700001,
+      "id": "p21.2",
+      "end": 16500000,
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "7"
+     },
+     {
+      "seq_region_name": "7",
+      "stain": "gpos100",
+      "assembly_name": "GRCh38",
+      "end": 13700000,
+      "strand": 0,
+      "start": 7200001,
+      "id": "p21.3"
+     },
+     {
+      "strand": 0,
+      "start": 4500001,
+      "id": "p22.1",
+      "end": 7200000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "7",
+      "stain": "gneg"
+     },
+     {
+      "seq_region_name": "7",
+      "stain": "gpos25",
+      "assembly_name": "GRCh38",
+      "end": 4500000,
+      "strand": 0,
+      "start": 2800001,
+      "id": "p22.2"
+     },
+     {
+      "start": 1,
+      "id": "p22.3",
+      "strand": 0,
+      "end": 2800000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "7",
+      "stain": "gneg"
+     },
+     {
+      "stain": "acen",
+      "seq_region_name": "7",
+      "assembly_name": "GRCh38",
+      "end": 62100000,
+      "strand": 0,
+      "id": "q11.1",
+      "start": 60100001
+     },
+     {
+      "seq_region_name": "7",
+      "stain": "gneg",
+      "assembly_name": "GRCh38",
+      "end": 67500000,
+      "strand": 0,
+      "id": "q11.21",
+      "start": 62100001
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "7",
+      "stain": "gpos50",
+      "strand": 0,
+      "id": "q11.22",
+      "start": 67500001,
+      "end": 72700000
+     },
+     {
+      "end": 77900000,
+      "strand": 0,
+      "start": 72700001,
+      "id": "q11.23",
+      "stain": "gneg",
+      "seq_region_name": "7",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "id": "q21.11",
+      "start": 77900001,
+      "strand": 0,
+      "end": 86700000,
+      "assembly_name": "GRCh38",
+      "stain": "gpos100",
+      "seq_region_name": "7"
+     },
+     {
+      "stain": "gneg",
+      "seq_region_name": "7",
+      "assembly_name": "GRCh38",
+      "end": 88500000,
+      "strand": 0,
+      "start": 86700001,
+      "id": "q21.12"
+     },
+     {
+      "end": 91500000,
+      "id": "q21.13",
+      "start": 88500001,
+      "strand": 0,
+      "stain": "gpos75",
+      "seq_region_name": "7",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "seq_region_name": "7",
+      "stain": "gneg",
+      "assembly_name": "GRCh38",
+      "end": 93300000,
+      "start": 91500001,
+      "id": "q21.2",
+      "strand": 0
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gpos75",
+      "seq_region_name": "7",
+      "strand": 0,
+      "id": "q21.3",
+      "start": 93300001,
+      "end": 98400000
+     },
+     {
+      "id": "q22.1",
+      "start": 98400001,
+      "strand": 0,
+      "end": 104200000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "7",
+      "stain": "gneg"
+     },
+     {
+      "strand": 0,
+      "id": "q22.2",
+      "start": 104200001,
+      "end": 104900000,
+      "assembly_name": "GRCh38",
+      "stain": "gpos50",
+      "seq_region_name": "7"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "7",
+      "stain": "gneg",
+      "strand": 0,
+      "id": "q22.3",
+      "start": 104900001,
+      "end": 107800000
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "7",
+      "stain": "gpos75",
+      "start": 107800001,
+      "id": "q31.1",
+      "strand": 0,
+      "end": 115000000
+     },
+     {
+      "start": 115000001,
+      "id": "q31.2",
+      "strand": 0,
+      "end": 117700000,
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "7"
+     },
+     {
+      "start": 117700001,
+      "id": "q31.31",
+      "strand": 0,
+      "end": 121400000,
+      "assembly_name": "GRCh38",
+      "stain": "gpos75",
+      "seq_region_name": "7"
+     },
+     {
+      "end": 124100000,
+      "strand": 0,
+      "start": 121400001,
+      "id": "q31.32",
+      "seq_region_name": "7",
+      "stain": "gneg",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gpos75",
+      "seq_region_name": "7",
+      "strand": 0,
+      "id": "q31.33",
+      "start": 124100001,
+      "end": 127500000
+     },
+     {
+      "end": 129600000,
+      "id": "q32.1",
+      "start": 127500001,
+      "strand": 0,
+      "seq_region_name": "7",
+      "stain": "gneg",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "id": "q32.2",
+      "start": 129600001,
+      "strand": 0,
+      "end": 130800000,
+      "assembly_name": "GRCh38",
+      "stain": "gpos25",
+      "seq_region_name": "7"
+     },
+     {
+      "stain": "gneg",
+      "seq_region_name": "7",
+      "assembly_name": "GRCh38",
+      "end": 132900000,
+      "strand": 0,
+      "id": "q32.3",
+      "start": 130800001
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "7",
+      "stain": "gpos50",
+      "strand": 0,
+      "start": 132900001,
+      "id": "q33",
+      "end": 138500000
+     },
+     {
+      "seq_region_name": "7",
+      "stain": "gneg",
+      "assembly_name": "GRCh38",
+      "end": 143400000,
+      "strand": 0,
+      "id": "q34",
+      "start": 138500001
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gpos75",
+      "seq_region_name": "7",
+      "strand": 0,
+      "start": 143400001,
+      "id": "q35",
+      "end": 148200000
+     },
+     {
+      "end": 152800000,
+      "id": "q36.1",
+      "start": 148200001,
+      "strand": 0,
+      "stain": "gneg",
+      "seq_region_name": "7",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "stain": "gpos25",
+      "seq_region_name": "7",
+      "assembly_name": "GRCh38",
+      "end": 155200000,
+      "start": 152800001,
+      "id": "q36.2",
+      "strand": 0
+     },
+     {
+      "end": 159345973,
+      "strand": 0,
+      "start": 155200001,
+      "id": "q36.3",
+      "seq_region_name": "7",
+      "stain": "gneg",
+      "assembly_name": "GRCh38"
+     }
+    ],
+    "name": "7"
+   },
+   {
+    "name": "15",
+    "bands": [
+     {
+      "seq_region_name": "15",
+      "stain": "acen",
+      "assembly_name": "GRCh38",
+      "end": 19000000,
+      "start": 17500001,
+      "id": "p11.1",
+      "strand": 0
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gvar",
+      "seq_region_name": "15",
+      "strand": 0,
+      "start": 9700001,
+      "id": "p11.2",
+      "end": 17500000
+     },
+     {
+      "stain": "stalk",
+      "seq_region_name": "15",
+      "assembly_name": "GRCh38",
+      "end": 9700000,
+      "strand": 0,
+      "id": "p12",
+      "start": 4200001
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "15",
+      "stain": "gvar",
+      "strand": 0,
+      "start": 1,
+      "id": "p13",
+      "end": 4200000
+     },
+     {
+      "seq_region_name": "15",
+      "stain": "acen",
+      "assembly_name": "GRCh38",
+      "end": 20500000,
+      "strand": 0,
+      "start": 19000001,
+      "id": "q11.1"
+     },
+     {
+      "seq_region_name": "15",
+      "stain": "gneg",
+      "assembly_name": "GRCh38",
+      "end": 25500000,
+      "strand": 0,
+      "start": 20500001,
+      "id": "q11.2"
+     },
+     {
+      "end": 27800000,
+      "id": "q12",
+      "start": 25500001,
+      "strand": 0,
+      "seq_region_name": "15",
+      "stain": "gpos50",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "15",
+      "start": 27800001,
+      "id": "q13.1",
+      "strand": 0,
+      "end": 30000000
+     },
+     {
+      "stain": "gpos50",
+      "seq_region_name": "15",
+      "assembly_name": "GRCh38",
+      "end": 30900000,
+      "start": 30000001,
+      "id": "q13.2",
+      "strand": 0
+     },
+     {
+      "seq_region_name": "15",
+      "stain": "gneg",
+      "assembly_name": "GRCh38",
+      "end": 33400000,
+      "id": "q13.3",
+      "start": 30900001,
+      "strand": 0
+     },
+     {
+      "id": "q14",
+      "start": 33400001,
+      "strand": 0,
+      "end": 39800000,
+      "assembly_name": "GRCh38",
+      "stain": "gpos75",
+      "seq_region_name": "15"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "15",
+      "stain": "gneg",
+      "strand": 0,
+      "start": 39800001,
+      "id": "q15.1",
+      "end": 42500000
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "15",
+      "stain": "gpos25",
+      "id": "q15.2",
+      "start": 42500001,
+      "strand": 0,
+      "end": 43300000
+     },
+     {
+      "stain": "gneg",
+      "seq_region_name": "15",
+      "assembly_name": "GRCh38",
+      "end": 44500000,
+      "id": "q15.3",
+      "start": 43300001,
+      "strand": 0
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "15",
+      "stain": "gpos75",
+      "strand": 0,
+      "id": "q21.1",
+      "start": 44500001,
+      "end": 49200000
+     },
+     {
+      "end": 52600000,
+      "id": "q21.2",
+      "start": 49200001,
+      "strand": 0,
+      "seq_region_name": "15",
+      "stain": "gneg",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "stain": "gpos75",
+      "seq_region_name": "15",
+      "assembly_name": "GRCh38",
+      "end": 58800000,
+      "strand": 0,
+      "id": "q21.3",
+      "start": 52600001
+     },
+     {
+      "seq_region_name": "15",
+      "stain": "gneg",
+      "assembly_name": "GRCh38",
+      "end": 59000000,
+      "id": "q22.1",
+      "start": 58800001,
+      "strand": 0
+     },
+     {
+      "stain": "gpos25",
+      "seq_region_name": "15",
+      "assembly_name": "GRCh38",
+      "end": 63400000,
+      "id": "q22.2",
+      "start": 59000001,
+      "strand": 0
+     },
+     {
+      "id": "q22.31",
+      "start": 63400001,
+      "strand": 0,
+      "end": 66900000,
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "15"
+     },
+     {
+      "end": 67000000,
+      "id": "q22.32",
+      "start": 66900001,
+      "strand": 0,
+      "stain": "gpos25",
+      "seq_region_name": "15",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "end": 67200000,
+      "strand": 0,
+      "id": "q22.33",
+      "start": 67000001,
+      "stain": "gneg",
+      "seq_region_name": "15",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "strand": 0,
+      "start": 67200001,
+      "id": "q23",
+      "end": 72400000,
+      "assembly_name": "GRCh38",
+      "stain": "gpos25",
+      "seq_region_name": "15"
+     },
+     {
+      "stain": "gneg",
+      "seq_region_name": "15",
+      "assembly_name": "GRCh38",
+      "end": 74900000,
+      "start": 72400001,
+      "id": "q24.1",
+      "strand": 0
+     },
+     {
+      "seq_region_name": "15",
+      "stain": "gpos25",
+      "assembly_name": "GRCh38",
+      "end": 76300000,
+      "strand": 0,
+      "id": "q24.2",
+      "start": 74900001
+     },
+     {
+      "end": 78000000,
+      "start": 76300001,
+      "id": "q24.3",
+      "strand": 0,
+      "stain": "gneg",
+      "seq_region_name": "15",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "seq_region_name": "15",
+      "stain": "gpos50",
+      "assembly_name": "GRCh38",
+      "end": 81400000,
+      "id": "q25.1",
+      "start": 78000001,
+      "strand": 0
+     },
+     {
+      "end": 84700000,
+      "start": 81400001,
+      "id": "q25.2",
+      "strand": 0,
+      "seq_region_name": "15",
+      "stain": "gneg",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "strand": 0,
+      "id": "q25.3",
+      "start": 84700001,
+      "end": 88500000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "15",
+      "stain": "gpos50"
+     },
+     {
+      "seq_region_name": "15",
+      "stain": "gneg",
+      "assembly_name": "GRCh38",
+      "end": 93800000,
+      "strand": 0,
+      "id": "q26.1",
+      "start": 88500001
+     },
+     {
+      "seq_region_name": "15",
+      "stain": "gpos50",
+      "assembly_name": "GRCh38",
+      "end": 98000000,
+      "strand": 0,
+      "start": 93800001,
+      "id": "q26.2"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "15",
+      "start": 98000001,
+      "id": "q26.3",
+      "strand": 0,
+      "end": 101991189
+     }
+    ],
+    "coord_system": "chromosome",
+    "length": 101991189
+   },
+   {
+    "name": "12",
+    "bands": [
+     {
+      "seq_region_name": "12",
+      "stain": "acen",
+      "assembly_name": "GRCh38",
+      "end": 35500000,
+      "id": "p11.1",
+      "start": 33200001,
+      "strand": 0
+     },
+     {
+      "end": 33200000,
+      "start": 30500001,
+      "id": "p11.21",
+      "strand": 0,
+      "seq_region_name": "12",
+      "stain": "gneg",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "end": 30500000,
+      "id": "p11.22",
+      "start": 27600001,
+      "strand": 0,
+      "seq_region_name": "12",
+      "stain": "gpos50",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "stain": "gneg",
+      "seq_region_name": "12",
+      "assembly_name": "GRCh38",
+      "end": 27600000,
+      "strand": 0,
+      "start": 26300001,
+      "id": "p11.23"
+     },
+     {
+      "end": 26300000,
+      "strand": 0,
+      "start": 21100001,
+      "id": "p12.1",
+      "stain": "gpos100",
+      "seq_region_name": "12",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "seq_region_name": "12",
+      "stain": "gneg",
+      "assembly_name": "GRCh38",
+      "end": 21100000,
+      "strand": 0,
+      "id": "p12.2",
+      "start": 19800001
+     },
+     {
+      "strand": 0,
+      "start": 14600001,
+      "id": "p12.3",
+      "end": 19800000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "12",
+      "stain": "gpos100"
+     },
+     {
+      "end": 14600000,
+      "start": 12600001,
+      "id": "p13.1",
+      "strand": 0,
+      "stain": "gneg",
+      "seq_region_name": "12",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "strand": 0,
+      "start": 10000001,
+      "id": "p13.2",
+      "end": 12600000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "12",
+      "stain": "gpos75"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "12",
+      "strand": 0,
+      "id": "p13.31",
+      "start": 5300001,
+      "end": 10000000
+     },
+     {
+      "seq_region_name": "12",
+      "stain": "gpos25",
+      "assembly_name": "GRCh38",
+      "end": 5300000,
+      "start": 3200001,
+      "id": "p13.32",
+      "strand": 0
+     },
+     {
+      "end": 3200000,
+      "start": 1,
+      "id": "p13.33",
+      "strand": 0,
+      "seq_region_name": "12",
+      "stain": "gneg",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "acen",
+      "seq_region_name": "12",
+      "id": "q11",
+      "start": 35500001,
+      "strand": 0,
+      "end": 37800000
+     },
+     {
+      "seq_region_name": "12",
+      "stain": "gpos100",
+      "assembly_name": "GRCh38",
+      "end": 46000000,
+      "start": 37800001,
+      "id": "q12",
+      "strand": 0
+     },
+     {
+      "strand": 0,
+      "start": 46000001,
+      "id": "q13.11",
+      "end": 48700000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "12",
+      "stain": "gneg"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gpos25",
+      "seq_region_name": "12",
+      "strand": 0,
+      "id": "q13.12",
+      "start": 48700001,
+      "end": 51100000
+     },
+     {
+      "strand": 0,
+      "id": "q13.13",
+      "start": 51100001,
+      "end": 54500000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "12",
+      "stain": "gneg"
+     },
+     {
+      "stain": "gpos25",
+      "seq_region_name": "12",
+      "assembly_name": "GRCh38",
+      "end": 56200000,
+      "id": "q13.2",
+      "start": 54500001,
+      "strand": 0
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "12",
+      "start": 56200001,
+      "id": "q13.3",
+      "strand": 0,
+      "end": 57700000
+     },
+     {
+      "seq_region_name": "12",
+      "stain": "gpos75",
+      "assembly_name": "GRCh38",
+      "end": 62700000,
+      "strand": 0,
+      "start": 57700001,
+      "id": "q14.1"
+     },
+     {
+      "end": 64700000,
+      "start": 62700001,
+      "id": "q14.2",
+      "strand": 0,
+      "stain": "gneg",
+      "seq_region_name": "12",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "12",
+      "stain": "gpos50",
+      "start": 64700001,
+      "id": "q14.3",
+      "strand": 0,
+      "end": 67300000
+     },
+     {
+      "strand": 0,
+      "start": 67300001,
+      "id": "q15",
+      "end": 71100000,
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "12"
+     },
+     {
+      "seq_region_name": "12",
+      "stain": "gpos75",
+      "assembly_name": "GRCh38",
+      "end": 75300000,
+      "id": "q21.1",
+      "start": 71100001,
+      "strand": 0
+     },
+     {
+      "end": 79900000,
+      "strand": 0,
+      "start": 75300001,
+      "id": "q21.2",
+      "stain": "gneg",
+      "seq_region_name": "12",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "end": 86300000,
+      "id": "q21.31",
+      "start": 79900001,
+      "strand": 0,
+      "stain": "gpos100",
+      "seq_region_name": "12",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "seq_region_name": "12",
+      "stain": "gneg",
+      "assembly_name": "GRCh38",
+      "end": 88600000,
+      "id": "q21.32",
+      "start": 86300001,
+      "strand": 0
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gpos100",
+      "seq_region_name": "12",
+      "strand": 0,
+      "id": "q21.33",
+      "start": 88600001,
+      "end": 92200000
+     },
+     {
+      "seq_region_name": "12",
+      "stain": "gneg",
+      "assembly_name": "GRCh38",
+      "end": 95800000,
+      "id": "q22",
+      "start": 92200001,
+      "strand": 0
+     },
+     {
+      "end": 101200000,
+      "strand": 0,
+      "start": 95800001,
+      "id": "q23.1",
+      "stain": "gpos75",
+      "seq_region_name": "12",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "end": 103500000,
+      "strand": 0,
+      "start": 101200001,
+      "id": "q23.2",
+      "stain": "gneg",
+      "seq_region_name": "12",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "12",
+      "stain": "gpos50",
+      "strand": 0,
+      "start": 103500001,
+      "id": "q23.3",
+      "end": 108600000
+     },
+     {
+      "id": "q24.11",
+      "start": 108600001,
+      "strand": 0,
+      "end": 111300000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "12",
+      "stain": "gneg"
+     },
+     {
+      "start": 111300001,
+      "id": "q24.12",
+      "strand": 0,
+      "end": 111900000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "12",
+      "stain": "gpos25"
+     },
+     {
+      "strand": 0,
+      "id": "q24.13",
+      "start": 111900001,
+      "end": 113900000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "12",
+      "stain": "gneg"
+     },
+     {
+      "end": 116400000,
+      "start": 113900001,
+      "id": "q24.21",
+      "strand": 0,
+      "stain": "gpos50",
+      "seq_region_name": "12",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "end": 117700000,
+      "start": 116400001,
+      "id": "q24.22",
+      "strand": 0,
+      "stain": "gneg",
+      "seq_region_name": "12",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "12",
+      "stain": "gpos50",
+      "id": "q24.23",
+      "start": 117700001,
+      "strand": 0,
+      "end": 120300000
+     },
+     {
+      "start": 120300001,
+      "id": "q24.31",
+      "strand": 0,
+      "end": 125400000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "12",
+      "stain": "gneg"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gpos50",
+      "seq_region_name": "12",
+      "start": 125400001,
+      "id": "q24.32",
+      "strand": 0,
+      "end": 128700000
+     },
+     {
+      "end": 133275309,
+      "strand": 0,
+      "start": 128700001,
+      "id": "q24.33",
+      "seq_region_name": "12",
+      "stain": "gneg",
+      "assembly_name": "GRCh38"
+     }
+    ],
+    "length": 133275309,
+    "coord_system": "chromosome"
+   },
+   {
+    "coord_system": "chromosome",
+    "length": 248956422,
+    "bands": [
+     {
+      "strand": 0,
+      "id": "p11.1",
+      "start": 121700001,
+      "end": 123400000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "1",
+      "stain": "acen"
+     },
+     {
+      "start": 120400001,
+      "id": "p11.2",
+      "strand": 0,
+      "end": 121700000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "1",
+      "stain": "gneg"
+     },
+     {
+      "end": 120400000,
+      "strand": 0,
+      "id": "p12",
+      "start": 117200001,
+      "seq_region_name": "1",
+      "stain": "gpos50",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "end": 117200000,
+      "id": "p13.1",
+      "start": 115500001,
+      "strand": 0,
+      "stain": "gneg",
+      "seq_region_name": "1",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "stain": "gpos50",
+      "seq_region_name": "1",
+      "assembly_name": "GRCh38",
+      "end": 115500000,
+      "strand": 0,
+      "id": "p13.2",
+      "start": 111200001
+     },
+     {
+      "seq_region_name": "1",
+      "stain": "gneg",
+      "assembly_name": "GRCh38",
+      "end": 111200000,
+      "id": "p13.3",
+      "start": 106700001,
+      "strand": 0
+     },
+     {
+      "id": "p21.1",
+      "start": 101800001,
+      "strand": 0,
+      "end": 106700000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "1",
+      "stain": "gpos100"
+     },
+     {
+      "start": 99300001,
+      "id": "p21.2",
+      "strand": 0,
+      "end": 101800000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "1",
+      "stain": "gneg"
+     },
+     {
+      "end": 99300000,
+      "id": "p21.3",
+      "start": 94300001,
+      "strand": 0,
+      "seq_region_name": "1",
+      "stain": "gpos75",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "1",
+      "strand": 0,
+      "id": "p22.1",
+      "start": 91500001,
+      "end": 94300000
+     },
+     {
+      "stain": "gpos75",
+      "seq_region_name": "1",
+      "assembly_name": "GRCh38",
+      "end": 91500000,
+      "start": 87900001,
+      "id": "p22.2",
+      "strand": 0
+     },
+     {
+      "end": 87900000,
+      "id": "p22.3",
+      "start": 84400001,
+      "strand": 0,
+      "stain": "gneg",
+      "seq_region_name": "1",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "strand": 0,
+      "start": 69300001,
+      "id": "p31.1",
+      "end": 84400000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "1",
+      "stain": "gpos100"
+     },
+     {
+      "strand": 0,
+      "start": 68500001,
+      "id": "p31.2",
+      "end": 69300000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "1",
+      "stain": "gneg"
+     },
+     {
+      "seq_region_name": "1",
+      "stain": "gpos50",
+      "assembly_name": "GRCh38",
+      "end": 68500000,
+      "id": "p31.3",
+      "start": 60800001,
+      "strand": 0
+     },
+     {
+      "seq_region_name": "1",
+      "stain": "gneg",
+      "assembly_name": "GRCh38",
+      "end": 60800000,
+      "strand": 0,
+      "id": "p32.1",
+      "start": 58500001
+     },
+     {
+      "strand": 0,
+      "id": "p32.2",
+      "start": 55600001,
+      "end": 58500000,
+      "assembly_name": "GRCh38",
+      "stain": "gpos50",
+      "seq_region_name": "1"
+     },
+     {
+      "seq_region_name": "1",
+      "stain": "gneg",
+      "assembly_name": "GRCh38",
+      "end": 55600000,
+      "start": 50200001,
+      "id": "p32.3",
+      "strand": 0
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gpos75",
+      "seq_region_name": "1",
+      "id": "p33",
+      "start": 46300001,
+      "strand": 0,
+      "end": 50200000
+     },
+     {
+      "id": "p34.1",
+      "start": 43700001,
+      "strand": 0,
+      "end": 46300000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "1",
+      "stain": "gneg"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gpos25",
+      "seq_region_name": "1",
+      "start": 39600001,
+      "id": "p34.2",
+      "strand": 0,
+      "end": 43700000
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "1",
+      "id": "p34.3",
+      "start": 34300001,
+      "strand": 0,
+      "end": 39600000
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gpos25",
+      "seq_region_name": "1",
+      "strand": 0,
+      "id": "p35.1",
+      "start": 32300001,
+      "end": 34300000
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "1",
+      "id": "p35.2",
+      "start": 29900001,
+      "strand": 0,
+      "end": 32300000
+     },
+     {
+      "id": "p35.3",
+      "start": 27600001,
+      "strand": 0,
+      "end": 29900000,
+      "assembly_name": "GRCh38",
+      "stain": "gpos25",
+      "seq_region_name": "1"
+     },
+     {
+      "end": 27600000,
+      "start": 23600001,
+      "id": "p36.11",
+      "strand": 0,
+      "stain": "gneg",
+      "seq_region_name": "1",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "1",
+      "stain": "gpos25",
+      "strand": 0,
+      "id": "p36.12",
+      "start": 20100001,
+      "end": 23600000
+     },
+     {
+      "seq_region_name": "1",
+      "stain": "gneg",
+      "assembly_name": "GRCh38",
+      "end": 20100000,
+      "id": "p36.13",
+      "start": 15900001,
+      "strand": 0
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "1",
+      "stain": "gpos50",
+      "start": 12500001,
+      "id": "p36.21",
+      "strand": 0,
+      "end": 15900000
+     },
+     {
+      "strand": 0,
+      "id": "p36.22",
+      "start": 9100001,
+      "end": 12500000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "1",
+      "stain": "gneg"
+     },
+     {
+      "strand": 0,
+      "start": 7100001,
+      "id": "p36.23",
+      "end": 9100000,
+      "assembly_name": "GRCh38",
+      "stain": "gpos25",
+      "seq_region_name": "1"
+     },
+     {
+      "end": 7100000,
+      "strand": 0,
+      "start": 5300001,
+      "id": "p36.31",
+      "seq_region_name": "1",
+      "stain": "gneg",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "1",
+      "stain": "gpos25",
+      "id": "p36.32",
+      "start": 2300001,
+      "strand": 0,
+      "end": 5300000
+     },
+     {
+      "strand": 0,
+      "start": 1,
+      "id": "p36.33",
+      "end": 2300000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "1",
+      "stain": "gneg"
+     },
+     {
+      "seq_region_name": "1",
+      "stain": "acen",
+      "assembly_name": "GRCh38",
+      "end": 125100000,
+      "strand": 0,
+      "id": "q11",
+      "start": 123400001
+     },
+     {
+      "id": "q12",
+      "start": 125100001,
+      "strand": 0,
+      "end": 143200000,
+      "assembly_name": "GRCh38",
+      "stain": "gvar",
+      "seq_region_name": "1"
+     },
+     {
+      "end": 147500000,
+      "id": "q21.1",
+      "start": 143200001,
+      "strand": 0,
+      "stain": "gneg",
+      "seq_region_name": "1",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "end": 150600000,
+      "strand": 0,
+      "id": "q21.2",
+      "start": 147500001,
+      "seq_region_name": "1",
+      "stain": "gpos50",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "1",
+      "stain": "gneg",
+      "strand": 0,
+      "id": "q21.3",
+      "start": 150600001,
+      "end": 155100000
+     },
+     {
+      "seq_region_name": "1",
+      "stain": "gpos50",
+      "assembly_name": "GRCh38",
+      "end": 156600000,
+      "start": 155100001,
+      "id": "q22",
+      "strand": 0
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "1",
+      "stain": "gneg",
+      "id": "q23.1",
+      "start": 156600001,
+      "strand": 0,
+      "end": 159100000
+     },
+     {
+      "stain": "gpos50",
+      "seq_region_name": "1",
+      "assembly_name": "GRCh38",
+      "end": 160500000,
+      "id": "q23.2",
+      "start": 159100001,
+      "strand": 0
+     },
+     {
+      "start": 160500001,
+      "id": "q23.3",
+      "strand": 0,
+      "end": 165500000,
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "1"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gpos50",
+      "seq_region_name": "1",
+      "strand": 0,
+      "id": "q24.1",
+      "start": 165500001,
+      "end": 167200000
+     },
+     {
+      "seq_region_name": "1",
+      "stain": "gneg",
+      "assembly_name": "GRCh38",
+      "end": 170900000,
+      "strand": 0,
+      "start": 167200001,
+      "id": "q24.2"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "1",
+      "stain": "gpos75",
+      "strand": 0,
+      "start": 170900001,
+      "id": "q24.3",
+      "end": 173000000
+     },
+     {
+      "end": 176100000,
+      "id": "q25.1",
+      "start": 173000001,
+      "strand": 0,
+      "seq_region_name": "1",
+      "stain": "gneg",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "end": 180300000,
+      "strand": 0,
+      "id": "q25.2",
+      "start": 176100001,
+      "seq_region_name": "1",
+      "stain": "gpos50",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "stain": "gneg",
+      "seq_region_name": "1",
+      "assembly_name": "GRCh38",
+      "end": 185800000,
+      "id": "q25.3",
+      "start": 180300001,
+      "strand": 0
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "1",
+      "stain": "gpos100",
+      "strand": 0,
+      "start": 185800001,
+      "id": "q31.1",
+      "end": 190800000
+     },
+     {
+      "stain": "gneg",
+      "seq_region_name": "1",
+      "assembly_name": "GRCh38",
+      "end": 193800000,
+      "strand": 0,
+      "id": "q31.2",
+      "start": 190800001
+     },
+     {
+      "seq_region_name": "1",
+      "stain": "gpos100",
+      "assembly_name": "GRCh38",
+      "end": 198700000,
+      "strand": 0,
+      "id": "q31.3",
+      "start": 193800001
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "1",
+      "start": 198700001,
+      "id": "q32.1",
+      "strand": 0,
+      "end": 207100000
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gpos25",
+      "seq_region_name": "1",
+      "id": "q32.2",
+      "start": 207100001,
+      "strand": 0,
+      "end": 211300000
+     },
+     {
+      "end": 214400000,
+      "id": "q32.3",
+      "start": 211300001,
+      "strand": 0,
+      "stain": "gneg",
+      "seq_region_name": "1",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "end": 223900000,
+      "strand": 0,
+      "id": "q41",
+      "start": 214400001,
+      "stain": "gpos100",
+      "seq_region_name": "1",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "end": 224400000,
+      "id": "q42.11",
+      "start": 223900001,
+      "strand": 0,
+      "stain": "gneg",
+      "seq_region_name": "1",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "start": 224400001,
+      "id": "q42.12",
+      "strand": 0,
+      "end": 226800000,
+      "assembly_name": "GRCh38",
+      "stain": "gpos25",
+      "seq_region_name": "1"
+     },
+     {
+      "end": 230500000,
+      "strand": 0,
+      "id": "q42.13",
+      "start": 226800001,
+      "seq_region_name": "1",
+      "stain": "gneg",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "strand": 0,
+      "id": "q42.2",
+      "start": 230500001,
+      "end": 234600000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "1",
+      "stain": "gpos50"
+     },
+     {
+      "end": 236400000,
+      "start": 234600001,
+      "id": "q42.3",
+      "strand": 0,
+      "seq_region_name": "1",
+      "stain": "gneg",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "1",
+      "stain": "gpos75",
+      "strand": 0,
+      "id": "q43",
+      "start": 236400001,
+      "end": 243500000
+     },
+     {
+      "stain": "gneg",
+      "seq_region_name": "1",
+      "assembly_name": "GRCh38",
+      "end": 248956422,
+      "strand": 0,
+      "start": 243500001,
+      "id": "q44"
+     }
+    ],
+    "name": "1"
+   },
+   {
+    "name": "16",
+    "length": 90338345,
+    "coord_system": "chromosome",
+    "bands": [
+     {
+      "end": 36800000,
+      "start": 35300001,
+      "id": "p11.1",
+      "strand": 0,
+      "seq_region_name": "16",
+      "stain": "acen",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "strand": 0,
+      "id": "p11.2",
+      "start": 28500001,
+      "end": 35300000,
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "16"
+     },
+     {
+      "seq_region_name": "16",
+      "stain": "gpos50",
+      "assembly_name": "GRCh38",
+      "end": 28500000,
+      "strand": 0,
+      "start": 24200001,
+      "id": "p12.1"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "16",
+      "stain": "gneg",
+      "start": 21200001,
+      "id": "p12.2",
+      "strand": 0,
+      "end": 24200000
+     },
+     {
+      "seq_region_name": "16",
+      "stain": "gpos50",
+      "assembly_name": "GRCh38",
+      "end": 21200000,
+      "id": "p12.3",
+      "start": 16700001,
+      "strand": 0
+     },
+     {
+      "seq_region_name": "16",
+      "stain": "gneg",
+      "assembly_name": "GRCh38",
+      "end": 16700000,
+      "start": 14700001,
+      "id": "p13.11",
+      "strand": 0
+     },
+     {
+      "stain": "gpos50",
+      "seq_region_name": "16",
+      "assembly_name": "GRCh38",
+      "end": 14700000,
+      "start": 12500001,
+      "id": "p13.12",
+      "strand": 0
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "16",
+      "strand": 0,
+      "id": "p13.13",
+      "start": 10400001,
+      "end": 12500000
+     },
+     {
+      "id": "p13.2",
+      "start": 7800001,
+      "strand": 0,
+      "end": 10400000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "16",
+      "stain": "gpos50"
+     },
+     {
+      "seq_region_name": "16",
+      "stain": "gneg",
+      "assembly_name": "GRCh38",
+      "end": 7800000,
+      "start": 1,
+      "id": "p13.3",
+      "strand": 0
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "16",
+      "stain": "acen",
+      "strand": 0,
+      "start": 36800001,
+      "id": "q11.1",
+      "end": 38400000
+     },
+     {
+      "strand": 0,
+      "id": "q11.2",
+      "start": 38400001,
+      "end": 47000000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "16",
+      "stain": "gvar"
+     },
+     {
+      "strand": 0,
+      "id": "q12.1",
+      "start": 47000001,
+      "end": 52600000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "16",
+      "stain": "gneg"
+     },
+     {
+      "stain": "gpos50",
+      "seq_region_name": "16",
+      "assembly_name": "GRCh38",
+      "end": 56000000,
+      "strand": 0,
+      "id": "q12.2",
+      "start": 52600001
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "16",
+      "stain": "gneg",
+      "strand": 0,
+      "start": 56000001,
+      "id": "q13",
+      "end": 57300000
+     },
+     {
+      "start": 57300001,
+      "id": "q21",
+      "strand": 0,
+      "end": 66600000,
+      "assembly_name": "GRCh38",
+      "stain": "gpos100",
+      "seq_region_name": "16"
+     },
+     {
+      "end": 70800000,
+      "id": "q22.1",
+      "start": 66600001,
+      "strand": 0,
+      "stain": "gneg",
+      "seq_region_name": "16",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "end": 72800000,
+      "strand": 0,
+      "id": "q22.2",
+      "start": 70800001,
+      "seq_region_name": "16",
+      "stain": "gpos50",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "stain": "gneg",
+      "seq_region_name": "16",
+      "assembly_name": "GRCh38",
+      "end": 74100000,
+      "strand": 0,
+      "start": 72800001,
+      "id": "q22.3"
+     },
+     {
+      "seq_region_name": "16",
+      "stain": "gpos75",
+      "assembly_name": "GRCh38",
+      "end": 79200000,
+      "strand": 0,
+      "id": "q23.1",
+      "start": 74100001
+     },
+     {
+      "start": 79200001,
+      "id": "q23.2",
+      "strand": 0,
+      "end": 81600000,
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "16"
+     },
+     {
+      "end": 84100000,
+      "strand": 0,
+      "id": "q23.3",
+      "start": 81600001,
+      "seq_region_name": "16",
+      "stain": "gpos50",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "end": 87000000,
+      "strand": 0,
+      "start": 84100001,
+      "id": "q24.1",
+      "stain": "gneg",
+      "seq_region_name": "16",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "stain": "gpos25",
+      "seq_region_name": "16",
+      "assembly_name": "GRCh38",
+      "end": 88700000,
+      "start": 87000001,
+      "id": "q24.2",
+      "strand": 0
+     },
+     {
+      "end": 90338345,
+      "start": 88700001,
+      "id": "q24.3",
+      "strand": 0,
+      "seq_region_name": "16",
+      "stain": "gneg",
+      "assembly_name": "GRCh38"
+     }
+    ]
+   },
+   {
+    "bands": [
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "5",
+      "stain": "acen",
+      "strand": 0,
+      "id": "p11",
+      "start": 46100001,
+      "end": 48800000
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "5",
+      "stain": "gpos50",
+      "start": 42500001,
+      "id": "p12",
+      "strand": 0,
+      "end": 46100000
+     },
+     {
+      "end": 42500000,
+      "start": 38400001,
+      "id": "p13.1",
+      "strand": 0,
+      "stain": "gneg",
+      "seq_region_name": "5",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gpos25",
+      "seq_region_name": "5",
+      "id": "p13.2",
+      "start": 33800001,
+      "strand": 0,
+      "end": 38400000
+     },
+     {
+      "end": 33800000,
+      "id": "p13.3",
+      "start": 28900001,
+      "strand": 0,
+      "seq_region_name": "5",
+      "stain": "gneg",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "stain": "gpos100",
+      "seq_region_name": "5",
+      "assembly_name": "GRCh38",
+      "end": 28900000,
+      "start": 24600001,
+      "id": "p14.1",
+      "strand": 0
+     },
+     {
+      "seq_region_name": "5",
+      "stain": "gneg",
+      "assembly_name": "GRCh38",
+      "end": 24600000,
+      "strand": 0,
+      "start": 23300001,
+      "id": "p14.2"
+     },
+     {
+      "end": 23300000,
+      "strand": 0,
+      "start": 18400001,
+      "id": "p14.3",
+      "stain": "gpos100",
+      "seq_region_name": "5",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "seq_region_name": "5",
+      "stain": "gneg",
+      "assembly_name": "GRCh38",
+      "end": 18400000,
+      "start": 15000001,
+      "id": "p15.1",
+      "strand": 0
+     },
+     {
+      "end": 15000000,
+      "strand": 0,
+      "start": 9900001,
+      "id": "p15.2",
+      "stain": "gpos50",
+      "seq_region_name": "5",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "stain": "gneg",
+      "seq_region_name": "5",
+      "assembly_name": "GRCh38",
+      "end": 9900000,
+      "start": 6300001,
+      "id": "p15.31",
+      "strand": 0
+     },
+     {
+      "stain": "gpos25",
+      "seq_region_name": "5",
+      "assembly_name": "GRCh38",
+      "end": 6300000,
+      "strand": 0,
+      "start": 4400001,
+      "id": "p15.32"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "5",
+      "stain": "gneg",
+      "id": "p15.33",
+      "start": 1,
+      "strand": 0,
+      "end": 4400000
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "acen",
+      "seq_region_name": "5",
+      "id": "q11.1",
+      "start": 48800001,
+      "strand": 0,
+      "end": 51400000
+     },
+     {
+      "end": 59600000,
+      "strand": 0,
+      "id": "q11.2",
+      "start": 51400001,
+      "seq_region_name": "5",
+      "stain": "gneg",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "end": 63600000,
+      "id": "q12.1",
+      "start": 59600001,
+      "strand": 0,
+      "stain": "gpos75",
+      "seq_region_name": "5",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "stain": "gneg",
+      "seq_region_name": "5",
+      "assembly_name": "GRCh38",
+      "end": 63900000,
+      "strand": 0,
+      "id": "q12.2",
+      "start": 63600001
+     },
+     {
+      "end": 67400000,
+      "start": 63900001,
+      "id": "q12.3",
+      "strand": 0,
+      "seq_region_name": "5",
+      "stain": "gpos75",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "5",
+      "strand": 0,
+      "id": "q13.1",
+      "start": 67400001,
+      "end": 69100000
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gpos50",
+      "seq_region_name": "5",
+      "start": 69100001,
+      "id": "q13.2",
+      "strand": 0,
+      "end": 74000000
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "5",
+      "strand": 0,
+      "start": 74000001,
+      "id": "q13.3",
+      "end": 77600000
+     },
+     {
+      "stain": "gpos50",
+      "seq_region_name": "5",
+      "assembly_name": "GRCh38",
+      "end": 82100000,
+      "start": 77600001,
+      "id": "q14.1",
+      "strand": 0
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "5",
+      "strand": 0,
+      "start": 82100001,
+      "id": "q14.2",
+      "end": 83500000
+     },
+     {
+      "end": 93000000,
+      "start": 83500001,
+      "id": "q14.3",
+      "strand": 0,
+      "stain": "gpos100",
+      "seq_region_name": "5",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "strand": 0,
+      "start": 93000001,
+      "id": "q15",
+      "end": 98900000,
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "5"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "5",
+      "stain": "gpos100",
+      "strand": 0,
+      "start": 98900001,
+      "id": "q21.1",
+      "end": 103400000
+     },
+     {
+      "end": 105100000,
+      "id": "q21.2",
+      "start": 103400001,
+      "strand": 0,
+      "stain": "gneg",
+      "seq_region_name": "5",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "5",
+      "stain": "gpos100",
+      "id": "q21.3",
+      "start": 105100001,
+      "strand": 0,
+      "end": 110200000
+     },
+     {
+      "end": 112200000,
+      "strand": 0,
+      "start": 110200001,
+      "id": "q22.1",
+      "stain": "gneg",
+      "seq_region_name": "5",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "strand": 0,
+      "id": "q22.2",
+      "start": 112200001,
+      "end": 113800000,
+      "assembly_name": "GRCh38",
+      "stain": "gpos50",
+      "seq_region_name": "5"
+     },
+     {
+      "stain": "gneg",
+      "seq_region_name": "5",
+      "assembly_name": "GRCh38",
+      "end": 115900000,
+      "start": 113800001,
+      "id": "q22.3",
+      "strand": 0
+     },
+     {
+      "end": 122100000,
+      "strand": 0,
+      "id": "q23.1",
+      "start": 115900001,
+      "stain": "gpos100",
+      "seq_region_name": "5",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "5",
+      "stain": "gneg",
+      "strand": 0,
+      "id": "q23.2",
+      "start": 122100001,
+      "end": 127900000
+     },
+     {
+      "end": 131200000,
+      "start": 127900001,
+      "id": "q23.3",
+      "strand": 0,
+      "seq_region_name": "5",
+      "stain": "gpos100",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "stain": "gneg",
+      "seq_region_name": "5",
+      "assembly_name": "GRCh38",
+      "end": 136900000,
+      "start": 131200001,
+      "id": "q31.1",
+      "strand": 0
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gpos25",
+      "seq_region_name": "5",
+      "strand": 0,
+      "id": "q31.2",
+      "start": 136900001,
+      "end": 140100000
+     },
+     {
+      "strand": 0,
+      "id": "q31.3",
+      "start": 140100001,
+      "end": 145100000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "5",
+      "stain": "gneg"
+     },
+     {
+      "start": 145100001,
+      "id": "q32",
+      "strand": 0,
+      "end": 150400000,
+      "assembly_name": "GRCh38",
+      "stain": "gpos75",
+      "seq_region_name": "5"
+     },
+     {
+      "end": 153300000,
+      "strand": 0,
+      "start": 150400001,
+      "id": "q33.1",
+      "seq_region_name": "5",
+      "stain": "gneg",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "stain": "gpos50",
+      "seq_region_name": "5",
+      "assembly_name": "GRCh38",
+      "end": 156300000,
+      "start": 153300001,
+      "id": "q33.2",
+      "strand": 0
+     },
+     {
+      "end": 160500000,
+      "strand": 0,
+      "start": 156300001,
+      "id": "q33.3",
+      "seq_region_name": "5",
+      "stain": "gneg",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "end": 169000000,
+      "strand": 0,
+      "start": 160500001,
+      "id": "q34",
+      "stain": "gpos100",
+      "seq_region_name": "5",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "start": 169000001,
+      "id": "q35.1",
+      "strand": 0,
+      "end": 173300000,
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "5"
+     },
+     {
+      "stain": "gpos25",
+      "seq_region_name": "5",
+      "assembly_name": "GRCh38",
+      "end": 177100000,
+      "start": 173300001,
+      "id": "q35.2",
+      "strand": 0
+     },
+     {
+      "seq_region_name": "5",
+      "stain": "gneg",
+      "assembly_name": "GRCh38",
+      "end": 181538259,
+      "strand": 0,
+      "id": "q35.3",
+      "start": 177100001
+     }
+    ],
+    "coord_system": "chromosome",
+    "length": 181538259,
+    "name": "5"
+   },
+   {
+    "name": "3",
+    "coord_system": "chromosome",
+    "length": 198295559,
+    "bands": [
+     {
+      "seq_region_name": "3",
+      "stain": "acen",
+      "assembly_name": "GRCh38",
+      "end": 90900000,
+      "strand": 0,
+      "id": "p11.1",
+      "start": 87800001
+     },
+     {
+      "end": 87800000,
+      "start": 87100001,
+      "id": "p11.2",
+      "strand": 0,
+      "seq_region_name": "3",
+      "stain": "gneg",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gpos75",
+      "seq_region_name": "3",
+      "id": "p12.1",
+      "start": 83500001,
+      "strand": 0,
+      "end": 87100000
+     },
+     {
+      "start": 79800001,
+      "id": "p12.2",
+      "strand": 0,
+      "end": 83500000,
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "3"
+     },
+     {
+      "stain": "gpos75",
+      "seq_region_name": "3",
+      "assembly_name": "GRCh38",
+      "end": 79800000,
+      "start": 74100001,
+      "id": "p12.3",
+      "strand": 0
+     },
+     {
+      "start": 69700001,
+      "id": "p13",
+      "strand": 0,
+      "end": 74100000,
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "3"
+     },
+     {
+      "end": 69700000,
+      "start": 63800001,
+      "id": "p14.1",
+      "strand": 0,
+      "stain": "gpos50",
+      "seq_region_name": "3",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "strand": 0,
+      "start": 58600001,
+      "id": "p14.2",
+      "end": 63800000,
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "3"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "3",
+      "stain": "gpos50",
+      "id": "p14.3",
+      "start": 54400001,
+      "strand": 0,
+      "end": 58600000
+     },
+     {
+      "end": 54400000,
+      "strand": 0,
+      "id": "p21.1",
+      "start": 52300001,
+      "stain": "gneg",
+      "seq_region_name": "3",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "end": 52300000,
+      "strand": 0,
+      "start": 50600001,
+      "id": "p21.2",
+      "seq_region_name": "3",
+      "stain": "gpos25",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "stain": "gneg",
+      "seq_region_name": "3",
+      "assembly_name": "GRCh38",
+      "end": 50600000,
+      "strand": 0,
+      "start": 44200001,
+      "id": "p21.31"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "3",
+      "stain": "gpos50",
+      "strand": 0,
+      "start": 44100001,
+      "id": "p21.32",
+      "end": 44200000
+     },
+     {
+      "strand": 0,
+      "id": "p21.33",
+      "start": 43600001,
+      "end": 44100000,
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "3"
+     },
+     {
+      "start": 39300001,
+      "id": "p22.1",
+      "strand": 0,
+      "end": 43600000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "3",
+      "stain": "gpos75"
+     },
+     {
+      "strand": 0,
+      "start": 36400001,
+      "id": "p22.2",
+      "end": 39300000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "3",
+      "stain": "gneg"
+     },
+     {
+      "seq_region_name": "3",
+      "stain": "gpos50",
+      "assembly_name": "GRCh38",
+      "end": 36400000,
+      "strand": 0,
+      "start": 32000001,
+      "id": "p22.3"
+     },
+     {
+      "id": "p23",
+      "start": 30800001,
+      "strand": 0,
+      "end": 32000000,
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "3"
+     },
+     {
+      "end": 30800000,
+      "strand": 0,
+      "id": "p24.1",
+      "start": 26300001,
+      "stain": "gpos75",
+      "seq_region_name": "3",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "3",
+      "id": "p24.2",
+      "start": 23800001,
+      "strand": 0,
+      "end": 26300000
+     },
+     {
+      "end": 23800000,
+      "strand": 0,
+      "id": "p24.3",
+      "start": 16300001,
+      "stain": "gpos100",
+      "seq_region_name": "3",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "3",
+      "stain": "gneg",
+      "strand": 0,
+      "start": 13200001,
+      "id": "p25.1",
+      "end": 16300000
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "3",
+      "stain": "gpos25",
+      "strand": 0,
+      "start": 11600001,
+      "id": "p25.2",
+      "end": 13200000
+     },
+     {
+      "strand": 0,
+      "start": 8100001,
+      "id": "p25.3",
+      "end": 11600000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "3",
+      "stain": "gneg"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "3",
+      "stain": "gpos50",
+      "strand": 0,
+      "start": 4000001,
+      "id": "p26.1",
+      "end": 8100000
+     },
+     {
+      "seq_region_name": "3",
+      "stain": "gneg",
+      "assembly_name": "GRCh38",
+      "end": 4000000,
+      "strand": 0,
+      "start": 2800001,
+      "id": "p26.2"
+     },
+     {
+      "strand": 0,
+      "start": 1,
+      "id": "p26.3",
+      "end": 2800000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "3",
+      "stain": "gpos50"
+     },
+     {
+      "end": 94000000,
+      "strand": 0,
+      "start": 90900001,
+      "id": "q11.1",
+      "stain": "acen",
+      "seq_region_name": "3",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "3",
+      "stain": "gvar",
+      "id": "q11.2",
+      "start": 94000001,
+      "strand": 0,
+      "end": 98600000
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "3",
+      "id": "q12.1",
+      "start": 98600001,
+      "strand": 0,
+      "end": 100300000
+     },
+     {
+      "strand": 0,
+      "id": "q12.2",
+      "start": 100300001,
+      "end": 101200000,
+      "assembly_name": "GRCh38",
+      "stain": "gpos25",
+      "seq_region_name": "3"
+     },
+     {
+      "end": 103100000,
+      "strand": 0,
+      "id": "q12.3",
+      "start": 101200001,
+      "stain": "gneg",
+      "seq_region_name": "3",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "strand": 0,
+      "id": "q13.11",
+      "start": 103100001,
+      "end": 106500000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "3",
+      "stain": "gpos75"
+     },
+     {
+      "end": 108200000,
+      "start": 106500001,
+      "id": "q13.12",
+      "strand": 0,
+      "seq_region_name": "3",
+      "stain": "gneg",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "id": "q13.13",
+      "start": 108200001,
+      "strand": 0,
+      "end": 111600000,
+      "assembly_name": "GRCh38",
+      "stain": "gpos50",
+      "seq_region_name": "3"
+     },
+     {
+      "end": 113700000,
+      "strand": 0,
+      "start": 111600001,
+      "id": "q13.2",
+      "stain": "gneg",
+      "seq_region_name": "3",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "stain": "gpos75",
+      "seq_region_name": "3",
+      "assembly_name": "GRCh38",
+      "end": 117600000,
+      "strand": 0,
+      "start": 113700001,
+      "id": "q13.31"
+     },
+     {
+      "end": 119300000,
+      "start": 117600001,
+      "id": "q13.32",
+      "strand": 0,
+      "stain": "gneg",
+      "seq_region_name": "3",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "strand": 0,
+      "start": 119300001,
+      "id": "q13.33",
+      "end": 122200000,
+      "assembly_name": "GRCh38",
+      "stain": "gpos75",
+      "seq_region_name": "3"
+     },
+     {
+      "strand": 0,
+      "start": 122200001,
+      "id": "q21.1",
+      "end": 124100000,
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "3"
+     },
+     {
+      "strand": 0,
+      "id": "q21.2",
+      "start": 124100001,
+      "end": 126100000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "3",
+      "stain": "gpos25"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "3",
+      "id": "q21.3",
+      "start": 126100001,
+      "strand": 0,
+      "end": 129500000
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "3",
+      "stain": "gpos25",
+      "start": 129500001,
+      "id": "q22.1",
+      "strand": 0,
+      "end": 134000000
+     },
+     {
+      "strand": 0,
+      "start": 134000001,
+      "id": "q22.2",
+      "end": 136000000,
+      "assembly_name": "GRCh38",
+      "stain": "gneg",
+      "seq_region_name": "3"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "3",
+      "stain": "gpos25",
+      "start": 136000001,
+      "id": "q22.3",
+      "strand": 0,
+      "end": 139000000
+     },
+     {
+      "end": 143100000,
+      "id": "q23",
+      "start": 139000001,
+      "strand": 0,
+      "stain": "gneg",
+      "seq_region_name": "3",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "seq_region_name": "3",
+      "stain": "gpos100",
+      "assembly_name": "GRCh38",
+      "end": 149200000,
+      "start": 143100001,
+      "id": "q24",
+      "strand": 0
+     },
+     {
+      "seq_region_name": "3",
+      "stain": "gneg",
+      "assembly_name": "GRCh38",
+      "end": 152300000,
+      "start": 149200001,
+      "id": "q25.1",
+      "strand": 0
+     },
+     {
+      "start": 152300001,
+      "id": "q25.2",
+      "strand": 0,
+      "end": 155300000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "3",
+      "stain": "gpos50"
+     },
+     {
+      "end": 157300000,
+      "strand": 0,
+      "id": "q25.31",
+      "start": 155300001,
+      "stain": "gneg",
+      "seq_region_name": "3",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "end": 159300000,
+      "strand": 0,
+      "id": "q25.32",
+      "start": 157300001,
+      "stain": "gpos50",
+      "seq_region_name": "3",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "stain": "gneg",
+      "seq_region_name": "3",
+      "assembly_name": "GRCh38",
+      "end": 161000000,
+      "id": "q25.33",
+      "start": 159300001,
+      "strand": 0
+     },
+     {
+      "stain": "gpos100",
+      "seq_region_name": "3",
+      "assembly_name": "GRCh38",
+      "end": 167900000,
+      "strand": 0,
+      "id": "q26.1",
+      "start": 161000001
+     },
+     {
+      "seq_region_name": "3",
+      "stain": "gneg",
+      "assembly_name": "GRCh38",
+      "end": 171200000,
+      "strand": 0,
+      "start": 167900001,
+      "id": "q26.2"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "3",
+      "stain": "gpos75",
+      "start": 171200001,
+      "id": "q26.31",
+      "strand": 0,
+      "end": 176000000
+     },
+     {
+      "strand": 0,
+      "start": 176000001,
+      "id": "q26.32",
+      "end": 179300000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "3",
+      "stain": "gneg"
+     },
+     {
+      "assembly_name": "GRCh38",
+      "seq_region_name": "3",
+      "stain": "gpos75",
+      "start": 179300001,
+      "id": "q26.33",
+      "strand": 0,
+      "end": 183000000
+     },
+     {
+      "seq_region_name": "3",
+      "stain": "gneg",
+      "assembly_name": "GRCh38",
+      "end": 184800000,
+      "start": 183000001,
+      "id": "q27.1",
+      "strand": 0
+     },
+     {
+      "end": 186300000,
+      "strand": 0,
+      "start": 184800001,
+      "id": "q27.2",
+      "seq_region_name": "3",
+      "stain": "gpos25",
+      "assembly_name": "GRCh38"
+     },
+     {
+      "stain": "gneg",
+      "seq_region_name": "3",
+      "assembly_name": "GRCh38",
+      "end": 188200000,
+      "start": 186300001,
+      "id": "q27.3",
+      "strand": 0
+     },
+     {
+      "strand": 0,
+      "id": "q28",
+      "start": 188200001,
+      "end": 192600000,
+      "assembly_name": "GRCh38",
+      "seq_region_name": "3",
+      "stain": "gpos75"
+     },
+     {
+      "stain": "gneg",
+      "seq_region_name": "3",
+      "assembly_name": "GRCh38",
+      "end": 198295559,
+      "strand": 0,
+      "id": "q29",
+      "start": 192600001
+     }
+    ]
+   },
+   {
+    "coord_system": "chromosome",
+    "length": 16569,
+    "name": "MT"
+   }
+  ]
+ },
+ "cds": {
+  "id": "ENST00000335295",
+  "molecule": "dna",
+  "seq": "ATGGTGCATCTGACTCCTGAGGAGAAGTCTGCCGTTACTGCCCTGTGGGGCAAGGTGAACGTGGATGAAGTTGGTGGTGAGGCCCTGGGCAGGCTGCTGGTGGTCTACCCTTGGACCCAGAGGTTCTTTGAGTCCTTTGGGGATCTGTCCACTCCTGATGCTGTTATGGGCAACCCTAAGGTGAAGGCTCATGGCAAGAAAGTGCTCGGTGCCTTTAGTGATGGCCTGGCTCACCTGGACAACCTCAAGGGCACCTTTGCCACACTGAGTGAGCTGCACTGTGACAAGCTGCACGTGGATCCTGAGAACTTCAGGCTCCTGGGCAACGTGCTGGTCTGTGTGCTGGCCCATCACTTTGGCAAAGAATTCACCCCACCAGTGCAGGCTGCCTATCAGAAAGTGGTGGCTGGTGTGGCTAATGCCCTGGCCCACAAGTATCACTAA",
+  "source": "NM_000518.5"
+ },
+ "map": {
+  "mappings": [
+   {
+    "seq_region_name": "11",
+    "start": 5227001,
+    "end": 5227003,
+    "strand": -1,
+    "coord_system": "chromosome",
+    "assembly_name": "GRCh38"
+   }
+  ]
+ },
+ "uniprot": {
+  "results": [
+   {
+    "entryType": "UniProtKB reviewed (Swiss-Prot)",
+    "primaryAccession": "P68871",
+    "sequence": {
+     "value": "MVHLTPEEKSAVTALWGKVNVDEVGGEALGRLLVVYPWTQRFFESFGDLSTPDAVMGNPKVKAHGKKVLGAFSDGLAHLDNLKGTFATLSELHCDKLHVDPENFRLLGNVLVCVLAHHFGKEFTPPVQAAYQKVVAGVANALAHKYH",
+     "length": 147,
+     "molWeight": 15998,
+     "crc64": "A31F6D621C6556A1",
+     "md5": "209D686939D0B8D1EA089368150140E2"
+    },
+    "extraAttributes": {
+     "uniParcId": "UPI00000015C9"
+    }
+   }
+  ]
+ }
+}

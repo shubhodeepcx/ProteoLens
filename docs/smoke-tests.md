@@ -924,6 +924,47 @@ protein's representation or colouring; the app works without Vina installed.
 
 ---
 
+## Central Dogma Explorer — one variant from chromosome to protein
+
+Goal: `/explore` follows a disease variant through five zoom levels, every base and coordinate read
+from Ensembl (GRCh38), and hands off to the 3D viewer with the variant residue selected.
+
+1. Start the backend with `CORS_ORIGINS=http://localhost:3000` and the frontend.
+2. From the landing page, click **Explore DNA**. Expect `/explore`, the **Sickle cell disease** chip
+   active, and *"HBB sits on chromosome 11, band 11p15.4"* over a 24-chromosome karyotype with
+   chromosome 11 outlined and a red HBB mark near its top (the p arm end).
+3. **2. Gene**: expect *"Its canonical transcript, ENST00000335295, has 3 exons. The variant falls in
+   exon 1"*, the gene drawn 5' to 3' with a `c.20A>T` marker in exon 1, and the note that HBB is read
+   from the minus strand.
+4. **3. DNA**: an animated helix of codons 4-10 with one base ringed in red. Toggle **Normal GAG** /
+   **Mutant GTG**: the ringed base flips A/T. Expect *"chr11:5,227,002 T>A, the complement, because
+   HBB is read from the minus strand"*. With the OS set to reduce motion, the helix stands still.
+5. **4. mRNA → protein**: click **Next codon** once (AUG → M in both rows), then **Translate all**.
+   Expect codon 7 outlined in both rows, `E` in Normal and `V` in Mutant, and *"Codon 7: GAG → Glu
+   becomes GUG → Val. A missense change, p.Glu7Val."*
+6. **5. 3D protein**: the four-step story, then **Open in 3D at residue 7**. Expect
+   `/viewer/<id>?select=A%3A7`, the AlphaFold model of P68871 (147 residues), *"1 selected"* in the
+   header and residue 7 highlighted and centred.
+7. Click **TP53 R175H** and **KRAS G12C**: each loads its own gene (chr17, chr12), codon CGC→CAC and
+   GGT→TGT, and hands off at residue 175 / 12.
+8. Free entry: Gene `BRAF`, Change `V600E` → loads. Negative cases:
+   - Gene `HBB`, Change `K7E` → *"Codon 7 of HBB is GAG, which encodes Glu, not Lys…"* (HTTP 400).
+   - Gene `NOTAGENE1`, Change `A1V` → *"Ensembl does not know gene…"* (HTTP 404).
+   - Ensembl unreachable → *"Could not reach Ensembl for the gene model. Try again."* (HTTP 502).
+9. Viewer deep link negative case: `/viewer/<id>?select=garbage` opens normally with nothing selected.
+10. Tests:
+    ```
+    cd backend && pytest
+    cd frontend && npm ci && npm test && npm run build
+    ```
+    - Expect: 609 backend, 466 frontend, build clean.
+
+**Pass criteria:** every level describes the same base; the genomic allele is the complement of the
+coding allele on minus-strand genes; a wrong reference residue is refused, never "mutated"; the
+hand-off lands on the variant residue.
+
+---
+
 ## How to add a smoke test
 
 When you start a phase, replace the placeholder for that phase with the concrete steps. The steps should be the minimum sequence a new contributor needs to verify the phase works end-to-end, including:

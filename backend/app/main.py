@@ -14,6 +14,7 @@ from app.api import (
     docking,
     electrostatics,
     explain,
+    explorer,
     import_,
     neoantigen,
     oncology,
@@ -53,6 +54,10 @@ app.openapi_tags = [
         "description": "Ligand docking with AutoDock Vina into a crystal site or chosen residues.",
     },
     {
+        "name": "explorer",
+        "description": "Central Dogma Explorer: a variant from chromosome to codon to protein.",
+    },
+    {
         "name": "tools",
         "description": "Offline DNA tools: ORFs, restriction map, PCR primers, CRISPR guides.",
     },
@@ -89,6 +94,7 @@ app.include_router(oncology.router, prefix="/api")
 app.include_router(neoantigen.router, prefix="/api")
 app.include_router(conservation.router, prefix="/api")
 app.include_router(docking.router, prefix="/api")
+app.include_router(explorer.router, prefix="/api")
 app.include_router(tools.router, prefix="/api")
 
 

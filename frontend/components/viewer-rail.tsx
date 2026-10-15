@@ -5,7 +5,9 @@ import { AnalyticsPanel } from "@/components/analytics-panel";
 import { AnnotationsPanel } from "@/components/annotations-panel";
 import { ClinicalPanel } from "@/components/clinical-panel";
 import { ComplexesPanel } from "@/components/complexes-panel";
+import { ConservationPanel } from "@/components/conservation-panel";
 import { CompoundsPanel } from "@/components/compounds-panel";
+import { NeoantigenPanel } from "@/components/neoantigen-panel";
 import { OncologyPanel } from "@/components/oncology-panel";
 import { OverviewPanel } from "@/components/overview-panel";
 import { SequencePanel } from "@/components/sequence-panel";
@@ -15,7 +17,7 @@ import { VariantPanel } from "@/components/variant-panel";
 /**
  * The workspace's right rail (spec 4.1, extended in P6, P8 and P9):
  * Overview / Sequence / Analytics / Annotations / Variants / Compounds / Similarity /
- * Complexes / Clinical / Oncology.
+ * Complexes / Clinical / Oncology / Neoantigens / Conservation.
  *
  * Rendered twice by the viewer page — once as the `xl` side rail and once
  * stacked below the viewer at narrow widths — so it keeps its own tab state.
@@ -57,6 +59,12 @@ export function ViewerRail({ proteinId }: { proteinId: string }) {
         <TabsTrigger value="oncology" className="text-xs">
           Oncology
         </TabsTrigger>
+        <TabsTrigger value="neoantigens" className="text-xs">
+          Neoantigens
+        </TabsTrigger>
+        <TabsTrigger value="conservation" className="text-xs">
+          Conservation
+        </TabsTrigger>
       </TabsList>
 
       <TabsContent value="overview" className="min-h-0 overflow-hidden">
@@ -88,6 +96,12 @@ export function ViewerRail({ proteinId }: { proteinId: string }) {
       </TabsContent>
       <TabsContent value="oncology" className="min-h-0 overflow-hidden">
         <OncologyPanel proteinId={proteinId} />
+      </TabsContent>
+      <TabsContent value="neoantigens" className="min-h-0 overflow-hidden">
+        <NeoantigenPanel proteinId={proteinId} />
+      </TabsContent>
+      <TabsContent value="conservation" className="min-h-0 overflow-hidden">
+        <ConservationPanel proteinId={proteinId} />
       </TabsContent>
     </Tabs>
   );

@@ -133,6 +133,28 @@ export const RAIL_TABS: readonly RailTab[] = [
       "Paint the structure by hotspot or by mutation density",
     ],
   },
+  {
+    value: "neoantigens",
+    title: "Neoantigens",
+    source: "IEDB (NetMHCpan 4.1)",
+    items: [
+      "Every mutant 8-11mer around a missense change, scored on HLA class I",
+      "Each candidate next to its wild-type peptide and rank",
+      "Anchor versus T-cell-facing changes flagged",
+      "Paint the predicted epitopes onto the structure",
+    ],
+  },
+  {
+    value: "conservation",
+    title: "Conservation",
+    source: "PDBe-KB",
+    items: [
+      "Information content of every residue across homologous sequences",
+      "Conservation plotted along the sequence",
+      "The most conserved residues, one click from 3D",
+      "Paint the structure from variable (turquoise) to conserved (maroon)",
+    ],
+  },
 ];
 
 export interface DataSource {
@@ -177,6 +199,16 @@ export const DATA_SOURCES: readonly DataSource[] = [
     name: "ChEMBL + CIViC",
     host: "civicdb.org",
     body: "Drugs with a mechanism on the protein, and curated sensitivity and resistance evidence.",
+  },
+  {
+    name: "PDBe-KB",
+    host: "ebi.ac.uk/pdbe/graph-api",
+    body: "Per-residue conservation profiles built from homologous sequences.",
+  },
+  {
+    name: "IEDB",
+    host: "iedb.org",
+    body: "NetMHCpan 4.1 HLA class I presentation of mutant peptides.",
   },
   {
     name: "Complex Portal",

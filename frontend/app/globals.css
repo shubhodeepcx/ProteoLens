@@ -240,6 +240,19 @@
   --color-neutral-600: #b8b2da;
   --color-neutral-800: #ece8ff;
   --color-neutral-900: #ffffff;
+  /* The Central Dogma Explorer is a dark-only page built on zinc; tint it
+     to match the rest of the retro workspace. */
+  --color-zinc-50: #ffffff;
+  --color-zinc-100: #f4f1ff;
+  --color-zinc-200: #ece8ff;
+  --color-zinc-300: #c4bfe6;
+  --color-zinc-400: #a29bc9;
+  --color-zinc-500: #8f88bd;
+  --color-zinc-600: #6f68a0;
+  --color-zinc-700: rgb(168 85 247 / 0.34);
+  --color-zinc-800: rgb(168 85 247 / 0.22);
+  --color-zinc-900: #0d0b1c;
+  --color-zinc-950: #07060f;
 }
 
 .retro body {
@@ -275,6 +288,7 @@
 /* Page shells paint the theme background themselves; let the body's glow
    and horizon grid show through them instead. Panels keep their fill. */
 .retro .min-h-screen.bg-background,
+.retro .min-h-screen.bg-zinc-950,
 .retro .h-screen.bg-background {
   background-color: transparent;
 }

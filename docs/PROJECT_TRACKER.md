@@ -3,31 +3,26 @@
 **Project:** AI-Powered Protein Structure Visualization Platform
 **Living document.** Read before claiming work. Update on claim, on PR open, on merge.
 
-**Last updated:** 2026-10-14 by Shubhodeep Chatterjee (Docking tab: AutoDock Vina 1.2 docks a SMILES into a crystal ligand's pocket or around selected residues; redocking indinavir into 1HSG lands 0.78 Å from the crystal pose.)
-
-_Previously:_ 2026-10-05 by Shubhodeep Chatterjee (Run-and-fix pass: Geist font restored, viewer rail tabs wrap, restart script repaired, vitest timeout raised. 578 backend / 447 frontend tests, tsc clean, webpack build clean.)
-**Last updated:** 2026-10-14 by Shubhodeep Chatterjee (Central Dogma Explorer: `/explore` follows one variant from chromosome to gene, double helix, mRNA and protein, then hands off to the 3D viewer with the residue selected.)
-**Last updated:** 2026-10-14 by Shubhodeep Chatterjee (Light theme + Inter/JetBrains Mono; dark greys moved onto theme tokens. 447 frontend tests, tsc clean, webpack build clean.)
+**Last updated:** 2026-10-15 by Shubhodeep Chatterjee (Documentation pass: READMEs, smoke tests, project report, spec and SDLC brought up to date with P0-P24; `start.cmd` now downloads AutoDock Vina on first run. 778 backend / 565 frontend tests.)
 
 ---
 
 ## Current phase
 
-**P6-P10 complete and merged.** The annotation/comparison slice designed at
-[2026-08-22-annotation-comparison-slice-design.md](design/2026-08-22-annotation-comparison-slice-design.md)
-is fully shipped: annotations (P6), comparison (P7), BLAST + UniRef similarity (P8),
-Complex Portal (P9) and interface density (P10). `main` is at `e06be37` with
-**402 backend / 358 frontend** tests green, tsc clean and the webpack build clean.
+**All planned phases are merged (P0-P24).** `main` carries the viewer and analysis slice
+(P0-P10), the spec-gap work (A1 confidence, A2 clinical and oncology, A5 functional regions),
+the extensions (compounds, report and export, sequence tools, electrostatics, Explain,
+neoantigens, conservation, docking, ESMFold prediction, the Central Dogma Explorer) and the
+retro theme with the Classic light theme behind a toggle. **778 backend tests (1 skipped) and
+565 frontend tests** pass, tsc is clean and the webpack build is clean; CI runs all of it on
+every pull request.
 
-BLAST was verified against the live EBI service on 2026-08-24 -- all four programs
-(blastp, blastn, tblastn, blastx) ran real jobs end to end and returned biologically
-correct results. See the decisions log.
+What remains is the *Ready to claim* list below: follow-ups and spec drift, none blocking.
 
-_Previously:_ **Slice complete and verified (P0-P5).** All six phases merged, and the
-manual smoke tests executed end-to-end in a real Chromium against live servers and live
-public APIs.
-
-Active design: [docs/design/2026-05-23-protein-mvp-slice-design.md](design/2026-05-23-protein-mvp-slice-design.md)
+_Previously:_ P6-P10 shipped the annotation/comparison slice designed at
+[2026-08-22-annotation-comparison-slice-design.md](design/2026-08-22-annotation-comparison-slice-design.md);
+P0-P5 shipped the MVP slice at
+[2026-05-23-protein-mvp-slice-design.md](design/2026-05-23-protein-mvp-slice-design.md).
 
 ---
 
@@ -50,7 +45,7 @@ Follow-ups discovered during P4/P5. None block the slice; each was deliberately 
 | **A5 follow-up — a branched ligand is reported as its components.** `bound_ligands` emits one entry per HETATM residue, so 1HEW's tri-N-acetylchitotriose is three NAG rows sharing contact residues rather than one ligand. Grouping needs covalent connectivity (or the mmCIF branched-entity records, which the PDB format does not carry) | A5 | A5 merged | 3h |
 | **A5 follow-up — a free amino acid bound as a substrate is skipped** (*partly addressed:* the Compounds tab now tells in-chain from free amino acids by the peptide bond and reports free ones with contacts; A5's `bound_ligands` still uses the backbone rule and could switch to `compounds._peptide_linked`). Ligand detection excludes any HETATM group carrying a complete N/CA/C backbone, which is what keeps selenomethionine inside a helix from being reported as a bound ligand. It also skips a genuine free-amino-acid ligand. Under-reporting rather than mis-marking is the right direction, but an entity-type check on mmCIF would fix it properly for RCSB imports | A5 | A5 merged | 2h |
 | **The chain tree is `xl`-only.** Below 1280px the viewer drops the left rail entirely and only the stacked tab rail remains, so there is no chain navigation on a laptop in a split window. Needs a collapsible drawer or a sixth tab | follow-up | P10 | 2h |
-| **Mol\*'s canvas renders on a near-white background inside an otherwise dark workspace.** Pre-existing and unrelated to P10, but it is the most visible remaining inconsistency in the viewer. The fix is a Mol\* renderer background parameter in `components/molstar-viewer.tsx` — deliberately not touched here because P8 owns that file | follow-up | P8 merged | 30m |
+| ~~**Mol\*'s canvas renders on a near-white background inside an otherwise dark workspace.** Pre-existing and unrelated to P10, but it is the most visible remaining inconsistency in the viewer. The fix is a Mol\* renderer background parameter in `components/molstar-viewer.tsx` — deliberately not touched here because P8 owns that file~~ — **fixed in P21**: the Mol\* canvas follows the theme | follow-up | P8 merged | 30m |
 | **Compounds follow-up — group branched glycans and multi-residue ligands.** Same root cause as the A5 row above: one `CompoundInstance` per HETATM residue, so an N-glycan is several NAG/MAN rows. Needs covalent connectivity or mmCIF `pdbx_branch_scheme` | compounds | compounds merged | 3h |
 | **Compounds follow-up — focus a compound in 3D.** Contacts select through the existing seam, but the compound itself is not highlighted or zoomed to. Needs a Mol\* selection by `auth_seq_id` + chain for non-polymer residues in `lib/molstar/actions.ts` | compounds | compounds merged | 2h |
 | **Compounds follow-up — cross-reference UniProt cofactors.** UniProt `COFACTOR` comments (ChEBI IDs) could be matched against bound cofactors/ions to say "the zinc UniProt expects is present here". Needs the comment added to `uniprot.fetch_functional` fields | compounds | compounds merged | 3h |
@@ -65,13 +60,13 @@ Follow-ups discovered during P4/P5. None block the slice; each was deliberately 
 | BLAST job registry is in-memory, so a backend restart makes every in-flight job unpollable even though EBI still has it. Same fix as the protein registry — belongs to the persistence slice | follow-up | P8 | — |
 | CD-Search (conserved domains) — the slice design's "CDART, partly" row. NCBI has a documented URL API; not built in P8 | follow-up | — | 4h |
 | Automated browser-level coverage for `extractResidueRecords` — manually verified 2026-08-21 on both a PDB upload and a 4-chain RCSB mmCIF, so this is now regression protection rather than an unknown | follow-up | a browser test runner | 3h |
-| **P8 — Similarity & BLAST.** EBI NCBI BLAST REST (submit/poll/retrieve — the project's first async flow) + UniRef similar proteins | P8 | — | 1-2d |
+| ~~**P8 — Similarity & BLAST.** EBI NCBI BLAST REST (submit/poll/retrieve — the project's first async flow) + UniRef similar proteins~~ — **done in P8**, see *Done* | P8 | — | 1-2d |
 | **P9 stretch — complex topology graph.** Not built in P9, and no longer speculative: `GET /intact/complex-ws/export/{CPX}` returns MI-JSON whose `participants[].features[]` carry `category: "bindingSites"` and a `linkedFeatures` array pairing one participant's binding region with another's. Those pairs are the real edges — the `/search` payload P9 uses has no pairwise data at all, so any graph drawn from it would be a hub-and-spoke picture asserting bindings the data never states. Needs: a second client method, an edge-list model, an SVG layout component, and the export payload is heavy (it embeds full sequences) | P9 | P9 merged | 1-2d |
 | **P9 follow-up — link a complex to its experimental structures.** The same `/export/{CPX}` MI-JSON lists `wwpdb` and `emdb` cross-references for the complex (CPX-26675 carries 1IR3, 4XLV, 8U4B and more). In a structure viewer that is a direct "load the experimental structure of this complex" path into the existing RCSB import | P9 | P9 merged | 3h |
 | **Superimpose the two structures in 3D on `/compare`.** P7 computes and reports the RMSD but does not overlay the coordinates — the panes stay independent. Needs the transform applied Mol\*-side (or a transformed copy served) and one shared canvas | follow-up | P7 | 4h |
 | **Compare affordance on the search page.** P7 ships one from the viewer header. A "compare these two" selection on `/search` would import both hits and land on `/compare` in one step — the predicted-vs-experimental pair is one query away | follow-up | P7 | 2h |
 | Export the comparison report (spec A3 asks for it; P7 ships the on-screen comparison only). Overlaps the deferred F9 export slice — decide there rather than adding a one-off | follow-up | P7 | — |
-| Persistence slice — the in-memory registry resets on restart, so `/viewer/{id}` 404s afterwards though the file survives on disk | separate slice | Postgres decision | — |
+| ~~Persistence slice — the in-memory registry resets on restart, so `/viewer/{id}` 404s afterwards though the file survives on disk~~ — **done in P11**: the registry is a SQLite table (`PROTEOLENS_DB`) | separate slice | Postgres decision | — |
 | **A1 follow-up — warn when a *selected* region is low confidence.** Spec A1 asks for this explicitly and it is the one A1 requirement not shipped: the panel lists every low-confidence range, but nothing cross-references the current `selection-slice` selection against them. Needs a selector over `confidence.low_confidence_regions` and a line in the selection UI | A1 | A1 merged | 2h |
 | **A1 follow-up — finer pLDDT histogram.** A1 ships the four-band distribution (which is what the low-confidence warnings are built on); spec A1 also says "pLDDT histogram", which usually means 10-point bins. The per-residue values are already extracted in `services/confidence.extract_plddt`, so this is a second projection, not new I/O | A1 | A1 merged | 1h |
 | **A1 follow-up — no automated coverage of the PAE canvas painting loop.** jsdom returns `null` from `getContext("2d")`, so `pae-heatmap.tsx`'s `putImageData` loop is only covered by its own fallback branch. The colour function under it is fully tested; the loop was verified by screenshotting headless Chrome. Same gap, same cause, as the `extractResidueRecords` row above — one browser test runner would close both | A1 | a browser test runner | 2h |
@@ -83,7 +78,7 @@ Follow-ups discovered during P4/P5. None block the slice; each was deliberately 
 | F3: `SelectionMode` / `setMode` exist in `selection-slice.ts` but no UI calls them — select-by-type / chain / range / property, and the left-sidebar filter panel from slice section 4.1, were never built | spec drift | — | 3h |
 | `lib/residue.ts` is 202 lines, just over the 200-LOC guideline (a library module; the viewer page and Mol* viewer are now split) | cleanup | — | 20m |
 | ~~Type drift: `ingest.parse_and_register`'s `source` Literal omits `"uniprot"`~~ — **fixed** with the compounds work | cleanup | — | done |
-| Per-phase test counts in `docs/smoke-tests.md` (P2 "14 passed", P3 "31 passed", P5.5 "90/103") are stale against the current 127/133 | docs | — | 20m |
+| ~~Per-phase test counts in `docs/smoke-tests.md` (P2 "14 passed", P3 "31 passed", P5.5 "90/103") are stale against the current 127/133~~ — **fixed** in the 2026-10-15 documentation pass | docs | — | 20m |
 
 ---
 
@@ -100,6 +95,7 @@ _No blocked tasks._
 
 | Task | Phase | Date | PR / commit |
 |---|---|---|---|
+| **Documentation pass** -- root, backend and frontend READMEs rewritten for the shipped feature set (pages, API routes, every env var, troubleshooting for "Backend unreachable" and missing Vina); smoke tests added for P11-P16 and the retro theme; implementation status added to the project report, with status notes in the spec and SDLC plan; `start.cmd` downloads AutoDock Vina on first run and warns instead of failing if it cannot | docs | 2026-10-15 | `main` |
 | **P24 Explorer in the retro theme** -- the Central Dogma Explorer is a dark-only page built on `zinc-*` classes, so it kept a flat grey look in retro; the retro theme now tints the zinc scale to its indigo/violet palette and lets the page show the horizon grid. Classic theme unchanged | P24 | 2026-10-15 | `feature/p24-explorer-retro` |
 | **P23 component split** -- the last three components over 200 LOC are split: the viewer page (274 -> 156) moves structure loading into `lib/use-structure-load.ts` and store-to-Mol* sync into `lib/use-viewer-sync.ts`; `molstar-viewer.tsx` (246 -> 134) moves its ref types to `molstar-viewer-types.ts` and its imperative handle to `lib/molstar/viewer-handle.ts`; the landing page (238 -> 174) moves its header to `components/landing-header.tsx`. No behaviour change | P23 | 2026-10-15 | `feature/p23-component-split` |
 | **P21 retro-futuristic theme** -- new default `retro` theme: near-black indigo canvas, neon magenta/cyan tokens, Orbitron headings, Space Grotesk body, Share Tech Mono HUD labels, a synthwave horizon grid and faint scanlines behind the app, HUD corner brackets on cards, gradient primary buttons. Charts read their colours from CSS variables, the Mol* canvas and its buttons follow the theme, the landing helix switches palette live. The light theme stays as "Classic" behind a toggle; the report stays white paper and prints without effects. 4 new tests | P21 | 2026-10-14 | `feature/p21-retro-theme` |
@@ -211,6 +207,7 @@ Append-only. Never edit past entries — supersede with a new entry referencing 
 
 | Date | Decision | Rationale | Reversible? |
 |---|---|---|---|
+| 2026-10-15 | `start.cmd` downloads AutoDock Vina on first run and carries on with a warning if the download fails | Docking was the one feature a fresh launch left broken ("Docking needs AutoDock Vina"); a failed download should cost docking only, not the whole launch | Yes |
 | 2026-10-14 | The retro theme is a next-themes class (`retro`) over the same shadcn tokens, plus a scoped remap of the few Tailwind palette colours used for status text, instead of rewriting component classes | Every component already reads tokens, so one stylesheet block restyles the app and the classic theme keeps working unchanged. The `.paper` scope restores light tokens for the report | Yes: drop `retro` from `themes` and the default goes back to light |
 | 2026-10-14 | Structure prediction calls Meta's hosted ESMFold (ESM Atlas `foldSequence/v1/pdb`) instead of running a model locally or reproducing AlphaFold. Timeout 120 s for this one client; sequences capped at 400 residues to match the service; a 0-1 pLDDT column is rescaled to 0-100 so the existing colour scale and bands apply unchanged | ESMFold needs no MSA, so it answers while the user waits, and hosting a 15B-parameter model or training one is outside what this project can run. The cost is a dependency on a public endpoint with no SLA; failures surface as a 502 with a plain message | Yes: `services/esmfold.fold` is the only call site, so a self-hosted ESMFold or ColabFold server can replace the URL |
 | 2026-10-14 | Docking runs the official AutoDock Vina 1.2.7 release binary as a subprocess, found through `VINA_BINARY`, then `backend/bin/`, then PATH, and installed by `backend/scripts/install_vina.py` | `pip install vina` builds from source against Boost and publishes no wheel for Python 3.13, so it cannot be a plain dependency. The binary is a single self-contained file per platform. Without it the Docking tab explains how to install it and the rest of the app is unaffected | yes |

@@ -6,6 +6,20 @@ Run from the repo root (`g:\protein`) unless noted.
 
 ---
 
+## Verification status
+
+Not every section below has been run by hand in a browser. Where each one stands:
+
+| Sections | Status |
+|---|---|
+| P0–P5.5 | Executed end-to-end on **2026-08-21**, record below. |
+| P6–P10, A5, Compounds, P19, Clinical, Oncology, Neoantigens, Conservation, Docking, Central Dogma Explorer | Written as each phase landed, with that phase's test run. No dated hand-run record is kept for them here. |
+| P11, P12, P13, P14, P15, P16, P21 / P24 (theme) | Written on **2026-10-15** from the code and its automated tests. Not yet walked through by hand; the Docker step in P11 and the live-endpoint steps in P16 need a Docker daemon and a configured model endpoint. |
+
+**Current test totals (2026-10-15):** backend `pytest` 778 passed, 1 skipped (the real-Vina docking
+test, which skips without a Vina binary); frontend `npm test` 565 passed. The full-suite counts quoted
+inside each phase are the totals when that phase landed, so they are lower than these.
+
 ## Last verified run — 2026-08-21
 
 P0–P5.5 executed end-to-end in a real Chromium (driven by Playwright) against both servers running
@@ -382,7 +396,7 @@ clicks, and the pLDDT coloring option only appears where pLDDT exists.
    cd backend && pytest
    cd frontend && npm run lint && npm test && npm run build
    ```
-   - Expect: 90 backend, 103 frontend, lint and build clean.
+   - Expect: every test passes, lint and build clean (90 backend and 103 frontend when this phase landed; current totals are in the header).
 
 **Pass criteria:** an imported mmCIF shows its organism and round-trips residue clicks in both
 directions; high pLDDT reads blue; the pLDDT option and the Overview B-factors field both follow
@@ -423,7 +437,7 @@ annotation in the rail; open an uploaded file and be told plainly why there is n
    cd backend && pytest
    cd frontend && npm ci && npm run lint && npm test && npm run build
    ```
-   - Expect: 166 backend, 155 frontend, lint and build clean.
+   - Expect: every test passes, lint and build clean (166 backend and 155 frontend when this phase landed; current totals are in the header).
 
 **Pass criteria:** an entry with rich annotation fills the rail from UniProt; an entry without a
 given category shows no heading for it; an upload explains itself instead of erroring.
@@ -469,6 +483,13 @@ have every number on the page be either a measurement or an explicit statement t
 9. Negative case: open `/compare?a=<real id>&b=deadbeef`.
    - Expect: `Comparison failed (404): Protein B not found` — naming **which** side — plus the
      id form pre-filled so the bad id can be fixed in place. Not a blank page, not a 500.
+
+**Pass criteria:** two independent viewers render together without a duplicate-root error; the
+alignment and RMSD agree about which chains they used; and every absent result — no alignment,
+no RMSD, an unmatched chain, an unannotated secondary structure — states its reason on screen.
+
+---
+
 ## P8 — Similarity & BLAST
 
 Goal: get homologs instantly from UniRef, run a real BLAST search at EBI, watch it for the
@@ -521,11 +542,10 @@ address and logs a warning on every job.
     cd backend && pytest
     cd frontend && npm ci && npm run lint && npm test && npm run build
     ```
-    - Expect: 200 backend, 213 frontend, lint and build clean.
+    - Expect: every test passes, lint and build clean (200 backend and 213 frontend when this phase landed; current totals are in the header).
 
-**Pass criteria:** two independent viewers render together without a duplicate-root error; the
-alignment and RMSD agree about which chains they used; and every absent result — no alignment,
-no RMSD, an unmatched chain, an unannotated secondary structure — states its reason on screen.
+**Pass criteria:** homologs appear without a wait; a BLAST search reports real elapsed progress
+and survives a reload without duplicating itself; both result lists open a hit in the viewer.
 
 ---
 
@@ -567,16 +587,12 @@ participant table with stoichiometry; open one that belongs to none and be told 
    cd backend && pytest
    cd frontend && npm ci && npm run lint && npm test && npm run build
    ```
-   - Expect: 241 backend, 236 frontend, lint and build clean.
+   - Expect: every test passes, lint and build clean (241 backend and 236 frontend when this phase landed; current totals are in the header).
 
 **Pass criteria:** a protein in curated complexes shows the complex's function and a participant
 table with stoichiometry; complexes that merely mention the accession are excluded and accounted
 for; predicted complexes are labelled as predicted; a protein in none explains itself instead of
 erroring.
-    - Expect: 285 backend, 228 frontend, lint and build clean.
-
-**Pass criteria:** homologs appear without a wait; a BLAST search reports real elapsed progress
-and survives a reload without duplicating itself; both result lists open a hit in the viewer.
 
 ---
 
@@ -626,7 +642,7 @@ Run at a window width of at least 1280px (`xl`) — the left rail is xl-only.
     cd backend && pytest
     cd frontend && npm ci && npm run lint && npm test && npm run build
     ```
-    - Expect: 241 backend, 285 frontend, lint and build clean.
+    - Expect: every test passes, lint and build clean (241 backend and 285 frontend when this phase landed; current totals are in the header).
 
 **Pass criteria:** clicking a chain or a residue range in the left rail highlights those residues
 in Mol\* and in the sequence panel; a structure with no secondary-structure assignment says so
@@ -688,7 +704,7 @@ being placed anyway. Runs in the **Annotations** tab — A5 has no rail tab of i
    cd backend && pytest
    cd frontend && npm ci && npm run lint && npm test && npm run build
    ```
-   - Expect: 475 backend, 387 frontend, lint and build clean.
+   - Expect: every test passes, lint and build clean (475 backend and 387 frontend when this phase landed; current totals are in the header).
 
 **Pass criteria:** every curated position is placed on the residue the literature names, or is
 refused in words; every ligand contact is measured from the file; nothing anywhere is labelled a
@@ -727,11 +743,278 @@ touch, and a nucleic-acid strand is never analysed as protein.
    cd backend && pytest
    cd frontend && npm ci && npm run lint && npm test && npm run build
    ```
-   - Expect: 578 backend, 447 frontend, lint and build clean.
+   - Expect: every test passes, lint and build clean (578 backend and 447 frontend when this phase landed; current totals are in the header).
 
 **Pass criteria:** every non-water hetero group and every nucleic-acid strand appears exactly once in
 the right category; every contact is a measured distance in this file and selects in 3D; protein
 analytics no longer see DNA.
+
+---
+
+## P11 — CI, Docker and SQLite persistence
+
+Goal: loaded proteins survive a backend restart, the landing page lists them, both services run
+under `docker compose`, and every pull request runs the same checks a contributor runs locally.
+
+1. Start both servers. Upload `backend/app/static/1CRN.pdb` and note the `/viewer/<id>` URL.
+2. Go back to `/`. Expect a **Recent structures** list in the landing rail with the upload at the
+   top, its second line reading `46 residues · 1 chain · uploaded`. Clicking it opens
+   `/viewer/<id>`.
+3. `curl "http://localhost:8000/api/proteins?limit=5"`: HTTP 200, a JSON list, newest first, whose
+   first entry has the same `id`. The table lives at `backend/storage/proteolens.db` unless
+   `PROTEOLENS_DB` points elsewhere.
+4. Stop the backend and start it again. Reload `/viewer/<id>`: the structure loads with the same
+   overview metrics, and `GET /api/proteins/<id>` is a 200, not a 404.
+5. Start the backend with `PROTEOLENS_DB` set to a new, empty path. `GET /api/proteins` returns
+   `[]` and the landing rail shows no **Recent structures** heading at all (an empty list renders
+   nothing). Unset it again afterwards.
+6. Negative case: stop the backend and reload `/`. The pill reads **Backend unreachable** and the
+   recent list is simply absent; the page does not error.
+7. Docker (needs a running Docker daemon):
+   ```
+   docker compose up --build
+   ```
+   - Expect the backend on port 8000 and the frontend on port 3000. Open `http://localhost:3000`:
+     **Backend OK**, upload works.
+   - `docker compose down` then `docker compose up` again: the upload is still listed, because
+     structures and the protein table live in the `proteolens-data` volume.
+     `docker compose down -v` removes the volume and the list starts empty.
+8. CI: open a pull request. Expect the **CI** workflow with two jobs: `backend` (`ruff check app
+   tests`, then `pytest -q`, on Python 3.12) and `frontend` (`npm ci`, `npm run lint`, `npm test`,
+   `npm run build`, on Node 20). Both must be green.
+9. Tests:
+   ```
+   cd backend && ruff check app tests && pytest tests/test_registry.py
+   cd frontend && npx vitest run components/__tests__/recent-proteins.test.tsx
+   ```
+   - Expect: 4 backend and 2 frontend tests pass.
+
+**Pass criteria:** a restart loses nothing that was loaded; the landing page lists recent
+structures and hides the list when there are none; `docker compose` keeps data across a restart;
+CI runs lint, tests and build for both halves.
+
+---
+
+## P12 — Structural variant impact
+
+Goal: type a protein change and see where it sits in the structure, what it touches and which
+structural rules of thumb it trips, with the position mapped through UniProt when an entry exists.
+No pathogenicity score is ever shown.
+
+1. Start the backend with `CORS_ORIGINS=http://localhost:3000` and the frontend.
+2. Upload `backend/tests/fixtures/1HEW.pdb` (hen lysozyme with bound NAG) and open the **Variants**
+   tab. Expect a **Protein variant** box, an **Analyse** button that stays disabled while the box is
+   empty, and **Try:** chips for `R175H`, `p.Gly12Cys`, `W53*` and `F508del`.
+3. Enter `L56R` and click **Analyse**. Expect:
+   - the heading `p.Leu56Arg`, `missense`, and a `high concern` badge;
+   - a site card for `A:56` marked `buried` with its accessible percentage, the flags *"Places a
+     charged side chain in the buried core, which is usually destabilising."* and *"Touches bound
+     NAG; binding or catalysis may be affected."*, and a **Neighbours within 4.5 Å** chip list;
+   - Volume, Hydropathy and Charge rows (charge `0 → +1`);
+   - A:56 selected and highlighted in 3D.
+   - Because an upload carries no UniProt accession, the notes say the position was read as this
+     file's own residue number, and always include *"These are structural rules of thumb measured
+     from this file, not a pathogenicity prediction."*
+4. More notations on the same upload:
+   - `C6S`: flag *"Breaks the disulfide bond to A:127."*
+   - `W62*`: kind `nonsense` and *"68 residues of this chain are never made."*
+   - `E35=`: `low concern`, flag *"No amino-acid change; the protein is unchanged."*
+5. Negative cases (each a 422 with the reason shown in red, never a blank panel):
+   - `banana` → *"Could not read 'banana'. Use a protein change such as R175H, p.Arg175His, W53* or
+     F508del."*
+   - `A35Q` → *"Residue 35 in this file is Glu (A:35), not Ala…"*
+   - `A999G` → *"No residue numbered 999 in this file."*
+6. UniProt numbering: from `/search`, import **RCSB 1HEW** and open **Variants**. Enter
+   `p.Glu53Gln`. Expect the site to land on `A:35` (UniProt P00698 counts an 18-residue signal
+   peptide), the note *"Position mapped through a global alignment of the UniProt sequence to each
+   chain…"*, a UniProt curated-site flag and `high concern`. Now enter `E35Q`: a 422, *"UniProt has
+   Leu at position 35, not Glu. Check the position and the isoform."* The residue is never silently
+   moved.
+7. With UniProt unreachable, the same import falls back to the file's numbering and adds
+   *"UniProt could not be reached; the file's own numbering was used."* to the notes.
+8. API check: `POST /api/proteins/<id>/variant` with `{"notation": "E35Q", "chain": "Z"}` on the
+   upload is a 422 naming chain `'Z'`; an unknown protein id is a 404.
+9. Tests:
+   ```
+   cd backend && pytest tests/test_variant.py
+   cd frontend && npx vitest run components/__tests__/variant-panel.test.tsx
+   ```
+   - Expect: 31 backend and 2 frontend tests pass.
+
+**Pass criteria:** the variant lands on the right residue under either numbering and is selected in
+3D; a wrong reference residue is refused with the reason; every flag is a measured, plain-language
+statement and no response carries a pathogenicity score.
+
+---
+
+## P13 — Report and export
+
+Goal: one click in the viewer gives a printable A4 report of the structure, with a snapshot of the
+3D view, plus JSON and CSV downloads of the same data.
+
+1. Start both servers. Upload `backend/app/static/1CRN.pdb` and wait for the structure to render.
+   Rotate it to a view you will recognise.
+2. Click **Report** in the viewer header (disabled until the viewer is ready). Expect
+   `/report/<id>`, *Building report…* briefly, then a white A4 page headed **ProteoLens structure
+   report** with the protein's name and a *generated* timestamp, whatever theme the app is in.
+3. **Structure** section: the snapshot shows the view you left, beside facts that include
+   `Residues 46`, `Atoms 327`, `Molecular weight 4736 Da`, `File format PDB` and `B-factor column
+   Temperature factors`.
+4. **Analytics** shows amino-acid composition and secondary-structure charts. **Sequences** shows
+   `Chain A · 46 residues` and the sequence in numbered blocks of ten starting `TTCCPSIVAR`.
+   No **Biology (UniProt)** section for an upload, since nothing resolves.
+5. Downloads in the toolbar above the page:
+   - **JSON** saves `<id>-proteolens.json`.
+   - **Composition CSV** saves `<id>-composition.csv` with header `amino_acid,name,count,percent`.
+   - **Hydropathy CSV** saves `<id>-hydropathy.csv` with header
+     `chain,position,kyte_doolittle,window`.
+   For an imported entry the file stem is the source id instead (for example `P68871-…`).
+6. Click **Print or save as PDF** and print to PDF. The PDF holds only the paper: no toolbar, no
+   theme toggle, no background grid or scanlines, and white page margins.
+7. Import **AlphaFold P68871** and open its report: a **Biology (UniProt)** section appears, the
+   facts list `UniProt P68871`, and `B-factor column` reads `pLDDT confidence`.
+8. Negative cases:
+   - Open `/report/<id>` directly in a new tab: the page still renders, with the note *"Open this
+     report from the viewer's Report button to include a snapshot of the 3D view."* in place of the
+     picture.
+   - If analytics fail, the report still shows structure facts and sequences, and the two CSV
+     buttons are not offered.
+   - `/report/<unknown id>`: a red *Protein not found* and a **Back to ProteoLens** link.
+9. **Back to viewer** returns to `/viewer/<id>`.
+10. Tests:
+    ```
+    cd frontend && npx vitest run app/__tests__/report.test.tsx lib/__tests__/report.test.ts
+    ```
+    - Expect: 8 tests pass.
+
+**Pass criteria:** the report shows the view the user was looking at; it prints as clean paper in
+any theme; the downloads open in a spreadsheet with the headers above; a missing snapshot or failed
+analytics degrades the page instead of breaking it.
+
+---
+
+## P14 — Sequence tools
+
+Goal: `/tools` takes one DNA sequence and runs an ORF finder, a restriction map, PCR primer design
+and SpCas9 guide design on it, all offline on the backend.
+
+1. Start both servers. On the landing page click **DNA tools**: expect `/tools` headed **Sequence
+   tools** with a **DNA sequence (plain or FASTA)** box, **Target start** / **Target end**, **Min ORF
+   (codons)** set to 30, a **Circular (plasmid)** checkbox, **Load example** and **Analyse**.
+2. Click **Analyse** with the box empty: *"Paste a DNA sequence or load the example first."* and no
+   request is sent.
+3. Click **Load example** (an 843 nt synthetic construct: an ORF at 181-426 followed by a pUC-style
+   cloning site). Set Target start `200` and Target end `300`, then **Analyse**. All four tabs fill.
+4. **ORFs (3)**: frame `+1` at `181..426` (81 aa, starting `MWTFDKLD`), frame `+2` at `203..661`
+   (152 aa), and frame `+2` at `749..841` marked *(no stop)*. A **Six-frame translation** disclosure
+   sits under the table.
+5. **Restriction (9 unique)**: the 31-enzyme panel finds single cuts for BamHI, EcoRI, KpnI, PstI,
+   SacI, SalI, SmaI, SphI and XbaI, all inside the cloning site; EcoRI's site reads `G^AATT_C` with
+   fragments `547 + 296`; HindIII cuts twice. Tick **Circular (plasmid)** and analyse again: EcoRI
+   now gives a single `843` fragment.
+6. **Primers (5)**: every forward primer ends before 200 and every reverse primer starts after 300,
+   each with Tm, GC and product size; the notes say Tm is nearest-neighbour (SantaLucia 1998) and
+   the ranking is not Primer3.
+7. **CRISPR (14)**: SpCas9 (NGG) guides whose cut sites all fall within 200-300, each with a
+   20 nt protospacer, its PAM, strand, GC and flags. The notes say off-targets are only counted
+   within the submitted sequence.
+8. Negative cases (each a 422 from the backend, shown as the backend's reason):
+   - Paste `MKVLAAGIW`: *"Only A, C, G, T (or U) and N are accepted; found … Is this a protein
+     sequence?"*
+   - A target past the end, e.g. 900-1000 on the example: *"The target 900-1000 is outside the 843
+     nt sequence."*
+   - `POST /api/tools/restriction` with `"enzymes": ["Nope"]`: *"Unknown restriction enzyme
+     'Nope'."*
+   - FASTA headers, spaces, line numbers and `U` are accepted (U is read as T).
+9. Tests:
+   ```
+   cd backend && pytest tests/test_seqtools.py
+   cd frontend && npx vitest run app/tools/__tests__/tools-view.test.tsx lib/__tests__/seqtools.test.ts
+   ```
+   - Expect: 30 backend and 8 frontend tests pass.
+
+**Pass criteria:** one paste drives all four tools; coordinates are 1-based on the forward strand;
+primers flank and guides cut inside the target; bad input gets a plain reason, never a 500.
+
+---
+
+## P15 — Surface electrostatics
+
+Goal: the Analytics tab shows a Coulombic estimate of each residue's surface potential, net charge,
+pI, dipole and charged surface patches, and the structure can be coloured red-white-blue by it.
+
+1. Start both servers. Upload `backend/tests/fixtures/1HEW.pdb` (hen lysozyme, a basic protein)
+   and open **Analytics**.
+2. Scroll to **Surface electrostatics**. After *Computing surface potential…*, expect
+   **Net charge** `+8.1 e`, **pI** about `9.32` and a **Dipole** in debye, then a red-to-blue
+   legend in kcal/(mol·e) and a per-residue profile for chain A.
+3. **Charged surface patches**: four entries, each blue and labelled `Basic · N residues · +x`,
+   with the residues listed and *"Basic patch: a candidate surface for DNA/RNA, heparin or acidic
+   partners."* No acidic patch on lysozyme. Clicking a patch selects those residues in 3D.
+4. Click a bar in the profile: that one residue is selected.
+5. Click **Colour structure by potential**. The button turns to **Showing on structure**, the
+   viewer's *Coloring* select reads **Electrostatic potential**, and the structure is painted
+   red-white-blue on the same scale as the legend (lysozyme shows far more blue than red).
+   Click it again to go back to chain colouring.
+6. With **Electrostatic potential** chosen, switch *Representation* to **Surface** and back to
+   cartoon: the colouring stays on the potential instead of resetting.
+7. Read the notes: the first says this is a Coulombic estimate with a distance-dependent dielectric
+   (4r) and *not* a Poisson-Boltzmann result.
+8. Negative cases: `GET /api/proteins/nope/electrostatics` is a 404. The endpoint needs nothing
+   external, so it works with the network unplugged.
+9. Tests:
+   ```
+   cd backend && pytest tests/test_electrostatics.py
+   cd frontend && npx vitest run components/__tests__/electrostatics-panel.test.tsx lib/__tests__/electrostatics.test.ts
+   ```
+   - Expect: 6 backend and 7 frontend tests pass.
+
+**Pass criteria:** a basic protein reads positive with blue patches; the colouring follows the
+legend and survives a representation change; the response says plainly what model it used.
+
+---
+
+## P16 — Explain assistant
+
+Goal: an **Explain** sheet in the viewer header answers questions about the open structure, or the
+current selection, at school, undergraduate or expert level, and shows the measured facts the answer
+was grounded in. The key never leaves the backend.
+
+Needs a chat-completions compatible endpoint. In `backend/.env` (see `backend/.env.example`) set
+`EXPLAIN_API_URL` (the full `.../chat/completions` URL), `EXPLAIN_API_KEY` and `EXPLAIN_MODEL`, then
+restart the backend.
+
+1. First, run with none of the three set. Upload `backend/tests/fixtures/1HEW.pdb`, click
+   **Explain**, then the **Explain** button in the sheet. Expect an amber message that the Explain
+   assistant needs `EXPLAIN_API_URL and EXPLAIN_API_KEY and EXPLAIN_MODEL` set in the backend's
+   environment; `POST /api/proteins/<id>/explain` is a 503. Set only the URL and key: the message
+   now names `EXPLAIN_MODEL` alone. Everything else in the viewer keeps working.
+2. Set all three and restart. Open **Explain** on the same upload. The sheet is titled **Explain
+   this structure**, offers **School / Undergraduate / Expert** (Undergraduate chosen) and reads
+   *"Ask anything, or leave the box empty for an overview."*
+3. Leave the question empty and click **Explain**. Expect an answer in paragraphs or bullets, the
+   button turning to **Ask again**, and a **Grounded in N measured facts · <model>** disclosure whose
+   list includes the residue count (129 residues for 1HEW).
+4. Select residue A:35 (Glu35) in the sequence panel, pick **School**, ask *"Why is E35
+   important?"*. The sheet description reads *"Focused on the 1 selected residue."* and the facts
+   include a line starting *"The user has selected"* that names `E35 (chain A)`.
+5. Confirm the key is server-side only: in the browser's network tab the request goes to
+   `/api/proteins/<id>/explain` on the backend, and no request or response carries the key.
+6. Negative cases:
+   - A wrong key: a 502 whose message starts *"The model API answered 401"* with the provider's
+     reason.
+   - An unreachable URL: a 502, *"Could not reach the model API: …"*.
+   - `{"level": "phd"}` in the body is a 422; an unknown protein id is a 404.
+7. Tests:
+   ```
+   cd backend && pytest tests/test_explain.py
+   cd frontend && npx vitest run components/__tests__/explain-sheet.test.tsx lib/__tests__/explain.test.ts
+   ```
+   - Expect: 7 backend and 5 frontend tests pass (the model API is mocked).
+
+**Pass criteria:** without configuration the sheet says exactly which variables to set; with it, an
+answer arrives at the chosen level, focused on the selection, with its facts listed; upstream
+failures are a plain 502 message.
 
 ---
 
@@ -849,7 +1132,7 @@ each beside its wild-type peptide, and paint them on the structure.
    cd backend && pytest
    cd frontend && npm ci && npm test && npm run build
    ```
-   - Expect: 627 backend, 482 frontend, build clean.
+   - Expect: every test passes, build clean (627 backend and 482 frontend when this phase landed; current totals are in the header).
 
 **Pass criteria:** every candidate contains the mutated residue; each sits beside the wild-type
 peptide at the same start; a wrong reference residue is refused rather than scored.
@@ -881,7 +1164,7 @@ on the structure from variable (turquoise) to conserved (maroon).
    cd backend && pytest
    cd frontend && npm ci && npm test && npm run build
    ```
-   - Expect: 635 backend, 491 frontend, build clean.
+   - Expect: every test passes, build clean (635 backend and 491 frontend when this phase landed; current totals are in the header).
 
 **Pass criteria:** the GTPase motifs rank at the top; colours use a fixed bits scale; a profile for
 another sequence version is refused rather than painted.
@@ -917,7 +1200,7 @@ redocking a crystal ligand onto its own pose.
    cd backend && pytest
    cd frontend && npm ci && npm test && npm run build
    ```
-   - Expect: 655 backend (the real-Vina test skips without a binary), 503 frontend, build clean.
+   - Expect: every test passes, build clean (655 backend and 503 frontend when this phase landed; current totals are in the header).
 
 **Pass criteria:** the redock reproduces the crystal pose within 2 Å; a pose never changes the
 protein's representation or colouring; the app works without Vina installed.
@@ -957,11 +1240,48 @@ from Ensembl (GRCh38), and hands off to the 3D viewer with the variant residue s
     cd backend && pytest
     cd frontend && npm ci && npm test && npm run build
     ```
-    - Expect: 609 backend, 466 frontend, build clean.
+    - Expect: every test passes, build clean (609 backend and 466 frontend when this phase landed; current totals are in the header).
 
 **Pass criteria:** every level describes the same base; the genomic allele is the complement of the
 coding allele on minus-strand genes; a wrong reference residue is refused, never "mutated"; the
 hand-off lands on the variant residue.
+
+---
+
+## P21 / P24 — Retro theme, Classic toggle, and the Explorer in retro
+
+Goal: the app opens in the retro theme by default, a toggle switches to the Classic light theme and
+back on every page, and the report and the Central Dogma Explorer look right in both.
+
+1. Start both servers. In a fresh browser profile (or after clearing site data) open `/`.
+   Expect the retro theme: near-black indigo background, neon magenta and cyan accents, Orbitron
+   headings, a perspective horizon grid behind the content and faint scanlines. The `<html>`
+   element carries the class `retro`.
+2. Expect a **Classic** button fixed at the bottom-left corner. Click it: the page switches to the
+   light theme (`<html>` class `light`), the button now reads **Retro**, and the landing helix
+   changes palette in place without a reload.
+3. Reload the page: the choice is remembered. Visit `/search`, `/tools`, `/predict` and a viewer:
+   each shows the same toggle in the same corner and uses the chosen theme.
+4. In the viewer, in retro: the Mol\* canvas and its buttons follow the dark palette, the rail
+   charts (composition, secondary-structure donut, hydropathy) are legible, and status colours
+   (amber notes, red errors) stay readable. Switch to Classic and check the same panels.
+5. Open a **Report** in retro: the page is still white paper with dark text, no grid or scanlines
+   inside it, and printing it gives clean white pages in both themes.
+6. Explorer in retro (P24): open `/explore`. Expect the indigo/violet tint on its panels and text in
+   place of flat grey, with the horizon grid showing behind the page, and all five levels readable.
+   Switch to **Classic**: the Explorer goes back to its original dark grey look, unchanged.
+7. Negative case: the toggle never appears in print output, in either theme (it carries the
+   `no-print` class), and it only appears once the page has hydrated, so it never shows the wrong
+   label.
+8. Tests:
+   ```
+   cd frontend && npx vitest run components/__tests__/theme-toggle.test.tsx components/__tests__/helix-field-palette.test.ts
+   cd frontend && npm run build
+   ```
+   - Expect: 4 tests pass and the build is clean.
+
+**Pass criteria:** retro is the default, Classic is one click away and sticks across pages and
+reloads; nothing becomes unreadable in either theme; the report always prints as paper.
 
 ---
 

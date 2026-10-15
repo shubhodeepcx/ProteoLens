@@ -110,6 +110,19 @@ try {
         Write-Ok 'Backend dependencies present.'
     }
 
+    # AutoDock Vina for the Docking tab. Optional: a failed download only
+    # disables docking, so it warns instead of stopping the launch.
+    if (-not $env:VINA_BINARY -and -not (Test-Path (Join-Path $Backend 'bin\vina.exe'))) {
+        Write-Step 'Downloading AutoDock Vina for the Docking tab (first run only)'
+        Push-Location $Backend
+        try { & $VenvPy scripts\install_vina.py } finally { Pop-Location }
+        if ($LASTEXITCODE -ne 0) {
+            Write-Host '  Vina download failed; docking stays off until you run backend\scripts\install_vina.py.' -ForegroundColor Yellow
+        } else {
+            Write-Ok 'AutoDock Vina installed.'
+        }
+    }
+
     # ---- frontend setup --------------------------------------------------
     if (-not (Test-Path (Join-Path $Frontend 'node_modules'))) {
         Write-Step 'Installing npm packages (first run only, a few minutes)'

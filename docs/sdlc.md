@@ -10,6 +10,10 @@
 
 ---
 
+> **Status as of 2026-10-15.** This is the original pre-build plan and is kept as written. Most of the planned features have shipped, several only in part (secondary structure is read from the file rather than computed, similarity search is sequence only, and there is no Foldseek, OpenMM, PostgreSQL or Redis), and a number of features beyond the plan were added, such as the Central Dogma Explorer, clinical and oncology evidence, docking and structure prediction. For the current picture see the Done table in `docs/PROJECT_TRACKER.md` and the "Implementation Status (October 2026)" section of `docs/project_report.md`.
+
+> Delivery followed the iterative approach planned here, in numbered phases (P0 to P24) tracked in `docs/PROJECT_TRACKER.md`. The current suite is 778 backend tests (pytest, ruff) and 565 frontend tests (Vitest), run by GitHub Actions on every pull request, and the app runs locally or with Docker Compose.
+
 ## 1. SDLC Model Selection
 
 The recommended development model for this project is an **Agile Iterative SDLC with Prototype-Driven Development**.

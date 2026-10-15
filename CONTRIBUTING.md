@@ -131,11 +131,11 @@ This is the handoff: the next contributor reads only the tracker to know where t
 
 ---
 
-## 8. What this slice is, and is not
+## 8. Scope
 
-**Is:** P0 to P5 of the MVP slice in `docs/design/2026-05-23-protein-mvp-slice-design.md`: viewer, upload, parser, dashboard, sequence panel and DB import. No auth, no DB, no AI, no mutation, no export.
+**Built:** P0 to P24 are merged: the MVP slice (P0-P5), the annotation and comparison slice (P6-P10), and every extension since, from CI and persistence (P11) to docking, prediction, the Central Dogma Explorer and the retro theme. The tracker's *Done* section lists each one.
 
-**Is not:** the full 6-month platform. Anything outside the slice (AI assistant, mutation, comparison, export, similarity search, auth, persistence, DSSP, Docker, deployment) belongs to a future slice with its own spec. If a task implies we need one of those, **stop and raise it with the project owner** rather than silently expanding scope.
+**Next:** the *Ready to claim* list in the tracker. Anything not on it (auth, multi-user accounts, deployment, a new external service) needs its own design note in `docs/design/` first. If a task implies one of those, **raise it with the project owner** rather than silently expanding scope.
 
 ---
 
@@ -143,7 +143,7 @@ This is the handoff: the next contributor reads only the tracker to know where t
 
 - **Source spec:** `docs/spec.md`
 - **SDLC plan:** `docs/sdlc.md`
-- **Active slice design:** `docs/design/2026-05-23-protein-mvp-slice-design.md`
+- **Slice designs:** `docs/design/`
 - **Tracker (read and update every task):** `docs/PROJECT_TRACKER.md`
-- **Smoke tests:** `docs/smoke-tests.md` (created in P0)
+- **Smoke tests:** `docs/smoke-tests.md`
 - **Working rules:** destructive-action gate, parallel work and commit authorship, all defined in this file.

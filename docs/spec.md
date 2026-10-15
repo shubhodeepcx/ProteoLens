@@ -11,6 +11,8 @@
 
 ---
 
+> **Status as of 2026-10-15.** This is the original pre-build plan and is kept as written. Most of the planned features have shipped, several only in part (secondary structure is read from the file rather than computed, similarity search is sequence only, and there is no Foldseek, OpenMM, PostgreSQL or Redis), and a number of features beyond the plan were added, such as the Central Dogma Explorer, clinical and oncology evidence, docking and structure prediction. For the current picture see the Done table in `docs/PROJECT_TRACKER.md` and the "Implementation Status (October 2026)" section of `docs/project_report.md`.
+
 ## 1. Executive Summary
 
 This project proposes the development of a web-based AI-powered protein visualization and analysis platform that allows users to search, upload, visualize, analyze, compare, annotate, and export protein structure data. The system will combine molecular visualization, bioinformatics data pipelines, structure analytics, mutation interpretation, AI-assisted annotation, and professional reporting.
@@ -751,6 +753,8 @@ Recommended Architecture:
 - Use embeddings for protein notes, annotations, and reports.
 - Use small ML/rule-based scoring for mutation and functional region prioritization.
 
+As built, the assistant (the Explain feature) calls a chat-completions compatible language model configured on the server through `EXPLAIN_API_URL`, `EXPLAIN_API_KEY` and `EXPLAIN_MODEL`, so no particular vendor or model is assumed. It is grounded in measured facts rather than an embedding store.
+
 Data Inputs for AI:
 
 - User uploaded structure analysis.
@@ -1113,6 +1117,8 @@ Response:
 ---
 
 ## 12.6 Generate AI Annotation
+
+As built, this endpoint is `POST /api/proteins/{uid}/explain`, answered by a chat-completions compatible language model; the planned shape is kept below.
 
 ```http
 POST /api/proteins/{protein_id}/ai/annotate

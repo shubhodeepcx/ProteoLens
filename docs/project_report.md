@@ -21,6 +21,53 @@ The proposed system will help users upload or import protein structures, inspect
 
 ---
 
+## Implementation Status (October 2026)
+
+This section was added on 15 October 2026, after the build. The rest of the report is the original plan and is left as written; this section records what was actually delivered against it. The detailed, dated record of every shipped change is the Done table in `docs/PROJECT_TRACKER.md`.
+
+### Planned features (Section 8) against what was built
+
+| Planned feature | What was built | Where it lives | Status |
+|---|---|---|---|
+| 8.1 Protein 3D Viewer | Mol* viewer with cartoon / surface / other representations, chain, residue-type, pLDDT, B-factor and electrostatic colouring, click-to-select, camera reset. A 3D snapshot is captured for the report. | `/viewer/[id]`, `/viewer/demo` | Shipped (no standalone PNG download button) |
+| 8.2 PDB/mmCIF Upload System | Drag-and-drop upload with extension and size checks, BioPython parsing of PDB and mmCIF into chains, residues, ligands and nucleic-acid chains; DNA-only files rejected with a reason. Import from RCSB, AlphaFold DB and UniProt through a unified search. | Landing page, `/search`, `POST /api/proteins/upload`, `POST /api/proteins/import` | Shipped |
+| 8.3 Residue Highlighting | Two-way sync between the 3D view and the sequence panel, `A:123` residue search, chain tree with per-class composition and range chips, selection driven from every analysis tab. | Viewer Sequence tab, left-rail chain tree | Shipped |
+| 8.4 Secondary Structure Detection | Secondary structure read from the file (PDB `HELIX`/`SHEET`, mmCIF `_struct_conf` / `_struct_sheet_range`) and shown as a composition donut; a file that declares none is labelled "not annotated" rather than "100% coil". DSSP-style assignment from coordinates was not added. | Analytics tab | Partial |
+| 8.5 Functional Region Prediction | Curated UniProt sites mapped onto the structure through a BLOSUM62 alignment, observed ligand pockets (residues within 4 Å of a bound ligand), and a per-residue surface profile. Known annotations and observations are kept separate; no ML pocket predictor yet. | Functional regions in the viewer rail, `GET /api/proteins/{uid}/functional-regions` | Partial |
+| 8.6 Protein Similarity Search | BLAST (blastp, blastn, tblastn, blastx) through the EBI service and UniRef homologs. Structural similarity with Foldseek was not built. | Similarity tab, `api/blast.py` | Partial (sequence only) |
+| 8.7 Mutation Impact Visualizer | Variant parser (R175H, p.Arg175His, W53*, F508del), position mapped through the UniProt alignment, burial, neighbours, interfaces, ligands, disulfides and curated sites reported as plain-language flags. No pathogenicity score is invented; clinical evidence is a separate tab (see below). | Variants tab, `POST /api/proteins/{uid}/variant` | Shipped |
+| 8.8 AI Annotation Assistant | Explain assistant: explains the open structure or current selection at school, undergraduate or expert level, grounded in a list of measured facts that is shown next to the answer. Works with any chat-completions compatible endpoint. | Explain sheet in the viewer header, `POST /api/proteins/{uid}/explain` | Shipped |
+| 8.9 Comparative Protein View | Two Mol* viewers side by side, BLOSUM62 sequence alignment and CA superposition with RMSD. | `/compare` | Shipped |
+| 8.10 Dashboard and Analytics | Molecular weight, chain statistics, residue composition, Kyte-Doolittle hydrophobicity, secondary structure composition, charged/polar/nonpolar distribution, pLDDT bands and low-confidence warnings, PAE heatmap, surface electrostatics. Ligands are counted and classified in the Compounds tab. | Overview and Analytics tabs | Shipped |
+| 8.11 Export System | Paper-style A4 report with snapshot, structure facts, UniProt biology, charts and sequences; Print / Save as PDF; JSON, composition CSV and hydropathy CSV downloads. The original coordinate file is served by `GET /api/proteins/{uid}/file`, but there is no PNG-only or converted PDB/mmCIF export in the UI. | `/report/[id]` | Partial |
+
+### Built beyond the original plan
+
+- **Central Dogma Explorer** (`/explore`): follows one human variant from chromosome to gene, double helix, mRNA and protein using Ensembl GRCh38 data, then opens the 3D viewer with the residue selected.
+- **Clinical evidence** (Clinical tab): EBI Proteins API variation feed (UniProt, ClinVar, Ensembl, gnomAD, COSMIC, TCGA) and AlphaMissense scores mapped onto the structure, with an overlay colouring.
+- **Oncology layer** (Oncology tab): cancerhotspots.org, cBioPortal TCGA PanCancer studies, ChEMBL mechanisms, CIViC evidence, Reactome pathways and STRING partners, each failing independently.
+- **Neoantigen candidates** (Neoantigens tab): 8-11mer peptides spanning a mutation scored with NetMHCpan 4.1 EL through the IEDB MHC-I API.
+- **Conservation** (Conservation tab): per-residue information content from the PDBe-KB conservation profile, with a structure overlay.
+- **Docking** (Docking tab): AutoDock Vina 1.2.7 docks a SMILES into a crystal ligand's pocket or around selected residues; receptor and ligand preparation with Meeko and RDKit. Redocking indinavir into 1HSG lands 0.78 Å from the crystal pose.
+- **Structure prediction from sequence** (`/predict`): ESMFold through the ESM Atlas API, opened in the viewer with pLDDT colouring and a "predicted" badge.
+- **Sequence tools** (`/tools`): six-frame ORF finder, restriction map, PCR primer design and SpCas9 guide design, all offline.
+- **Surface electrostatics**: per-residue Coulombic potential, charged patches, net charge, pI and dipole, with a red-white-blue colouring.
+- **Compounds** (Compounds tab): DNA/RNA strands and hetero groups classified as ligand, cofactor, ion, carbohydrate, modified residue and so on, with contact residues.
+- **Complex Portal** (`GET /api/proteins/{uid}/complexes`): participants and stoichiometry of known complexes.
+- **UniProt annotation panel** (Annotations tab): function, subcellular location, disease, keywords and other curated fields.
+- **BLAST**: all four programs verified against the live EBI service (listed under 8.6 above, but beyond the "BLAST-style logic" the plan expected).
+- **PAE heatmap**: AlphaFold predicted aligned error matrix with confidence band tables.
+- **Persistence and recent proteins**: a SQLite registry so loaded proteins survive a restart.
+- **Themes**: a retro-futuristic default theme, with the light "Classic" theme behind a toggle; the printed report always stays plain white.
+
+### Engineering status
+
+- 778 backend tests (pytest) with ruff linting, and 565 frontend tests (Vitest), with TypeScript checked by `tsc`.
+- GitHub Actions runs ruff + pytest and tsc + Vitest + the production webpack build on every pull request.
+- `docker compose up --build` runs both services with a data volume.
+
+---
+
 ## 1. Introduction
 
 Proteins are composed of amino acid chains that fold into complex three-dimensional shapes. The biological function of a protein is strongly related to its structure. Understanding protein structure helps in studying enzymes, receptors, antibodies, disease-related mutations, molecular interactions, and drug targets.
@@ -298,6 +345,8 @@ External Resources
 - Recharts/Plotly/ECharts for graphs.
 - Modern component library such as shadcn/ui.
 
+**As built:** Next.js 16 (App Router, production build with webpack) on React 19 and TypeScript, Tailwind CSS 4 with shadcn/ui components, Mol* 5.9 for 3D, Recharts for charts, Zustand for client state, and Vitest with Testing Library for tests.
+
 ## 10.2 Backend
 
 - Python FastAPI.
@@ -305,6 +354,8 @@ External Resources
 - Redis cache and job queue.
 - Celery/RQ background workers.
 - Object storage for uploaded files and reports.
+
+**As built:** Python 3.11+ with FastAPI, Pydantic 2 and Uvicorn; httpx for all calls to external databases, with an in-process LRU/TTL cache, retries with backoff and a per-host concurrency cap. The protein registry is a SQLite table and uploaded files live on local disk. PostgreSQL, Redis, Celery/RQ and object storage were not needed at this scale and were not introduced; long-running work (BLAST, docking) runs inside the request or polls the remote service.
 
 ## 10.3 Bioinformatics and Scientific Tools
 
@@ -315,12 +366,23 @@ External Resources
 - AutoDock Vina for optional docking prototype.
 - RDKit for ligand handling if docking is added.
 
+**As built:** BioPython for parsing, alignment and sequence work, with NumPy and SciPy for the numerics. Docking uses RDKit, Meeko and Gemmi for ligand and receptor preparation and the AutoDock Vina 1.2.7 binary (installed by `backend/scripts/install_vina.py`). DSSP, Foldseek and OpenMM were not used: secondary structure is read from the file, and similarity search is sequence based (EBI BLAST and UniRef). Structure prediction calls ESMFold through the ESM Atlas API.
+
 ## 10.4 AI/ML Layer
 
 - Retrieval-augmented AI assistant.
 - Embedding-based context retrieval.
 - Rule-based and lightweight ML scoring for regions/mutations.
 - Source-grounded report generation.
+
+**As built:** the Explain assistant sends a structured list of measured facts about the structure or selection to a chat-completions compatible language model and shows those facts beside the answer. The endpoint, key and model are configured on the server through `EXPLAIN_API_URL`, `EXPLAIN_API_KEY` and `EXPLAIN_MODEL`; without them the feature says what to set. There is no embedding store. Region and mutation analysis is rule based and measured, not ML scored, and the report is assembled from computed data rather than generated text.
+
+## 10.5 Testing, CI and Deployment (as built)
+
+- 778 backend tests with pytest, linted with ruff; external HTTP is mocked in tests.
+- 565 frontend tests with Vitest, plus a `tsc` type check.
+- GitHub Actions runs both suites and the production build on every pull request.
+- Docker Compose (`docker compose up --build`) runs the backend and frontend with a persistent data volume.
 
 ---
 
